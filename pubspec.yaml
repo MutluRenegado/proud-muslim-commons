@@ -1,0 +1,59 @@
+name: deen_path
+description: "Proud Muslim: Quran & Prayer - Live your Deen. Every day."
+publish_to: 'none'
+version: 1.0.1+2
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.2
+  intl: ^0.20.2
+  shared_preferences: ^2.3.5
+  google_fonts: ^6.2.1
+  http: ^1.3.0
+  audioplayers: ^6.1.1
+  flutter_svg: ^2.0.17
+  share_plus: ^10.1.4
+  geolocator: ^13.0.2
+  sensors_plus: ^6.1.1
+  in_app_purchase: ^3.2.0
+  package_info_plus: ^8.1.4
+  url_launcher: ^6.3.1
+  flutter_local_notifications: ^18.0.1
+  timezone: ^0.10.1
+  flutter_compass: ^0.8.0
+  image_picker: ^1.1.2
+  flutter_tts: ^4.2.2
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - assets/data/
+    - assets/images/
+    - assets/images/illustrations/
+    - assets/audio/names/arabic_pronunciation/
+    - assets/audio/names/english_explanation/
+    - assets/audio/names/turkish_explanation/
+    - assets/audio/names/turkish_pronunciation/
+    - assets/audio/names/
+
+    - assets/audio/
+    - assets/audio/adhan/
+    - assets/audio/adhan/fajr/
+    - assets/audio/adhan/dhuhr/
+    - assets/audio/adhan/asr/
+    - assets/audio/adhan/maghrip/
+    - assets/audio/adhan/Isha/
