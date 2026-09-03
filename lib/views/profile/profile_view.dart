@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,6 +23,7 @@ import 'subscription_view.dart';
 import 'support_view.dart';
 import 'legal_about_view.dart';
 import 'premium_trial_view.dart';
+import '../debug/prayer_diagnostic_view.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../core/services/ui_translation_service.dart';
@@ -432,6 +433,22 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                   deen: deen,
                 ),
+                if (kDebugMode) ...[
+                  Divider(height: 1, color: deen.cardBorder),
+                  _buildSettingsRow(
+                    icon: Icons.bug_report_rounded,
+                    color: Colors.amber,
+                    title: 'Prayer & Time Diagnostics',
+                    subtitle: 'Inspect UTC, IANA timezone & solar timestamps',
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const PrayerDiagnosticView(),
+                      ),
+                    ),
+                    deen: deen,
+                  ),
+                ],
               ],
             ),
           ),

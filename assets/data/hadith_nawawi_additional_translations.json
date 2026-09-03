@@ -1,0 +1,988 @@
+{
+  "7": {
+    "tr": {
+      "translation": "Din samimi nasihattir: Allah’a, Kitabına, Resulüne, Müslümanların yöneticilerine ve bütün insanlara karşı."
+    },
+    "de": {
+      "translation": "Die Religion ist aufrichtiger Rat: gegenüber Allah, Seinem Buch, Seinem Gesandten, den muslimischen Verantwortlichen und den Menschen."
+    },
+    "fr": {
+      "translation": "La religion est le conseil sincère envers Allah, Son Livre, Son Messager, les responsables musulmans et les gens."
+    },
+    "es": {
+      "translation": "La religión es consejo sincero para Allah, Su Libro, Su Mensajero, los dirigentes musulmanes y la gente."
+    },
+    "pt": {
+      "translation": "A religião é conselho sincero para Allah, Seu Livro, Seu Mensageiro, os líderes muçulmanos e as pessoas."
+    },
+    "ru": {
+      "translation": "Религия — это искренний совет Аллаху, Его Книге, Его Посланнику, руководителям мусульман и людям."
+    },
+    "id": {
+      "translation": "Agama adalah nasihat yang tulus: kepada Allah, Kitab-Nya, Rasul-Nya, para pemimpin Muslim, dan masyarakat."
+    },
+    "ur": {
+      "translation": "دین خیر خواہی ہے: اللہ، اس کی کتاب، اس کے رسول، مسلمانوں کے رہنماؤں اور عام لوگوں کے لیے۔"
+    },
+    "ms": {
+      "translation": "Agama ialah nasihat yang ikhlas: kepada Allah, Kitab-Nya, Rasul-Nya, pemimpin Muslim dan orang ramai."
+    }
+  },
+  "8": {
+    "tr": {
+      "translation": "İman eden, namazı kılan ve zekâtı veren kimsenin canı ve malı, hukukun gerektirdiği durumlar dışında korunmuştur."
+    },
+    "de": {
+      "translation": "Wer den Glauben bekennt, das Gebet verrichtet und Zakat gibt, dessen Leben und Eigentum sind geschützt, außer wenn das Recht etwas anderes verlangt."
+    },
+    "fr": {
+      "translation": "Celui qui professe la foi, accomplit la prière et donne la zakat voit sa vie et ses biens protégés, sauf selon le droit."
+    },
+    "es": {
+      "translation": "Quien profesa la fe, establece la oración y da el zakat tiene protegidas su vida y sus bienes, salvo por derecho."
+    },
+    "pt": {
+      "translation": "Quem professa a fé, estabelece a oração e paga o zakat tem a vida e os bens protegidos, exceto por direito."
+    },
+    "ru": {
+      "translation": "Жизнь и имущество тех, кто исповедует веру, совершает молитву и выплачивает закят, защищены, кроме случаев, установленных правом."
+    },
+    "id": {
+      "translation": "Orang yang menyatakan iman, menegakkan salat, dan menunaikan zakat memiliki jiwa dan harta yang dilindungi, kecuali berdasarkan hak."
+    },
+    "ur": {
+      "translation": "جو ایمان کا اقرار کرے، نماز قائم کرے اور زکوٰۃ دے اس کی جان اور مال حق کے سوا محفوظ ہیں۔"
+    },
+    "ms": {
+      "translation": "Orang yang mengakui iman, mendirikan solat dan menunaikan zakat mempunyai nyawa dan harta yang dilindungi, kecuali dengan hak."
+    }
+  },
+  "9": {
+    "tr": {
+      "translation": "Sizi yasakladığım şeylerden kaçının; emrettiğim şeyleri ise gücünüz yettiğince yapın."
+    },
+    "de": {
+      "translation": "Meidet, was ich euch verboten habe, und erfüllt, was ich euch befohlen habe, soweit ihr könnt."
+    },
+    "fr": {
+      "translation": "Évitez ce que je vous ai interdit et accomplissez ce que je vous ai ordonné dans la mesure de vos capacités."
+    },
+    "es": {
+      "translation": "Eviten lo que les he prohibido y hagan lo que les he ordenado tanto como puedan."
+    },
+    "pt": {
+      "translation": "Evitem o que proibi e façam o que ordenei na medida da vossa capacidade."
+    },
+    "ru": {
+      "translation": "Избегайте того, что я запретил вам, и выполняйте то, что я велел, насколько можете."
+    },
+    "id": {
+      "translation": "Jauhilah apa yang aku larang dan kerjakan apa yang aku perintahkan semampu kalian."
+    },
+    "ur": {
+      "translation": "جس چیز سے میں نے منع کیا ہے اس سے بچو، اور جس کا حکم دیا ہے اسے اپنی استطاعت کے مطابق کرو۔"
+    },
+    "ms": {
+      "translation": "Jauhilah apa yang aku larang dan lakukan apa yang aku perintahkan sedaya upaya kamu."
+    }
+  },
+  "10": {
+    "tr": {
+      "translation": "Allah temizdir ve yalnızca temiz olanı kabul eder."
+    },
+    "de": {
+      "translation": "Allah ist rein und nimmt nur das Reine an."
+    },
+    "fr": {
+      "translation": "Allah est pur et n’accepte que ce qui est pur."
+    },
+    "es": {
+      "translation": "Allah es puro y solo acepta lo que es puro."
+    },
+    "pt": {
+      "translation": "Allah é puro e aceita somente o que é puro."
+    },
+    "ru": {
+      "translation": "Аллах чист и принимает только чистое."
+    },
+    "id": {
+      "translation": "Allah Mahabaik dan hanya menerima yang baik."
+    },
+    "ur": {
+      "translation": "اللہ پاک ہے اور صرف پاک چیز ہی قبول کرتا ہے۔"
+    },
+    "ms": {
+      "translation": "Allah itu Maha Baik dan hanya menerima yang baik."
+    }
+  },
+  "11": {
+    "tr": {
+      "translation": "Seni şüpheye düşüren şeyi bırak, şüphe vermeyene yönel."
+    },
+    "de": {
+      "translation": "Lass das, was dich zweifeln lässt, für das, was keinen Zweifel in dir weckt."
+    },
+    "fr": {
+      "translation": "Laisse ce qui te met dans le doute pour ce qui ne t’y met pas."
+    },
+    "es": {
+      "translation": "Deja aquello que te hace dudar por lo que no te hace dudar."
+    },
+    "pt": {
+      "translation": "Deixa o que te causa dúvida por aquilo que não te causa dúvida."
+    },
+    "ru": {
+      "translation": "Оставь то, что вызывает сомнение, ради того, что сомнения не вызывает."
+    },
+    "id": {
+      "translation": "Tinggalkan apa yang meragukanmu menuju apa yang tidak meragukanmu."
+    },
+    "ur": {
+      "translation": "جو چیز تمہیں شک میں ڈالے اسے چھوڑ دو اور وہ اختیار کرو جس میں شک نہ ہو۔"
+    },
+    "ms": {
+      "translation": "Tinggalkan apa yang meragukanmu kepada apa yang tidak meragukanmu."
+    }
+  },
+  "12": {
+    "tr": {
+      "translation": "Kişinin güzel Müslümanlığının bir parçası, kendisini ilgilendirmeyen şeyi terk etmesidir."
+    },
+    "de": {
+      "translation": "Zur Vortrefflichkeit des Islam eines Menschen gehört, das zu lassen, was ihn nicht betrifft."
+    },
+    "fr": {
+      "translation": "Parmi les signes de l’excellence de l’Islam d’une personne, il y a le fait de délaisser ce qui ne la concerne pas."
+    },
+    "es": {
+      "translation": "Parte de la excelencia del Islam de una persona es dejar lo que no le concierne."
+    },
+    "pt": {
+      "translation": "Parte da excelência do Islam de uma pessoa é deixar aquilo que não lhe diz respeito."
+    },
+    "ru": {
+      "translation": "К совершенству ислама человека относится оставление того, что его не касается."
+    },
+    "id": {
+      "translation": "Sebagian dari baiknya Islam seseorang adalah meninggalkan apa yang tidak berkaitan dengannya."
+    },
+    "ur": {
+      "translation": "آدمی کے اچھے اسلام میں سے ہے کہ وہ ایسی چیز چھوڑ دے جو اس سے متعلق نہ ہو۔"
+    },
+    "ms": {
+      "translation": "Sebahagian daripada baiknya Islam seseorang ialah meninggalkan perkara yang tidak berkaitan dengannya."
+    }
+  },
+  "13": {
+    "tr": {
+      "translation": "Bir Müslümanın canı, ancak meşru otorite altında hükme bağlanan çok sınırlı durumlar dışında dokunulmazdır."
+    },
+    "de": {
+      "translation": "Das Leben eines Muslims ist unantastbar, außer in eng begrenzten Fällen, die unter rechtmäßiger Autorität beurteilt werden."
+    },
+    "fr": {
+      "translation": "La vie d’un musulman est inviolable sauf dans des cas très limités jugés par une autorité légitime."
+    },
+    "es": {
+      "translation": "La vida de un musulmán es inviolable salvo en casos muy limitados juzgados por una autoridad legítima."
+    },
+    "pt": {
+      "translation": "A vida de um muçulmano é inviolável, salvo em casos muito limitados julgados por autoridade legítima."
+    },
+    "ru": {
+      "translation": "Жизнь мусульманина неприкосновенна, кроме строго ограниченных случаев, рассматриваемых законной властью."
+    },
+    "id": {
+      "translation": "Jiwa seorang Muslim tidak boleh dilanggar kecuali dalam kasus sangat terbatas yang diputuskan oleh otoritas yang sah."
+    },
+    "ur": {
+      "translation": "مسلمان کی جان محفوظ ہے، سوائے ان بہت محدود صورتوں کے جن کا فیصلہ جائز قانونی اختیار کے تحت ہو۔"
+    },
+    "ms": {
+      "translation": "Nyawa seorang Muslim tidak boleh dicabuli kecuali dalam kes yang sangat terbatas yang diputuskan oleh pihak berkuasa yang sah."
+    }
+  },
+  "14": {
+    "tr": {
+      "translation": "Allah’a ve ahiret gününe iman eden ya hayır söylesin ya sussun; komşusuna ve misafirine ikram etsin."
+    },
+    "de": {
+      "translation": "Wer an Allah und den Jüngsten Tag glaubt, soll Gutes sprechen oder schweigen, den Nachbarn ehren und den Gast ehren."
+    },
+    "fr": {
+      "translation": "Que celui qui croit en Allah et au Jour dernier dise du bien ou se taise, honore son voisin et honore son invité."
+    },
+    "es": {
+      "translation": "Quien crea en Allah y en el Último Día que diga el bien o calle, honre a su vecino y honre a su huésped."
+    },
+    "pt": {
+      "translation": "Quem crê em Allah e no Último Dia deve falar o bem ou calar, honrar o vizinho e honrar o hóspede."
+    },
+    "ru": {
+      "translation": "Кто верует в Аллаха и Последний день, пусть говорит благое или молчит, почитает соседа и гостя."
+    },
+    "id": {
+      "translation": "Siapa yang beriman kepada Allah dan Hari Akhir hendaklah berkata baik atau diam, memuliakan tetangga, dan memuliakan tamu."
+    },
+    "ur": {
+      "translation": "جو اللہ اور آخرت کے دن پر ایمان رکھتا ہے وہ اچھی بات کہے یا خاموش رہے، پڑوسی اور مہمان کی عزت کرے۔"
+    },
+    "ms": {
+      "translation": "Sesiapa yang beriman kepada Allah dan Hari Akhir hendaklah berkata baik atau diam, memuliakan jiran dan tetamu."
+    }
+  },
+  "15": {
+    "tr": {
+      "translation": "Peygamber defalarca öğüt verdi: Öfkelenme."
+    },
+    "de": {
+      "translation": "Der Prophet riet wiederholt: Werde nicht zornig."
+    },
+    "fr": {
+      "translation": "Le Prophète conseilla à plusieurs reprises : Ne te mets pas en colère."
+    },
+    "es": {
+      "translation": "El Profeta aconsejó repetidamente: No te enfades."
+    },
+    "pt": {
+      "translation": "O Profeta aconselhou repetidamente: Não te zangues."
+    },
+    "ru": {
+      "translation": "Пророк неоднократно советовал: Не гневайся."
+    },
+    "id": {
+      "translation": "Nabi berulang kali menasihati: Jangan marah."
+    },
+    "ur": {
+      "translation": "نبی نے بار بار نصیحت فرمائی: غصہ نہ کرو۔"
+    },
+    "ms": {
+      "translation": "Nabi berulang kali menasihati: Jangan marah."
+    }
+  },
+  "16": {
+    "tr": {
+      "translation": "Allah her işte ihsanı ve güzel davranışı emretmiştir."
+    },
+    "de": {
+      "translation": "Allah hat in jeder Angelegenheit Güte und Vortrefflichkeit vorgeschrieben."
+    },
+    "fr": {
+      "translation": "Allah a prescrit l’excellence et la bienveillance en toute chose."
+    },
+    "es": {
+      "translation": "Allah ha prescrito la excelencia y la bondad en todo asunto."
+    },
+    "pt": {
+      "translation": "Allah prescreveu excelência e bondade em todas as coisas."
+    },
+    "ru": {
+      "translation": "Аллах предписал совершенство и доброту во всяком деле."
+    },
+    "id": {
+      "translation": "Allah menetapkan ihsan dan kebaikan dalam setiap urusan."
+    },
+    "ur": {
+      "translation": "اللہ نے ہر معاملے میں احسان اور بھلائی مقرر کی ہے۔"
+    },
+    "ms": {
+      "translation": "Allah menetapkan ihsan dan kebaikan dalam setiap perkara."
+    }
+  },
+  "17": {
+    "tr": {
+      "translation": "Nerede olursan ol Allah’tan sakın; kötülüğün ardından onu silecek bir iyilik yap ve insanlara güzel ahlakla davran."
+    },
+    "de": {
+      "translation": "Sei dir Allahs bewusst, wo immer du bist; lass einer schlechten Tat eine gute folgen und begegne den Menschen mit gutem Charakter."
+    },
+    "fr": {
+      "translation": "Crains Allah où que tu sois; fais suivre une mauvaise action d’une bonne et comporte-toi bien avec les gens."
+    },
+    "es": {
+      "translation": "Sé consciente de Allah dondequiera que estés; sigue una mala acción con una buena y trata a la gente con buen carácter."
+    },
+    "pt": {
+      "translation": "Teme Allah onde quer que estejas; segue uma má ação com uma boa e trata as pessoas com bom caráter."
+    },
+    "ru": {
+      "translation": "Бойся Аллаха, где бы ты ни был; вслед за плохим поступком соверши хороший и обращайся с людьми благонравно."
+    },
+    "id": {
+      "translation": "Bertakwalah kepada Allah di mana pun berada; ikuti keburukan dengan kebaikan dan perlakukan manusia dengan akhlak baik."
+    },
+    "ur": {
+      "translation": "جہاں کہیں ہو اللہ سے ڈرو؛ برائی کے بعد نیکی کرو اور لوگوں کے ساتھ اچھے اخلاق سے پیش آؤ۔"
+    },
+    "ms": {
+      "translation": "Bertakwalah kepada Allah di mana sahaja kamu berada; susuli keburukan dengan kebaikan dan layan manusia dengan akhlak yang baik."
+    }
+  },
+  "18": {
+    "tr": {
+      "translation": "Allah’ın sınırlarını gözet ki O da seni korusun. İstediğinde Allah’tan iste, yardım dilediğinde Allah’tan yardım dile."
+    },
+    "de": {
+      "translation": "Achte auf Allah, dann wird Er dich schützen. Bitte Allah und suche Hilfe bei Allah."
+    },
+    "fr": {
+      "translation": "Sois conscient d’Allah et Il te protégera. Demande à Allah et cherche l’aide d’Allah."
+    },
+    "es": {
+      "translation": "Sé consciente de Allah y Él te protegerá. Pide a Allah y busca la ayuda de Allah."
+    },
+    "pt": {
+      "translation": "Sê consciente de Allah e Ele te protegerá. Pede a Allah e busca ajuda em Allah."
+    },
+    "ru": {
+      "translation": "Помни об Аллахе, и Он будет хранить тебя. Проси Аллаха и ищи помощи у Аллаха."
+    },
+    "id": {
+      "translation": "Jagalah hak Allah, niscaya Dia menjagamu. Mintalah kepada Allah dan mohon pertolongan kepada Allah."
+    },
+    "ur": {
+      "translation": "اللہ کے حقوق کی حفاظت کرو، وہ تمہاری حفاظت کرے گا۔ مانگو تو اللہ سے مانگو اور مدد چاہو تو اللہ سے چاہو۔"
+    },
+    "ms": {
+      "translation": "Peliharalah hak Allah, nescaya Dia memeliharamu. Mintalah kepada Allah dan mohon pertolongan daripada Allah."
+    }
+  },
+  "19": {
+    "tr": {
+      "translation": "Hayâ etmiyorsan dilediğini yap."
+    },
+    "de": {
+      "translation": "Wenn du keine Scham empfindest, dann tu, was du willst."
+    },
+    "fr": {
+      "translation": "Si tu n’éprouves aucune pudeur, fais ce que tu veux."
+    },
+    "es": {
+      "translation": "Si no sientes vergüenza, haz lo que quieras."
+    },
+    "pt": {
+      "translation": "Se não sentes vergonha, faz o que quiseres."
+    },
+    "ru": {
+      "translation": "Если ты не испытываешь стыда, делай что пожелаешь."
+    },
+    "id": {
+      "translation": "Jika tidak memiliki rasa malu, lakukanlah sesukamu."
+    },
+    "ur": {
+      "translation": "اگر تم میں حیا نہ رہے تو جو چاہو کرو۔"
+    },
+    "ms": {
+      "translation": "Jika kamu tidak berasa malu, lakukanlah apa yang kamu mahu."
+    }
+  },
+  "20": {
+    "tr": {
+      "translation": "“Allah’a iman ettim” de, sonra dosdoğru ol."
+    },
+    "de": {
+      "translation": "Sag: „Ich glaube an Allah“, und bleibe dann standhaft."
+    },
+    "fr": {
+      "translation": "Dis : « Je crois en Allah », puis reste droit."
+    },
+    "es": {
+      "translation": "Di: «Creo en Allah», y luego mantente firme."
+    },
+    "pt": {
+      "translation": "Diz: «Creio em Allah», e depois permanece firme."
+    },
+    "ru": {
+      "translation": "Скажи: «Я уверовал в Аллаха», а затем будь стойким."
+    },
+    "id": {
+      "translation": "Katakan, “Aku beriman kepada Allah,” lalu istiqamahlah."
+    },
+    "ur": {
+      "translation": "کہو: میں اللہ پر ایمان لایا، پھر ثابت قدم رہو۔"
+    },
+    "ms": {
+      "translation": "Katakan, “Aku beriman kepada Allah,” kemudian istiqamahlah."
+    }
+  },
+  "21": {
+    "tr": {
+      "translation": "Farz namazları kılmak, oruç tutmak ve helal-haram sınırlarını korumak cennete götüren bir yoldur."
+    },
+    "de": {
+      "translation": "Die Pflichtgebete, das Fasten und die rechtmäßigen Grenzen einzuhalten ist ein Weg zum Paradies."
+    },
+    "fr": {
+      "translation": "Accomplir les prières obligatoires, jeûner et respecter les limites licites mène au Paradis."
+    },
+    "es": {
+      "translation": "Cumplir las oraciones obligatorias, ayunar y respetar los límites lícitos es un camino al Paraíso."
+    },
+    "pt": {
+      "translation": "Cumprir as orações obrigatórias, jejuar e respeitar os limites lícitos é um caminho para o Paraíso."
+    },
+    "ru": {
+      "translation": "Совершение обязательных молитв, пост и соблюдение дозволенных границ — путь в Рай."
+    },
+    "id": {
+      "translation": "Menunaikan salat wajib, berpuasa, dan menjaga batas halal adalah jalan menuju Surga."
+    },
+    "ur": {
+      "translation": "فرض نمازیں ادا کرنا، روزہ رکھنا اور حلال حدود کی پابندی کرنا جنت کا راستہ ہے۔"
+    },
+    "ms": {
+      "translation": "Menunaikan solat wajib, berpuasa dan menjaga batas halal ialah jalan menuju Syurga."
+    }
+  },
+  "22": {
+    "tr": {
+      "translation": "Temizlik imanın yarısıdır; zikir, namaz, sadaka ve sabır mümini aydınlatır."
+    },
+    "de": {
+      "translation": "Reinheit ist die Hälfte des Glaubens; Gedenken, Gebet, Almosen und Geduld erhellen den Gläubigen."
+    },
+    "fr": {
+      "translation": "La pureté est la moitié de la foi; le rappel, la prière, l’aumône et la patience illuminent le croyant."
+    },
+    "es": {
+      "translation": "La pureza es la mitad de la fe; el recuerdo, la oración, la caridad y la paciencia iluminan al creyente."
+    },
+    "pt": {
+      "translation": "A pureza é metade da fé; lembrança, oração, caridade e paciência iluminam o crente."
+    },
+    "ru": {
+      "translation": "Чистота — половина веры; поминание, молитва, милостыня и терпение озаряют верующего."
+    },
+    "id": {
+      "translation": "Kesucian adalah setengah dari iman; zikir, salat, sedekah, dan kesabaran menerangi orang beriman."
+    },
+    "ur": {
+      "translation": "پاکیزگی نصف ایمان ہے؛ ذکر، نماز، صدقہ اور صبر مومن کو روشن کرتے ہیں۔"
+    },
+    "ms": {
+      "translation": "Kesucian ialah separuh iman; zikir, solat, sedekah dan sabar menerangi orang beriman."
+    }
+  },
+  "23": {
+    "tr": {
+      "translation": "Allah zulmü haram kılmış ve kullarına birbirlerine zulmetmemelerini emretmiştir."
+    },
+    "de": {
+      "translation": "Allah hat Unrecht verboten und Seinen Dienern befohlen, einander kein Unrecht zuzufügen."
+    },
+    "fr": {
+      "translation": "Allah a interdit l’injustice et ordonne à Ses serviteurs de ne pas se léser mutuellement."
+    },
+    "es": {
+      "translation": "Allah ha prohibido la injusticia y ordena a Sus siervos no oprimirse unos a otros."
+    },
+    "pt": {
+      "translation": "Allah proibiu a injustiça e ordena aos Seus servos que não se oprimam mutuamente."
+    },
+    "ru": {
+      "translation": "Аллах запретил несправедливость и велел Своим рабам не притеснять друг друга."
+    },
+    "id": {
+      "translation": "Allah mengharamkan kezaliman dan memerintahkan hamba-Nya agar tidak saling menzalimi."
+    },
+    "ur": {
+      "translation": "اللہ نے ظلم کو حرام کیا اور اپنے بندوں کو حکم دیا کہ ایک دوسرے پر ظلم نہ کریں۔"
+    },
+    "ms": {
+      "translation": "Allah mengharamkan kezaliman dan memerintahkan hamba-Nya supaya tidak menzalimi satu sama lain."
+    }
+  },
+  "24": {
+    "tr": {
+      "translation": "Her zikir ve her iyilik bir sadakadır."
+    },
+    "de": {
+      "translation": "Jede Form des Gedenkens und jede gute Tat ist Almosen."
+    },
+    "fr": {
+      "translation": "Tout rappel et toute bonne action sont une aumône."
+    },
+    "es": {
+      "translation": "Todo recuerdo y toda buena obra son caridad."
+    },
+    "pt": {
+      "translation": "Toda lembrança e toda boa ação são caridade."
+    },
+    "ru": {
+      "translation": "Каждое поминание и каждое доброе дело — милостыня."
+    },
+    "id": {
+      "translation": "Setiap zikir dan setiap perbuatan baik adalah sedekah."
+    },
+    "ur": {
+      "translation": "ہر ذکر اور ہر نیکی صدقہ ہے۔"
+    },
+    "ms": {
+      "translation": "Setiap zikir dan setiap kebaikan ialah sedekah."
+    }
+  },
+  "25": {
+    "tr": {
+      "translation": "Her gün insanın her eklemi için adalet, yardım, güzel söz, namaz ve zararı gidermekle sadaka gerekir."
+    },
+    "de": {
+      "translation": "Jeden Tag schuldet jedes Gelenk Almosen durch Gerechtigkeit, Hilfe, gute Worte, Gebet und das Beseitigen von Schaden."
+    },
+    "fr": {
+      "translation": "Chaque jour, chaque articulation doit une aumône par la justice, l’aide, la bonne parole, la prière et l’élimination du mal."
+    },
+    "es": {
+      "translation": "Cada día, cada articulación debe una caridad mediante justicia, ayuda, buena palabra, oración y eliminación del daño."
+    },
+    "pt": {
+      "translation": "Todos os dias, cada articulação deve caridade por meio da justiça, ajuda, boa palavra, oração e remoção do dano."
+    },
+    "ru": {
+      "translation": "Каждый день каждый сустав обязан милостыней через справедливость, помощь, доброе слово, молитву и устранение вреда."
+    },
+    "id": {
+      "translation": "Setiap hari, setiap persendian wajib bersedekah melalui keadilan, pertolongan, ucapan baik, salat, dan menyingkirkan bahaya."
+    },
+    "ur": {
+      "translation": "ہر دن جسم کے ہر جوڑ پر عدل، مدد، اچھی بات، نماز اور تکلیف دور کرنے کے ذریعے صدقہ لازم ہے۔"
+    },
+    "ms": {
+      "translation": "Setiap hari, setiap sendi berhutang sedekah melalui keadilan, bantuan, kata-kata baik, solat dan menghilangkan mudarat."
+    }
+  },
+  "26": {
+    "tr": {
+      "translation": "İyilik güzel ahlaktır; günah ise kalbini huzursuz eden ve insanların bilmesini istemediğin şeydir."
+    },
+    "de": {
+      "translation": "Rechtschaffenheit ist guter Charakter; Unrecht ist, was das Herz beunruhigt und was du nicht von den Menschen entdeckt wissen möchtest."
+    },
+    "fr": {
+      "translation": "La droiture est le bon caractère; le mal est ce qui trouble le cœur et que tu n’aimerais pas que les gens découvrent."
+    },
+    "es": {
+      "translation": "La rectitud es buen carácter; el mal es lo que inquieta el corazón y no quieres que la gente descubra."
+    },
+    "pt": {
+      "translation": "A retidão é bom caráter; o mal é aquilo que perturba o coração e que não gostarias que as pessoas descobrissem."
+    },
+    "ru": {
+      "translation": "Праведность — это благой нрав; грех — то, что тревожит сердце и что ты не хотел бы открыть людям."
+    },
+    "id": {
+      "translation": "Kebajikan adalah akhlak yang baik; dosa adalah yang menggelisahkan hati dan tidak ingin diketahui orang lain."
+    },
+    "ur": {
+      "translation": "نیکی اچھا اخلاق ہے؛ گناہ وہ ہے جو دل میں کھٹکے اور تم پسند نہ کرو کہ لوگ اسے جانیں۔"
+    },
+    "ms": {
+      "translation": "Kebajikan ialah akhlak yang baik; dosa ialah apa yang meresahkan hati dan kamu tidak suka diketahui orang."
+    }
+  },
+  "27": {
+    "tr": {
+      "translation": "Sünnetime ve doğru yoldaki halifelerin yoluna sımsıkı sarılın; sonradan uydurulan dinî işlerden sakının."
+    },
+    "de": {
+      "translation": "Haltet fest an meiner Sunnah und dem Weg der rechtgeleiteten Nachfolger; meidet erfundene religiöse Angelegenheiten."
+    },
+    "fr": {
+      "translation": "Attachez-vous fermement à ma Sunna et à la voie des successeurs bien guidés; évitez les innovations religieuses."
+    },
+    "es": {
+      "translation": "Aférrense a mi Sunnah y al camino de los sucesores bien guiados; eviten los asuntos religiosos inventados."
+    },
+    "pt": {
+      "translation": "Apeguem-se firmemente à minha Sunnah e ao caminho dos sucessores bem guiados; evitem inovações religiosas."
+    },
+    "ru": {
+      "translation": "Крепко держитесь моей Сунны и пути праведно ведомых преемников; избегайте выдуманных религиозных дел."
+    },
+    "id": {
+      "translation": "Berpegang teguhlah pada Sunnahku dan jalan para penerus yang mendapat petunjuk; jauhi perkara agama yang diada-adakan."
+    },
+    "ur": {
+      "translation": "میری سنت اور ہدایت یافتہ جانشینوں کے طریقے کو مضبوطی سے تھامو؛ دین میں نئی گھڑی ہوئی باتوں سے بچو۔"
+    },
+    "ms": {
+      "translation": "Berpegang teguhlah pada Sunnahku dan jalan para pengganti yang mendapat petunjuk; jauhi perkara agama yang diada-adakan."
+    }
+  },
+  "28": {
+    "tr": {
+      "translation": "İslam temeldir, namaz direğidir, disiplinli mücadele zirvesidir; dili korumak bunların hepsini muhafaza eder."
+    },
+    "de": {
+      "translation": "Der Islam ist das Fundament, das Gebet seine Säule und diszipliniertes Streben sein Gipfel; die Zunge zu hüten schützt alles."
+    },
+    "fr": {
+      "translation": "L’Islam est le fondement, la prière son pilier et l’effort discipliné son sommet; préserver la langue protège le tout."
+    },
+    "es": {
+      "translation": "El Islam es el fundamento, la oración su pilar y el esfuerzo disciplinado su cima; proteger la lengua protege todo."
+    },
+    "pt": {
+      "translation": "O Islam é o fundamento, a oração é o seu pilar e o esforço disciplinado é o seu auge; guardar a língua protege tudo."
+    },
+    "ru": {
+      "translation": "Ислам — основа, молитва — его опора, дисциплинированное старание — вершина; сохранение языка защищает всё."
+    },
+    "id": {
+      "translation": "Islam adalah dasar, salat adalah tiangnya, dan perjuangan yang disiplin adalah puncaknya; menjaga lisan melindungi semuanya."
+    },
+    "ur": {
+      "translation": "اسلام بنیاد ہے، نماز اس کا ستون اور منظم جدوجہد اس کی چوٹی ہے؛ زبان کی حفاظت سب کو محفوظ رکھتی ہے۔"
+    },
+    "ms": {
+      "translation": "Islam ialah asas, solat tiangnya dan usaha berdisiplin kemuncaknya; menjaga lidah melindungi semuanya."
+    }
+  },
+  "29": {
+    "tr": {
+      "translation": "Allah farzları ve sınırları belirlemiştir; onları ihmal etmeyin, aşmayın ve hakkında sustuğu şeyleri kurcalamayın."
+    },
+    "de": {
+      "translation": "Allah hat Pflichten und Grenzen festgelegt: Vernachlässigt und überschreitet sie nicht und forscht nicht nach dem, worüber Er geschwiegen hat."
+    },
+    "fr": {
+      "translation": "Allah a établi des obligations et des limites : ne les négligez ni ne les transgressez, et ne fouillez pas ce qu’Il a laissé sans mention."
+    },
+    "es": {
+      "translation": "Allah estableció obligaciones y límites: no los descuiden ni los transgredan y no investiguen aquello sobre lo que guardó silencio."
+    },
+    "pt": {
+      "translation": "Allah estabeleceu obrigações e limites: não os negligenciem nem ultrapassem e não investiguem o que Ele deixou sem menção."
+    },
+    "ru": {
+      "translation": "Аллах установил обязанности и границы: не пренебрегайте ими, не переступайте их и не исследуйте то, о чем Он умолчал."
+    },
+    "id": {
+      "translation": "Allah menetapkan kewajiban dan batas: jangan abaikan atau langgar, dan jangan mencari-cari apa yang Dia diamkan."
+    },
+    "ur": {
+      "translation": "اللہ نے فرائض اور حدود مقرر کی ہیں؛ انہیں ضائع نہ کرو، تجاوز نہ کرو اور جس بات پر وہ خاموش ہے اس میں کھوج نہ لگاؤ۔"
+    },
+    "ms": {
+      "translation": "Allah menetapkan kewajipan dan batas: jangan abaikan atau langgar, dan jangan menyelidik apa yang Dia tidak sebutkan."
+    }
+  },
+  "30": {
+    "tr": {
+      "translation": "Dünya fazlalıklarına bağlanma ki Allah seni sevsin; insanların elindekine göz dikme ki insanlar da seni sevsin."
+    },
+    "de": {
+      "translation": "Entsage weltlichem Übermaß, dann wird Allah dich lieben; begehre nicht, was andere besitzen, dann werden die Menschen dich lieben."
+    },
+    "fr": {
+      "translation": "Détache-toi de l’excès de ce monde et Allah t’aimera; ne convoite pas ce que possèdent les gens et ils t’aimeront."
+    },
+    "es": {
+      "translation": "Desapégate del exceso mundano y Allah te amará; no codicies lo que poseen los demás y la gente te amará."
+    },
+    "pt": {
+      "translation": "Desapega-te do excesso mundano e Allah te amará; não cobices o que os outros possuem e as pessoas te amarão."
+    },
+    "ru": {
+      "translation": "Откажись от мирских излишеств — Аллах полюбит тебя; не желай того, чем владеют люди, и они полюбят тебя."
+    },
+    "id": {
+      "translation": "Zuhudlah dari berlebihan dalam dunia, Allah akan mencintaimu; jangan menginginkan milik orang lain, mereka akan mencintaimu."
+    },
+    "ur": {
+      "translation": "دنیا کی زیادتی سے بے رغبت رہو، اللہ تم سے محبت کرے گا؛ لوگوں کے مال کی خواہش نہ کرو، وہ تم سے محبت کریں گے۔"
+    },
+    "ms": {
+      "translation": "Jauhilah berlebihan dalam dunia, Allah akan mencintaimu; jangan mengingini milik orang lain, mereka akan mencintaimu."
+    }
+  },
+  "31": {
+    "tr": {
+      "translation": "Zarar vermek de zarara zararla karşılık vermek de yoktur."
+    },
+    "de": {
+      "translation": "Es darf weder Schaden noch die Erwiderung von Schaden mit Schaden geben."
+    },
+    "fr": {
+      "translation": "Il ne faut ni nuire ni répondre au tort par le tort."
+    },
+    "es": {
+      "translation": "No debe haber daño ni respuesta al daño con daño."
+    },
+    "pt": {
+      "translation": "Não deve haver dano nem retribuição de dano com dano."
+    },
+    "ru": {
+      "translation": "Не должно быть ни причинения вреда, ни ответного вреда."
+    },
+    "id": {
+      "translation": "Tidak boleh membahayakan dan tidak boleh membalas bahaya dengan bahaya."
+    },
+    "ur": {
+      "translation": "نہ نقصان پہنچانا ہے اور نہ نقصان کا بدلہ نقصان سے دینا ہے۔"
+    },
+    "ms": {
+      "translation": "Tidak boleh memudaratkan dan tidak boleh membalas mudarat dengan mudarat."
+    }
+  },
+  "32": {
+    "tr": {
+      "translation": "İddia eden delil getirmeli, inkâr eden ise yemin etmelidir."
+    },
+    "de": {
+      "translation": "Der Kläger muss Beweise vorlegen, und wer die Behauptung bestreitet, leistet den Eid."
+    },
+    "fr": {
+      "translation": "Le demandeur doit apporter la preuve et celui qui nie doit prêter serment."
+    },
+    "es": {
+      "translation": "Quien reclama debe presentar pruebas y quien niega debe prestar juramento."
+    },
+    "pt": {
+      "translation": "Quem alega deve apresentar prova e quem nega deve prestar juramento."
+    },
+    "ru": {
+      "translation": "Истец обязан представить доказательство, а отрицающий — принести клятву."
+    },
+    "id": {
+      "translation": "Penggugat harus membawa bukti, sedangkan yang menyangkal harus bersumpah."
+    },
+    "ur": {
+      "translation": "دعویٰ کرنے والے پر دلیل ہے اور انکار کرنے والے پر قسم۔"
+    },
+    "ms": {
+      "translation": "Pihak yang mendakwa mesti membawa bukti, dan pihak yang menafikan perlu bersumpah."
+    }
+  },
+  "33": {
+    "tr": {
+      "translation": "Bir kötülük gören, meşru gücü ölçüsünde onu eliyle, diliyle veya kalben reddederek değiştirsin."
+    },
+    "de": {
+      "translation": "Wer Unrecht sieht, soll es im Rahmen rechtmäßiger Fähigkeit durch Handlung, Wort oder Ablehnung im Herzen ändern."
+    },
+    "fr": {
+      "translation": "Celui qui voit un mal doit le changer selon sa capacité légitime, par l’action, la parole ou le rejet dans le cœur."
+    },
+    "es": {
+      "translation": "Quien vea un mal debe cambiarlo dentro de su capacidad legítima, con acción, palabra o rechazo en el corazón."
+    },
+    "pt": {
+      "translation": "Quem vê um mal deve mudá-lo dentro da capacidade legítima, pela ação, palavra ou rejeição no coração."
+    },
+    "ru": {
+      "translation": "Кто увидит порицаемое, пусть изменит его в пределах законной возможности действием, словом или неприятием сердцем."
+    },
+    "id": {
+      "translation": "Siapa melihat kemungkaran hendaklah mengubahnya sesuai kemampuan yang sah, dengan tindakan, ucapan, atau penolakan dalam hati."
+    },
+    "ur": {
+      "translation": "جو برائی دیکھے وہ جائز استطاعت کے مطابق اسے ہاتھ، زبان یا دل میں برا جان کر بدلنے کی کوشش کرے۔"
+    },
+    "ms": {
+      "translation": "Sesiapa yang melihat kemungkaran hendaklah mengubahnya mengikut kemampuan yang sah, dengan tindakan, kata-kata atau penolakan dalam hati."
+    }
+  },
+  "34": {
+    "tr": {
+      "translation": "Birbirinize haset etmeyin, aldatmayın, kin tutmayın ve sırt çevirmeyin; Allah’ın kulları olarak kardeş olun."
+    },
+    "de": {
+      "translation": "Beneidet, täuscht und hasst einander nicht und kehrt einander nicht den Rücken; seid als Diener Allahs Geschwister."
+    },
+    "fr": {
+      "translation": "Ne vous enviez pas, ne vous trompez pas, ne vous haïssez pas et ne vous abandonnez pas; soyez frères et sœurs, serviteurs d’Allah."
+    },
+    "es": {
+      "translation": "No se envidien, engañen, odien ni abandonen; sean siervos de Allah como hermanos y hermanas."
+    },
+    "pt": {
+      "translation": "Não tenham inveja, não enganem, não odeiem nem abandonem uns aos outros; sejam servos de Allah como irmãos e irmãs."
+    },
+    "ru": {
+      "translation": "Не завидуйте, не обманывайте, не ненавидьте и не покидайте друг друга; будьте рабами Аллаха как братья и сестры."
+    },
+    "id": {
+      "translation": "Jangan saling iri, menipu, membenci, atau menjauhi; jadilah hamba Allah sebagai saudara."
+    },
+    "ur": {
+      "translation": "ایک دوسرے سے حسد، دھوکا، نفرت اور قطع تعلق نہ کرو؛ اللہ کے بندے بن کر بھائی بہن رہو۔"
+    },
+    "ms": {
+      "translation": "Jangan saling iri, menipu, membenci atau meninggalkan; jadilah hamba Allah sebagai saudara."
+    }
+  },
+  "35": {
+    "tr": {
+      "translation": "Bir müminin sıkıntısını gideren, zorluk içindekine yardım eden veya ilim arayan kimse Allah’ın yardımına erişir."
+    },
+    "de": {
+      "translation": "Wer die Not eines Gläubigen lindert, einem Menschen in Schwierigkeit hilft oder Wissen sucht, erhält Allahs Hilfe."
+    },
+    "fr": {
+      "translation": "Celui qui soulage la détresse d’un croyant, aide une personne en difficulté ou recherche la connaissance reçoit l’aide d’Allah."
+    },
+    "es": {
+      "translation": "Quien alivie la angustia de un creyente, ayude a alguien en dificultad o busque conocimiento recibirá la ayuda de Allah."
+    },
+    "pt": {
+      "translation": "Quem aliviar a aflição de um crente, ajudar alguém em dificuldade ou buscar conhecimento receberá a ajuda de Allah."
+    },
+    "ru": {
+      "translation": "Кто облегчает беду верующего, помогает человеку в трудности или ищет знания, получает помощь Аллаха."
+    },
+    "id": {
+      "translation": "Siapa meringankan kesusahan seorang mukmin, membantu orang dalam kesulitan, atau mencari ilmu akan mendapat pertolongan Allah."
+    },
+    "ur": {
+      "translation": "جو کسی مومن کی پریشانی دور کرے، مشکل میں مدد دے یا علم حاصل کرے اسے اللہ کی مدد ملتی ہے۔"
+    },
+    "ms": {
+      "translation": "Sesiapa yang meringankan kesusahan seorang mukmin, membantu orang dalam kesulitan atau mencari ilmu akan mendapat pertolongan Allah."
+    }
+  },
+  "36": {
+    "tr": {
+      "translation": "Allah niyetleri ve amelleri büyük bir cömertlikle yazar; iyiliği kat kat artırır, kötülüğün kaydını sınırlar."
+    },
+    "de": {
+      "translation": "Allah verzeichnet Absichten und Taten mit großer Großzügigkeit, vervielfacht das Gute und begrenzt die Aufzeichnung des Bösen."
+    },
+    "fr": {
+      "translation": "Allah inscrit les intentions et les actes avec une immense générosité, multiplie le bien et limite l’inscription du mal."
+    },
+    "es": {
+      "translation": "Allah registra las intenciones y las obras con inmensa generosidad, multiplica el bien y limita el registro del mal."
+    },
+    "pt": {
+      "translation": "Allah registra intenções e ações com imensa generosidade, multiplica o bem e limita o registro do mal."
+    },
+    "ru": {
+      "translation": "Аллах записывает намерения и дела с великой щедростью, умножает добро и ограничивает запись зла."
+    },
+    "id": {
+      "translation": "Allah mencatat niat dan amal dengan kemurahan besar, melipatgandakan kebaikan dan membatasi catatan keburukan."
+    },
+    "ur": {
+      "translation": "اللہ نیتوں اور اعمال کو بڑی سخاوت سے لکھتا ہے، نیکی کو کئی گنا بڑھاتا اور برائی کا اندراج محدود رکھتا ہے۔"
+    },
+    "ms": {
+      "translation": "Allah mencatat niat dan amalan dengan kemurahan yang besar, menggandakan kebaikan dan mengehadkan catatan keburukan."
+    }
+  },
+  "37": {
+    "tr": {
+      "translation": "Kul, farzlar ve nafile ibadetlerle Allah’a yaklaşır; sonunda Allah onu sever."
+    },
+    "de": {
+      "translation": "Der Diener nähert sich Allah durch Pflichten und freiwillige Anbetung, bis Allah ihn liebt."
+    },
+    "fr": {
+      "translation": "Le serviteur se rapproche d’Allah par les obligations et les adorations volontaires jusqu’à ce qu’Allah l’aime."
+    },
+    "es": {
+      "translation": "El siervo se acerca a Allah mediante las obligaciones y la adoración voluntaria hasta que Allah lo ama."
+    },
+    "pt": {
+      "translation": "O servo aproxima-se de Allah pelas obrigações e pela adoração voluntária até que Allah o ame."
+    },
+    "ru": {
+      "translation": "Раб приближается к Аллаху обязательными и добровольными поклонениями, пока Аллах не полюбит его."
+    },
+    "id": {
+      "translation": "Hamba mendekat kepada Allah dengan kewajiban dan ibadah sunnah hingga Allah mencintainya."
+    },
+    "ur": {
+      "translation": "بندہ فرائض اور نوافل کے ذریعے اللہ کے قریب ہوتا رہتا ہے یہاں تک کہ اللہ اس سے محبت کرتا ہے۔"
+    },
+    "ms": {
+      "translation": "Hamba mendekat kepada Allah melalui kewajipan dan ibadah sunat sehingga Allah mencintainya."
+    }
+  },
+  "38": {
+    "tr": {
+      "translation": "Allah bu ümmeti gerçek hata, unutma ve zorlandıkları şeylerden dolayı bağışlamıştır."
+    },
+    "de": {
+      "translation": "Allah hat dieser Gemeinschaft echte Fehler, Vergessen und das, wozu sie gezwungen wurde, vergeben."
+    },
+    "fr": {
+      "translation": "Allah a pardonné à cette communauté les erreurs véritables, l’oubli et ce qu’elle est contrainte de faire."
+    },
+    "es": {
+      "translation": "Allah ha perdonado a esta comunidad los errores genuinos, el olvido y aquello a lo que son obligados."
+    },
+    "pt": {
+      "translation": "Allah perdoou esta comunidade pelos erros genuínos, pelo esquecimento e pelo que são obrigados a fazer."
+    },
+    "ru": {
+      "translation": "Аллах простил этой общине искренние ошибки, забывчивость и то, к чему их принуждают."
+    },
+    "id": {
+      "translation": "Allah memaafkan umat ini atas kesalahan yang sungguh tidak disengaja, lupa, dan hal yang dipaksakan kepada mereka."
+    },
+    "ur": {
+      "translation": "اللہ نے اس امت سے حقیقی غلطی، بھول اور جس پر انہیں مجبور کیا جائے اسے معاف فرمایا ہے۔"
+    },
+    "ms": {
+      "translation": "Allah memaafkan umat ini atas kesilapan yang sebenar, lupa dan perkara yang dipaksa ke atas mereka."
+    }
+  },
+  "39": {
+    "tr": {
+      "translation": "Dünyada bir yabancı veya yolcu gibi ol."
+    },
+    "de": {
+      "translation": "Sei in dieser Welt wie ein Fremder oder Reisender."
+    },
+    "fr": {
+      "translation": "Sois dans ce monde comme un étranger ou un voyageur."
+    },
+    "es": {
+      "translation": "Sé en este mundo como un extraño o un viajero."
+    },
+    "pt": {
+      "translation": "Sê neste mundo como um estranho ou viajante."
+    },
+    "ru": {
+      "translation": "Будь в этом мире словно чужеземец или путник."
+    },
+    "id": {
+      "translation": "Jadilah di dunia seperti orang asing atau musafir."
+    },
+    "ur": {
+      "translation": "دنیا میں ایسے رہو جیسے اجنبی یا مسافر ہو۔"
+    },
+    "ms": {
+      "translation": "Jadilah di dunia seperti orang asing atau musafir."
+    }
+  },
+  "40": {
+    "tr": {
+      "translation": "Kişisel arzu, Peygamberin getirdiği hidayete tabi olmadıkça iman kemale ermez."
+    },
+    "de": {
+      "translation": "Der Glaube ist nicht vollkommen, bis persönliche Wünsche der Führung folgen, die der Prophet gebracht hat."
+    },
+    "fr": {
+      "translation": "La foi n’est pas complète tant que le désir personnel ne suit pas la guidance apportée par le Prophète."
+    },
+    "es": {
+      "translation": "La fe no está completa hasta que el deseo personal siga la guía traída por el Profeta."
+    },
+    "pt": {
+      "translation": "A fé não é completa até que o desejo pessoal siga a orientação trazida pelo Profeta."
+    },
+    "ru": {
+      "translation": "Вера не совершенна, пока личное желание не последует руководству, принесенному Пророком."
+    },
+    "id": {
+      "translation": "Iman belum sempurna sampai keinginan pribadi mengikuti petunjuk yang dibawa Nabi."
+    },
+    "ur": {
+      "translation": "ایمان مکمل نہیں ہوتا جب تک ذاتی خواہش نبی کی لائی ہوئی ہدایت کے تابع نہ ہو۔"
+    },
+    "ms": {
+      "translation": "Iman belum sempurna sehingga kehendak peribadi mengikuti petunjuk yang dibawa oleh Nabi."
+    }
+  }
+}

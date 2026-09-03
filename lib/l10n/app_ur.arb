@@ -29,7 +29,7 @@
   "fullTimetable": "مکمل ٹائم ٹیبل",
   "dailyHadithGem": "روزانہ کا حدیث گوہر",
   "ayahOfTheDay": "آج کی آیت",
-  "countdownTo": "تک کا الٹی گنتی",
+  "countdownTo": "اگلی نماز کا الٹی گنتی کا وقت",
   "inTime": "میں",
   "holyQuran": "قرآن مجید",
   "qiblaFinder": "قبلہ نما",
@@ -214,5 +214,13 @@
   "audioPlaybackError": "آڈیو چلانے میں ناکامی ہوئی۔",
   "fourDynamicThemes": "4 متحرک تھیمز",
   "typographyAccessibility": "ٹائپوگرافی اور رسائی",
-  "qiblaTipsTitle": "قطب نما کیلیبریشن اور تجاویز"
+  "qiblaTipsTitle": "قطب نما کیلیبریشن اور تجاویز",
+  "detectingLocation": "مقام کا تعین کیا جا رہا ہے...",
+  "changeLocation": "مقام تبدیل کریں",
+  "locationSource": "مقام کا ذریعہ",
+  "gpsAuto": "GPS (خودکار)",
+  "manualSelected": "دستی منتخب شدہ",
+  "savedLocation": "محفوظ شدہ مقام",
+  "timeZoneLabel": "ٹائم زون",
+  "currentLocationStatus": "موجودہ مقام"
 }

@@ -1,0 +1,455 @@
+[
+  {
+    "categoryId": "morning_evening",
+    "categoryTitle": "Morning & Evening Azkar",
+    "icon": "sun",
+    "items": [
+      {
+        "id": "m1",
+        "title": "Ayat al-Kursi (Verse of the Throne)",
+        "arabic": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+        "transliteration": "Allahu la ilaha illa Huwa, Al-Hayyul-Qayyum. La ta'khudhuhu sinatun wa la nawm...",
+        "translation": "Allah! There is no deity except Him, the Ever-Living, the Sustainer of all existence...",
+        "repeat": 1,
+        "reference": "Surah Al-Baqarah 2:255",
+        "benefit": "Protection throughout the day and night.",
+        "translations": {
+          "tr": {
+            "title": "Ayetü'l-Kürsi",
+            "translation": "Allah, O'ndan başka ilah yoktur; diridir, her şeyi ayakta tutandır. O'nu ne bir uyuklama ne de bir uyku tutar. Göklerde ve yerde ne varsa hepsi O'nundur.",
+            "benefit": "Sabah ve akşam okuyan akşama ve sabaha kadar her türlü şerden muhafaza olunur."
+          },
+          "de": {
+            "title": "Ayat al-Kursi (Thronvers)",
+            "translation": "Allah – es gibt keinen Gott außer Ihm, dem Lebendigen und Beständigen. Ihn überkommt weder Schlummer noch Schlaf. Ihm gehört, was in den Himmeln und auf Erden ist.",
+            "benefit": "Wer ihn morgens und abends rezitiert, steht unter dem ständigen Schutz Allahs vor allem Übel."
+          },
+          "fr": {
+            "title": "Ayat al-Koursi (Verset du Trône)",
+            "translation": "Allah ! Point de divinité à part Lui, le Vivant, Celui qui subsiste par Lui-même. Ni somnolence ni sommeil ne Le saisissent. À Lui appartient tout ce qui est dans les cieux et sur la terre.",
+            "benefit": "Récité matin et soir, il assure une protection divine constante contre tout mal."
+          },
+          "es": {
+            "title": "Ayat al-Kursi (Versículo del Trono)",
+            "translation": "¡Allah! No hay más dios que Él, el Viviente, el Subsistente. No Le sobrecoge somnolencia ni sueño. Suyo es cuanto hay en los cielos y cuanto hay en la tierra.",
+            "benefit": "Quien lo recita por la mañana y por la tarde queda bajo la protección divina de Allah."
+          },
+          "pt": {
+            "title": "Ayat al-Kursi (Versículo do Trono)",
+            "translation": "Allah! Não há divindade além d'Ele, o Vivente, o Auto-Subsistente. Não O toma nem sonolência nem sono. A Ele pertence tudo o que há nos céus e na terra.",
+            "benefit": "Recitado pela manhã e à noite, garante proteção contínua contra todo o mal."
+          },
+          "ru": {
+            "title": "Аят аль-Курси (Аят Трона)",
+            "translation": "Аллах — нет божества, кроме Него, Живого, Вседержителя. Им не овладевают ни дремота, ни сон. Ему принадлежит то, что на небесах, и то, что на земле.",
+            "benefit": "Тот, кто прочитает его утром и вечером, будет защищен Аллахом от всякого зла до наступления следующего времени суток."
+          },
+          "id": {
+            "title": "Ayat Kursi",
+            "translation": "Allah, tidak ada tuhan selain Dia. Yang Mahahidup, yang terus-menerus mengurus makhluk-Nya, tidak mengantuk dan tidak tidur. Milik-Nya apa yang ada di langit dan apa yang ada di bumi.",
+            "benefit": "Barangsiapa membacanya pada pagi dan petang, ia akan senantiasa dilindungi oleh Allah dari segala marabahaya."
+          },
+          "ms": {
+            "title": "Ayat al-Kursi",
+            "translation": "Allah, tiada tuhan melainkan Dia, Yang Tetap Hidup, Yang Mentadbir sekalian makhluk. Tidak mengantuk dan tidak tidur. Kepunyaan-Nya apa yang ada di langit dan di bumi.",
+            "benefit": "Membacanya pada waktu pagi dan petang memberi perlindungan Allah daripada segala kejahatan."
+          },
+          "ur": {
+            "title": "آیۃ الکرسی",
+            "translation": "اللہ، اس کے سوا کوئی معبود نہیں، وہ ہمیشہ زندہ اور قائم رکھنے والا ہے۔ اسے نہ اونگھ آتی ہے نہ نیند۔ جو کچھ آسمانوں اور زمین میں ہے سب اسی کا ہے۔",
+            "benefit": "صبح اور شام پڑھنے والا ہر قسم کے شر اور برائی سے اللہ کی حفاظت میں رہتا ہے۔"
+          }
+        }
+      },
+      {
+        "id": "m2",
+        "title": "Sayyid al-Istighfar",
+        "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+        "transliteration": "Allahumma Anta Rabbi la ilaha illa Ant...",
+        "translation": "O Allah, You are my Lord, there is no deity except You...",
+        "repeat": 1,
+        "reference": "Sahih al-Bukhari",
+        "benefit": "Master supplication for forgiveness and entrance to Paradise.",
+        "translations": {
+          "tr": {
+            "title": "Seyyidü'l-İstiğfar (İstiğfarın Efendisi)",
+            "translation": "Allah'ım! Sen benim Rabbimsin. Senden başka ilah yoktur. Beni Sen yarattın ve ben Senin kulunum. Gücüm yettiğince Sana verdiğim söz ve ahid üzerindeyim. Yaptıklarımın şerrinden Sana sığınırım.",
+            "benefit": "Gündüz veya gece inanarak okuyup vefat eden kimse cennet ehlindendir."
+          },
+          "de": {
+            "title": "Sayyid al-Istighfar (Bestes Reuegebet)",
+            "translation": "O Allah, Du bist mein Herr. Es gibt keinen Gott außer Dir. Du hast mich erschaffen und ich bin Dein Diener. Ich stehe zu meinem Bund mit Dir nach besten Kräften. Ich nehme Zuflucht bei Dir vor dem Übel dessen, was ich getan habe.",
+            "benefit": "Wer dieses Bittgebet mit fester Überzeugung am Tag oder in der Nacht spricht und stirbt, gehört zu den Bewohnern des Paradieses."
+          },
+          "fr": {
+            "title": "Sayyid al-Istighfar (Maîtresse des demandes de pardon)",
+            "translation": "Ô Allah, Tu es mon Seigneur. Il n'y a de divinité digne d'adoration que Toi. Tu m'as créé et je suis Ton serviteur. Je respecte mon engagement envers Toi autant que je le puis. Je cherche refuge auprès de Toi contre le mal que j'ai commis.",
+            "benefit": "Quiconque le récite le jour ou la nuit avec foi sincère et meurt fait partie des gens du Paradis."
+          },
+          "es": {
+            "title": "Sayyid al-Istigfar (Señor del perdón)",
+            "translation": "¡Oh Allah! Tú eres mi Señor, no hay más dios que Tú. Me creaste y soy Tu siervo. Me mantengo en Tu pacto según mi capacidad. Me refugio en Ti del mal que he cometido.",
+            "benefit": "Quien lo recite con convicción de día o de noche y fallezca, será de la gente del Paraíso."
+          },
+          "pt": {
+            "title": "Sayyid al-Istighfar (Mestre do Pedido de Perdão)",
+            "translation": "Ó Allah! Tu és o meu Senhor, não há divindade além de Ti. Tu me criaste e sou Teu servo. Mantenho a minha aliança Contigo na medida das minhas forças. Refugio-me em Ti contra o mal do que cometi.",
+            "benefit": "Aquele que o recitar com certeza e falecer no mesmo dia ou noite, será dos habitantes do Paraíso."
+          },
+          "ru": {
+            "title": "Саййид аль-Истигфар (Господин мольбы о прощении)",
+            "translation": "О Аллах! Ты — мой Господь, и нет божества, кроме Тебя. Ты создал меня, и я — Твой раб. Я буду хранить верность завету с Тобой, пока у меня хватит сил. Прибегаю к Твоей защите от зла того, что я совершил.",
+            "benefit": "Тот, кто искренне произнесет эту мольбу днем или ночью и умрет в этот же день, войдет в Рай."
+          },
+          "id": {
+            "title": "Sayyidul Istighfar (Penghulu Istighfar)",
+            "translation": "Ya Allah, Engkau adalah Rabbku, tiada tuhan selain Engkau. Engkau yang menciptakan aku dan aku adalah hamba-Mu. Aku berada dalam perjanjian-Mu semampuku. Aku berlindung kepada-Mu dari keburukan apa yang telah kuperbuat.",
+            "benefit": "Barangsiapa mengucapkannya dengan penuh keyakinan di waktu pagi atau petang lalu meninggal, ia termasuk penghuni surga."
+          },
+          "ms": {
+            "title": "Sayyidul Istighfar",
+            "translation": "Ya Allah, Engkau Tuhanku, tiada tuhan melainkan Engkau. Engkau menciptakanku dan aku hamba-Mu. Aku berpegang pada janji-Mu semampuku. Aku berlindung kepada-Mu daripada kejahatan perbuatanku.",
+            "benefit": "Sesiapa yang membacanya dengan yakin pada waktu pagi atau petang lalu meninggal dunia, nescaya dia tergolong dalam ahli syurga."
+          },
+          "ur": {
+            "title": "سید الاستغفار",
+            "translation": "اے اللہ! تو میرا رب ہے، تیرے سوا کوئی معبود نہیں۔ تو نے مجھے پیدا کیا اور میں تیرا بندہ ہوں۔ میں اپنی استطاعت کے مطابق تیرے عہد اور وعدے پر قائم ہوں۔ میں اپنے کیے کے شر سے تیری پناہ مانگتا ہوں۔",
+            "benefit": "جو شخص یقین کے ساتھ دن یا رات میں اسے پڑھے اور وفات پا جائے تو وہ اہل جنت میں سے ہوگا۔"
+          }
+        }
+      },
+      {
+        "id": "m3",
+        "title": "Protection from all harm",
+        "arabic": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+        "transliteration": "Bismillahil-ladhi la yadurru ma'as-mihi shay'un...",
+        "translation": "In the name of Allah with Whose name nothing can cause harm on earth or in heaven...",
+        "repeat": 3,
+        "reference": "Sunan Abi Dawud & Tirmidhi",
+        "benefit": "No harm can touch the reciter.",
+        "translations": {
+          "tr": {
+            "title": "Her Türlü Zarardan Korunma Duası",
+            "translation": "İsmi sayesinde yerde ve gökte hiçbir şeyin zarar veremeyeceği Allah'ın adıyla. O, hakkıyla işiten ve hakkıyla bilendir.",
+            "benefit": "Sabah ve akşam 3 defa okuyana hiçbir şey zarar veremez."
+          },
+          "de": {
+            "title": "Schutz vor jedem Unheil",
+            "translation": "Im Namen Allahs, mit Dessen Namen nichts im Himmel noch auf Erden schaden kann, und Er ist der Allhörende, der Allwissende.",
+            "benefit": "Wer dieses Bittgebet morgens und abends dreimal spricht, dem schadet nichts."
+          },
+          "fr": {
+            "title": "Protection contre tout mal",
+            "translation": "Au nom d'Allah, avec le Nom duquel rien ne peut nuire sur terre ni dans les cieux, et Il est l'Audient, l'Omniscient.",
+            "benefit": "Répété 3 fois matin et soir, nul mal ne pourra atteindre le croyant."
+          },
+          "es": {
+            "title": "Protección contra todo mal",
+            "translation": "En el nombre de Allah, con Cuyo nombre nada puede dañar en la tierra ni en el cielo, y Él es el Oyente, el Sabio.",
+            "benefit": "Quien lo dice 3 veces por la mañana y por la tarde, nada le causará daño."
+          },
+          "pt": {
+            "title": "Proteção contra Todo o Mal",
+            "translation": "Em nome de Allah, com Cujo nome nada pode causar dano na terra nem nos céus, e Ele é o Oniouvinte, o Onisciente.",
+            "benefit": "Recitado 3 vezes pela manhã e à tarde, nada poderá causar-lhe mal."
+          },
+          "ru": {
+            "title": "Защита от всякого вреда",
+            "translation": "С именем Аллаха, с именем Которого ничто не причинит вреда ни на земле, ни на небе, ведь Он — Слышащий, Знающий.",
+            "benefit": "Тот, кто произнесет это трижды утром и вечером, будет защищен от любого вреда."
+          },
+          "id": {
+            "title": "Perlindungan dari Segala Bahaya",
+            "translation": "Dengan menyebut nama Allah yang dengan nama-Nya tidak ada satupun yang dapat membahayakan di bumi maupun di langit, dan Dia Maha Mendengar lagi Maha Mengetahui.",
+            "benefit": "Dibaca 3 kali di waktu pagi dan petang, tidak ada sesuatupun yang dapat mencelakainya."
+          },
+          "ms": {
+            "title": "Perlindungan Daripada Segala Kemudaratan",
+            "translation": "Dengan nama Allah yang dengan nama-Nya tiada sesuatu pun di bumi mahupun di langit dapat memudaratkan, dan Dia Maha Mendengar lagi Maha Mengetahui.",
+            "benefit": "Sesiapa membacanya 3 kali pagi dan petang, tiada apa-apa kemudaratan yang dapat menimpanya."
+          },
+          "ur": {
+            "title": "ہر قسم کے شر سے حفاظت کی دعا",
+            "translation": "اللہ کے نام کے ساتھ جس کے نام کی برکت سے زمین اور آسمان میں کوئی چیز نقصان نہیں پہنچا سکتی، اور وہی خوب سننے والا، خوب جاننے والا ہے۔",
+            "benefit": "صبح اور شام 3 مرتبہ پڑھنے والے کو کوئی چیز نقصان نہیں پہنچا سکے گی۔"
+          }
+        }
+      }
+    ],
+    "categoryTitles": {
+      "tr": "Sabah ve Akşam Zikirleri",
+      "de": "Morgen- & Abend-Gedenken (Azkar)",
+      "fr": "Invocations du matin et du soir",
+      "es": "Súplicas de la mañana y de la tarde",
+      "pt": "Súplicas da Manhã e da Tarde",
+      "ru": "Утренние и вечерние поминания",
+      "id": "Dzikir Pagi & Petang",
+      "ms": "Zikir Pagi & Petang",
+      "ur": "صبح و شام کے اذکار"
+    }
+  },
+  {
+    "categoryId": "after_salah",
+    "categoryTitle": "After Salah (Tasbihat)",
+    "icon": "mosque",
+    "items": [
+      {
+        "id": "as1",
+        "title": "Istighfar & Salam",
+        "arabic": "أَسْتَغْفِرُ اللَّهَ (٣)، اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالإِكْرَامِ",
+        "transliteration": "Astaghfirullah (3x), Allahumma Antas-Salam wa minkas-Salam...",
+        "translation": "I ask Allah for forgiveness (3x). O Allah, You are Peace and from You comes peace...",
+        "repeat": 1,
+        "reference": "Sahih Muslim",
+        "benefit": "Sunnah immediately after obligatory Salah.",
+        "translations": {
+          "tr": {
+            "title": "İstiğfar ve Selam",
+            "translation": "Allah'tan bağışlanma dilerim (3 kez). Allah'ım! Selam Sensin ve esenlik Sendendir. Ey celal ve ikram sahibi olan Rabbimiz! Sen yücelerden yücesin.",
+            "benefit": "Her farz namazın ardından ilk sünnet zikridir."
+          },
+          "de": {
+            "title": "Istighfar & Friedensgebet",
+            "translation": "Ich bitte Allah um Vergebung (3x). O Allah, Du bist der Frieden und von Dir kommt der Friede. Segensreich bist Du, o Besitzer von Erhabenheit und Ehre.",
+            "benefit": "Das erste Sunnah-Gedenken unmittelbar nach jedem Pflichtgebet."
+          },
+          "fr": {
+            "title": "Demande de pardon & Salam",
+            "translation": "Je demande pardon à Allah (3 fois). Ô Allah, Tu es la Paix et de Toi vient la paix. Béni sois-Tu, ô Digne de majesté et de générosité.",
+            "benefit": "La première invocation prophétique à réciter après chaque prière obligatoire."
+          },
+          "es": {
+            "title": "Istigfar y súplica de paz",
+            "translation": "Pido perdón a Allah (3 veces). ¡Oh Allah! Tú eres la Paz y de Ti procede la paz. Bendito seas, ¡oh Poseedor de majestad y generosidad!",
+            "benefit": "La primera súplica de la Sunnah tras la oración obligatoria."
+          },
+          "pt": {
+            "title": "Pedido de Perdão e Paz",
+            "translation": "Peço perdão a Allah (3 vezes). Ó Allah, Tu és a Paz e de Ti provém a paz. Bendito sejas, ó Possuidor de majestade e generosidade.",
+            "benefit": "A primeira súplica recomendada imediatamente após a oração obrigatória."
+          },
+          "ru": {
+            "title": "Просьба о прощении и приветствие мира",
+            "translation": "Прошу прощения у Аллаха (3 раза). О Аллах! Ты — Мир, и от Тебя исходит мир. Благословен Ты, о Обладатель величия и щедрости.",
+            "benefit": "Первое поминание, совершаемое Пророком (ﷺ) сразу после завершения обязательного намаза."
+          },
+          "id": {
+            "title": "Istighfar dan Doa Keselamatan",
+            "translation": "Aku memohon ampun kepada Allah (3x). Ya Allah, Engkaulah As-Salam (Yang Maha Menyelamatkan) dan dari-Mulah keselamatan. Mahaberkah Engkau wahai Rabb Pemilik Keagungan dan Kemuliaan.",
+            "benefit": "Dzikir pertama yang disunnahkan langsung sesudah salam shalat fardhu."
+          },
+          "ms": {
+            "title": "Istighfar & Doa Kesejahteraan",
+            "translation": "Aku memohon keampunan Allah (3x). Ya Allah, Engkaulah Yang Maha Sejahtera dan daripada-Mulah kesejahteraan. Maha Berkat Engkau wahai Tuhan Pemilik Keagungan dan Kemuliaan.",
+            "benefit": "Zikir sunnah pertama yang dibaca selepas salam setiap solat fardhu."
+          },
+          "ur": {
+            "title": "استغفار اور سلامتی کی دعا",
+            "translation": "میں اللہ سے بخشش مانگتا ہوں (3 مرتبہ)۔ اے اللہ! تو ہی سراپا سلامتی ہے اور تیری ہی طرف سے سلامتی ہے۔ اے عظمت اور بزرگی والے! تو بڑی برکت والا ہے۔",
+            "benefit": "ہر فرض نماز کے بعد سب سے پہلا مسنون ذکر۔"
+          }
+        }
+      },
+      {
+        "id": "as2",
+        "title": "33x SubhanAllah, Alhamdulillah, Allahu Akbar",
+        "arabic": "سُبْحَانَ اللَّهِ (٣٣)، الْحَمْدُ لِلَّهِ (٣٣)، اللَّهُ أَكْبَرُ (٣٣)",
+        "transliteration": "SubhanAllah (33x), Alhamdulillah (33x), Allahu Akbar (33x)",
+        "translation": "Glory be to Allah, Praise be to Allah, Allah is the Greatest",
+        "repeat": 33,
+        "reference": "Sahih Muslim",
+        "benefit": "Sins wiped away even if as abundant as the foam of the sea.",
+        "translations": {
+          "tr": {
+            "title": "Namaz Tesbihatı (33x Sübhanallah, Elhamdülillah, Allahuekber)",
+            "translation": "33 kez Sübhanallah (Allah noksanlıklardan münezzehtir), 33 kez Elhamdülillah (Hamd Allah'a mahsustur), 33 kez Allahuekber (Allah en büyüktür). Sonunda Kelime-i Tevhid ile 100'e tamamlanır.",
+            "benefit": "Deniz köpüğü kadar günahı olsa dahi bağışlanmasına vesiledir."
+          },
+          "de": {
+            "title": "Gebets-Tasbih (33x SubhanAllah, Alhamdulillah, Allahu Akbar)",
+            "translation": "33x SubhanAllah (Gepriesen sei Allah), 33x Alhamdulillah (Alles Lob gebührt Allah), 33x Allahu Akbar (Allah ist größer als alles). Vollendung bei 100 mit La ilaha illallah.",
+            "benefit": "Vergibt Sünden, selbst wenn sie zahlreich wie der Meerschaum wären."
+          },
+          "fr": {
+            "title": "Tasbihat de prière (33x SubhanAllah, Alhamdulillah, Allahu Akbar)",
+            "translation": "33x SubhanAllah (Gloire à Allah), 33x Alhamdulillah (Louange à Allah), 33x Allahu Akbar (Allah est le Plus Grand). Complété à 100 par la parole du Tawhid.",
+            "benefit": "Efface les péchés, même s'ils sont aussi abondants que l'écume de la mer."
+          },
+          "es": {
+            "title": "Tasbih tras la oración (33x SubhanAllah, Alhamdulillah, Allahu Akbar)",
+            "translation": "33x SubhanAllah (Glorificado sea Allah), 33x Alhamdulillah (Alabado sea Allah), 33x Allahu Akbar (Allah es el Más Grande). Completado a 100 con el testimonio de unicidad.",
+            "benefit": "Borra los pecados incluso si fueran como la espuma del mar."
+          },
+          "pt": {
+            "title": "Tasbih da Oração (33x SubhanAllah, Alhamdulillah, Allahu Akbar)",
+            "translation": "33x SubhanAllah (Glorificado seja Allah), 33x Alhamdulillah (Louvado seja Allah), 33x Allahu Akbar (Allah é o Maior). Completado em 100 com o testemunho de Unicidade.",
+            "benefit": "Perdoa os pecados mesmo que sejam tão abundantes quanto a espuma do mar."
+          },
+          "ru": {
+            "title": "Тасбих после намаза (33x Субханаллах, Альхамдулиллях, Аллаху Акбар)",
+            "translation": "33 раза «Субханаллах» (Пречист Аллах), 33 раза «Альхамдулиллях» (Хвала Аллаху), 33 раза «Аллаху Акбар» (Аллах Велик), и завершение до 100 словами Единобожия.",
+            "benefit": "Смывает грехи, даже если их будет так же много, как пены морской."
+          },
+          "id": {
+            "title": "Tasbih Shalat (33x SubhanAllah, Alhamdulillah, Allahu Akbar)",
+            "translation": "33x Subhanallah (Mahasuci Allah), 33x Alhamdulillah (Segala puji bagi Allah), 33x Allahu Akbar (Allah Mahabesar), dan disempurnakan menjadi 100 dengan kalimat Tauhid.",
+            "benefit": "Menghapuskan dosa-dosa hamba meskipun sebanyak buih di lautan."
+          },
+          "ms": {
+            "title": "Tasbih Solat (33x SubhanAllah, Alhamdulillah, Allahu Akbar)",
+            "translation": "33x Subhanallah (Maha Suci Allah), 33x Alhamdulillah (Segala puji bagi Allah), 33x Allahu Akbar (Allah Maha Besar), digenapkan 100 dengan kalimah Tauhid.",
+            "benefit": "Menghapuskan dosa walau sebanyak buih di lautan."
+          },
+          "ur": {
+            "title": "نماز کی تسبیحات (33 مرتبہ سبحان اللہ، الحمد للہ، اللہ اکبر)",
+            "translation": "33 مرتبہ سبحان اللہ، 33 مرتبہ الحمد للہ، 33 مرتبہ اللہ اکبر، اور کلمہ توحید پڑھ کر 100 پورا کرنا۔",
+            "benefit": "گناہوں کی بخشش کا باعث ہے اگرچہ سمندر کی جھاگ کے برابر ہی کیوں نہ ہوں۔"
+          }
+        }
+      }
+    ],
+    "categoryTitles": {
+      "tr": "Namaz Sonrası Tesbihatı",
+      "de": "Gedenken nach dem Pflichtgebet",
+      "fr": "Invocations après la prière",
+      "es": "Súplicas después de la oración",
+      "pt": "Súplicas após a Oração",
+      "ru": "Поминания после намаза",
+      "id": "Dzikir Setelah Shalat",
+      "ms": "Zikir Selepas Solat",
+      "ur": "نماز کے بعد کے اذکار"
+    }
+  },
+  {
+    "categoryId": "daily_life",
+    "categoryTitle": "Daily Life & Travel",
+    "icon": "car",
+    "items": [
+      {
+        "id": "dl1",
+        "title": "Dua for Travelling",
+        "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ",
+        "transliteration": "Subhanalladhi sakh-khara lana hadha...",
+        "translation": "Glory to Him who has brought this under our control...",
+        "repeat": 1,
+        "reference": "Surah Az-Zukhruf 43:13-14",
+        "benefit": "Protection during journey.",
+        "translations": {
+          "tr": {
+            "title": "Sefer (Yolculuk) Duası",
+            "translation": "Bunu bizim hizmetimize veren Allah her türlü eksiklikten münezzehtir; yoksa biz buna güç yetiremezdik. Şüphesiz biz nihayet Rabbimize döneceğiz.",
+            "benefit": "Araca binerken ve sefere çıkarken okunan peygamberi dua."
+          },
+          "de": {
+            "title": "Bittgebet für die Reise",
+            "translation": "Gepriesen sei Der, Der uns dies dienstbar gemacht hat, wozu wir sonst nicht imstande gewesen wären. Und gewiss, zu unserem Herrn werden wir zurückkehren.",
+            "benefit": "Das empfohlene Bittgebet beim Besteigen eines Fahrzeugs oder Reiseantritt."
+          },
+          "fr": {
+            "title": "Invocation du voyage",
+            "translation": "Gloire à Celui qui a mis ceci à notre service alors que nous n'étions pas capables de le dominer. Et c'est vers notre Seigneur que nous retournerons.",
+            "benefit": "Invocation prophétique protectrice lors de tout départ en voyage."
+          },
+          "es": {
+            "title": "Súplica para el viaje",
+            "translation": "Glorificado sea Aquel que puso esto a nuestro servicio, pues nosotros no hubiéramos podido dominarlo. Y ciertamente, a nuestro Señor volveremos.",
+            "benefit": "Súplica recomendada al abordar cualquier medio de transporte."
+          },
+          "pt": {
+            "title": "Súplica para a Viagem",
+            "translation": "Glorificado seja Aquele que colocou isto ao nosso serviço, quando não éramos capazes de o dominar. E certamente, a nosso Senhor retornaremos.",
+            "benefit": "Súplica de proteção ao iniciar qualquer viagem."
+          },
+          "ru": {
+            "title": "Мольба при отправлении в путь",
+            "translation": "Пречист Тот, Кто подчинил нам это, ведь сами мы не были способны на это. Поистине, мы возвращаемся к нашему Господу.",
+            "benefit": "Пророческая мольба, произносимая при посадке в транспортное средство."
+          },
+          "id": {
+            "title": "Doa Bepergian (Safar)",
+            "translation": "Mahasuci Allah yang telah menundukkan semua ini bagi kami padahal kami sebelumnya tidak mampu menguasainya, dan sesungguhnya kami akan kembali kepada Rabb kami.",
+            "benefit": "Doa sunnah ketika menaiki kendaraan dan memulai perjalanan."
+          },
+          "ms": {
+            "title": "Doa Musafir (Perjalanan)",
+            "translation": "Maha Suci Tuhan yang memudahkan kenderaan ini untuk kami, sedang kami sebelum ini tidak terdaya menguasainya. Dan sesungguhnya kepada Tuhan kamilah kami kembali.",
+            "benefit": "Doa sunnah keselamatan semasa menaiki kenderaan."
+          },
+          "ur": {
+            "title": "سفر کی مسنون دعا",
+            "translation": "پاک ہے وہ ذات جس نے اس (سواری) کو ہمارے بس میں کر دیا، حالانکہ ہم اسے قابو میں لانے والے نہ تھے۔ اور یقیناً ہم اپنے رب ہی کی طرف لوٹ کر جانے والے ہیں۔",
+            "benefit": "سواری پر سوار ہوتے وقت اور سفر شروع کرتے وقت کی مسنون دعا۔"
+          }
+        }
+      },
+      {
+        "id": "dl2",
+        "title": "Leaving the House",
+        "arabic": "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+        "transliteration": "Bismillahi tawakkaltu 'alallah, la hawla wa la quwwata illa billah.",
+        "translation": "In the name of Allah, I place my trust in Allah; there is no power except with Allah.",
+        "repeat": 1,
+        "reference": "Sunan Abi Dawud",
+        "benefit": "Guided, defended, and protected from evil.",
+        "translations": {
+          "tr": {
+            "title": "Evden Çıkış Duası",
+            "translation": "Allah'ın adıyla. Allah'a tevekkül ettim. Güç ve kuvvet ancak Yüce ve Azim olan Allah'tandır.",
+            "benefit": "Evden çıkarken okuyan kimse hidayete erdirilir, korunur ve şeytan ondan uzaklaşır."
+          },
+          "de": {
+            "title": "Bittgebet beim Verlassen des Hauses",
+            "translation": "Im Namen Allahs, ich vertraue auf Allah. Es gibt weder Macht noch Kraft außer durch Allah.",
+            "benefit": "Wer dieses Bittgebet spricht, wird rechtgeleitet, beschützt und vor allem Übel bewahrt."
+          },
+          "fr": {
+            "title": "Invocation en sortant de la maison",
+            "translation": "Au nom d'Allah, je m'en remets à Allah. Il n'y a de force ni de puissance que par Allah.",
+            "benefit": "Assure la guidance divine, la protection et éloigne tout maléfice."
+          },
+          "es": {
+            "title": "Súplica al salir de la casa",
+            "translation": "En el nombre de Allah, he puesto mi confianza en Allah. No hay poder ni fuerza excepto en Allah.",
+            "benefit": "Proporciona protección y guía durante el tiempo fuera del hogar."
+          },
+          "pt": {
+            "title": "Súplica ao Sair de Casa",
+            "translation": "Em nome de Allah, confio em Allah. Não há poder nem força exceto com Allah.",
+            "benefit": "Garante proteção e orientação ao longo de todo o dia."
+          },
+          "ru": {
+            "title": "Мольба при выходе из дома",
+            "translation": "С именем Аллаха, я уповаю на Аллаха. Нет мощи и силы ни у кого, кроме Аллаха.",
+            "benefit": "Тот, кто произнесет эти слова при выходе, будет защищен, направлен на истинный путь, и шайтан отступит от него."
+          },
+          "id": {
+            "title": "Doa Keluar Rumah",
+            "translation": "Dengan nama Allah, aku bertawakal kepada Allah. Tiada daya dan kekuatan kecuali dengan pertolongan Allah.",
+            "benefit": "Barangsiapa mengucapkannya akan diberi petunjuk, dicukupi keperluannya, dan dilindungi dari setan."
+          },
+          "ms": {
+            "title": "Doa Keluar Dari Rumah",
+            "translation": "Dengan nama Allah, aku bertawakal kepada Allah. Tiada daya dan tiada kekuatan melainkan dengan pertolongan Allah.",
+            "benefit": "Mendapat perlindungan, bimbingan dan dijauhkan daripada tipu daya syaitan."
+          },
+          "ur": {
+            "title": "گھر سے نکلنے کی دعا",
+            "translation": "اللہ کے نام کے ساتھ، میں نے اللہ پر بھروسہ کیا۔ گناہوں سے بچنے کی طاقت اور نیکی کرنے کی قوت صرف اللہ ہی کی توفیق سے ہے۔",
+            "benefit": "گھر سے نکلتے وقت پڑھنے والا ہر قسم کے شر اور شیطان سے محفوظ رہتا ہے۔"
+          }
+        }
+      }
+    ],
+    "categoryTitles": {
+      "tr": "Günlük Hayat ve Sefer Duaları",
+      "de": "Bittgebete für Alltag und Reise",
+      "fr": "Invocations quotidiennes et voyage",
+      "es": "Súplicas diarias y de viaje",
+      "pt": "Súplicas Diárias e de Viagem",
+      "ru": "Повседневные дуа и молитвы в пути",
+      "id": "Doa Sehari-hari & Safar",
+      "ms": "Doa Harian & Musafir",
+      "ur": "روزمرہ اور سفر کی دعائیں"
+    }
+  }
+]

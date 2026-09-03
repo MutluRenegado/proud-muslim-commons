@@ -96,7 +96,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get ayahOfTheDay => 'Günün Ayeti';
 
   @override
-  String get countdownTo => 'Vakte Kalan Süre:';
+  String get countdownTo => 'Sonraki vakte kalan süre';
 
   @override
   String get inTime => 'kaldı';
@@ -676,4 +676,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get qiblaTipsTitle => 'Pusula Kalibrasyonu ve İpuçları';
+
+  @override
+  String get detectingLocation => 'Konum belirleniyor...';
+
+  @override
+  String get changeLocation => 'Konumu Değiştir';
+
+  @override
+  String get locationSource => 'Konum Kaynağı';
+
+  @override
+  String get gpsAuto => 'GPS (Otomatik)';
+
+  @override
+  String get manualSelected => 'Manuel Seçim';
+
+  @override
+  String get savedLocation => 'Kayıtlı Konum';
+
+  @override
+  String get timeZoneLabel => 'Saat Dilimi';
+
+  @override
+  String get currentLocationStatus => 'Mevcut Konum';
 }

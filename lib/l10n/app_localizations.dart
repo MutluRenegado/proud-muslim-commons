@@ -293,7 +293,7 @@ abstract class AppLocalizations {
   /// No description provided for @countdownTo.
   ///
   /// In en, this message translates to:
-  /// **'Countdown to'**
+  /// **'Countdown to next prayer'**
   String get countdownTo;
 
   /// No description provided for @inTime.
@@ -1405,6 +1405,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Compass Calibration & Tips'**
   String get qiblaTipsTitle;
+
+  /// No description provided for @detectingLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Detecting location...'**
+  String get detectingLocation;
+
+  /// No description provided for @changeLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Location'**
+  String get changeLocation;
+
+  /// No description provided for @locationSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Location Source'**
+  String get locationSource;
+
+  /// No description provided for @gpsAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'GPS (Auto)'**
+  String get gpsAuto;
+
+  /// No description provided for @manualSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Manually Selected'**
+  String get manualSelected;
+
+  /// No description provided for @savedLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Location'**
+  String get savedLocation;
+
+  /// No description provided for @timeZoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Timezone'**
+  String get timeZoneLabel;
+
+  /// No description provided for @currentLocationStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Location'**
+  String get currentLocationStatus;
 }
 
 class _AppLocalizationsDelegate

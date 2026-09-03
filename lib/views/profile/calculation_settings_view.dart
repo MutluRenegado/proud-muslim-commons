@@ -22,14 +22,20 @@ class CalculationSettingsView extends StatelessWidget {
     final bottomInset = MediaQuery.of(context).padding.bottom;
 
     final methodLabels = {
+      CalculationMethod.turkeyDiyanet:
+          'Türkiye Diyanet İşleri Başkanlığı (Local Astronomical)',
       CalculationMethod.muslimWorldLeague: 'Muslim World League (MWL)',
-      CalculationMethod.islamicSocietyOfNorthAmerica:
-          'Islamic Society of North America (ISNA)',
+      CalculationMethod.ummAlQuraMakkah: 'Umm Al-Qura University, Makkah',
       CalculationMethod.egyptianGeneralAuthority:
           'Egyptian General Authority of Survey',
-      CalculationMethod.ummAlQuraMakkah: 'Umm Al-Qura University, Makkah',
       CalculationMethod.universityOfIslamicSciencesKarachi:
           'University of Islamic Sciences, Karachi',
+      CalculationMethod.islamicSocietyOfNorthAmerica:
+          'Islamic Society of North America (ISNA)',
+      CalculationMethod.dubai: 'Dubai (UAE / GAIAE)',
+      CalculationMethod.kuwait: 'Kuwait (Ministry of Awqaf)',
+      CalculationMethod.qatar: 'Qatar (Ministry of Awqaf)',
+      CalculationMethod.singapore: 'Singapore (MUIS)',
       CalculationMethod.instituteOfGeophysicsTehran:
           'Institute of Geophysics, Tehran',
       CalculationMethod.shiaIthnaAshari:

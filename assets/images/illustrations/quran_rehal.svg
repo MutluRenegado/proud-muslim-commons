@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <radialGradient id="quranGlow" cx="60" cy="55" r="45" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Radiant Aura -->
+  <circle cx="60" cy="55" r="40" fill="url(#quranGlow)"/>
+
+  <!-- Wooden Rehal Stand Legs -->
+  <!-- Left to Right Leg -->
+  <path d="M30 92 L90 52 L84 46 L24 86 Z" fill="#8D6E63" rx="2"/>
+  <!-- Right to Left Leg (Crossing) -->
+  <path d="M90 92 L30 52 L36 46 L96 86 Z" fill="#6D4C41" rx="2"/>
+  
+  <!-- Stand Joint & Carved Details -->
+  <circle cx="60" cy="70" r="4" fill="#D4AF37"/>
+  <path d="M22 84 Q26 94 34 92" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M98 84 Q94 94 86 92" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Quran Book Pages (Open) -->
+  <!-- Left Page Stack -->
+  <path d="M60 56 C46 53, 28 44, 20 48 L20 66 C28 62, 46 71, 60 74 Z" fill="#FFF9E6"/>
+  <!-- Right Page Stack -->
+  <path d="M60 56 C74 53, 92 44, 100 48 L100 66 C92 62, 74 71, 60 74 Z" fill="#FFF4D0"/>
+
+  <!-- Left Main Page Surface -->
+  <path d="M60 54 C46 51, 29 42, 22 46 L22 63 C29 59, 46 68, 60 71 Z" fill="#FFFFFF"/>
+  <!-- Right Main Page Surface -->
+  <path d="M60 54 C74 51, 91 42, 98 46 L98 63 C91 59, 74 68, 60 71 Z" fill="#FCFAF2"/>
+
+  <!-- Center Spine Shadow -->
+  <path d="M58 53 C59 53, 61 53, 62 53 L62 72 C61 72, 59 72, 58 72 Z" fill="#E0D6B8"/>
+
+  <!-- Gold Page Borders -->
+  <path d="M25 48 C36 45, 48 51, 56 54 L56 68 C48 65, 36 59, 25 61 Z" stroke="#D4AF37" stroke-width="0.8" fill="none"/>
+  <path d="M95 48 C84 45, 72 51, 64 54 L64 68 C72 65, 84 59, 95 61 Z" stroke="#D4AF37" stroke-width="0.8" fill="none"/>
+
+  <!-- Quranic Calligraphy Lines -->
+  <line x1="30" y1="52" x2="52" y2="57" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="30" y1="56" x2="52" y2="61" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="68" y1="57" x2="90" y2="52" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="68" y1="61" x2="90" y2="56" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Bookmark Ribbon -->
+  <path d="M60 52 Q62 65 65 80 L62 82 L59 80 Q58 65 60 52 Z" fill="#C62828"/>
+  <!-- Gold Top Star -->
+  <polygon points="60,26 62,32 68,32 63,36 65,42 60,38 55,42 57,36 52,32 58,32" fill="#D4AF37"/>
+</svg>

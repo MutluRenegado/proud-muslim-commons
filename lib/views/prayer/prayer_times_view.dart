@@ -7,10 +7,10 @@ import '../../core/constants/deen_theme_tokens.dart';
 import '../../core/constants/app_design_tokens.dart';
 import '../../models/prayer_time_model.dart';
 import '../../providers/prayer_provider.dart';
-import '../../core/services/prayer_calculation_service.dart';
 import '../../widgets/prayer_card.dart';
 import '../../widgets/deen_card.dart';
 import '../../widgets/localized_help_icon.dart';
+import '../../core/services/location_service.dart';
 import '../../l10n/app_localizations.dart';
 
 class PrayerTimesView extends StatefulWidget {
@@ -113,32 +113,39 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            DateFormat('EEEE, d MMMM yyyy')
-                                .format(DateTime.now()),
-                            style: GoogleFonts.outfit(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700,
-                              color: deen.textPrimary,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              prayerProv.getFormattedLocalDate(),
+                              style: GoogleFonts.outfit(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: deen.textPrimary,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            prayerProv.getHijriDateFormatted(),
-                            style: GoogleFonts.plusJakartaSans(
-                              color: deen.accentGold,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                            const SizedBox(height: 2),
+                            Text(
+                              prayerProv.getHijriDateFormatted(),
+                              style: GoogleFonts.plusJakartaSans(
+                                color: deen.accentGold,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+                      const SizedBox(width: 8),
                       Container(
+                        constraints: const BoxConstraints(maxWidth: 160),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
+                          horizontal: 10,
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
@@ -155,12 +162,20 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
                               color: deen.accentPrimary,
                             ),
                             const SizedBox(width: 4),
-                            Text(
-                              prayerProv.city,
-                              style: GoogleFonts.plusJakartaSans(
-                                color: deen.accentPrimary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
+                            Flexible(
+                              child: Text(
+                                LocationService.getLocalizedLocationDisplay(
+                                  prayerProv.city,
+                                  prayerProv.country,
+                                  Localizations.localeOf(context).languageCode,
+                                ),
+                                style: GoogleFonts.plusJakartaSans(
+                                  color: deen.accentPrimary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ],
@@ -243,9 +258,10 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        prayerProv.method.name,
+                        _methodLabel(prayerProv.method),
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: 13,
+                          fontWeight: FontWeight.w600,
                           color: deen.textSecondary,
                         ),
                       ),
@@ -286,23 +302,13 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
     double bottomInset,
     DeenThemeTokens deen,
   ) {
-    final now = DateTime.now();
-    final daysInMonth = DateTime(now.year, now.month + 1, 0).day;
-    final List<PrayerTimesModel> monthTimes = [];
-
-    for (int d = 1; d <= daysInMonth; d++) {
-      final date = DateTime(now.year, now.month, d);
-      monthTimes.add(
-        PrayerCalculationService.calculatePrayerTimes(
-          date: date,
-          latitude: prayerProv.latitude,
-          longitude: prayerProv.longitude,
-          method: prayerProv.method,
-          juristic: prayerProv.juristic,
-          minuteOffsets: prayerProv.minuteOffsets,
-        ),
-      );
-    }
+    final schedule = prayerProv.monthlySchedule.isNotEmpty
+        ? prayerProv.monthlySchedule
+        : [
+            if (prayerProv.todayPrayerTimes != null)
+              prayerProv.todayPrayerTimes!
+          ];
+    final today = prayerProv.todayPrayerTimes?.date ?? DateTime.now();
 
     return ListView.builder(
       padding: EdgeInsets.only(
@@ -311,11 +317,13 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
         top: 12,
         bottom: bottomInset + 32,
       ),
-      itemCount: monthTimes.length,
+      itemCount: schedule.length,
       itemBuilder: (context, i) {
-        final pt = monthTimes[i];
-        final isToday = pt.date.day == now.day;
-        final timeFormat = DateFormat('hh:mm');
+        final pt = schedule[i];
+        final isToday = pt.date.year == today.year &&
+            pt.date.month == today.month &&
+            pt.date.day == today.day;
+        final timeFormat = DateFormat('HH:mm');
 
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 3),
@@ -403,116 +411,124 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
               top: false,
               child: Padding(
                 padding: const EdgeInsets.all(22.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          l10n.calculationJuristicMethod,
-                          style: GoogleFonts.outfit(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: deen.textPrimary,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            l10n.calculationJuristicMethod,
+                            style: GoogleFonts.outfit(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: deen.textPrimary,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: () => Navigator.pop(ctx),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      '${l10n.calculationMethod}:',
-                      style: GoogleFonts.plusJakartaSans(
-                        fontWeight: FontWeight.bold,
-                        color: deen.textPrimary,
+                          IconButton(
+                            icon: const Icon(Icons.close),
+                            onPressed: () => Navigator.pop(ctx),
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 6),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      decoration: BoxDecoration(
-                        color: deen.cardBackground,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: deen.cardBorder),
-                      ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<CalculationMethod>(
-                          value: prayerProv.method,
-                          isExpanded: true,
-                          dropdownColor: deen.surfacePrimary,
-                          items: CalculationMethod.values.map((m) {
-                            return DropdownMenuItem(
-                              value: m,
-                              child: Text(
-                                m.name,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (val) {
-                            if (val != null) {
-                              prayerProv.setCalculationMethod(val);
-                              setModalState(() {});
-                            }
-                          },
+                      const SizedBox(height: 16),
+                      Text(
+                        '${l10n.calculationMethod}:',
+                        style: GoogleFonts.plusJakartaSans(
+                          fontWeight: FontWeight.bold,
+                          color: deen.textPrimary,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 14),
-                    Text(
-                      '${l10n.juristicSchool}:',
-                      style: GoogleFonts.plusJakartaSans(
-                        fontWeight: FontWeight.bold,
-                        color: deen.textPrimary,
-                      ),
-                    ),
-                    ...const {
-                      JuristicMethod.shafii: 'Shafi‘i',
-                      JuristicMethod.maliki: 'Maliki',
-                      JuristicMethod.hanbali: 'Hanbali',
-                      JuristicMethod.hanafi: 'Hanafi',
-                      JuristicMethod.jafari: 'Ja‘fari',
-                    }.entries.map(
-                          (entry) => RadioListTile<JuristicMethod>(
-                            title: Text(entry.value),
-                            value: entry.key,
-                            groupValue:
-                                prayerProv.juristic == JuristicMethod.standard
-                                    ? JuristicMethod.shafii
-                                    : prayerProv.juristic,
-                            activeColor: deen.accentGold,
+                      const SizedBox(height: 6),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        decoration: BoxDecoration(
+                          color: deen.cardBackground,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: deen.cardBorder),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<CalculationMethod>(
+                            value: prayerProv.method,
+                            isExpanded: true,
+                            dropdownColor: deen.surfacePrimary,
+                            items: CalculationMethod.values.map((m) {
+                              return DropdownMenuItem(
+                                value: m,
+                                child: Text(
+                                  _methodLabel(m),
+                                  overflow: TextOverflow.ellipsis,
+                                  style:
+                                      GoogleFonts.plusJakartaSans(fontSize: 13),
+                                ),
+                              );
+                            }).toList(),
                             onChanged: (val) {
                               if (val != null) {
-                                prayerProv.setJuristicMethod(val);
+                                prayerProv.setCalculationMethod(val);
                                 setModalState(() {});
                               }
                             },
                           ),
                         ),
-                    const SizedBox(height: 18),
-                    ElevatedButton(
-                      onPressed: () => Navigator.pop(ctx),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: deen.accentPrimary,
-                        minimumSize: const Size.fromHeight(48),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
                       ),
-                      child: Text(
-                        l10n.done,
+                      const SizedBox(height: 14),
+                      Text(
+                        '${l10n.juristicSchool}:',
                         style: GoogleFonts.plusJakartaSans(
-                          color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          color: deen.textPrimary,
                         ),
                       ),
-                    ),
-                  ],
+                      ...const {
+                        JuristicMethod.shafii: 'Shafi‘i (Standard 1:1 shadow)',
+                        JuristicMethod.maliki: 'Maliki (Standard 1:1 shadow)',
+                        JuristicMethod.hanbali: 'Hanbali (Standard 1:1 shadow)',
+                        JuristicMethod.hanafi: 'Hanafi (2:1 shadow)',
+                        JuristicMethod.jafari: 'Ja‘fari (Twilight standard)',
+                      }.entries.map(
+                            (entry) => RadioListTile<JuristicMethod>(
+                              title: Text(
+                                entry.value,
+                                style:
+                                    GoogleFonts.plusJakartaSans(fontSize: 13),
+                              ),
+                              value: entry.key,
+                              groupValue:
+                                  prayerProv.juristic == JuristicMethod.standard
+                                      ? JuristicMethod.shafii
+                                      : prayerProv.juristic,
+                              activeColor: deen.accentGold,
+                              onChanged: (val) {
+                                if (val != null) {
+                                  prayerProv.setJuristicMethod(val);
+                                  setModalState(() {});
+                                }
+                              },
+                            ),
+                          ),
+                      const SizedBox(height: 18),
+                      ElevatedButton(
+                        onPressed: () => Navigator.pop(ctx),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: deen.accentPrimary,
+                          minimumSize: const Size.fromHeight(48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        child: Text(
+                          l10n.done,
+                          style: GoogleFonts.plusJakartaSans(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
@@ -520,6 +536,35 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
         );
       },
     );
+  }
+
+  String _methodLabel(CalculationMethod method) {
+    switch (method) {
+      case CalculationMethod.turkeyDiyanet:
+        return 'Türkiye Diyanet İşleri Bşk. (Local)';
+      case CalculationMethod.muslimWorldLeague:
+        return 'Muslim World League (MWL)';
+      case CalculationMethod.ummAlQuraMakkah:
+        return 'Umm Al-Qura, Makkah';
+      case CalculationMethod.egyptianGeneralAuthority:
+        return 'Egyptian General Authority';
+      case CalculationMethod.universityOfIslamicSciencesKarachi:
+        return 'Karachi (UIS)';
+      case CalculationMethod.islamicSocietyOfNorthAmerica:
+        return 'ISNA (North America)';
+      case CalculationMethod.dubai:
+        return 'Dubai (UAE / GAIAE)';
+      case CalculationMethod.kuwait:
+        return 'Kuwait (Min. of Awqaf)';
+      case CalculationMethod.qatar:
+        return 'Qatar (Min. of Awqaf)';
+      case CalculationMethod.singapore:
+        return 'Singapore (MUIS)';
+      case CalculationMethod.instituteOfGeophysicsTehran:
+        return 'Tehran (Geophysics)';
+      case CalculationMethod.shiaIthnaAshari:
+        return 'Shia Ithna-Ashari';
+    }
   }
 
   String _juristicLabel(JuristicMethod method) {

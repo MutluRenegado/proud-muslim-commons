@@ -96,7 +96,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get ayahOfTheDay => 'Аят дня';
 
   @override
-  String get countdownTo => 'Обратный отсчет до';
+  String get countdownTo => 'Обратный отсчет до следующего намаза';
 
   @override
   String get inTime => 'через';
@@ -674,4 +674,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get qiblaTipsTitle => 'Калибровка компаса и советы';
+
+  @override
+  String get detectingLocation => 'Определение местоположения...';
+
+  @override
+  String get changeLocation => 'Изменить локацию';
+
+  @override
+  String get locationSource => 'Источник локации';
+
+  @override
+  String get gpsAuto => 'GPS (Авто)';
+
+  @override
+  String get manualSelected => 'Выбрано вручную';
+
+  @override
+  String get savedLocation => 'Сохранённая локация';
+
+  @override
+  String get timeZoneLabel => 'Часовой пояс';
+
+  @override
+  String get currentLocationStatus => 'Текущая локация';
 }

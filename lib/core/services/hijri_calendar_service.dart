@@ -16,6 +16,21 @@ class HijriCalendarService {
     'Dhu al-Hijjah',
   ];
 
+  static const List<String> hijriMonthsTr = [
+    'Muharrem',
+    'Safer',
+    'Rebiülevvel',
+    'Rebiülahir',
+    'Cemaziyelevvel',
+    'Cemaziyelahir',
+    'Recep',
+    'Şaban',
+    'Ramazan',
+    'Şevval',
+    'Zilkade',
+    'Zilhicce',
+  ];
+
   static const List<String> hijriMonthsAr = [
     'محرم',
     'صفر',
@@ -31,11 +46,15 @@ class HijriCalendarService {
     'ذو الحجة',
   ];
 
+  /// Converts a local Gregorian date into the Hijri date.
+  /// Uses Kuwati/Astronomical algorithm with optional offsetDays (-2 to +2).
   static Map<String, dynamic> gregorianToHijri(
-    DateTime date, [
+    DateTime localDate, [
     int offsetDays = 0,
   ]) {
-    final adjusted = date.add(Duration(days: offsetDays));
+    // Clamping offset between -2 and +2
+    final clampedOffset = offsetDays.clamp(-2, 2);
+    final adjusted = localDate.add(Duration(days: clampedOffset));
     int d = adjusted.day;
     int m = adjusted.month;
     int y = adjusted.year;
@@ -71,6 +90,7 @@ class HijriCalendarService {
     final month = hm.clamp(1, 12);
     final year = hy;
     final monthName = hijriMonthsEn[monthIdx];
+    final monthNameTr = hijriMonthsTr[monthIdx];
     final monthNameArabic = hijriMonthsAr[monthIdx];
 
     return {
@@ -78,8 +98,10 @@ class HijriCalendarService {
       'month': month,
       'year': year,
       'monthName': monthName,
+      'monthNameTr': monthNameTr,
       'monthNameArabic': monthNameArabic,
       'formatted': '$day $monthName $year AH',
+      'formattedTr': '$day $monthNameTr $year Hicri',
       'formattedArabic': '$day $monthNameArabic $year هـ',
     };
   }
@@ -88,7 +110,7 @@ class HijriCalendarService {
     final year = hijriYear ?? (gregorianToHijri(DateTime.now())['year'] as int);
     return [
       IslamicEventModel(
-        title: 'Islamic New Year (1448 AH)',
+        title: 'Islamic New Year',
         titleArabic: 'رأس السنة الهجرية',
         hijriDate: '1 Muharram $year',
         description: 'First day of the Islamic lunar calendar year.',
@@ -154,7 +176,7 @@ class HijriCalendarService {
       ),
       IslamicEventModel(
         title: 'Eid al-Fitr',
-        titleArabic: 'عيد الفطر المبارك',
+        titleArabic: 'عيد الفطر المبارk',
         hijriDate: '1 Shawwal $year',
         description:
             'Celebration marking the conclusion of the holy month of Ramadan.',

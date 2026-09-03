@@ -29,7 +29,7 @@
   "fullTimetable": "Horaires complets",
   "dailyHadithGem": "Perle de Hadith du jour",
   "ayahOfTheDay": "Verset du jour",
-  "countdownTo": "Compte à rebours jusqu'à",
+  "countdownTo": "Compte à rebours avant la prochaine prière",
   "inTime": "dans",
   "holyQuran": "Saint Coran",
   "qiblaFinder": "Boussole Qibla",
@@ -214,5 +214,13 @@
   "audioPlaybackError": "Impossible de lire l'audio.",
   "fourDynamicThemes": "4 thèmes dynamiques",
   "typographyAccessibility": "Typographie et accessibilité",
-  "qiblaTipsTitle": "Étalonnage de la boussole et conseils"
+  "qiblaTipsTitle": "Étalonnage de la boussole et conseils",
+  "detectingLocation": "Détection de l'emplacement...",
+  "changeLocation": "Changer d'emplacement",
+  "locationSource": "Source de localisation",
+  "gpsAuto": "GPS (Auto)",
+  "manualSelected": "Sélection manuelle",
+  "savedLocation": "Emplacement enregistré",
+  "timeZoneLabel": "Fuseau horaire",
+  "currentLocationStatus": "Emplacement actuel"
 }

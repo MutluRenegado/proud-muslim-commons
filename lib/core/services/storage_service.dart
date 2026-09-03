@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/app_constants.dart';
+import '../../models/prayer_time_model.dart';
 
 class StorageService {
   static SharedPreferences? _prefs;
@@ -83,7 +84,7 @@ class StorageService {
   static Future<void> setNumberFormat(String format) =>
       prefs.setString(AppConstants.keyNumberFormat, format);
 
-  // Location
+  // Location & Timezone
   static String get locationMode =>
       prefs.getString(AppConstants.keyLocationMode) ?? 'auto';
   static Future<void> setLocationMode(String mode) =>
@@ -93,21 +94,34 @@ class StorageService {
       prefs.getDouble(AppConstants.keyLat) ?? AppConstants.defaultLat;
   static double get longitude =>
       prefs.getDouble(AppConstants.keyLng) ?? AppConstants.defaultLng;
+  static double get elevation =>
+      prefs.getDouble(AppConstants.keyElevation) ?? 0.0;
   static String get city =>
       prefs.getString(AppConstants.keyCity) ?? AppConstants.defaultCity;
   static String get country =>
       prefs.getString(AppConstants.keyCountry) ?? AppConstants.defaultCountry;
+  static String get ianaTimeZone =>
+      prefs.getString(AppConstants.keyIanaTimeZone) ??
+      AppConstants.defaultIanaTimeZone;
 
   static Future<void> saveLocation(
     double lat,
     double lng,
     String city,
-    String country,
-  ) async {
+    String country, {
+    String? ianaTimeZone,
+    double? elevation,
+  }) async {
     await prefs.setDouble(AppConstants.keyLat, lat);
     await prefs.setDouble(AppConstants.keyLng, lng);
     await prefs.setString(AppConstants.keyCity, city);
     await prefs.setString(AppConstants.keyCountry, country);
+    if (ianaTimeZone != null && ianaTimeZone.isNotEmpty) {
+      await prefs.setString(AppConstants.keyIanaTimeZone, ianaTimeZone);
+    }
+    if (elevation != null) {
+      await prefs.setDouble(AppConstants.keyElevation, elevation);
+    }
   }
 
   static String get homeCity =>
@@ -119,22 +133,30 @@ class StorageService {
       prefs.getDouble(AppConstants.keyHomeLat) ?? AppConstants.defaultLat;
   static double get homeLng =>
       prefs.getDouble(AppConstants.keyHomeLng) ?? AppConstants.defaultLng;
+  static String get homeIanaTimeZone =>
+      prefs.getString(AppConstants.keyHomeIanaTimeZone) ??
+      AppConstants.defaultIanaTimeZone;
 
   static Future<void> saveHomeLocation(
     double lat,
     double lng,
     String city,
-    String country,
-  ) async {
+    String country, {
+    String? ianaTimeZone,
+  }) async {
     await prefs.setDouble(AppConstants.keyHomeLat, lat);
     await prefs.setDouble(AppConstants.keyHomeLng, lng);
     await prefs.setString(AppConstants.keyHomeCity, city);
     await prefs.setString(AppConstants.keyHomeCountry, country);
+    if (ianaTimeZone != null && ianaTimeZone.isNotEmpty) {
+      await prefs.setString(AppConstants.keyHomeIanaTimeZone, ianaTimeZone);
+    }
   }
 
   // Prayer & Calculation
   static String get calculationMethodName =>
-      prefs.getString(AppConstants.keyCalcMethod) ?? 'muslimWorldLeague';
+      prefs.getString(AppConstants.keyCalcMethod) ??
+      AppConstants.defaultCalcMethod;
   static Future<void> setCalculationMethodName(String name) =>
       prefs.setString(AppConstants.keyCalcMethod, name);
 
@@ -152,6 +174,27 @@ class StorageService {
       prefs.getString(AppConstants.keyRoundingMethod) ?? 'nearestMinute';
   static Future<void> setRoundingMethod(String method) =>
       prefs.setString(AppConstants.keyRoundingMethod, method);
+
+  // Offline 30-Day Prayer Schedule Cache
+  static List<PrayerTimesModel>? getOfflinePrayerSchedule() {
+    final raw = prefs.getString(AppConstants.keyOfflinePrayerSchedule);
+    if (raw == null || raw.isEmpty) return null;
+    try {
+      final List<dynamic> decoded = jsonDecode(raw) as List<dynamic>;
+      return decoded
+          .map(
+              (item) => PrayerTimesModel.fromJson(item as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static Future<void> saveOfflinePrayerSchedule(
+      List<PrayerTimesModel> schedule) async {
+    final encoded = jsonEncode(schedule.map((item) => item.toJson()).toList());
+    await prefs.setString(AppConstants.keyOfflinePrayerSchedule, encoded);
+  }
 
   // Azan & Notifications
   static bool get azanEnabled =>
@@ -395,7 +438,7 @@ class StorageService {
   static Future<void> setTtsVoiceGender(String gender) =>
       prefs.setString(AppConstants.keyTtsVoiceGender, gender);
 
-  // Subscriptions & Trial (for backward compat / tests)
+  // Subscriptions & Trial
   static bool get isSubscribed => prefs.getBool('is_subscribed') ?? false;
   static Future<void> setIsSubscribed(bool val) =>
       prefs.setBool('is_subscribed', val);

@@ -29,7 +29,7 @@
   "fullTimetable": "Полное расписание",
   "dailyHadithGem": "Хадис дня",
   "ayahOfTheDay": "Аят дня",
-  "countdownTo": "Обратный отсчет до",
+  "countdownTo": "Обратный отсчет до следующего намаза",
   "inTime": "через",
   "holyQuran": "Священный Коран",
   "qiblaFinder": "Поиск Киблы",
@@ -214,5 +214,13 @@
   "audioPlaybackError": "Не удалось воспроизвести аудио.",
   "fourDynamicThemes": "4 динамические темы",
   "typographyAccessibility": "Типографика и доступность",
-  "qiblaTipsTitle": "Калибровка компаса и советы"
+  "qiblaTipsTitle": "Калибровка компаса и советы",
+  "detectingLocation": "Определение местоположения...",
+  "changeLocation": "Изменить локацию",
+  "locationSource": "Источник локации",
+  "gpsAuto": "GPS (Авто)",
+  "manualSelected": "Выбрано вручную",
+  "savedLocation": "Сохранённая локация",
+  "timeZoneLabel": "Часовой пояс",
+  "currentLocationStatus": "Текущая локация"
 }

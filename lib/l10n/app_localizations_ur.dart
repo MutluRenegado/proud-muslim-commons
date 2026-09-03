@@ -96,7 +96,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get ayahOfTheDay => 'آج کی آیت';
 
   @override
-  String get countdownTo => 'تک کا الٹی گنتی';
+  String get countdownTo => 'اگلی نماز کا الٹی گنتی کا وقت';
 
   @override
   String get inTime => 'میں';
@@ -665,4 +665,28 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get qiblaTipsTitle => 'قطب نما کیلیبریشن اور تجاویز';
+
+  @override
+  String get detectingLocation => 'مقام کا تعین کیا جا رہا ہے...';
+
+  @override
+  String get changeLocation => 'مقام تبدیل کریں';
+
+  @override
+  String get locationSource => 'مقام کا ذریعہ';
+
+  @override
+  String get gpsAuto => 'GPS (خودکار)';
+
+  @override
+  String get manualSelected => 'دستی منتخب شدہ';
+
+  @override
+  String get savedLocation => 'محفوظ شدہ مقام';
+
+  @override
+  String get timeZoneLabel => 'ٹائم زون';
+
+  @override
+  String get currentLocationStatus => 'موجودہ مقام';
 }

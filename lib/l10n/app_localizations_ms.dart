@@ -96,7 +96,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get ayahOfTheDay => 'Ayat Hari Ini';
 
   @override
-  String get countdownTo => 'Kiraan detik ke';
+  String get countdownTo => 'Kiraan detik ke solat seterusnya';
 
   @override
   String get inTime => 'dalam';
@@ -670,4 +670,28 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get qiblaTipsTitle => 'Penentukuran Kompas & Petua';
+
+  @override
+  String get detectingLocation => 'Mengesan lokasi...';
+
+  @override
+  String get changeLocation => 'Tukar Lokasi';
+
+  @override
+  String get locationSource => 'Sumber Lokasi';
+
+  @override
+  String get gpsAuto => 'GPS (Auto)';
+
+  @override
+  String get manualSelected => 'Dipilih Manual';
+
+  @override
+  String get savedLocation => 'Lokasi Tersimpan';
+
+  @override
+  String get timeZoneLabel => 'Zon Masa';
+
+  @override
+  String get currentLocationStatus => 'Lokasi Semasa';
 }

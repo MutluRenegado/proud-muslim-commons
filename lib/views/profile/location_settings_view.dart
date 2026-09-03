@@ -119,24 +119,30 @@ class _LocationSettingsViewState extends State<LocationSettingsView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on_rounded,
-                          color: deen.accentGold,
-                          size: 24,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          '${prayerProv.city}, ${prayerProv.country}',
-                          style: GoogleFonts.outfit(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: deen.textPrimary,
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.location_on_rounded,
+                            color: deen.accentGold,
+                            size: 24,
                           ),
-                        ),
-                      ],
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              '${prayerProv.city}, ${prayerProv.country}',
+                              style: GoogleFonts.outfit(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                                color: deen.textPrimary,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
+                    const SizedBox(width: 8),
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 10,
@@ -163,6 +169,15 @@ class _LocationSettingsViewState extends State<LocationSettingsView> {
                   ],
                 ),
                 const SizedBox(height: 10),
+                Text(
+                  'Time Zone: ${prayerProv.ianaTimeZone} (${prayerProv.getUtcOffsetDisplay()})',
+                  style: GoogleFonts.plusJakartaSans(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: deen.accentPrimary,
+                  ),
+                ),
+                const SizedBox(height: 4),
                 Text(
                   'Lat: ${prayerProv.latitude.toStringAsFixed(4)}°, Long: ${prayerProv.longitude.toStringAsFixed(4)}°',
                   style: GoogleFonts.plusJakartaSans(
@@ -315,18 +330,26 @@ class _LocationSettingsViewState extends State<LocationSettingsView> {
         pos.latitude,
         pos.longitude,
       );
+      final meta = LocationService.resolveLocationMetadata(
+        pos.latitude,
+        pos.longitude,
+        city: cityPreset.city,
+        country: cityPreset.country,
+      );
+
       prayerProv.updateLocation(
         pos.latitude,
         pos.longitude,
         cityPreset.city,
         cityPreset.country,
         mode: 'auto',
+        ianaTimeZone: meta.ianaTimeZone,
       );
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Updated to ${cityPreset.city}, ${cityPreset.country}',
+              'Updated to ${cityPreset.city}, ${cityPreset.country} (${meta.ianaTimeZone})',
             ),
             backgroundColor: deen.accentPrimary,
           ),
@@ -443,7 +466,7 @@ class _LocationSettingsViewState extends State<LocationSettingsView> {
                                 ),
                               ),
                               subtitle: Text(
-                                c.country,
+                                '${c.country} • ${c.ianaTimeZone}',
                                 style: GoogleFonts.plusJakartaSans(
                                   fontSize: 12,
                                   color: deen.textSecondary,
@@ -462,6 +485,7 @@ class _LocationSettingsViewState extends State<LocationSettingsView> {
                                   c.city,
                                   c.country,
                                   mode: 'manual',
+                                  ianaTimeZone: c.ianaTimeZone,
                                 );
                                 Navigator.pop(ctx);
                               },

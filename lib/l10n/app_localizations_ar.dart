@@ -96,7 +96,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ayahOfTheDay => 'آية اليوم';
 
   @override
-  String get countdownTo => 'الوقت المتبقي حتى';
+  String get countdownTo => 'الوقت المتبقي للصلاة القادمة';
 
   @override
   String get inTime => 'خلال';
@@ -672,4 +672,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get qiblaTipsTitle => 'معايرة البوصلة ونصائح';
+
+  @override
+  String get detectingLocation => 'جاري تحديد الموقع...';
+
+  @override
+  String get changeLocation => 'تغيير الموقع';
+
+  @override
+  String get locationSource => 'مصدر الموقع';
+
+  @override
+  String get gpsAuto => 'GPS (تلقائي)';
+
+  @override
+  String get manualSelected => 'محدد يدويًا';
+
+  @override
+  String get savedLocation => 'الموقع المحفوظ';
+
+  @override
+  String get timeZoneLabel => 'المنطقة الزمنية';
+
+  @override
+  String get currentLocationStatus => 'الموقع الحالي';
 }

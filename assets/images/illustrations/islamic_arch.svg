@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <radialGradient id="archGlow" cx="60" cy="60" r="45" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background Glow -->
+  <circle cx="60" cy="60" r="42" fill="url(#archGlow)"/>
+
+  <!-- Left Column -->
+  <rect x="24" y="48" width="8" height="48" rx="2" fill="currentColor"/>
+  <rect x="22" y="44" width="12" height="4" rx="1.5" fill="#D4AF37"/>
+  <rect x="22" y="94" width="12" height="4" rx="1.5" fill="#D4AF37"/>
+
+  <!-- Right Column -->
+  <rect x="88" y="48" width="8" height="48" rx="2" fill="currentColor"/>
+  <rect x="86" y="44" width="12" height="4" rx="1.5" fill="#D4AF37"/>
+  <rect x="86" y="94" width="12" height="4" rx="1.5" fill="#D4AF37"/>
+
+  <!-- Moorish Horseshoe Arch -->
+  <!-- Outer Arch -->
+  <path d="M26 44 C26 22, 94 22, 94 44" stroke="#D4AF37" stroke-width="2.5" fill="none"/>
+  <!-- Inner Pointed Ogee Arch -->
+  <path d="M32 46 C32 28, 54 20, 60 16 C66 20, 88 28, 88 46 V94 H32 V46 Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/>
+
+  <!-- Hanging Lantern in Archway -->
+  <line x1="60" y1="18" x2="60" y2="38" stroke="#D4AF37" stroke-width="1.2"/>
+  <polygon points="60,38 64,44 56,44" fill="#D4AF37"/>
+  <polygon points="60,52 65,45 55,45" fill="#FFD54F"/>
+  <circle cx="60" cy="46" r="1.5" fill="#FFFFFF"/>
+
+  <!-- Islamic Arabesque Star Center Base -->
+  <circle cx="60" cy="74" r="10" stroke="#D4AF37" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
+  <polygon points="60,68 62,72 66,72 63,75 64,79 60,77 56,79 57,75 54,72 58,72" fill="#D4AF37"/>
+
+  <!-- Floor Base Step -->
+  <rect x="18" y="98" width="84" height="4" rx="2" fill="#D4AF37"/>
+</svg>

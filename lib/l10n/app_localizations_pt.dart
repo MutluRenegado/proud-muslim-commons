@@ -96,7 +96,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ayahOfTheDay => 'Versículo do dia';
 
   @override
-  String get countdownTo => 'Contagem regressiva para';
+  String get countdownTo => 'Contagem regressiva para a próxima oração';
 
   @override
   String get inTime => 'em';
@@ -675,4 +675,28 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get qiblaTipsTitle => 'Calibração da bússola e dicas';
+
+  @override
+  String get detectingLocation => 'Detectando localização...';
+
+  @override
+  String get changeLocation => 'Mudar localização';
+
+  @override
+  String get locationSource => 'Fonte de localização';
+
+  @override
+  String get gpsAuto => 'GPS (Auto)';
+
+  @override
+  String get manualSelected => 'Selecionado manualmente';
+
+  @override
+  String get savedLocation => 'Localização salva';
+
+  @override
+  String get timeZoneLabel => 'Fuso Horário';
+
+  @override
+  String get currentLocationStatus => 'Localização Atual';
 }

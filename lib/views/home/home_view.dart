@@ -9,6 +9,7 @@ import '../../core/constants/deen_theme_tokens.dart';
 import '../../core/constants/app_design_tokens.dart';
 import '../../core/services/storage_service.dart';
 import '../../core/services/hijri_calendar_service.dart';
+import '../../core/services/location_service.dart';
 import '../../providers/prayer_provider.dart';
 import '../../widgets/islamic_pattern_background.dart';
 import '../../widgets/prayer_card.dart';
@@ -42,173 +43,250 @@ class HomeView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: deen.bgPrimary,
-      body: CustomScrollView(
-        slivers: [
-          // Luminous Modern Header
-          SliverAppBar(
-            expandedHeight: 200,
-            floating: false,
-            pinned: true,
-            backgroundColor: deen.accentPrimary,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Stack(
-                fit: StackFit.expand,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Luminous Islamic Pattern Header (Logo, Title, Profile, Date, Time, Location)
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(gradient: deen.bgHeaderGradient),
+              child: Stack(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(gradient: deen.bgHeaderGradient),
-                  ),
-                  CustomPaint(
-                    painter: IslamicPatternPainter(
-                      color: Colors.white.withOpacity(0.09),
-                      strokeWidth: 1.0,
+                  Positioned.fill(
+                    child: CustomPaint(
+                      painter: IslamicPatternPainter(
+                        color: Colors.white.withOpacity(0.09),
+                        strokeWidth: 1.0,
+                      ),
                     ),
                   ),
-                  Positioned(
-                    top: 79,
-                    right: AppSpacing.screenMargin,
-                    child: Container(
-                      constraints: const BoxConstraints(maxWidth: 250),
-                      alignment: Alignment.topRight,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 7,
+                  SafeArea(
+                    bottom: false,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.screenMargin,
+                        8.0,
+                        AppSpacing.screenMargin,
+                        16.0,
                       ),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.10),
-                        borderRadius: BorderRadius.circular(14),
-                        border: Border.all(
-                          color: deen.accentGold.withOpacity(0.2),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.28),
-                            blurRadius: 10,
-                            offset: const Offset(0, 5),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Top App Bar Row: Logo on left, "Proud Muslim" in center, Profile avatar on right
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // Left: Logo
+                              Container(
+                                width: 44,
+                                height: 44,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    'assets/images/logo.png',
+                                    fit: BoxFit.contain,
+                                    errorBuilder: (_, __, ___) => Icon(
+                                      Icons.mosque_rounded,
+                                      color: deen.accentGold,
+                                      size: 24,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // Center: Proud Muslim Title
+                              Text(
+                                'Proud Muslim',
+                                style: GoogleFonts.playfairDisplay(
+                                  fontSize: 21,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 0.5,
+                                ),
+                              ),
+                              // Right: Profile Avatar
+                              GestureDetector(
+                                onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const ProfileView(),
+                                  ),
+                                ),
+                                child: Container(
+                                  width: 44,
+                                  height: 44,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.black,
+                                  ),
+                                  child: Builder(
+                                    builder: (context) {
+                                      final photoPath =
+                                          StorageService.userProfilePhotoPath;
+                                      if (photoPath != null &&
+                                          File(photoPath).existsSync()) {
+                                        return ClipOval(
+                                          child: Image.file(
+                                            File(photoPath),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        );
+                                      }
+                                      return const Icon(
+                                        Icons.person,
+                                        color: Color(0xFF106742),
+                                        size: 32,
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          BoxShadow(
-                            color: Colors.white.withOpacity(0.12),
-                            blurRadius: 3,
-                            offset: const Offset(-1, -1),
+
+                          const SizedBox(height: 14),
+
+                          // Date / Time / Location row: Responsively aligned between left and right edges
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // Left Column: Red Map Pin + Live Time and Location
+                              Expanded(
+                                flex: 5,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.only(right: 6.0),
+                                      child: Icon(
+                                        Icons.location_on,
+                                        color: Color(0xFFE53935),
+                                        size: 30,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              prayerProv
+                                                  .getFormattedLocalTimeWithSeconds()
+                                                  .split('')
+                                                  .join(' '),
+                                              style: GoogleFonts.outfit(
+                                                color: Colors.white,
+                                                fontSize: 16.5,
+                                                fontWeight: FontWeight.w600,
+                                                letterSpacing: 1.1,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 4),
+                                          FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              _localizedLocation(
+                                                context,
+                                                prayerProv.city,
+                                                prayerProv.country,
+                                              ),
+                                              style: GoogleFonts.outfit(
+                                                color: deen.accentGoldBright,
+                                                fontSize: 14.5,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+
+                              // Right Column: Three Rows (Arabic Hijri, Localized Hijri, Gregorian) aligned evenly
+                              Expanded(
+                                flex: 6,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    // Row 1: Arabic Hijri Date
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        prayerProv
+                                            .getHijriDateFormattedArabic(),
+                                        textAlign: TextAlign.right,
+                                        textDirection: TextDirection.rtl,
+                                        style: GoogleFonts.amiri(
+                                          color: Colors.white,
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                          height: 1.15,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    // Row 2: Latin/Localized Hijri Date
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        _localizedHijriDate(context, prayerProv),
+                                        textAlign: TextAlign.right,
+                                        style: GoogleFonts.outfit(
+                                          color: deen.accentGoldBright,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.w600,
+                                          letterSpacing: 0.2,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 3),
+                                    // Row 3: Gregorian Date
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        prayerProv.getFormattedGregorianDate(
+                                          pattern: 'dd MMMM yyyy',
+                                        ),
+                                        textAlign: TextAlign.right,
+                                        style: GoogleFonts.outfit(
+                                          color: deen.accentGoldBright,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      child: Text(
-                        prayerProv.getHijriDateFormattedArabic(),
-                        textAlign: TextAlign.right,
-                        textDirection: TextDirection.rtl,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.amiri(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: AppSpacing.screenMargin,
-                    right: AppSpacing.screenMargin,
-                    bottom: 20,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              _localizedHijriDate(context, prayerProv),
-                              style: GoogleFonts.outfit(
-                                color: deen.accentGoldBright,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 0.3,
-                              ),
-                              maxLines: 1,
-                              softWrap: false,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.location_on,
-                              color: Colors.white70,
-                              size: 14,
-                            ),
-                            const SizedBox(width: 4),
-                            Expanded(
-                              child: Text(
-                                _localizedLocation(
-                                  context,
-                                  prayerProv.city,
-                                  prayerProv.country,
-                                ),
-                                style: GoogleFonts.plusJakartaSans(
-                                  color: Colors.white.withOpacity(0.85),
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                textDirection: Directionality.of(context),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            title: Text(
-              l10n.appName,
-              style: GoogleFonts.outfit(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 0.5,
-              ),
-            ),
-            actions: [
-              IconButton(
-                icon: Builder(
-                  builder: (context) {
-                    final photoPath = StorageService.userProfilePhotoPath;
-                    if (photoPath != null && File(photoPath).existsSync()) {
-                      return Container(
-                        padding: const EdgeInsets.all(1.5),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1.5),
-                        ),
-                        child: CircleAvatar(
-                          radius: 12,
-                          backgroundImage: FileImage(File(photoPath)),
-                        ),
-                      );
-                    }
-                    return const Icon(
-                      Icons.person_outline_rounded,
-                      color: Colors.white,
-                    );
-                  },
-                ),
-                tooltip: l10n.profileAndSettings,
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const ProfileView()),
-                ),
-              ),
-            ],
-          ),
 
-          // Main Screen Body
-          SliverToBoxAdapter(
-            child: Padding(
+            // Main Screen Body
+            Padding(
               padding: EdgeInsets.only(
                 left: AppSpacing.screenMargin,
                 right: AppSpacing.screenMargin,
@@ -324,8 +402,8 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -367,8 +445,9 @@ class HomeView extends StatelessWidget {
   }
 
   String _localizedHijriDate(BuildContext context, PrayerProvider prayerProv) {
+    final localDate = prayerProv.todayPrayerTimes?.date ?? DateTime.now();
     final info = HijriCalendarService.gregorianToHijri(
-      DateTime.now(),
+      localDate,
       StorageService.hijriOffset,
     );
     final lang = Localizations.localeOf(context).languageCode;
@@ -399,43 +478,11 @@ class HomeView extends StatelessWidget {
 
   String _localizedLocation(BuildContext context, String city, String country) {
     final languageCode = Localizations.localeOf(context).languageCode;
-    const makkahNames = <String, String>{
-      'ar': 'مكة',
-      'de': 'Mekka',
-      'en': 'Makkah',
-      'es': 'La Meca',
-      'fr': 'La Mecque',
-      'id': 'Makkah',
-      'ms': 'Makkah',
-      'pt': 'Meca',
-      'ru': 'Мекка',
-      'tr': 'Mekke',
-      'ur': 'مکہ',
-    };
-    const saudiArabiaNames = <String, String>{
-      'ar': 'المملكة العربية السعودية',
-      'de': 'Saudi-Arabien',
-      'en': 'Saudi Arabia',
-      'es': 'Arabia Saudita',
-      'fr': 'Arabie saoudite',
-      'id': 'Arab Saudi',
-      'ms': 'Arab Saudi',
-      'pt': 'Arábia Saudita',
-      'ru': 'Саудовская Аравия',
-      'tr': 'Suudi Arabistan',
-      'ur': 'سعودی عرب',
-    };
-
-    final cityKey = city.trim().toLowerCase();
-    final countryKey = country.trim().toLowerCase();
-    final isMakkah =
-        cityKey == 'makkah' || cityKey == 'mecca' || cityKey == 'meccah';
-    final isSaudi =
-        countryKey == 'saudi arabia' || countryKey == 'saudia arabia';
-    final localizedCity = isMakkah ? (makkahNames[languageCode] ?? city) : city;
-    final localizedCountry =
-        isSaudi ? (saudiArabiaNames[languageCode] ?? country) : country;
-    return '$localizedCity, $localizedCountry';
+    return LocationService.getLocalizedLocationDisplay(
+      city,
+      country,
+      languageCode,
+    );
   }
 
   String? _dailyHadithTranslation(String languageCode) {

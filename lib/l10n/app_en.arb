@@ -29,7 +29,7 @@
   "fullTimetable": "Full Timetable",
   "dailyHadithGem": "Daily Hadith Gem",
   "ayahOfTheDay": "Ayah of the Day",
-  "countdownTo": "Countdown to",
+  "countdownTo": "Countdown to next prayer",
   "inTime": "in",
   "holyQuran": "Holy Quran",
   "qiblaFinder": "Qibla Finder",
@@ -214,5 +214,13 @@
   "audioPlaybackError": "Unable to play audio. Please try again.",
   "fourDynamicThemes": "4 Dynamic Themes",
   "typographyAccessibility": "Typography & Accessibility",
-  "qiblaTipsTitle": "Compass Calibration & Tips"
+  "qiblaTipsTitle": "Compass Calibration & Tips",
+  "detectingLocation": "Detecting location...",
+  "changeLocation": "Change Location",
+  "locationSource": "Location Source",
+  "gpsAuto": "GPS (Auto)",
+  "manualSelected": "Manually Selected",
+  "savedLocation": "Saved Location",
+  "timeZoneLabel": "Timezone",
+  "currentLocationStatus": "Current Location"
 }

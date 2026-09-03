@@ -29,7 +29,7 @@
   "fullTimetable": "Tam Vakit Cetveli",
   "dailyHadithGem": "Günün Hadis İncisi",
   "ayahOfTheDay": "Günün Ayeti",
-  "countdownTo": "Vakte Kalan Süre:",
+  "countdownTo": "Sonraki vakte kalan süre",
   "inTime": "kaldı",
   "holyQuran": "Kur'an-ı Kerim",
   "qiblaFinder": "Kıble Bulucu",
@@ -214,5 +214,13 @@
   "audioPlaybackError": "Ses çalınamadı. Lütfen tekrar deneyin.",
   "fourDynamicThemes": "4 Dinamik Tema",
   "typographyAccessibility": "Tipografi ve Erişilebilirlik",
-  "qiblaTipsTitle": "Pusula Kalibrasyonu ve İpuçları"
+  "qiblaTipsTitle": "Pusula Kalibrasyonu ve İpuçları",
+  "detectingLocation": "Konum belirleniyor...",
+  "changeLocation": "Konumu Değiştir",
+  "locationSource": "Konum Kaynağı",
+  "gpsAuto": "GPS (Otomatik)",
+  "manualSelected": "Manuel Seçim",
+  "savedLocation": "Kayıtlı Konum",
+  "timeZoneLabel": "Saat Dilimi",
+  "currentLocationStatus": "Mevcut Konum"
 }

@@ -96,7 +96,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ayahOfTheDay => 'Aleya del día';
 
   @override
-  String get countdownTo => 'Cuenta regresiva para';
+  String get countdownTo => 'Cuenta regresiva para la próxima oración';
 
   @override
   String get inTime => 'en';
@@ -676,4 +676,28 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get qiblaTipsTitle => 'Calibración de brújula y consejos';
+
+  @override
+  String get detectingLocation => 'Detectando ubicación...';
+
+  @override
+  String get changeLocation => 'Cambiar ubicación';
+
+  @override
+  String get locationSource => 'Fuente de ubicación';
+
+  @override
+  String get gpsAuto => 'GPS (Auto)';
+
+  @override
+  String get manualSelected => 'Seleccionado manualmente';
+
+  @override
+  String get savedLocation => 'Ubicación guardada';
+
+  @override
+  String get timeZoneLabel => 'Zona horaria';
+
+  @override
+  String get currentLocationStatus => 'Ubicación actual';
 }

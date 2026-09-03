@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 500" width="1024" height="500">
+  <defs>
+    <linearGradient id="bgFeature" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#062918"/>
+      <stop offset="45%" stop-color="#0F5132"/>
+      <stop offset="100%" stop-color="#083D24"/>
+    </linearGradient>
+    <linearGradient id="goldFeature" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0BE"/>
+      <stop offset="40%" stop-color="#DFBA45"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <radialGradient id="noorGlow" cx="28%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#DFBA45" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0F5132" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1024" height="500" fill="url(#bgFeature)"/>
+
+  <!-- Subtle Geometric Lattice Pattern Background -->
+  <g opacity="0.06" stroke="#FFFFFF" stroke-width="1.5" fill="none">
+    <pattern id="islamicPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+      <polygon points="30,0 60,30 30,60 0,30"/>
+      <circle cx="30" cy="30" r="14"/>
+    </pattern>
+    <rect width="1024" height="500" fill="url(#islamicPattern)"/>
+  </g>
+
+  <!-- Noor Ambient Aura -->
+  <circle cx="260" cy="250" r="220" fill="url(#noorGlow)"/>
+
+  <!-- Left Side: App Emblem & Arch -->
+  <g transform="translate(80, 0)">
+    <!-- Mihrab / Arch Outline -->
+    <path d="M 110 400 L 110 240 C 110 140, 200 80, 200 80 C 200 80, 290 140, 290 240 L 290 400 Z"
+          fill="none" stroke="url(#goldFeature)" stroke-width="5" stroke-linecap="round" opacity="0.75"/>
+
+    <!-- Crescent & Star -->
+    <g transform="translate(200, 240) scale(1.1)">
+      <path d="M 0 -60 A 60 60 0 1 0 48 38 A 50 50 0 1 1 0 -60 Z"
+            fill="url(#goldFeature)"/>
+      <polygon points="26,-26 30,-16 40,-20 34,-10 42,-2 32,2 34,12 24,6 18,16 16,5 5,6 12,-3 5,-10 16,-8 18,-18"
+               fill="#FFF8E7"/>
+    </g>
+  </g>
+
+  <!-- Right Side: Brand Typography & Pillars -->
+  <g transform="translate(490, 160)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="62" fill="#FFFFFF" letter-spacing="2">
+      NOOR DEEN
+    </text>
+    <text y="52" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="22" fill="url(#goldFeature)" letter-spacing="3">
+      PRAYER • QURAN • AZKAR
+    </text>
+    <text y="96" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="16" fill="#D2E3D8" letter-spacing="0.5">
+      The Modern Spiritual Companion for Daily Devotion
+    </text>
+
+    <!-- Feature Pillars -->
+    <g transform="translate(0, 136)">
+      <!-- Pillar 1 -->
+      <g>
+        <circle cx="10" cy="10" r="7" fill="#DFBA45"/>
+        <text x="26" y="15" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">
+          Precise Solar Prayer Times &amp; Azan
+        </text>
+      </g>
+      <!-- Pillar 2 -->
+      <g transform="translate(0, 34)">
+        <circle cx="10" cy="10" r="7" fill="#DFBA45"/>
+        <text x="26" y="15" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">
+          Full Quran Audio Recitation &amp; Qibla
+        </text>
+      </g>
+      <!-- Pillar 3 -->
+      <g transform="translate(0, 68)">
+        <circle cx="10" cy="10" r="7" fill="#DFBA45"/>
+        <text x="26" y="15" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">
+          Authentic Azkar, Salah Guide &amp; 99 Names
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

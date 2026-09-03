@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <radialGradient id="moonGlow" cx="55" cy="55" r="45" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background Glow -->
+  <circle cx="55" cy="55" r="40" fill="url(#moonGlow)"/>
+
+  <!-- Crescent Moon -->
+  <path d="M68 22 A 38 38 0 1 0 78 92 A 31 31 0 1 1 68 22 Z" fill="#D4AF37"/>
+  <path d="M68 24 A 36 36 0 1 0 76 89 A 30 30 0 1 1 68 24 Z" fill="#FFD54F"/>
+
+  <!-- 8-Pointed Rub El Hizb Islamic Star -->
+  <!-- Outer Star -->
+  <g transform="translate(74, 48)">
+    <rect x="-14" y="-14" width="28" height="28" rx="2" fill="#D4AF37"/>
+    <rect x="-14" y="-14" width="28" height="28" rx="2" transform="rotate(45)" fill="#D4AF37"/>
+    <!-- Inner Radiant Core -->
+    <rect x="-10" y="-10" width="20" height="20" rx="1.5" fill="#FFE082"/>
+    <rect x="-10" y="-10" width="20" height="20" rx="1.5" transform="rotate(45)" fill="#FFE082"/>
+    <circle cx="0" cy="0" r="4" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Small Satellite Stars -->
+  <circle cx="28" cy="32" r="1.8" fill="#D4AF37"/>
+  <circle cx="34" cy="78" r="1.5" fill="#D4AF37"/>
+  <circle cx="94" cy="24" r="1.5" fill="#D4AF37"/>
+  <circle cx="98" cy="80" r="2.0" fill="#D4AF37"/>
+</svg>

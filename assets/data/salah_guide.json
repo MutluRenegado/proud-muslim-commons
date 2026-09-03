@@ -1,0 +1,107 @@
+{
+  "wuduSteps": [
+    {
+      "step": 1,
+      "title": "Niyyah & Bismillah",
+      "description": "Make the silent intention in your heart and say 'Bismillah'."
+    },
+    {
+      "step": 2,
+      "title": "Washing Hands",
+      "description": "Wash both hands up to the wrists thoroughly 3 times."
+    },
+    {
+      "step": 3,
+      "title": "Rinsing Mouth",
+      "description": "Rinse your mouth thoroughly 3 times with your right hand."
+    },
+    {
+      "step": 4,
+      "title": "Inhaling Water in Nose",
+      "description": "Sniff water gently into nostrils and blow out 3 times."
+    },
+    {
+      "step": 5,
+      "title": "Washing Face",
+      "description": "Wash your entire face from hairline to chin 3 times."
+    },
+    {
+      "step": 6,
+      "title": "Washing Arms to Elbows",
+      "description": "Wash right arm to elbow 3 times, then left arm 3 times."
+    },
+    {
+      "step": 7,
+      "title": "Wiping Head (Masah)",
+      "description": "Wipe over head with wet hands once."
+    },
+    {
+      "step": 8,
+      "title": "Wiping Ears",
+      "description": "Wipe inside and outside of both ears once."
+    },
+    {
+      "step": 9,
+      "title": "Washing Feet to Ankles",
+      "description": "Wash right foot then left foot including ankles 3 times."
+    }
+  ],
+  "salahSteps": [
+    {
+      "step": 1,
+      "title": "Takbirat al-Ihram",
+      "arabic": "اللَّهُ أَكْبَرُ",
+      "transliteration": "Allahu Akbar",
+      "description": "Face Qibla, raise hands and begin prayer."
+    },
+    {
+      "step": 2,
+      "title": "Qiyam & Fatihah",
+      "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ...",
+      "transliteration": "Bismillahir-Rahmanir-Rahim...",
+      "description": "Recite Surah Al-Fatihah and an additional passage from the Quran."
+    },
+    {
+      "step": 3,
+      "title": "Ruku (Bowing)",
+      "arabic": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+      "transliteration": "Subhana Rabbiyal-'Azeem (3x)",
+      "description": "Bow with back straight and hands on knees."
+    },
+    {
+      "step": 4,
+      "title": "I'tidal (Standing)",
+      "arabic": "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ • رَبَّنَا وَلَكَ الْحَمْدُ",
+      "transliteration": "Sami'allahu liman hamidah • Rabbana wa lakal-hamd",
+      "description": "Rise up straight and praise Allah."
+    },
+    {
+      "step": 5,
+      "title": "Sujud (Prostration)",
+      "arabic": "سُبْحَانَ رَبِّيَ الأَعْلَى",
+      "transliteration": "Subhana Rabbiyal-A'la (3x)",
+      "description": "Prostrate on 7 limbs, praising Allah."
+    },
+    {
+      "step": 6,
+      "title": "Jalsah (Sitting)",
+      "arabic": "رَبِّ اغْفِرْ لِي",
+      "transliteration": "Rabbigh-fir li",
+      "description": "Sit calmly between two prostrations."
+    },
+    {
+      "step": 7,
+      "title": "Tashahhud",
+      "arabic": "التَّحِيَّاتُ لِلَّهِ...",
+      "transliteration": "At-Tahiyyatu lillah...",
+      "description": "Recite the testimony of faith and Durood Ibrahim."
+    },
+    {
+      "step": 8,
+      "title": "Tasleem",
+      "arabic": "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
+      "transliteration": "As-Salamu 'alaykum wa Rahmatullah",
+      "description": "Turn head right then left to end prayer."
+    }
+  ]
+}

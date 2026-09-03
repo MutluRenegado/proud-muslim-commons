@@ -29,7 +29,7 @@
   "fullTimetable": "Jadwal Lengkap",
   "dailyHadithGem": "Mutiara Hadis Harian",
   "ayahOfTheDay": "Ayat Hari Ini",
-  "countdownTo": "Hitung mundur ke",
+  "countdownTo": "Hitung mundur ke shalat berikutnya",
   "inTime": "dalam",
   "holyQuran": "Al-Qur'an Suci",
   "qiblaFinder": "Pencari Kiblat",
@@ -214,5 +214,13 @@
   "audioPlaybackError": "Gagal memutar audio.",
   "fourDynamicThemes": "4 Tema Dinamis",
   "typographyAccessibility": "Tipografi & Aksesibilitas",
-  "qiblaTipsTitle": "Kalibrasi Kompas & Tips"
+  "qiblaTipsTitle": "Kalibrasi Kompas & Tips",
+  "detectingLocation": "Mendeteksi lokasi...",
+  "changeLocation": "Ubah Lokasi",
+  "locationSource": "Sumber Lokasi",
+  "gpsAuto": "GPS (Otomatis)",
+  "manualSelected": "Dipilih Manual",
+  "savedLocation": "Lokasi Tersimpan",
+  "timeZoneLabel": "Zona Waktu",
+  "currentLocationStatus": "Lokasi Saat Ini"
 }

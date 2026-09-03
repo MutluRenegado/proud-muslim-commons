@@ -29,7 +29,7 @@
   "fullTimetable": "الجدول الزمني الكامل",
   "dailyHadithGem": "درة الحديث اليومية",
   "ayahOfTheDay": "آية اليوم",
-  "countdownTo": "الوقت المتبقي حتى",
+  "countdownTo": "الوقت المتبقي للصلاة القادمة",
   "inTime": "خلال",
   "holyQuran": "القرآن الكريم",
   "qiblaFinder": "محدد القبلة",
@@ -214,5 +214,13 @@
   "audioPlaybackError": "تعذر تشغيل الصوت. يرجى المحاولة مرة أخرى.",
   "fourDynamicThemes": "٤ سمات ديناميكية",
   "typographyAccessibility": "الخط وإمكانية الوصول",
-  "qiblaTipsTitle": "معايرة البوصلة ونصائح"
+  "qiblaTipsTitle": "معايرة البوصلة ونصائح",
+  "detectingLocation": "جاري تحديد الموقع...",
+  "changeLocation": "تغيير الموقع",
+  "locationSource": "مصدر الموقع",
+  "gpsAuto": "GPS (تلقائي)",
+  "manualSelected": "محدد يدويًا",
+  "savedLocation": "الموقع المحفوظ",
+  "timeZoneLabel": "المنطقة الزمنية",
+  "currentLocationStatus": "الموقع الحالي"
 }

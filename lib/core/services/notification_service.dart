@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 import '../services/storage_service.dart';
+import '../services/timezone_service.dart';
+import '../services/time_service.dart';
 import '../../models/prayer_time_model.dart';
 
 class NotificationService {
@@ -14,7 +15,7 @@ class NotificationService {
   static Future<void> init() async {
     if (_isInitialized) return;
     try {
-      tz.initializeTimeZones();
+      TimezoneService.init();
 
       const AndroidInitializationSettings androidSettings =
           AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -65,12 +66,12 @@ class NotificationService {
     final preAzanMin = StorageService.reminderBeforeAzanMinutes;
 
     final scheduleList = [
-      {'name': 'Fajr', 'time': times.fajr, 'id': 101},
-      {'name': 'Sunrise', 'time': times.sunrise, 'id': 102},
-      {'name': 'Dhuhr', 'time': times.dhuhr, 'id': 103},
-      {'name': 'Asr', 'time': times.asr, 'id': 104},
-      {'name': 'Maghrib', 'time': times.maghrib, 'id': 105},
-      {'name': 'Isha', 'time': times.isha, 'id': 106},
+      {'name': 'Fajr', 'timeUtc': times.fajrUtc, 'id': 101},
+      {'name': 'Sunrise', 'timeUtc': times.sunriseUtc, 'id': 102},
+      {'name': 'Dhuhr', 'timeUtc': times.dhuhrUtc, 'id': 103},
+      {'name': 'Asr', 'timeUtc': times.asrUtc, 'id': 104},
+      {'name': 'Maghrib', 'timeUtc': times.maghribUtc, 'id': 105},
+      {'name': 'Isha', 'timeUtc': times.ishaUtc, 'id': 106},
     ];
 
     String androidRawResourceFor(String prayerName) {
@@ -90,10 +91,13 @@ class NotificationService {
       }
     }
 
+    final location = TimezoneService.getLocation(times.ianaTimeZone);
+    final nowUtc = TimeService.nowUtc();
+
     for (final item in scheduleList) {
       final name = item['name'] as String;
       final key = name.toLowerCase();
-      final time = item['time'] as DateTime;
+      final timeUtc = item['timeUtc'] as DateTime;
       final id = item['id'] as int;
       final isPrayer = key != 'sunrise';
       final playAdhan = isPrayer &&
@@ -107,9 +111,9 @@ class NotificationService {
         continue;
       }
 
-      if (time.isAfter(DateTime.now())) {
+      if (timeUtc.isAfter(nowUtc)) {
         try {
-          final tzTime = tz.TZDateTime.from(time, tz.local);
+          final tzTime = tz.TZDateTime.from(timeUtc, location);
           final rawResource = androidRawResourceFor(name);
           final channelId = playAdhan
               ? 'proud_muslim_${key}_${rawResource}_${vibrate ? 'vib' : 'novib'}_v2'
@@ -150,12 +154,10 @@ class NotificationService {
           );
 
           if (preAzanMin > 0 &&
-              time
-                  .subtract(Duration(minutes: preAzanMin))
-                  .isAfter(DateTime.now())) {
+              timeUtc.subtract(Duration(minutes: preAzanMin)).isAfter(nowUtc)) {
             final preTime = tz.TZDateTime.from(
-              time.subtract(Duration(minutes: preAzanMin)),
-              tz.local,
+              timeUtc.subtract(Duration(minutes: preAzanMin)),
+              location,
             );
             await _notifications.zonedSchedule(
               id + 100,

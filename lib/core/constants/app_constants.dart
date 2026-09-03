@@ -16,10 +16,12 @@ class AppConstants {
   static const String productIdAnnualPremium = 'proudmuslim_annual_sub';
 
   // Defaults
-  static const double defaultLat = 21.4225;
-  static const double defaultLng = 39.8262;
-  static const String defaultCity = 'Makkah';
-  static const String defaultCountry = 'Saudi Arabia';
+  static const double defaultLat = 41.0082; // Istanbul default
+  static const double defaultLng = 28.9784;
+  static const String defaultCity = 'Istanbul';
+  static const String defaultCountry = 'Turkey';
+  static const String defaultIanaTimeZone = 'Europe/Istanbul';
+  static const String defaultCalcMethod = 'turkeyDiyanet';
 
   // Storage Keys
   static const String keyUserName = 'user_name';
@@ -37,16 +39,20 @@ class AppConstants {
   static const String keyLocationMode = 'location_mode';
   static const String keyLat = 'latitude';
   static const String keyLng = 'longitude';
+  static const String keyElevation = 'elevation';
   static const String keyCity = 'city';
   static const String keyCountry = 'country';
+  static const String keyIanaTimeZone = 'iana_time_zone';
   static const String keyHomeCity = 'home_city';
   static const String keyHomeCountry = 'home_country';
   static const String keyHomeLat = 'home_latitude';
   static const String keyHomeLng = 'home_longitude';
+  static const String keyHomeIanaTimeZone = 'home_iana_time_zone';
   static const String keyCalcMethod = 'calc_method';
   static const String keyJuristicMethod = 'juristic_method';
   static const String keyHighLatitudeRule = 'high_latitude_rule';
   static const String keyRoundingMethod = 'rounding_method';
+  static const String keyOfflinePrayerSchedule = 'offline_prayer_schedule_json';
   static const String keyAzanEnabled = 'azan_enabled';
   static const String keyAzanSound = 'azan_sound';
   static const String keyAzanVolume = 'azan_volume';

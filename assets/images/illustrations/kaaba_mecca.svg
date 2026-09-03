@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <radialGradient id="kaabaAura" cx="60" cy="60" r="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kaabaFront" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1A1A"/>
+      <stop offset="100%" stop-color="#0D0D0D"/>
+    </linearGradient>
+    <linearGradient id="kaabaSide" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2D2D2D"/>
+      <stop offset="100%" stop-color="#171717"/>
+    </linearGradient>
+  </defs>
+  <!-- Radiant Background Glow -->
+  <circle cx="60" cy="60" r="44" fill="url(#kaabaAura)"/>
+
+  <!-- Marble Base (Mataf) -->
+  <ellipse cx="60" cy="94" rx="46" ry="14" fill="#EAEAEA" fill-opacity="0.25"/>
+  <ellipse cx="60" cy="94" rx="42" ry="12" stroke="#D4AF37" stroke-opacity="0.4" stroke-width="1.2"/>
+
+  <!-- Kaaba Roof (Isometric Top) -->
+  <polygon points="60,26 88,38 60,48 32,38" fill="#383838"/>
+  <polygon points="60,28 85,38 60,46 35,38" fill="#222222"/>
+
+  <!-- Kaaba Left/Front Wall -->
+  <polygon points="32,38 60,48 60,88 32,76" fill="url(#kaabaFront)"/>
+  
+  <!-- Kaaba Right Wall -->
+  <polygon points="60,48 88,38 88,76 60,88" fill="url(#kaabaSide)"/>
+
+  <!-- Golden Kiswah Belt (Hizam) - Left -->
+  <polygon points="32,48 60,58 60,63 32,53" fill="#D4AF37"/>
+  <!-- Golden Kiswah Belt - Right -->
+  <polygon points="60,58 88,48 88,53 60,63" fill="#C5A028"/>
+
+  <!-- Ornate Kiswah Embroidery Patterns -->
+  <line x1="36" y1="50.5" x2="56" y2="57.5" stroke="#FFF3B0" stroke-width="0.8" stroke-dasharray="2 1"/>
+  <line x1="64" y1="57.5" x2="84" y2="50.5" stroke="#FFF3B0" stroke-width="0.8" stroke-dasharray="2 1"/>
+
+  <!-- Golden Door (Bab ar-Rahman) -->
+  <polygon points="40,56 50,59.5 50,78 40,74" fill="#D4AF37"/>
+  <polygon points="42,58 48,60.5 48,76 42,73" fill="#FFD54F"/>
+  <circle cx="45" cy="67" r="1" fill="#795548"/>
+
+  <!-- Black Stone Corner (Hajar al-Aswad Silver Frame) -->
+  <ellipse cx="60" cy="87" rx="3.5" ry="2.5" fill="#C0C0C0"/>
+  <circle cx="60" cy="87" r="1.5" fill="#000000"/>
+
+  <!-- Golden Spout (Mizab ar-Rahman) -->
+  <polygon points="44,33 46,31 48,34 46,36" fill="#FFD54F"/>
+
+  <!-- Floating Golden Stars -->
+  <circle cx="24" cy="28" r="1.5" fill="#D4AF37"/>
+  <circle cx="96" cy="30" r="1.5" fill="#D4AF37"/>
+  <circle cx="60" cy="16" r="2.0" fill="#D4AF37"/>
+</svg>
