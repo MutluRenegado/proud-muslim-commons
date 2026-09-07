@@ -698,4 +698,358 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get currentLocationStatus => 'Текущая локация';
+
+  @override
+  String get upgradeToPro => 'Перейти на Proud Muslim Pro';
+
+  @override
+  String get premiumActive => 'Proud Muslim Pro активен';
+
+  @override
+  String get appearanceAndTheme => 'Оформление и Тема';
+
+  @override
+  String get prayerAndAzan => 'Намаз и Азан';
+
+  @override
+  String get calculationAndJuristic => 'Метод расчета и Мазхаб';
+
+  @override
+  String get locationSettings => 'Местоположение и GPS';
+
+  @override
+  String get appFeatures => 'Духовные напоминания и Делиться';
+
+  @override
+  String get helpAndSupport => 'Помощь и FAQ';
+
+  @override
+  String get salahGuide => 'Обучение намазу';
+
+  @override
+  String get wuduGuide => 'Обучение омовению (Вуду)';
+
+  @override
+  String get playAdhan => 'Воспроизвести азан';
+
+  @override
+  String get previewAdhan => 'Прослушать азан';
+
+  @override
+  String get selectAdhanSound => 'Выбрать звук азана';
+
+  @override
+  String get prePrayerReminder => 'Напоминание перед намазом';
+
+  @override
+  String get customMinutes => 'минут';
+
+  @override
+  String minutesCount(Object count) {
+    return '$count минут';
+  }
+
+  @override
+  String minBefore(Object minutes) {
+    return 'за $minutes мин. до';
+  }
+
+  @override
+  String minAfterAzan(Object minutes) {
+    return 'через $minutes мин. после азана';
+  }
+
+  @override
+  String get prePrayerAndIqamahReminders =>
+      'НАПОМИНАНИЯ ПЕРЕД НАМАЗОМ И ИКАМАТОМ';
+
+  @override
+  String get individualPrayerAlerts => 'ИНДИВИДУАЛЬНЫЕ УВЕДОМЛЕНИЯ О НАМАЗАХ';
+
+  @override
+  String get adhanOn => 'Азан Включен';
+
+  @override
+  String get adhanOff => 'Азан Выключен';
+
+  @override
+  String get fajrAdhan => 'Азан Фаджр';
+
+  @override
+  String get dhuhrAdhan => 'Азан Зухр';
+
+  @override
+  String get asrAdhan => 'Азан Аср';
+
+  @override
+  String get maghribAdhan => 'Азан Магриб';
+
+  @override
+  String get ishaAdhan => 'Азан Иша';
+
+  @override
+  String get vibrateOnScheduledAdhan => 'Вибрация при начале звучания азана';
+
+  @override
+  String get silentModeDndOverride =>
+      'Игнорировать беззвучный режим / «Не беспокоить»';
+
+  @override
+  String get respectSystemSilentMode =>
+      'Соблюдать настройки беззвучного режима системы';
+
+  @override
+  String get languageAndRegionalSettings => 'НАСТРОЙКИ ЯЗЫКА И РЕГИОНА';
+
+  @override
+  String get showSecondsInCountdown => 'Показывать секунды в обратном отсчете';
+
+  @override
+  String get displayLiveSecondTicking =>
+      'Показывать секунды в карточке следующего намаза';
+
+  @override
+  String get numeralFormat => 'Формат цифр';
+
+  @override
+  String get westernArabicNumerals => 'Западные арабские цифры (1, 2, 3...)';
+
+  @override
+  String get smokedGraphiteThemeDesc =>
+      'Дымчатое графитовое стекло с акцентами ледяного серебра';
+
+  @override
+  String get emeraldNightThemeDesc =>
+      'Изумрудный бархат с теплыми золотыми исламскими узорами';
+
+  @override
+  String get royalOudThemeDesc =>
+      'Глубокий обсидиановый кристалл с сиянием янтарного шампанского';
+
+  @override
+  String get bismillahQuote => 'С именем Аллаха, Милостивого, Милосердного.';
+
+  @override
+  String get dailySpiritualReminders => 'ЕЖЕДНЕВНЫЕ ДУХОВНЫЕ НАПОМИНАНИЯ';
+
+  @override
+  String get masterDailyReminders => 'Все ежедневные напоминания';
+
+  @override
+  String get masterDailyRemindersDesc =>
+      'Включить или отключить все уведомления приложения';
+
+  @override
+  String get dailyAyahInspiration => 'Аят дня';
+
+  @override
+  String get dailyAyahInspirationDesc =>
+      'Получайте каждое утро аят из Корана с размышлением';
+
+  @override
+  String get dailyHadithGemDesc =>
+      'Получайте достоверный пророческий хадис каждый день';
+
+  @override
+  String get morningEveningAzkar => 'Утренние и вечерние азкары';
+
+  @override
+  String get morningEveningAzkarDesc =>
+      'Напоминания об утренних и вечерних мольбах из «Крепости мусульманина»';
+
+  @override
+  String get spreadTheMessage => 'РАСПРОСТРАНЯЙТЕ БЛАГО — САДАКА ДЖАРИЯ';
+
+  @override
+  String get shareProudMuslimTitle =>
+      'Поделитесь Proud Muslim с семьей и друзьями';
+
+  @override
+  String get shareHadithQuote =>
+      'Указавшему на благое полагается такая же награда, как и совершившему его (Хадис)';
+
+  @override
+  String get shareAppText =>
+      'Proud Muslim: Коран, Время намаза, Кибла и Азкары — исповедуйте свою религию каждый день. Скачать: https://proudmuslim.app';
+
+  @override
+  String get istanbulTurkeyGps => 'Стамбул, Турция (GPS)';
+
+  @override
+  String get prayerTimeDiagnostics => 'Диагностика расписания и времени';
+
+  @override
+  String get inspectUtcIanaSolar =>
+      'Просмотр записей UTC, часового пояса IANA и солнечного времени';
+
+  @override
+  String get emailSupport => 'Поддержка по почте';
+
+  @override
+  String get submitFeedback => 'Отправить отзыв';
+
+  @override
+  String get faqQ1 =>
+      'Как обеспечить 100% точность времени намаза для моего местоположения?';
+
+  @override
+  String get faqA1 =>
+      'Разрешите доступ к GPS-геолокации для автоматического расчета или вручную выберите признанную религиозную организацию вашего региона (например, ДУМ РФ, Diyanet, MWL или ISNA).';
+
+  @override
+  String get faqQ2 => 'Как работает компас Киблы и как его откалибровать?';
+
+  @override
+  String get faqA2 =>
+      'Компас использует магнитный датчик и GPS для вычисления направления на Каабу в Мекке. Если точность снизилась, опишите телефоном восьмерку для калибровки.';
+
+  @override
+  String get faqQ3 => 'Как работает 3-дневный бесплатный пробный период?';
+
+  @override
+  String get faqA3 =>
+      'При активации пробного периода Proud Muslim Pro вы получаете 3 дня полного доступа ко всем звукам азана, темам и функциям. Отменить можно в любое время в Google Play.';
+
+  @override
+  String get faqQ4 => 'Являются ли переводы Корана и хадисы достоверными?';
+
+  @override
+  String get faqA4 =>
+      'Да, все тексты аятов, переводы смыслов (Э. Кулиев и др.), 40 хадисов имама ан-Навави и дуа из «Крепости мусульманина» взяты из проверенных источников.';
+
+  @override
+  String get faqQ5 => 'Как работает чтение и прослушивание офлайн?';
+
+  @override
+  String get faqA5 =>
+      'Арабский текст Корана, 99 Имен и азкары встроены в приложение. Полные переводы можно скачать в настройках ридера для чтения без интернета.';
+
+  @override
+  String get aboutTheApp => 'О ПРИЛОЖЕНИИ';
+
+  @override
+  String get aboutAppDesc =>
+      'Proud Muslim — ваш надежный исламский спутник для ежедневного поклонения, чтения Корана, точного времени намаза и духовного роста.';
+
+  @override
+  String get developerInfo => 'Разработчик';
+
+  @override
+  String get companyInfo => 'ANM Digital Labs';
+
+  @override
+  String get versionLabel => 'Версия';
+
+  @override
+  String get featurePrayerTimesDesc =>
+      'Астрономически точное расписание намаза с мировыми методами расчета.';
+
+  @override
+  String get featureQuranDesc =>
+      'Все 114 сур османским шрифтом, переводы смыслов, аудио-чтение и работа офлайн.';
+
+  @override
+  String get featureQiblaDesc =>
+      '3D-компас Киблы с приятным виброоткликом при совмещении с Каабой.';
+
+  @override
+  String get featureAzkarDesc =>
+      'Достоверные мольбы из «Крепости мусульманина» на утро, вечер и каждый день.';
+
+  @override
+  String get feature99NamesDesc =>
+      '99 Прекрасных Имен Аллаха со значениями, кораническими аятами и аудио.';
+
+  @override
+  String get featureZakatDesc =>
+      'Шариатский калькулятор закята с расчетом нисаба и категорий имущества.';
+
+  @override
+  String get copyrightNotice => '© 2026 ANM Digital Labs. Все права защищены.';
+
+  @override
+  String get termsOfUse => 'Условия использования';
+
+  @override
+  String get legalInformation => 'Юридическая информация';
+
+  @override
+  String get licenses => 'Лицензии';
+
+  @override
+  String get openInBrowser => 'Открыть в браузере';
+
+  @override
+  String get unableToOpenPage => 'Не удалось открыть страницу';
+
+  @override
+  String get tryAgain => 'Повторить попытку';
+
+  @override
+  String get dataDeletionInfo =>
+      'Для запроса на удаление данных напишите на support@proudmuslim.app.';
+
+  @override
+  String get ghuslGuide => 'Руководство по гуслю';
+
+  @override
+  String get ghuslOverviewTitle => 'Гусль (Полное ритуальное омовение)';
+
+  @override
+  String get ghuslOverviewDesc =>
+      'Гусль — полное ритуальное омовение, обязательное после состояния джанаба, менструации, послеродового очищения, а также рекомендуемая сунна перед пятничным намазом.';
+
+  @override
+  String get whenGhuslRequired => 'Когда гусль является обязательным';
+
+  @override
+  String get ghuslObligatoryFarz =>
+      'Обязательные действия (фарды): Тщательное полоскание рта, полоскание носа и омовение всего тела без оставления сухих участков.';
+
+  @override
+  String get ghuslRecommendedSunnah =>
+      'Порядок согласно Сунне: Намерение, мытье рук, подмывание, полное малое омовение (вуду), троекратное обливание головы и омовение правой, а затем левой стороны тела.';
+
+  @override
+  String get translationLanguage => 'Язык перевода';
+
+  @override
+  String get translatorEdition => 'Автор перевода';
+
+  @override
+  String get narrationVoice => 'Голос чтения';
+
+  @override
+  String get voiceMale => 'Мужской';
+
+  @override
+  String get voiceFemale => 'Женский';
+
+  @override
+  String get downloadForOfflineUse => 'Скачать для офлайн-чтения';
+
+  @override
+  String downloadingProgress(Object percent) {
+    return 'Загрузка ($percent%)...';
+  }
+
+  @override
+  String downloadSuccessMessage(Object language) {
+    return 'Перевод на $language язык скачан для чтения офлайн.';
+  }
+
+  @override
+  String get downloadErrorMessage =>
+      'Не удалось скачать. Проверьте подключение к сети.';
+
+  @override
+  String get offlineAvailable => 'Доступно офлайн';
+
+  @override
+  String get playFullSurah => 'Слушать суру целиком';
+
+  @override
+  String listenInLang(Object lang) {
+    return 'Слушать на $lang';
+  }
 }

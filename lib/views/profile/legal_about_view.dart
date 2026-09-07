@@ -17,10 +17,18 @@ class LegalAboutView extends StatelessWidget {
   Future<void> _launchWebUrl(String url) async {
     final uri = Uri.parse(url);
     try {
-      if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      final launched = await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
+      if (!launched) {
+        await launchUrl(uri, mode: LaunchMode.platformDefault);
       }
-    } catch (_) {}
+    } catch (_) {
+      try {
+        await launchUrl(uri, mode: LaunchMode.inAppBrowserView);
+      } catch (_) {}
+    }
   }
 
   @override
@@ -141,7 +149,7 @@ class LegalAboutView extends StatelessWidget {
                     border: Border.all(color: Colors.white24),
                   ),
                   child: Text(
-                    'Version ${AppConstants.appVersion} (${AppConstants.appBuildNumber})',
+                    '${l10n.versionLabel} ${AppConstants.appVersion} (${AppConstants.appBuildNumber})',
                     style: GoogleFonts.outfit(
                       fontSize: 12,
                       color: Colors.white70,
@@ -155,15 +163,15 @@ class LegalAboutView extends StatelessWidget {
           const SizedBox(height: 20),
 
           // About the App
-          const DeenSectionHeader(
-            title: 'ABOUT THE APP',
+          DeenSectionHeader(
+            title: l10n.aboutTheApp,
             icon: Icons.info_outline_rounded,
           ),
           const SizedBox(height: 8),
           DeenCard(
             padding: const EdgeInsets.all(16),
             child: Text(
-              'Proud Muslim is designed to accompany you in your daily Islamic worship. Featuring accurate prayer times, astronomical Qibla compass, authentic Hisn al-Muslim daily Azkar, digital Tasbih, and a complete 14-language Holy Quran reader with canonical Arabic scripture.',
+              l10n.aboutAppDesc,
               style: GoogleFonts.plusJakartaSans(
                 fontSize: 13,
                 height: 1.5,
@@ -174,8 +182,8 @@ class LegalAboutView extends StatelessWidget {
           const SizedBox(height: 20),
 
           // Legal Links & Attribution
-          const DeenSectionHeader(
-            title: 'LEGAL & SOURCE ATTRIBUTIONS',
+          DeenSectionHeader(
+            title: l10n.legalInformation.toUpperCase(),
             icon: Icons.gavel_rounded,
           ),
           const SizedBox(height: 8),
@@ -266,6 +274,33 @@ class LegalAboutView extends StatelessWidget {
                     color: deen.textSecondary,
                   ),
                   onTap: () => _launchWebUrl(AppConstants.termsOfUseUrl),
+                ),
+                Divider(height: 1, color: deen.cardBorder),
+                ListTile(
+                  leading: Icon(
+                    Icons.verified_user_outlined,
+                    color: deen.accentPrimary,
+                  ),
+                  title: Text(
+                    l10n.licenses,
+                    style: GoogleFonts.plusJakartaSans(
+                      fontWeight: FontWeight.w600,
+                      color: deen.textPrimary,
+                    ),
+                  ),
+                  subtitle: Text(
+                    '${AppConstants.appName} Open Source & Dataset Licenses',
+                    style: GoogleFonts.plusJakartaSans(
+                      fontSize: 12,
+                      color: deen.textSecondary,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.open_in_new_rounded,
+                    size: 18,
+                    color: deen.textSecondary,
+                  ),
+                  onTap: () => _launchWebUrl(AppConstants.licensesUrl),
                 ),
                 Divider(height: 1, color: deen.cardBorder),
                 ListTile(
@@ -361,21 +396,11 @@ class LegalAboutView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Proud Muslim does not maintain external user accounts or track your identity on remote cloud servers. All personal preferences, bookmarks, tasbih counts, and location settings are stored locally on your device.',
+              l10n.dataDeletionInfo,
               style: GoogleFonts.plusJakartaSans(
                 fontSize: 13,
                 height: 1.4,
                 color: deen.textSecondary,
-              ),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              'To delete all data, you can clear app storage from Android App Settings or tap Reset Preferences in the app profile.',
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 13,
-                height: 1.4,
-                fontWeight: FontWeight.w500,
-                color: deen.textPrimary,
               ),
             ),
           ],

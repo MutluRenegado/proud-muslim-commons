@@ -696,4 +696,352 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get currentLocationStatus => 'الموقع الحالي';
+
+  @override
+  String get upgradeToPro => 'الترقية إلى Proud Muslim Pro';
+
+  @override
+  String get premiumActive => 'Proud Muslim Pro مفعل';
+
+  @override
+  String get appearanceAndTheme => 'المظهر والسمة';
+
+  @override
+  String get prayerAndAzan => 'الصلاة والأذان';
+
+  @override
+  String get calculationAndJuristic => 'طريقة الحساب والمذهب';
+
+  @override
+  String get locationSettings => 'الموقع ونظام GPS';
+
+  @override
+  String get appFeatures => 'التذكيرات الإيمانية والمشاركة';
+
+  @override
+  String get helpAndSupport => 'المساعدة والأسئلة الشائعة';
+
+  @override
+  String get salahGuide => 'دليل الصلاة';
+
+  @override
+  String get wuduGuide => 'دليل الوضوء';
+
+  @override
+  String get playAdhan => 'تشغيل الأذان';
+
+  @override
+  String get previewAdhan => 'معاينة الأذان';
+
+  @override
+  String get selectAdhanSound => 'اختيار صوت الأذان';
+
+  @override
+  String get prePrayerReminder => 'تذكير قبل الصلاة';
+
+  @override
+  String get customMinutes => 'دقائق';
+
+  @override
+  String minutesCount(Object count) {
+    return '$count دقيقة';
+  }
+
+  @override
+  String minBefore(Object minutes) {
+    return 'قبل $minutes دقيقة';
+  }
+
+  @override
+  String minAfterAzan(Object minutes) {
+    return 'بعد الأذان بـ $minutes دقيقة';
+  }
+
+  @override
+  String get prePrayerAndIqamahReminders => 'تنبيهات ما قبل الصلاة والإقامة';
+
+  @override
+  String get individualPrayerAlerts => 'تنبيهات الصلوات الفردية';
+
+  @override
+  String get adhanOn => 'الأذان مفعل';
+
+  @override
+  String get adhanOff => 'الأذان متوقف';
+
+  @override
+  String get fajrAdhan => 'أذان الفجر';
+
+  @override
+  String get dhuhrAdhan => 'أذان الظهر';
+
+  @override
+  String get asrAdhan => 'أذان العصر';
+
+  @override
+  String get maghribAdhan => 'أذان المغرب';
+
+  @override
+  String get ishaAdhan => 'أذان العشاء';
+
+  @override
+  String get vibrateOnScheduledAdhan => 'الاهتزاز عند بدء الأذان المجدول';
+
+  @override
+  String get silentModeDndOverride => 'تجاوز الوضع الصامت / عدم الإزعاج';
+
+  @override
+  String get respectSystemSilentMode => 'الالتزام بإعدادات الوضع الصامت للجهاز';
+
+  @override
+  String get languageAndRegionalSettings => 'إعدادات اللغة والمنطقة';
+
+  @override
+  String get showSecondsInCountdown => 'إظهار الثواني في العد التنازلي';
+
+  @override
+  String get displayLiveSecondTicking =>
+      'عرض الثواني الحية في بطاقة الصلاة القادمة';
+
+  @override
+  String get numeralFormat => 'صيغة الأرقام';
+
+  @override
+  String get westernArabicNumerals => 'الأرقام العربية الغربية (1, 2, 3...)';
+
+  @override
+  String get smokedGraphiteThemeDesc =>
+      'زجاج الغرافيت المدخن مع لمسات الفضة الجليدية';
+
+  @override
+  String get emeraldNightThemeDesc =>
+      'مخمل الزمرد الغني مع زخارف إسلامية ذهبية دافئة';
+
+  @override
+  String get royalOudThemeDesc =>
+      'كريستال الأوبسيديان العميق مع إشراقات العنبر والشمبانيا';
+
+  @override
+  String get bismillahQuote => 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
+
+  @override
+  String get dailySpiritualReminders => 'التذكيرات الإيمانية اليومية';
+
+  @override
+  String get masterDailyReminders => 'كل التذكيرات اليومية';
+
+  @override
+  String get masterDailyRemindersDesc =>
+      'تفعيل أو تعطيل جميع تنبيهات التطبيق والتذكيرات الإيمانية';
+
+  @override
+  String get dailyAyahInspiration => 'آية اليوم';
+
+  @override
+  String get dailyAyahInspirationDesc =>
+      'استقبل تدبراً قرآنياً يومياً في الصباح';
+
+  @override
+  String get dailyHadithGemDesc => 'استقبل حديثاً نبوياً صحيحاً يومياً';
+
+  @override
+  String get morningEveningAzkar => 'أذكار الصباح والمساء';
+
+  @override
+  String get morningEveningAzkarDesc =>
+      'تذكيرات لأذكار حصن المسلم في الصباح والمساء';
+
+  @override
+  String get spreadTheMessage => 'انشر الخير — صدقة جارية';
+
+  @override
+  String get shareProudMuslimTitle =>
+      'شارك تطبيق Proud Muslim مع العائلة والأصدقاء';
+
+  @override
+  String get shareHadithQuote => 'الدال على الخير كفاعله (حديث شريف)';
+
+  @override
+  String get shareAppText =>
+      'Proud Muslim: القرآن الكريم، مواقيت الصلاة، القبلة والأذكار - عش دينك كل يوم. حمله الآن: https://proudmuslim.app';
+
+  @override
+  String get istanbulTurkeyGps => 'إسطنبول، تركيا (GPS)';
+
+  @override
+  String get prayerTimeDiagnostics => 'تشخيص المواقيت والوقت';
+
+  @override
+  String get inspectUtcIanaSolar =>
+      'فحص سجلات توقيت UTC ومنطقة IANA والوقت الشمسي';
+
+  @override
+  String get emailSupport => 'دعم البريد الإلكتروني';
+
+  @override
+  String get submitFeedback => 'إرسال ملاحظات';
+
+  @override
+  String get faqQ1 => 'كيف أضمن دقة مواقيت الصلاة لموقعي بنسبة ١٠٠٪؟';
+
+  @override
+  String get faqA1 =>
+      'تأكد من منح إذن الموقع GPS لحساب الإحداثيات تلقائياً، أو اختر هيئة الحساب المعتمدة لبلدك يدوياً.';
+
+  @override
+  String get faqQ2 => 'كيف تعمل بوصلة القبلة وكيف تتم معايرتها؟';
+
+  @override
+  String get faqA2 =>
+      'تعتمد البوصلة على مستشعر الجهاز والموقع GPS لتحديد أقصر مسار دائري إلى الكعبة المشرفة. عاير البوصلة بتحريك الهاتف على شكل رقم 8.';
+
+  @override
+  String get faqQ3 => 'كيف تعمل الفترة التجريبية المجانية لمدة ٣ أيام؟';
+
+  @override
+  String get faqA3 =>
+      'عند بدء تجربة Proud Muslim Pro، تحصل على ٣ أيام مجانية للاستمتاع بجميع الميزات والأصوات الحصرية مع إمكانية الإلغاء في أي وقت عبر Google Play.';
+
+  @override
+  String get faqQ4 => 'هل ترجمات القرآن والأحاديث معتمدة وموثوقة؟';
+
+  @override
+  String get faqA4 =>
+      'نعم، جميع الآيات والتفاسير والأحاديث النبوية وأذكار حصن المسلم مأخوذة من مصادر إسلامية موثوقة ومعتمدة.';
+
+  @override
+  String get faqQ5 => 'كيف تعمل القراءة والاستماع دون إنترنت؟';
+
+  @override
+  String get faqA5 =>
+      'النص القرآني العربي وأسماء الله الحسنى والأذكار مدمجة بالكامل داخل التطبيق لتعمل دون إنترنت. ويمكن تحميل التراجم من إعدادات القارئ.';
+
+  @override
+  String get aboutTheApp => 'عن التطبيق';
+
+  @override
+  String get aboutAppDesc =>
+      'Proud Muslim رفيقك الإسلامي الشامل للعبادات اليومية، قراءة القرآن الكريم، مواقيت الصلاة الدقيقة، والارتقاء الروحي، بأعلى معايير الجودة والخصوصية.';
+
+  @override
+  String get developerInfo => 'المطور';
+
+  @override
+  String get companyInfo => 'ANM Digital Labs';
+
+  @override
+  String get versionLabel => 'الإصدار';
+
+  @override
+  String get featurePrayerTimesDesc =>
+      'مواقيت صلاة بحسابات فلكية دقيقة مع طرق حساب عالمية وتعديلات إقليمية.';
+
+  @override
+  String get featureQuranDesc =>
+      '١١٤ سورة كاملة بالرسم العثماني، تراجم متعددة، تلاوات صوتية، وقراءة دون اتصال.';
+
+  @override
+  String get featureQiblaDesc =>
+      'بوصلة قبلة ثلاثية الأبعاد تفاعلية مع اهتزاز دقيق عند محاذاة الكعبة المشرفة.';
+
+  @override
+  String get featureAzkarDesc =>
+      'أذكار حصن المسلم الصحيحة للصباح والمساء ومختلف الأوقات اليومية.';
+
+  @override
+  String get feature99NamesDesc =>
+      'أسماء الله الحسنى مع المعاني، الشواهد القرآنية، والنطق الصوتي.';
+
+  @override
+  String get featureZakatDesc =>
+      'حاسبة زكاة شرعية دقيقة مع تقييم النصاب وتصنيف الأصول المالية.';
+
+  @override
+  String get copyrightNotice => '© 2026 ANM Digital Labs. جميع الحقوق محفوظة.';
+
+  @override
+  String get termsOfUse => 'شروط الاستخدام';
+
+  @override
+  String get legalInformation => 'المعلومات القانونية';
+
+  @override
+  String get licenses => 'التراخيص';
+
+  @override
+  String get openInBrowser => 'فتح في المتصفح';
+
+  @override
+  String get unableToOpenPage => 'تعذر فتح الصفحة';
+
+  @override
+  String get tryAgain => 'إعادة المحاولة';
+
+  @override
+  String get dataDeletionInfo =>
+      'لطلبات حذف البيانات والحساب، يرجى التواصل عبر support@proudmuslim.app.';
+
+  @override
+  String get ghuslGuide => 'دليل الغسل';
+
+  @override
+  String get ghuslOverviewTitle => 'الغسل الكامل (دليل الطهارة الكبرى)';
+
+  @override
+  String get ghuslOverviewDesc =>
+      'الغسل هو تعميم البدن بالماء بنية الطهارة من الحدث الأكبر (الجنابة، الحيض، النفاس) وهو سنة مؤكدة لصلاة الجمعة والعيدين.';
+
+  @override
+  String get whenGhuslRequired => 'موجبات الغسل';
+
+  @override
+  String get ghuslObligatoryFarz =>
+      'فرائض الغسل: النية، والمضمضة، والاستنشاق، وتعميم سائر الجسد بالماء الطهور حتى لا يبقى موضع شعرة جافاً.';
+
+  @override
+  String get ghuslRecommendedSunnah =>
+      'صفة الغسل الكاملة على السنة: غسل اليدين، ثم الفرج وإزالة الأذى، ثم الوضوء الكامل، ثم إفاضة الماء على الرأس ثلاثاً حتى يبلغ أصول الشعر، ثم غسل الشق الأيمن ثم الأيسر ودلك البدن.';
+
+  @override
+  String get translationLanguage => 'لغة الترجمة';
+
+  @override
+  String get translatorEdition => 'طبعة الترجمة';
+
+  @override
+  String get narrationVoice => 'صوت القراءة';
+
+  @override
+  String get voiceMale => 'صوت رجالي';
+
+  @override
+  String get voiceFemale => 'صوت نسائي';
+
+  @override
+  String get downloadForOfflineUse => 'تحميل للاستخدام دون إنترنت';
+
+  @override
+  String downloadingProgress(Object percent) {
+    return 'جارٍ التحميل ($percent٪)...';
+  }
+
+  @override
+  String downloadSuccessMessage(Object language) {
+    return 'تم تحميل ترجمة $language للاستخدام دون اتصال.';
+  }
+
+  @override
+  String get downloadErrorMessage =>
+      'تعذر تحميل الترجمة. يرجى التحقق من الاتصال بالإنترنت.';
+
+  @override
+  String get offlineAvailable => 'متاح دون إنترنت';
+
+  @override
+  String get playFullSurah => 'تشغيل السورة كاملة';
+
+  @override
+  String listenInLang(Object lang) {
+    return 'استماع بـ $lang';
+  }
 }

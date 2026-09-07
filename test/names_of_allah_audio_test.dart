@@ -61,7 +61,7 @@ void main() {
       expect(name84.transliteration, contains('Mālik'));
       expect(name84.meaning.toLowerCase(), anyOf([contains('dominion'), contains('sovereignty'), contains('owner')]));
       expect(name84.getMeaning('tr').toLowerCase(), contains('mülk'));
-      expect(name84.arabicNativeAudio, contains('084.mp3'));
+      expect(name84.arabicNativeAudio, contains('84.mp3'));
     });
 
     test('Verify Name #85 (Dhul-Jalali wal-Ikram) Data Integrity', () {
@@ -70,13 +70,12 @@ void main() {
       expect(name85.transliteration, contains('Jalāl'));
       expect(name85.meaning.toLowerCase(), anyOf([contains('majesty'), contains('generosity'), contains('honor')]));
       expect(name85.getMeaning('tr').toLowerCase(), anyOf([contains('azamet'), contains('celal'), contains('ikram')]));
-      expect(name85.arabicNativeAudio, contains('085.mp3'));
+      expect(name85.arabicNativeAudio, contains('85.mp3'));
     });
 
     test('Verify physical existence of all 99 Native Arabic Pronunciation audio assets', () {
       for (int i = 1; i <= 99; i++) {
-        final padded = i.toString().padLeft(3, '0');
-        final path = 'assets/audio/names/arabic_pronunciation/$padded.mp3';
+        final path = 'assets/audio/names/arabic_pronunciation/$i.mp3';
         final file = File(path);
         expect(file.existsSync(), isTrue, reason: 'Asset $path must physically exist on disk');
         expect(file.lengthSync(), greaterThan(1000), reason: 'Audio file $path should not be empty');

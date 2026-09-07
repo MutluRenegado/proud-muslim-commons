@@ -16,7 +16,6 @@ import 'quran_sources_view.dart';
 import '../../l10n/app_localizations.dart';
 import '../../core/services/surah_localization_service.dart';
 import '../../core/services/ui_translation_service.dart';
-import '../../core/services/storage_service.dart';
 
 class SurahReaderView extends StatefulWidget {
   final SurahModel surah;
@@ -209,23 +208,12 @@ class _SurahReaderViewState extends State<SurahReaderView> {
                                   Icons.record_voice_over_rounded,
                                   size: 18,
                                 ),
-                                label: Text(
-                                  UiTranslationService.text(
-                                    'listenInLang',
-                                    langCode,
-                                    params: {
-                                      'lang': currentLang?.nativeName ??
-                                          currentLang?.englishName ??
-                                          '',
-                                    },
-                                  ),
-                                ),
+                                label: const Text('Read'),
                                 style: FilledButton.styleFrom(
                                   backgroundColor: deen.accentGoldBright,
                                   foregroundColor: Colors.black87,
                                 ),
                               ),
-                              _buildVoiceGenderPill(langCode, deen),
                             ],
                             IconButton.filledTonal(
                               onPressed: quranProv.stopFullSurahAudio,
@@ -483,7 +471,6 @@ class _SurahReaderViewState extends State<SurahReaderView> {
           builder: (context, setModalState) {
             final languages = quranProv.supportedLanguages;
             final editions = quranProv.availableEditionsForCurrentLanguage;
-            final langCode = Localizations.localeOf(context).languageCode;
 
             return SafeArea(
               top: false,
@@ -680,40 +667,7 @@ class _SurahReaderViewState extends State<SurahReaderView> {
                       const SizedBox(height: 16),
                     ],
 
-                    // 4. Spoken Voice Selection (Male / Female)
-                    Text(
-                      UiTranslationService.text('narrationVoice', langCode),
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
-                        color: deen.textPrimary,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    SegmentedButton<String>(
-                      segments: [
-                        ButtonSegment(
-                          value: 'male',
-                          icon: const Icon(Icons.man_rounded, size: 18),
-                          label: Text(
-                              UiTranslationService.text('voiceMale', langCode)),
-                        ),
-                        ButtonSegment(
-                          value: 'female',
-                          icon: const Icon(Icons.woman_rounded, size: 18),
-                          label: Text(UiTranslationService.text(
-                              'voiceFemale', langCode)),
-                        ),
-                      ],
-                      selected: {StorageService.ttsVoiceGender},
-                      onSelectionChanged: (val) async {
-                        await StorageService.setTtsVoiceGender(val.first);
-                        if (ctx.mounted) setModalState(() {});
-                        setState(() {});
-                      },
-                      showSelectedIcon: false,
-                    ),
-                    const SizedBox(height: 16),
+
 
                     // 5. Download for Offline Use Button
                     ...[
@@ -892,105 +846,6 @@ class _SurahReaderViewState extends State<SurahReaderView> {
           },
         );
       },
-    );
-  }
-
-  Widget _buildVoiceGenderPill(String langCode, DeenThemeTokens deen) {
-    final currentGender = StorageService.ttsVoiceGender;
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.18),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: Colors.white.withOpacity(0.35),
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          InkWell(
-            onTap: () async {
-              await StorageService.setTtsVoiceGender('male');
-              setState(() {});
-            },
-            borderRadius:
-                const BorderRadius.horizontal(left: Radius.circular(20)),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-              decoration: BoxDecoration(
-                color: currentGender == 'male'
-                    ? deen.accentGoldBright
-                    : Colors.transparent,
-                borderRadius:
-                    const BorderRadius.horizontal(left: Radius.circular(20)),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.man_rounded,
-                    size: 16,
-                    color:
-                        currentGender == 'male' ? Colors.black87 : Colors.white,
-                  ),
-                  const SizedBox(width: 3),
-                  Text(
-                    UiTranslationService.text('voiceMale', langCode),
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 11.5,
-                      fontWeight: FontWeight.bold,
-                      color: currentGender == 'male'
-                          ? Colors.black87
-                          : Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () async {
-              await StorageService.setTtsVoiceGender('female');
-              setState(() {});
-            },
-            borderRadius:
-                const BorderRadius.horizontal(right: Radius.circular(20)),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-              decoration: BoxDecoration(
-                color: currentGender == 'female'
-                    ? deen.accentGoldBright
-                    : Colors.transparent,
-                borderRadius:
-                    const BorderRadius.horizontal(right: Radius.circular(20)),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.woman_rounded,
-                    size: 16,
-                    color: currentGender == 'female'
-                        ? Colors.black87
-                        : Colors.white,
-                  ),
-                  const SizedBox(width: 3),
-                  Text(
-                    UiTranslationService.text('voiceFemale', langCode),
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 11.5,
-                      fontWeight: FontWeight.bold,
-                      color: currentGender == 'female'
-                          ? Colors.black87
-                          : Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

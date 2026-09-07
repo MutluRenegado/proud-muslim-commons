@@ -21,29 +21,24 @@ class SupportView extends StatelessWidget {
 
     final faqs = [
       {
-        'q': 'How do I ensure prayer times are 100% accurate for my location?',
-        'a':
-            'Enable Automatic Location (GPS) in Location Settings or select your exact city from the list. You can also adjust your preferred Calculation Method (e.g. MWL, ISNA, Umm Al-Qura) and Asr Juristic School (Standard vs Hanafi) in Calculation Settings.',
+        'q': l10n.faqQ1,
+        'a': l10n.faqA1,
       },
       {
-        'q': 'How does the Qibla Compass work and how do I calibrate it?',
-        'a':
-            'The compass uses your device\'s built-in magnetometer. Hold your phone flat horizontally away from metallic objects and wave it in a figure-8 motion a few times to calibrate sensor accuracy.',
+        'q': l10n.faqQ2,
+        'a': l10n.faqA2,
       },
       {
-        'q': 'How does the 3-Day Free Trial work?',
-        'a':
-            'New users receive a 3-day free trial of Proud Muslim Premium. You have full access to all reciters, full continuous Quran audio, and Islamic features. Unless cancelled at least 24 hours before the trial ends, the monthly subscription starts automatically.',
+        'q': l10n.faqQ3,
+        'a': l10n.faqA3,
       },
       {
-        'q': 'Can I listen to complete Surahs continuously?',
-        'a':
-            'Yes! When you open any Surah (e.g. Surah Al-Fatihah, Surah Yasin), press the Play button to listen from verse 1 all the way to the end without manually tapping each ayah.',
+        'q': l10n.faqQ4,
+        'a': l10n.faqA4,
       },
       {
-        'q': 'How is my location data handled?',
-        'a':
-            'We only access your device location to calculate solar prayer times and Qibla direction. Your personal data is never sold or used for tracking.',
+        'q': l10n.faqQ5,
+        'a': l10n.faqA5,
       },
     ];
 
@@ -93,7 +88,7 @@ class SupportView extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'Contact Us',
+                        l10n.contactUs,
                         style: GoogleFonts.outfit(
                           fontWeight: FontWeight.bold,
                           fontSize: 14.5,
@@ -101,7 +96,7 @@ class SupportView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Email Support',
+                        l10n.emailSupport,
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: 12,
                           color: deen.textSecondary,
@@ -132,7 +127,7 @@ class SupportView extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'Report Issue',
+                        l10n.reportIssue,
                         style: GoogleFonts.outfit(
                           fontWeight: FontWeight.bold,
                           fontSize: 14.5,
@@ -140,7 +135,7 @@ class SupportView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Submit Feedback',
+                        l10n.submitFeedback,
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: 12,
                           color: deen.textSecondary,
@@ -155,8 +150,8 @@ class SupportView extends StatelessWidget {
           const SizedBox(height: 22),
 
           // FAQ Section
-          const DeenSectionHeader(
-            title: 'FREQUENTLY ASKED QUESTIONS (FAQ)',
+          DeenSectionHeader(
+            title: l10n.frequentlyAskedQuestions,
             icon: Icons.help_outline_rounded,
           ),
           const SizedBox(height: 10),

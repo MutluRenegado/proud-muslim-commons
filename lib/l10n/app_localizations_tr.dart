@@ -700,4 +700,357 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get currentLocationStatus => 'Mevcut Konum';
+
+  @override
+  String get upgradeToPro => 'Proud Muslim Pro\'ya Geçin';
+
+  @override
+  String get premiumActive => 'Proud Muslim Pro Aktif';
+
+  @override
+  String get appearanceAndTheme => 'Görünüm ve Tema';
+
+  @override
+  String get prayerAndAzan => 'Namaz ve Ezan';
+
+  @override
+  String get calculationAndJuristic => 'Hesaplama Yöntemi & Mezhep';
+
+  @override
+  String get locationSettings => 'Konum ve GPS';
+
+  @override
+  String get appFeatures => 'Manevi Hatırlatıcılar ve Paylaşım';
+
+  @override
+  String get helpAndSupport => 'Yardım ve SSS';
+
+  @override
+  String get salahGuide => 'Namaz Rehberi';
+
+  @override
+  String get wuduGuide => 'Abdest Rehberi';
+
+  @override
+  String get playAdhan => 'Ezanı Oynat';
+
+  @override
+  String get previewAdhan => 'Ezanı Dinle';
+
+  @override
+  String get selectAdhanSound => 'Ezan Sesini Seçin';
+
+  @override
+  String get prePrayerReminder => 'Namaz Öncesi Hatırlatıcı';
+
+  @override
+  String get customMinutes => 'dakika';
+
+  @override
+  String minutesCount(Object count) {
+    return '$count dakika';
+  }
+
+  @override
+  String minBefore(Object minutes) {
+    return '$minutes dakika önce';
+  }
+
+  @override
+  String minAfterAzan(Object minutes) {
+    return 'Ezandan $minutes dakika sonra';
+  }
+
+  @override
+  String get prePrayerAndIqamahReminders =>
+      'NAMAZ ÖNCESİ VE KAMET HATIRLATICILARI';
+
+  @override
+  String get individualPrayerAlerts => 'BİREYSEL NAMAZ BİLDİRİMLERİ';
+
+  @override
+  String get adhanOn => 'Ezan Açık';
+
+  @override
+  String get adhanOff => 'Ezan Kapalı';
+
+  @override
+  String get fajrAdhan => 'İmsak (Sabah) Ezanı';
+
+  @override
+  String get dhuhrAdhan => 'Öğle Ezanı';
+
+  @override
+  String get asrAdhan => 'İkindi Ezanı';
+
+  @override
+  String get maghribAdhan => 'Akşam Ezanı';
+
+  @override
+  String get ishaAdhan => 'Yatsı Ezanı';
+
+  @override
+  String get vibrateOnScheduledAdhan => 'Planlanan ezan başladığında titreşim';
+
+  @override
+  String get silentModeDndOverride => 'Sessiz Mod / Rahatsız Etmeyin Ayarı';
+
+  @override
+  String get respectSystemSilentMode => 'Sistemin sessiz mod ayarlarına uy';
+
+  @override
+  String get languageAndRegionalSettings => 'DİL VE BÖLGE AYARLARI';
+
+  @override
+  String get showSecondsInCountdown => 'Geri Sayımda Saniyeleri Göster';
+
+  @override
+  String get displayLiveSecondTicking =>
+      'Sonraki namaz kartında saniyelik geri sayımı göster';
+
+  @override
+  String get numeralFormat => 'Rakam Biçimi';
+
+  @override
+  String get westernArabicNumerals => 'Batı Arap Rakamları (1, 2, 3...)';
+
+  @override
+  String get smokedGraphiteThemeDesc =>
+      'Soğuk buz gümüşü vurgulara sahip füme grafit cam';
+
+  @override
+  String get emeraldNightThemeDesc =>
+      'Sıcak altın İslami geometrilere sahip zümrüt yeşili kadife';
+
+  @override
+  String get royalOudThemeDesc =>
+      'Şampanya kehribar ışıltılı derin obsidiyen kristal';
+
+  @override
+  String get bismillahQuote => 'Rahmân ve Rahîm olan Allah’ın adıyla.';
+
+  @override
+  String get dailySpiritualReminders => 'GÜNLÜK MANEVİ HATIRLATICILAR';
+
+  @override
+  String get masterDailyReminders => 'Tüm Günlük Hatırlatıcılar';
+
+  @override
+  String get masterDailyRemindersDesc =>
+      'Tüm uygulama bildirimlerini ve manevi hatırlatıcıları açın veya kapatın';
+
+  @override
+  String get dailyAyahInspiration => 'Günün Ayeti';
+
+  @override
+  String get dailyAyahInspirationDesc =>
+      'Her sabah Kur’an’dan bir ayet ve açıklama alın';
+
+  @override
+  String get dailyHadithGemDesc => 'Her gün sahih bir hadis bildirimi alın';
+
+  @override
+  String get morningEveningAzkar => 'Sabah ve Akşam Zikirleri';
+
+  @override
+  String get morningEveningAzkarDesc =>
+      'Hisnü’l-Müslim sabah ve akşam zikirleri için hatırlatıcılar';
+
+  @override
+  String get spreadTheMessage => 'MESAJI YAYIN — SADAKA-İ CARİYE';
+
+  @override
+  String get shareProudMuslimTitle =>
+      'Proud Muslim’i Aileniz ve Arkadaşlarınızla Paylaşın';
+
+  @override
+  String get shareHadithQuote =>
+      'Hayra vesile olan, hayrı yapan gibidir. (Hadis)';
+
+  @override
+  String get shareAppText =>
+      'Proud Muslim: Kur\'an-ı Kerim, Namaz Vakitleri, Kıble ve Zikirler - Dininizi her gün yaşayın. İndirin: https://proudmuslim.app';
+
+  @override
+  String get istanbulTurkeyGps => 'İstanbul, Türkiye (GPS)';
+
+  @override
+  String get prayerTimeDiagnostics => 'Namaz ve Zaman Tanılama';
+
+  @override
+  String get inspectUtcIanaSolar =>
+      'UTC, IANA saat dilimi ve güneş zamanı kayıtlarını inceleyin';
+
+  @override
+  String get emailSupport => 'E-posta Desteği';
+
+  @override
+  String get submitFeedback => 'Geri Bildirim Gönderin';
+
+  @override
+  String get faqQ1 =>
+      'Bulunduğum konum için namaz vakitlerinin tamamen doğru olmasını nasıl sağlarım?';
+
+  @override
+  String get faqA1 =>
+      'Otomatik koordinat hesaplaması için GPS konum izninin verildiğinden emin olun veya hesaplama yöntemlerinden bulunduğunuz bölgeye uygun kurumu seçin (Türkiye için Diyanet İşleri Başkanlığı, Avrupa/Amerika için MWL, Kuzey Amerika için ISNA veya Suudi Arabistan için Ümmü\'l-Kura).';
+
+  @override
+  String get faqQ2 => 'Kıble pusulası nasıl çalışır ve nasıl kalibre edilir?';
+
+  @override
+  String get faqA2 =>
+      'Kıble pusulası cihazınızın manyetometre sensörünü ve GPS konumunu kullanarak Mekke-i Mükerreme\'deki Kâbe-i Muazzama\'ya olan en kısa büyük daire açısını hesaplar. Hassasiyet düşükse telefonunuzu manyetik alanlardan uzakta sekiz (∞) şeklinde hareket ettirerek kalibre edin.';
+
+  @override
+  String get faqQ3 => '3 Günlük Ücretsiz Deneme nasıl çalışır?';
+
+  @override
+  String get faqA3 =>
+      'Proud Muslim Pro deneme sürümünü başlattığınızda, 3 gün boyunca tüm özel ezan seslerine, temalara ve manevi özelliklere ücretsiz erişirsiniz. Google Play Abonelikler üzerinden dilediğiniz an yönetebilir veya iptal edebilirsiniz.';
+
+  @override
+  String get faqQ4 =>
+      'Kur\'an mealleri ve hadisler güvenilir kaynaklardan mı alınmıştır?';
+
+  @override
+  String get faqA4 =>
+      'Evet, tüm ayetler, mealler (Elmalılı Hamdi Yazır, Diyanet İşleri vb.), İmam Nevevî\'nin 40 Hadisi ve Hisnü\'l-Müslim duaları yetkili ve güvenilir İslami ilim kaynaklarından derlenmiştir.';
+
+  @override
+  String get faqQ5 => 'Çevrimdışı okuma ve sesli dinleme nasıl çalışır?';
+
+  @override
+  String get faqA5 =>
+      'Kur\'an-ı Kerim Arapça metni, 99 İsim ve günlük zikirler uygulamanın içinde çevrimdışı olarak yer alır. Mealleri çevrimdışı okumak için Kur\'an okuyucu ayarlarından ilgili dili indirebilirsiniz.';
+
+  @override
+  String get aboutTheApp => 'UYGULAMA HAKKINDA';
+
+  @override
+  String get aboutAppDesc =>
+      'Proud Muslim, günlük ibadetleriniz, Kur\'an-ı Kerim tilavetiniz, doğru namaz vakitleriniz ve manevi gelişiminiz için tasarlanmış seçkin bir İslami rehberdir. Yüksek mimari standartlar, gizlilik odaklı yapı ve huzur veren İslami estetikle geliştirilmiştir.';
+
+  @override
+  String get developerInfo => 'Geliştirici';
+
+  @override
+  String get companyInfo => 'ANM Digital Labs';
+
+  @override
+  String get versionLabel => 'Sürüm';
+
+  @override
+  String get featurePrayerTimesDesc =>
+      'Dünya çapında hesaplama yöntemleri ve bölgesel uyarlamalarla astronomik hassasiyette namaz vakitleri.';
+
+  @override
+  String get featureQuranDesc =>
+      'Osmani hatlı Arapça metin, çok dilli mealler, ayet ayet sesli dinleme ve çevrimdışı okuma ile 114 surenin tamamı.';
+
+  @override
+  String get featureQiblaDesc =>
+      'Kâbe hizalamasında dokunsal titreşim geri bildirimi sunan 3 boyutlu manyetik Kıble pusulası.';
+
+  @override
+  String get featureAzkarDesc =>
+      'Sabah, akşam ve günlük dualar için Hisnü\'l-Müslim kaynaklı sahih zikirler.';
+
+  @override
+  String get feature99NamesDesc =>
+      'Anlamları, Kur\'an referansları ve sesli telaffuzlarıyla Allah\'ın 99 Güzel İsmi.';
+
+  @override
+  String get featureZakatDesc =>
+      'Nisap değerleme ve detaylı varlık kategorileriyle kapsamlı İslami Zekat hesaplayıcı.';
+
+  @override
+  String get copyrightNotice =>
+      '© 2026 ANM Digital Labs. Tüm hakları saklıdır.';
+
+  @override
+  String get termsOfUse => 'Kullanım Şartları';
+
+  @override
+  String get legalInformation => 'Yasal Bilgiler';
+
+  @override
+  String get licenses => 'Lisanslar';
+
+  @override
+  String get openInBrowser => 'Tarayıcıda Aç';
+
+  @override
+  String get unableToOpenPage => 'Sayfa Açılamadı';
+
+  @override
+  String get tryAgain => 'Tekrar Dene';
+
+  @override
+  String get dataDeletionInfo =>
+      'Hesap ve veri silme talepleriniz için support@proudmuslim.app ile iletişime geçebilirsiniz.';
+
+  @override
+  String get ghuslGuide => 'Boy Abdesti (Gusül)';
+
+  @override
+  String get ghuslOverviewTitle => 'Boy Abdesti (Gusül Rehberi)';
+
+  @override
+  String get ghuslOverviewDesc =>
+      'Gusül (boy abdesti), cünüplük, hayız ve nifas hallerinden sonra farz olan; Cuma günleri ve bayramlarda ise sünnet kılınan tam bir hükmî temizliktir.';
+
+  @override
+  String get whenGhuslRequired => 'Guslün Farz Olduğu Haller';
+
+  @override
+  String get ghuslObligatoryFarz =>
+      'Guslün Farzları (3): Ağıza bolca su verip çalkalamak (Mazmaza), burna su çekip temizlemek (İstinşak) ve vücudun her yerini kuru yer kalmayacak şekilde yıkamak.';
+
+  @override
+  String get ghuslRecommendedSunnah =>
+      'Guslün Sünnetine Uygun Yapılışı: Niyet etmek, elleri ve avret yerlerini yıkamak, tam bir namaz abdesti almak, başa üç kez su döküp saç diplerine ulaştırmak, önce sağ sonra sol omuza su dökerek tüm bedeni ovalamak.';
+
+  @override
+  String get translationLanguage => 'Meal Dili';
+
+  @override
+  String get translatorEdition => 'Meal Müellifi';
+
+  @override
+  String get narrationVoice => 'Seslendirme';
+
+  @override
+  String get voiceMale => 'Erkek Sesi';
+
+  @override
+  String get voiceFemale => 'Kadın Sesi';
+
+  @override
+  String get downloadForOfflineUse => 'Çevrimdışı Kullanım İçin İndir';
+
+  @override
+  String downloadingProgress(Object percent) {
+    return 'İndiriliyor (%$percent)...';
+  }
+
+  @override
+  String downloadSuccessMessage(Object language) {
+    return '$language meali çevrimdışı kullanım için indirildi.';
+  }
+
+  @override
+  String get downloadErrorMessage =>
+      'Meal indirilemedi. Lütfen bağlantınızı kontrol edin.';
+
+  @override
+  String get offlineAvailable => 'Çevrimdışı Kullanılabilir';
+
+  @override
+  String get playFullSurah => 'Sureyi Dinle';
+
+  @override
+  String listenInLang(Object lang) {
+    return '$lang Dilinde Dinle';
+  }
 }

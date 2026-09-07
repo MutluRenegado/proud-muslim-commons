@@ -6,8 +6,8 @@
 // Name 90 = 5:11
 
 const quranReferencesByAllahName = [
-  [{ surah: 15, ayah: 110 }], // Name 1
-  [{ surah: 33, ayah: 43 }], // Name 2
+  [{ surah: 1, ayah: 1 }, { surah: 1, ayah: 3 }, { surah: 17, ayah: 110 }, { surah: 55, ayah: 1 }], // Name 1 (Er-Rahmân)
+  [{ surah: 1, ayah: 1 }, { surah: 1, ayah: 3 }, { surah: 33, ayah: 43 }], // Name 2 (Er-Rahîm)
   [{ surah: 59, ayah: 23 }, { surah: 20, ayah: 114 }, { surah: 23, ayah: 116 }], // Name 3
   [{ surah: 59, ayah: 23 }, { surah: 62, ayah: 1 }], // Name 4
   [{ surah: 59, ayah: 23 }], // Name 5

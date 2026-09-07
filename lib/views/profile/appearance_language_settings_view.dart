@@ -170,7 +170,7 @@ class AppearanceLanguageSettingsView extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '"In the name of Allah, the Entirely Merciful, the Especially Merciful."',
+                        l10n.bismillahQuote,
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: themeProv.translationFontSize,
                           fontStyle: FontStyle.italic,
@@ -186,8 +186,8 @@ class AppearanceLanguageSettingsView extends StatelessWidget {
           const SizedBox(height: 20),
 
           // Section 3: Language & Number Format
-          const DeenSectionHeader(
-            title: 'LANGUAGE & REGIONAL SETTINGS',
+          DeenSectionHeader(
+            title: l10n.languageAndRegionalSettings.toUpperCase(),
             icon: Icons.language_rounded,
           ),
           const SizedBox(height: 8),
@@ -225,14 +225,14 @@ class AppearanceLanguageSettingsView extends StatelessWidget {
                 Divider(height: 1, color: deen.cardBorder),
                 SwitchListTile(
                   title: Text(
-                    'Show Seconds in Countdown',
+                    l10n.showSecondsInCountdown,
                     style: GoogleFonts.plusJakartaSans(
                       fontWeight: FontWeight.w600,
                       color: deen.textPrimary,
                     ),
                   ),
                   subtitle: Text(
-                    'Display live second ticking on next prayer card',
+                    l10n.displayLiveSecondTicking,
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 12,
                       color: deen.textSecondary,
@@ -245,7 +245,7 @@ class AppearanceLanguageSettingsView extends StatelessWidget {
                 Divider(height: 1, color: deen.cardBorder),
                 ListTile(
                   title: Text(
-                    'Numeral Format',
+                    l10n.numeralFormat,
                     style: GoogleFonts.plusJakartaSans(
                       fontWeight: FontWeight.w600,
                       color: deen.textPrimary,
@@ -253,8 +253,8 @@ class AppearanceLanguageSettingsView extends StatelessWidget {
                   ),
                   subtitle: Text(
                     themeProv.numberFormat == 'easternArabic'
-                        ? 'Eastern Arabic (١, ٢, ٣...)'
-                        : 'Western Arabic (1, 2, 3...)',
+                        ? '${l10n.easternNumerals} (١, ٢, ٣...)'
+                        : '${l10n.westernNumerals} (1, 2, 3...)',
                     style: GoogleFonts.plusJakartaSans(
                       color: deen.accentPrimary,
                       fontWeight: FontWeight.bold,
@@ -282,6 +282,7 @@ class AppearanceLanguageSettingsView extends StatelessWidget {
     required bool isSelected,
     required DeenThemeTokens deen,
   }) {
+    final l10n = AppLocalizations.of(context)!;
     return DeenCard(
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(14),
@@ -377,7 +378,7 @@ class AppearanceLanguageSettingsView extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          'ACTIVE',
+                          l10n.active.toUpperCase(),
                           style: GoogleFonts.plusJakartaSans(
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
@@ -531,7 +532,7 @@ class AppearanceLanguageSettingsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Numeral Display Format',
+                  l10n.numeralFormat,
                   style: GoogleFonts.outfit(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

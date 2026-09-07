@@ -133,8 +133,8 @@ class _AppFeaturesSettingsViewState extends State<AppFeaturesSettingsView> {
           const SizedBox(height: 20),
 
           // Section 2: Islamic Daily Reminders
-          const DeenSectionHeader(
-            title: 'DAILY SPIRITUAL REMINDERS',
+          DeenSectionHeader(
+            title: l10n.dailySpiritualReminders,
             icon: Icons.notifications_active_rounded,
           ),
           const SizedBox(height: 8),
@@ -144,14 +144,14 @@ class _AppFeaturesSettingsViewState extends State<AppFeaturesSettingsView> {
               children: [
                 SwitchListTile(
                   title: Text(
-                    'Master Daily Reminders',
+                    l10n.masterDailyReminders,
                     style: GoogleFonts.plusJakartaSans(
                       fontWeight: FontWeight.w600,
                       color: deen.textPrimary,
                     ),
                   ),
                   subtitle: Text(
-                    'Enable or disable all app notifications and spiritual alerts',
+                    l10n.masterDailyRemindersDesc,
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 12,
                       color: deen.textSecondary,
@@ -167,14 +167,14 @@ class _AppFeaturesSettingsViewState extends State<AppFeaturesSettingsView> {
                 Divider(height: 1, color: deen.cardBorder),
                 SwitchListTile(
                   title: Text(
-                    'Daily Ayah Inspiration',
+                    l10n.dailyAyahInspiration,
                     style: GoogleFonts.plusJakartaSans(
                       fontWeight: FontWeight.w600,
                       color: deen.textPrimary,
                     ),
                   ),
                   subtitle: Text(
-                    'Receive a daily Quranic verse reflection in the morning',
+                    l10n.dailyAyahInspirationDesc,
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 12,
                       color: deen.textSecondary,
@@ -190,14 +190,14 @@ class _AppFeaturesSettingsViewState extends State<AppFeaturesSettingsView> {
                 Divider(height: 1, color: deen.cardBorder),
                 SwitchListTile(
                   title: Text(
-                    'Daily Hadith Gem',
+                    l10n.dailyHadithGem,
                     style: GoogleFonts.plusJakartaSans(
                       fontWeight: FontWeight.w600,
                       color: deen.textPrimary,
                     ),
                   ),
                   subtitle: Text(
-                    'Receive an authentic prophetic Hadith narration daily',
+                    l10n.dailyHadithGemDesc,
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 12,
                       color: deen.textSecondary,
@@ -213,14 +213,14 @@ class _AppFeaturesSettingsViewState extends State<AppFeaturesSettingsView> {
                 Divider(height: 1, color: deen.cardBorder),
                 SwitchListTile(
                   title: Text(
-                    'Morning & Evening Azkar',
+                    l10n.morningEveningAzkar,
                     style: GoogleFonts.plusJakartaSans(
                       fontWeight: FontWeight.w600,
                       color: deen.textPrimary,
                     ),
                   ),
                   subtitle: Text(
-                    'Reminders for Hisn al-Muslim morning and evening adhkar',
+                    l10n.morningEveningAzkarDesc,
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 12,
                       color: deen.textSecondary,
@@ -239,8 +239,8 @@ class _AppFeaturesSettingsViewState extends State<AppFeaturesSettingsView> {
           const SizedBox(height: 20),
 
           // Section 3: Share App
-          const DeenSectionHeader(
-            title: 'SPREAD THE MESSAGE (SADAQAH JARIYAH)',
+          DeenSectionHeader(
+            title: l10n.spreadTheMessage,
             icon: Icons.share_rounded,
           ),
           const SizedBox(height: 8),
@@ -260,14 +260,14 @@ class _AppFeaturesSettingsViewState extends State<AppFeaturesSettingsView> {
                 ),
               ),
               title: Text(
-                'Share Proud Muslim with Family & Friends',
+                l10n.shareProudMuslimTitle,
                 style: GoogleFonts.plusJakartaSans(
                   fontWeight: FontWeight.w600,
                   color: deen.textPrimary,
                 ),
               ),
               subtitle: Text(
-                'The one who guides to good is like the one who does it (Hadith)',
+                l10n.shareHadithQuote,
                 style: GoogleFonts.plusJakartaSans(
                   fontSize: 12,
                   color: deen.textSecondary,
@@ -279,7 +279,7 @@ class _AppFeaturesSettingsViewState extends State<AppFeaturesSettingsView> {
               ),
               onTap: () {
                 Share.share(
-                  'Explore Proud Muslim — The complete Islamic companion for Prayer Times, Holy Quran, Qibla Compass, and Azkar. Download now!',
+                  l10n.shareAppText,
                 );
               },
             ),

@@ -701,4 +701,358 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get currentLocationStatus => 'Current Location';
+
+  @override
+  String get upgradeToPro => 'Upgrade to Proud Muslim Pro';
+
+  @override
+  String get premiumActive => 'Proud Muslim Pro Active';
+
+  @override
+  String get appearanceAndTheme => 'Appearance & Theme';
+
+  @override
+  String get prayerAndAzan => 'Prayer & Adhan';
+
+  @override
+  String get calculationAndJuristic => 'Calculation & Juristic Method';
+
+  @override
+  String get locationSettings => 'Location & GPS';
+
+  @override
+  String get appFeatures => 'Spiritual Reminders & Sharing';
+
+  @override
+  String get helpAndSupport => 'Help & FAQ';
+
+  @override
+  String get salahGuide => 'Salah Guide';
+
+  @override
+  String get wuduGuide => 'Wudu Guide';
+
+  @override
+  String get playAdhan => 'Play Adhan';
+
+  @override
+  String get previewAdhan => 'Preview Adhan';
+
+  @override
+  String get selectAdhanSound => 'Select Adhan Sound';
+
+  @override
+  String get prePrayerReminder => 'Pre-Prayer Reminder';
+
+  @override
+  String get customMinutes => 'minutes';
+
+  @override
+  String minutesCount(Object count) {
+    return '$count minutes';
+  }
+
+  @override
+  String minBefore(Object minutes) {
+    return '$minutes min before';
+  }
+
+  @override
+  String minAfterAzan(Object minutes) {
+    return '$minutes min after Azan';
+  }
+
+  @override
+  String get prePrayerAndIqamahReminders => 'PRE-PRAYER & IQAMAH REMINDERS';
+
+  @override
+  String get individualPrayerAlerts => 'INDIVIDUAL PRAYER ALERTS';
+
+  @override
+  String get adhanOn => 'Adhan ON';
+
+  @override
+  String get adhanOff => 'Adhan OFF';
+
+  @override
+  String get fajrAdhan => 'Fajr Adhan';
+
+  @override
+  String get dhuhrAdhan => 'Dhuhr Adhan';
+
+  @override
+  String get asrAdhan => 'Asr Adhan';
+
+  @override
+  String get maghribAdhan => 'Maghrib Adhan';
+
+  @override
+  String get ishaAdhan => 'Isha Adhan';
+
+  @override
+  String get vibrateOnScheduledAdhan =>
+      'Vibrate when the scheduled Adhan begins';
+
+  @override
+  String get silentModeDndOverride => 'Silent Mode / DND Override';
+
+  @override
+  String get respectSystemSilentMode => 'Respect system silent mode settings';
+
+  @override
+  String get languageAndRegionalSettings => 'LANGUAGE & REGIONAL SETTINGS';
+
+  @override
+  String get showSecondsInCountdown => 'Show Seconds in Countdown';
+
+  @override
+  String get displayLiveSecondTicking =>
+      'Display live second ticking on next prayer card';
+
+  @override
+  String get numeralFormat => 'Numeral Format';
+
+  @override
+  String get westernArabicNumerals => 'Western Arabic (1, 2, 3...)';
+
+  @override
+  String get smokedGraphiteThemeDesc =>
+      'Smoked graphite glass with cool ice-silver accents';
+
+  @override
+  String get emeraldNightThemeDesc =>
+      'Rich emerald velvet with warm golden Islamic geometry';
+
+  @override
+  String get royalOudThemeDesc =>
+      'Deep obsidian crystal with champagne amber highlights';
+
+  @override
+  String get bismillahQuote =>
+      'In the name of Allah, the Entirely Merciful, the Especially Merciful.';
+
+  @override
+  String get dailySpiritualReminders => 'DAILY SPIRITUAL REMINDERS';
+
+  @override
+  String get masterDailyReminders => 'Master Daily Reminders';
+
+  @override
+  String get masterDailyRemindersDesc =>
+      'Enable or disable all app notifications and spiritual alerts';
+
+  @override
+  String get dailyAyahInspiration => 'Daily Ayah Inspiration';
+
+  @override
+  String get dailyAyahInspirationDesc =>
+      'Receive a daily Quranic verse reflection in the morning';
+
+  @override
+  String get dailyHadithGemDesc =>
+      'Receive an authentic prophetic Hadith narration daily';
+
+  @override
+  String get morningEveningAzkar => 'Morning & Evening Azkar';
+
+  @override
+  String get morningEveningAzkarDesc =>
+      'Reminders for Hisn al-Muslim morning and evening adhkar';
+
+  @override
+  String get spreadTheMessage => 'SPREAD THE MESSAGE (SADAQAH JARIYAH)';
+
+  @override
+  String get shareProudMuslimTitle =>
+      'Share Proud Muslim with Family & Friends';
+
+  @override
+  String get shareHadithQuote =>
+      'The one who guides to good is like the one who does it (Hadith)';
+
+  @override
+  String get shareAppText =>
+      'Proud Muslim: Quran, Prayer Times, Qibla & Azkar - Live your Deen every day. Download now: https://proudmuslim.app';
+
+  @override
+  String get istanbulTurkeyGps => 'Istanbul, Turkey (GPS)';
+
+  @override
+  String get prayerTimeDiagnostics => 'Prayer & Time Diagnostics';
+
+  @override
+  String get inspectUtcIanaSolar =>
+      'Inspect UTC, IANA timezone & solar timestamps';
+
+  @override
+  String get emailSupport => 'Email Support';
+
+  @override
+  String get submitFeedback => 'Submit Feedback';
+
+  @override
+  String get faqQ1 =>
+      'How do I ensure prayer times are 100% accurate for my location?';
+
+  @override
+  String get faqA1 =>
+      'Ensure GPS location permission is granted to allow automatic coordinate calculation, or manually select your regional calculation authority (e.g., Diyanet for Turkey, MWL for Europe/Americas, ISNA for North America, Egypt General Authority, or Umm al-Qura for Saudi Arabia).';
+
+  @override
+  String get faqQ2 =>
+      'How does the Qibla compass work and how is it calibrated?';
+
+  @override
+  String get faqA2 =>
+      'The Qibla compass combines your device magnetometer sensor and GPS location with the Great Circle formula pointing to the Holy Kaaba in Makkah. If sensor accuracy is low, wave your phone in a figure-eight motion away from magnetic interference.';
+
+  @override
+  String get faqQ3 => 'How does the 3-Day Free Trial work?';
+
+  @override
+  String get faqA3 =>
+      'When starting a Proud Muslim Pro trial, you receive 3 full days of complimentary premium access to all adhan sounds, themes, and spiritual features. You can manage or cancel anytime via Google Play Subscriptions.';
+
+  @override
+  String get faqQ4 => 'Are the Quran translations and Hadith authentic?';
+
+  @override
+  String get faqA4 =>
+      'Yes, all translations, Quran verses, Hadith collections (including Imam Nawawi\'s 40 Hadith), and Hisn al-Muslim supplications are sourced from verified and recognized Islamic scholarly sources.';
+
+  @override
+  String get faqQ5 => 'How does offline reading and audio playback work?';
+
+  @override
+  String get faqA5 =>
+      'The Arabic Quran text, 99 Names, and daily Azkar are bundled offline inside the app. Full translation editions can be downloaded for offline use directly in the Quran reader settings.';
+
+  @override
+  String get aboutTheApp => 'ABOUT THE APP';
+
+  @override
+  String get aboutAppDesc =>
+      'Proud Muslim is your premium Islamic companion for daily worship, Quran study, accurate prayer times, and spiritual growth. Built with high architectural fidelity, privacy-by-design, and respectful Islamic aesthetics.';
+
+  @override
+  String get developerInfo => 'Developer';
+
+  @override
+  String get companyInfo => 'ANM Digital Labs';
+
+  @override
+  String get versionLabel => 'Version';
+
+  @override
+  String get featurePrayerTimesDesc =>
+      'Astronomical precision prayer schedules with worldwide calculation methods and regional tuning.';
+
+  @override
+  String get featureQuranDesc =>
+      'Full 114 Surahs with Uthmani Arabic script, multi-language translations, word-by-word audio, and offline reading.';
+
+  @override
+  String get featureQiblaDesc =>
+      'Real-time 3D magnetic Qibla compass with Kaaba alignment haptic feedback.';
+
+  @override
+  String get featureAzkarDesc =>
+      'Authentic Hisn al-Muslim supplications for morning, evening, and daily remembrance.';
+
+  @override
+  String get feature99NamesDesc =>
+      '99 Beautiful Names of Allah with meanings, Quran references, and audio pronunciation.';
+
+  @override
+  String get featureZakatDesc =>
+      'Comprehensive Islamic Zakat calculator with Nisab valuation and detailed asset categories.';
+
+  @override
+  String get copyrightNotice => '© 2026 ANM Digital Labs. All rights reserved.';
+
+  @override
+  String get termsOfUse => 'Terms of Use';
+
+  @override
+  String get legalInformation => 'Legal Information';
+
+  @override
+  String get licenses => 'Licenses';
+
+  @override
+  String get openInBrowser => 'Open in Browser';
+
+  @override
+  String get unableToOpenPage => 'Unable to Open Page';
+
+  @override
+  String get tryAgain => 'Try Again';
+
+  @override
+  String get dataDeletionInfo =>
+      'For account and telemetry data deletion requests, contact support@proudmuslim.app.';
+
+  @override
+  String get ghuslGuide => 'Ghusl Guide';
+
+  @override
+  String get ghuslOverviewTitle => 'Boy Abdesti (Gusül) / Full Purification';
+
+  @override
+  String get ghuslOverviewDesc =>
+      'Ghusl is the complete ritual purification required after major ritual impurity (Janabah, post-menstruation, post-partum) and recommended before Friday (Jummuah) prayers.';
+
+  @override
+  String get whenGhuslRequired => 'When Ghusl is Required';
+
+  @override
+  String get ghuslObligatoryFarz =>
+      'Obligatory Elements (Farz): Rinsing the mouth thoroughly, rinsing the nose, and washing the entire body leaving no dry spot.';
+
+  @override
+  String get ghuslRecommendedSunnah =>
+      'Complete Sunnah Practice: Intention, washing hands, cleansing private parts, performing complete Wudu, pouring water over head 3 times, and washing right then left sides of the body.';
+
+  @override
+  String get translationLanguage => 'Translation Language';
+
+  @override
+  String get translatorEdition => 'Translator Edition';
+
+  @override
+  String get narrationVoice => 'Narration Voice';
+
+  @override
+  String get voiceMale => 'Male';
+
+  @override
+  String get voiceFemale => 'Female';
+
+  @override
+  String get downloadForOfflineUse => 'Download for Offline Use';
+
+  @override
+  String downloadingProgress(Object percent) {
+    return 'Downloading ($percent%)...';
+  }
+
+  @override
+  String downloadSuccessMessage(Object language) {
+    return '$language downloaded for offline use.';
+  }
+
+  @override
+  String get downloadErrorMessage =>
+      'Could not download translation. Please check connection.';
+
+  @override
+  String get offlineAvailable => 'Available Offline';
+
+  @override
+  String get playFullSurah => 'Play Full Surah';
+
+  @override
+  String listenInLang(Object lang) {
+    return 'Listen in $lang';
+  }
 }

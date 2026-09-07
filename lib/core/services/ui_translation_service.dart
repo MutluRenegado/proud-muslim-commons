@@ -438,6 +438,19 @@ class UiTranslationService {
       'ms': 'Panduan Wuduk',
       'ar': 'دليل الوضوء'
     },
+    'ghuslGuide': {
+      'en': 'Ghusl Guide',
+      'tr': 'Boy Abdesti (Gusül)',
+      'de': 'Ghusl-Anleitung',
+      'fr': 'Guide du Ghusl',
+      'es': 'Guía de Ghusl',
+      'pt': 'Guia de Ghusl',
+      'ru': 'Руководство по гуслю',
+      'id': 'Panduan Mandi Wajib',
+      'ur': 'رہنمائے غسل',
+      'ms': 'Panduan Mandi Wajib',
+      'ar': 'دليل الغسل'
+    },
     'profileAppearanceSubtitle': {
       'en': '4 Themes, Typography & Numerals',
       'tr': '4 Tema, Tipografi ve Rakamlar',

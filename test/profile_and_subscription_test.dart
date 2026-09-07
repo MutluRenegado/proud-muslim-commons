@@ -8,26 +8,29 @@ import 'package:deen_path/models/prayer_time_model.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:deen_path/core/constants/app_constants.dart';
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() async {
     GoogleFonts.config.allowRuntimeFetching = false;
     SharedPreferences.setMockInitialValues({
-      'deen_user_name': 'Ahmad',
-      'deen_user_email': 'ahmad@example.com',
-      'deen_theme_mode': true,
-      'deen_theme_preference': 'dark',
-      'deen_azan_enabled': true,
-      'deen_azan_sound': 'Makkah Azan',
-      'deen_azan_volume': 0.9,
-      'deen_user_lat': 51.5074,
-      'deen_user_lng': -0.1278,
-      'deen_user_city': 'London',
-      'deen_user_country': 'United Kingdom',
-      'deen_location_mode': 'auto',
-      'deen_high_latitude_rule': 'middleOfTheNight',
-      'deen_rounding_method': 'nearestMinute',
+      AppConstants.keyUserName: 'Ahmad',
+      AppConstants.keyUserEmail: 'ahmad@example.com',
+      AppConstants.keyThemeMode: true,
+      AppConstants.keyThemePreference: 'dark',
+      AppConstants.keyAzanEnabled: true,
+      AppConstants.keyAzanSound: 'Makkah Azan',
+      AppConstants.keyAzanVolume: 0.9,
+      AppConstants.keyLat: 51.5074,
+      AppConstants.keyLng: -0.1278,
+      AppConstants.keyCity: 'London',
+      AppConstants.keyCountry: 'United Kingdom',
+      AppConstants.keyLocationMode: 'auto',
+      AppConstants.keyHighLatitudeRule: 'middleOfTheNight',
+      AppConstants.keyRoundingMethod: 'nearestMinute',
+      AppConstants.keyPrayerNotificationToggles: '{"Fajr": true, "Sunrise": false}',
     });
     await StorageService.init();
   });
@@ -58,14 +61,14 @@ void main() {
 
     test('Individual prayer notification toggles persist', () async {
       final toggles = StorageService.getPrayerNotificationToggles();
-      expect(toggles['Fajr'], isTrue);
-      expect(toggles['Sunrise'], isFalse);
+      expect(toggles['fajr'], isTrue);
+      expect(toggles['sunrise'], isFalse);
 
-      toggles['Sunrise'] = true;
+      toggles['sunrise'] = true;
       await StorageService.savePrayerNotificationToggles(toggles);
 
       final updated = StorageService.getPrayerNotificationToggles();
-      expect(updated['Sunrise'], isTrue);
+      expect(updated['sunrise'], isTrue);
     });
 
     test('Four Dynamic Themes persist and switch seamlessly', () async {

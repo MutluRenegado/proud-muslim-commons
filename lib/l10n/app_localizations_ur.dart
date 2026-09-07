@@ -689,4 +689,354 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get currentLocationStatus => 'موجودہ مقام';
+
+  @override
+  String get upgradeToPro => 'Proud Muslim Pro پر اپ گریڈ کریں';
+
+  @override
+  String get premiumActive => 'Proud Muslim Pro فعال ہے';
+
+  @override
+  String get appearanceAndTheme => 'تھیم اور ظاہری شکل';
+
+  @override
+  String get prayerAndAzan => 'نماز اور اذان';
+
+  @override
+  String get calculationAndJuristic => 'طریقہ حساب اور فقہی مسلک';
+
+  @override
+  String get locationSettings => 'مقام اور GPS';
+
+  @override
+  String get appFeatures => 'روحانی یاد دہانیاں اور شیئرنگ';
+
+  @override
+  String get helpAndSupport => 'مدد اور عمومی سوالات';
+
+  @override
+  String get salahGuide => 'طریقہ نماز';
+
+  @override
+  String get wuduGuide => 'طریقہ وضو';
+
+  @override
+  String get playAdhan => 'اذان چلائیں';
+
+  @override
+  String get previewAdhan => 'اذان سنیں';
+
+  @override
+  String get selectAdhanSound => 'اذان کی آواز منتخب کریں';
+
+  @override
+  String get prePrayerReminder => 'نماز سے قبل یاد دہانی';
+
+  @override
+  String get customMinutes => 'منٹ';
+
+  @override
+  String minutesCount(Object count) {
+    return '$count منٹ';
+  }
+
+  @override
+  String minBefore(Object minutes) {
+    return '$minutes منٹ قبل';
+  }
+
+  @override
+  String minAfterAzan(Object minutes) {
+    return 'اذان کے $minutes منٹ بعد';
+  }
+
+  @override
+  String get prePrayerAndIqamahReminders =>
+      'نماز سے قبل اور اقامت کی یاد دہانیاں';
+
+  @override
+  String get individualPrayerAlerts => 'انفرادی نمازوں کے الرٹس';
+
+  @override
+  String get adhanOn => 'اذان آن';
+
+  @override
+  String get adhanOff => 'اذان آف';
+
+  @override
+  String get fajrAdhan => 'اذان فجر';
+
+  @override
+  String get dhuhrAdhan => 'اذان ظہر';
+
+  @override
+  String get asrAdhan => 'اذان عصر';
+
+  @override
+  String get maghribAdhan => 'اذان مغرب';
+
+  @override
+  String get ishaAdhan => 'اذان عشاء';
+
+  @override
+  String get vibrateOnScheduledAdhan => 'مقررہ اذان شروع ہونے پر وائبریشن';
+
+  @override
+  String get silentModeDndOverride =>
+      'سائلنٹ موڈ / ڈو ناٹ ڈسٹرب کو اوور رائیڈ کریں';
+
+  @override
+  String get respectSystemSilentMode => 'سسٹم کے سائلنٹ موڈ کی پابندی کریں';
+
+  @override
+  String get languageAndRegionalSettings => 'زبان اور علاقائی ترتیبات';
+
+  @override
+  String get showSecondsInCountdown => 'کاؤنٹ ڈاؤن میں سیکنڈز دکھائیں';
+
+  @override
+  String get displayLiveSecondTicking => 'اگلی نماز کے کارڈ پر سیکنڈز دکھائیں';
+
+  @override
+  String get numeralFormat => 'ہندسوں کی ترتیب';
+
+  @override
+  String get westernArabicNumerals => 'مغربی عربی ہندسے (1, 2, 3...)';
+
+  @override
+  String get smokedGraphiteThemeDesc => 'اسمبل گریفائٹ گلاس مع سلور جھلکیاں';
+
+  @override
+  String get emeraldNightThemeDesc => 'زمردی ریشم مع سنہری اسلامی نقش و نگار';
+
+  @override
+  String get royalOudThemeDesc => 'گہرا عود اور عنبر شیمپین کی چمک';
+
+  @override
+  String get bismillahQuote =>
+      'شروع اللہ کے نام سے جو بڑا مہربان نہایت رحم والا ہے۔';
+
+  @override
+  String get dailySpiritualReminders => 'روزانہ کی روحانی یاد دہانیاں';
+
+  @override
+  String get masterDailyReminders => 'تمام روزانہ یاد دہانیاں';
+
+  @override
+  String get masterDailyRemindersDesc =>
+      'ایپ کے تمام نوٹیفکیشنز اور روحانی الرٹس آن یا آف کریں';
+
+  @override
+  String get dailyAyahInspiration => 'آج کی آیت';
+
+  @override
+  String get dailyAyahInspirationDesc =>
+      'ہر صبح قرآنی آیت اور اس کی رہنمائی حاصل کریں';
+
+  @override
+  String get dailyHadithGemDesc => 'روزانہ مستند نبوی حدیث کا پیغام پائیں';
+
+  @override
+  String get morningEveningAzkar => 'صبح اور شام کے اذکار';
+
+  @override
+  String get morningEveningAzkarDesc =>
+      'حصن المسلم کے صبح و شام کے مسنون اذکار کی یاد دہانیاں';
+
+  @override
+  String get spreadTheMessage => 'پیغام پھیلائیں — صدقہ جاریہ';
+
+  @override
+  String get shareProudMuslimTitle =>
+      'Proud Muslim کو اپنے اہل خانہ اور دوستوں کے ساتھ شیئر کریں';
+
+  @override
+  String get shareHadithQuote =>
+      'نیکی کی طرف رہنمائی کرنے والا نیکی کرنے والے کی طرح ہے (حدیث)';
+
+  @override
+  String get shareAppText =>
+      'Proud Muslim: قرآن، اوقات نماز، قبلہ اور اذکار - روزانہ اپنے دین پر عمل کریں۔ ڈاؤن لوڈ کریں: https://proudmuslim.app';
+
+  @override
+  String get istanbulTurkeyGps => 'استنبول، ترکی (GPS)';
+
+  @override
+  String get prayerTimeDiagnostics => 'اوقات نماز اور وقت کی تشخیص';
+
+  @override
+  String get inspectUtcIanaSolar =>
+      'UTC، IANA ٹائم زون اور شمسی وقت کے ریکارڈز دیکھیں';
+
+  @override
+  String get emailSupport => 'ای میل سپورٹ';
+
+  @override
+  String get submitFeedback => 'رائے بھیجیں';
+
+  @override
+  String get faqQ1 =>
+      'میں اپنے مقام کے لیے نماز کے اوقات کی 100٪ درستگی کیسے یقینی بناؤں؟';
+
+  @override
+  String get faqA1 =>
+      'GPS مقام کی اجازت فعال کریں تاکہ خودکار حساب ہو سکے، یا اپنے علاقے کے معتبر ادارے کا طریقہ انتخاب کریں۔';
+
+  @override
+  String get faqQ2 =>
+      'قبلہ قطب نما کیسے کام کرتا ہے اور اسے کیسے درست کیا جائے؟';
+
+  @override
+  String get faqA2 =>
+      'یہ سینسر اور GPS کے ذریعے مکہ مکرمہ کی سمت بتاتا ہے۔ درستگی کم ہونے پر فون کو 8 کی شکل میں گھمائیں۔';
+
+  @override
+  String get faqQ3 => '3 دن کا مفت ٹرائل کیسے کام کرتا ہے؟';
+
+  @override
+  String get faqA3 =>
+      'Proud Muslim Pro کا ٹرائل شروع کرنے پر 3 دن تمام فیچرز مفت ملتے ہیں، جسے گوگل پلے سے کسی بھی وقت منسوخ کیا جا سکتا ہے۔';
+
+  @override
+  String get faqQ4 => 'کیا قرآن کے تراجم اور احادیث مستند ہیں؟';
+
+  @override
+  String get faqA4 =>
+      'جی ہاں، تمام آیات، تراجم، احادیث اور دعائیں مستند اسلامی علمی مآخذ سے لی گئی ہیں۔';
+
+  @override
+  String get faqQ5 => 'آف لائن تلاوت اور آڈیو کیسے کام کرتی ہے؟';
+
+  @override
+  String get faqA5 =>
+      'قرآن پاک کا عربی متن، 99 نام اور اذکار آف لائن موجود ہیں۔ مکمل تراجم ریڈر سیٹنگز سے ڈاؤن لوڈ کیے جا سکتے ہیں۔';
+
+  @override
+  String get aboutTheApp => 'ایپ کا تعارف';
+
+  @override
+  String get aboutAppDesc =>
+      'Proud Muslim روزمرہ کی عبادت، قرآن خوانی، نماز کے درست اوقات اور روحانی ترقی کے لیے آپ کا بہترین اسلامی ساتھی ہے۔';
+
+  @override
+  String get developerInfo => 'ڈیولپر';
+
+  @override
+  String get companyInfo => 'ANM Digital Labs';
+
+  @override
+  String get versionLabel => 'ورژن';
+
+  @override
+  String get featurePrayerTimesDesc =>
+      'فلکیاتی درستگی کے ساتھ نماز کے عالمی و علاقائی اوقات۔';
+
+  @override
+  String get featureQuranDesc =>
+      'عثمانی رسم الخط میں تمام 114 سورتیں، کثیر لسانی تراجم اور آف لائن تلاوت۔';
+
+  @override
+  String get featureQiblaDesc =>
+      'تھری ڈی قبلہ کمپاس جو خانہ کعبہ کی سیدھ میں آنے پر وائبریٹ کرتا ہے۔';
+
+  @override
+  String get featureAzkarDesc =>
+      'حصن المسلم کی مستند صبح و شام اور روزمرہ کی مسنون دعائیں۔';
+
+  @override
+  String get feature99NamesDesc =>
+      'اللہ تعالیٰ کے 99 بابرکت نام مع معانی، قرآنی حوالہ جات اور آڈیو تلفظ۔';
+
+  @override
+  String get featureZakatDesc =>
+      'جامع اسلامی زکوٰۃ کیلکولیٹر مع نصاب کی قیمت اور اثاثہ جات کی تفصیل۔';
+
+  @override
+  String get copyrightNotice => '© 2026 ANM Digital Labs. جملہ حقوق محفوظ ہیں۔';
+
+  @override
+  String get termsOfUse => 'شرائط و ضوابط';
+
+  @override
+  String get legalInformation => 'قانونی معلومات';
+
+  @override
+  String get licenses => 'لائسنس';
+
+  @override
+  String get openInBrowser => 'براؤزر میں کھولیں';
+
+  @override
+  String get unableToOpenPage => 'صفحہ کھولنے میں ناکامی';
+
+  @override
+  String get tryAgain => 'دوبارہ کوشش کریں';
+
+  @override
+  String get dataDeletionInfo =>
+      'اکاؤنٹ اور ڈیٹا ڈیلیٹ کرنے کی درخواست کے لیے support@proudmuslim.app پر رابطہ کریں۔';
+
+  @override
+  String get ghuslGuide => 'طریقہ غسل';
+
+  @override
+  String get ghuslOverviewTitle => 'غسل کا مکمل مسنون طریقہ (طہارت کبریٰ)';
+
+  @override
+  String get ghuslOverviewDesc =>
+      'غسل ناپاکی (جنابت، حیض و نفاس) سے پاکی حاصل کرنے کا شرعی طریقہ ہے اور جمعہ و عیدین کے لیے مسنون ہے۔';
+
+  @override
+  String get whenGhuslRequired => 'غسل کن صورتوں میں واجب ہوتا ہے';
+
+  @override
+  String get ghuslObligatoryFarz =>
+      'غسل کے فرائض (3): اچھی طرح کلی کرنا، ناک میں نرم ہڈی تک پانی پہنچانا اور پورے جسم پر اس طرح پانی بہانا کہ بال برابر بھی جگہ سوکھی نہ رہے۔';
+
+  @override
+  String get ghuslRecommendedSunnah =>
+      'مسنون طریقہ: نیت کرنا، دونوں ہاتھ دھونا، نجاست صاف کرنا، مکمل وضو کرنا، سر پر تین بار پانی ڈال کر بالوں کی جڑوں تک پہنچانا، اور پہلے دائیں پھر بائیں جانب پانی بہا کر جسم ملنا۔';
+
+  @override
+  String get translationLanguage => 'ترجمہ کی زبان';
+
+  @override
+  String get translatorEdition => 'مترجم کا ایڈیشن';
+
+  @override
+  String get narrationVoice => 'تلاوت کی آواز';
+
+  @override
+  String get voiceMale => 'مردانہ آواز';
+
+  @override
+  String get voiceFemale => 'زنانی آواز';
+
+  @override
+  String get downloadForOfflineUse => 'آف لائن استعمال کے لیے ڈاؤن لوڈ کریں';
+
+  @override
+  String downloadingProgress(Object percent) {
+    return 'ڈاؤن لوڈ ہو رہا ہے ($percent%)...';
+  }
+
+  @override
+  String downloadSuccessMessage(Object language) {
+    return '$language ترجمہ آف لائن استعمال کے لیے ڈاؤن لوڈ ہو گیا ہے۔';
+  }
+
+  @override
+  String get downloadErrorMessage =>
+      'ڈاؤن لوڈ نہیں ہو سکا۔ انٹرنیٹ کنکشن چیک کریں۔';
+
+  @override
+  String get offlineAvailable => 'آف لائن دستیاب ہے';
+
+  @override
+  String get playFullSurah => 'مکمل سورہ سنیں';
+
+  @override
+  String listenInLang(Object lang) {
+    return '$lang میں سنیں';
+  }
 }

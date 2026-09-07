@@ -1,12 +1,16 @@
 class AppConstants {
   static const String appName = 'Proud Muslim';
   static const String appTagline = 'Your daily spiritual companion';
-  static const String appVersion = '1.0.0';
-  static const String appBuildNumber = '1';
+  static const String appVersion = '1.0.1';
+  static const String appBuildNumber = '2';
   static const String communityName = 'Proud Muslim Global Ummah';
   static const String supportEmail = 'support@proudmuslim.app';
-  static const String privacyPolicyUrl = 'https://proudmuslim.app/privacy';
-  static const String termsOfUseUrl = 'https://proudmuslim.app/terms';
+  static const String privacyPolicyUrl =
+      'https://anm-digital.github.io/proud-muslim-legal/privacy-terms.html';
+  static const String termsOfUseUrl =
+      'https://anm-digital.github.io/proud-muslim-legal/privacy-terms.html';
+  static const String licensesUrl =
+      'https://anm-digital.github.io/proud-muslim-legal/licenses.html';
 
   // Subscriptions
   static const String subscriptionProductId = 'proud_muslim_premium';

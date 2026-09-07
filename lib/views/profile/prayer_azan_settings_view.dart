@@ -30,15 +30,15 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
   String _titleFor(AppLocalizations l10n, String prayer) {
     switch (prayer) {
       case 'fajr':
-        return '${l10n.fajr} Adhan';
+        return l10n.fajrAdhan;
       case 'dhuhr':
-        return '${l10n.dhuhr} Adhan';
+        return l10n.dhuhrAdhan;
       case 'asr':
-        return '${l10n.asr} Adhan';
+        return l10n.asrAdhan;
       case 'maghrib':
-        return '${l10n.maghrib} Adhan';
+        return l10n.maghribAdhan;
       case 'isha':
-        return '${l10n.isha} Adhan';
+        return l10n.ishaAdhan;
       default:
         return prayer;
     }
@@ -95,7 +95,8 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                 title: Text(l10n.azanSoundMuezzin,
                     style: GoogleFonts.plusJakartaSans(
                         fontWeight: FontWeight.w600, color: deen.textPrimary)),
-                subtitle: Text('Fajr • Dhuhr • Asr • Maghrib • Isha',
+                subtitle: Text(
+                    '${l10n.fajr} • ${l10n.dhuhr} • ${l10n.asr} • ${l10n.maghrib} • ${l10n.isha}',
                     style: GoogleFonts.plusJakartaSans(
                         color: deen.accentPrimary,
                         fontWeight: FontWeight.bold)),
@@ -136,7 +137,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                 title: Text(l10n.vibrateOnAzan,
                     style: GoogleFonts.plusJakartaSans(
                         fontWeight: FontWeight.w600, color: deen.textPrimary)),
-                subtitle: Text('Vibrate when the scheduled Adhan begins',
+                subtitle: Text(l10n.vibrateOnScheduledAdhan,
                     style: GoogleFonts.plusJakartaSans(
                         fontSize: 12, color: deen.textSecondary)),
                 value: prayerProv.vibrateOnAzan,
@@ -145,10 +146,10 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
               ),
               Divider(height: 1, color: deen.cardBorder),
               SwitchListTile(
-                title: Text('Silent Mode / DND Override',
+                title: Text(l10n.silentModeDndOverride,
                     style: GoogleFonts.plusJakartaSans(
                         fontWeight: FontWeight.w600, color: deen.textPrimary)),
-                subtitle: Text('Respect system silent mode settings',
+                subtitle: Text(l10n.respectSystemSilentMode,
                     style: GoogleFonts.plusJakartaSans(
                         fontSize: 12, color: deen.textSecondary)),
                 value: prayerProv.silentModeDnd,
@@ -159,7 +160,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
           ),
           const SizedBox(height: 20),
           DeenSectionHeader(
-              title: 'PRE-PRAYER & IQAMAH REMINDERS',
+              title: l10n.prePrayerAndIqamahReminders,
               icon: Icons.timer_rounded),
           const SizedBox(height: 8),
           DeenCard(
@@ -172,7 +173,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                 subtitle: Text(
                     prayerProv.reminderBeforeAzan == 0
                         ? l10n.disabled
-                        : '${prayerProv.reminderBeforeAzan} min before',
+                        : l10n.minBefore(prayerProv.reminderBeforeAzan.toString()),
                     style: GoogleFonts.plusJakartaSans(
                         color: deen.accentGold, fontWeight: FontWeight.w600)),
                 trailing: Icon(Icons.chevron_right_rounded,
@@ -182,6 +183,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                     current: prayerProv.reminderBeforeAzan,
                     options: const [0, 5, 10, 15, 20, 30],
                     onSelected: prayerProv.setReminderBeforeAzan,
+                    l10n: l10n,
                     deen: deen),
               ),
               Divider(height: 1, color: deen.cardBorder),
@@ -192,7 +194,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                 subtitle: Text(
                     prayerProv.iqamahReminder == 0
                         ? l10n.disabled
-                        : '${prayerProv.iqamahReminder} min after Azan',
+                        : l10n.minAfterAzan(prayerProv.iqamahReminder.toString()),
                     style: GoogleFonts.plusJakartaSans(
                         color: deen.accentGold, fontWeight: FontWeight.w600)),
                 trailing: Icon(Icons.chevron_right_rounded,
@@ -202,13 +204,14 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                     current: prayerProv.iqamahReminder,
                     options: const [0, 10, 15, 20, 25, 30],
                     onSelected: prayerProv.setIqamahReminder,
+                    l10n: l10n,
                     deen: deen),
               ),
             ]),
           ),
           const SizedBox(height: 20),
           DeenSectionHeader(
-              title: 'INDIVIDUAL PRAYER ALERTS', icon: Icons.checklist_rounded),
+              title: l10n.individualPrayerAlerts, icon: Icons.checklist_rounded),
           const SizedBox(height: 8),
           DeenCard(
             padding: EdgeInsets.zero,
@@ -269,14 +272,14 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                   fontWeight: FontWeight.w600,
                   color: enabled ? deen.textPrimary : deen.textSecondary)),
           subtitle: Text(
-              '${adhanEnabled ? 'Adhan ON' : 'Adhan OFF'} • ${_fileName(asset)}',
+              '${adhanEnabled ? l10n.adhanOn : l10n.adhanOff} • ${_fileName(asset)}',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.plusJakartaSans(
                   fontSize: 11, color: deen.textSecondary)),
           trailing: Row(mainAxisSize: MainAxisSize.min, children: [
             IconButton(
-              tooltip: isPlaying ? l10n.stopAudio : 'Preview Adhan',
+              tooltip: isPlaying ? l10n.stopAudio : l10n.previewAdhan,
               onPressed: isPlaying
                   ? AudioService.stop
                   : () => AudioService.playAdhanAssetPreview(prayer, asset),
@@ -346,7 +349,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
               style: GoogleFonts.plusJakartaSans(
                   fontSize: 11, color: deen.textSecondary)),
           trailing: IconButton(
-            tooltip: isPlaying ? l10n.stopAudio : 'Preview Adhan',
+            tooltip: isPlaying ? l10n.stopAudio : l10n.previewAdhan,
             onPressed: isPlaying
                 ? AudioService.stop
                 : () => AudioService.playAdhanAssetPreview(prayer, asset),
@@ -386,7 +389,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                   const SizedBox(height: 8),
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,
-                    title: Text('Play Adhan for this prayer',
+                    title: Text(l10n.playAdhan,
                         style: GoogleFonts.plusJakartaSans(
                             fontWeight: FontWeight.w600,
                             color: deen.textPrimary)),
@@ -422,6 +425,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
     required int current,
     required List<int> options,
     required void Function(int) onSelected,
+    required AppLocalizations l10n,
     required DeenThemeTokens deen,
   }) {
     showModalBottomSheet(
@@ -446,7 +450,7 @@ class _PrayerAzanSettingsViewState extends State<PrayerAzanSettingsView> {
                   )),
               const SizedBox(height: 14),
               ...options.map((opt) => RadioListTile<int>(
-                    title: Text(opt == 0 ? 'Disabled' : '$opt minutes',
+                    title: Text(opt == 0 ? l10n.disabled : l10n.minutesCount(opt.toString()),
                         style: GoogleFonts.plusJakartaSans(
                             fontWeight: FontWeight.w600,
                             color: deen.textPrimary)),

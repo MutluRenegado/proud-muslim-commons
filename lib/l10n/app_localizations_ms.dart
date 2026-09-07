@@ -694,4 +694,357 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get currentLocationStatus => 'Lokasi Semasa';
+
+  @override
+  String get upgradeToPro => 'Naik Taraf ke Proud Muslim Pro';
+
+  @override
+  String get premiumActive => 'Proud Muslim Pro Aktif';
+
+  @override
+  String get appearanceAndTheme => 'Rupa & Tema';
+
+  @override
+  String get prayerAndAzan => 'Solat & Azan';
+
+  @override
+  String get calculationAndJuristic => 'Pengiraan & Mazhab';
+
+  @override
+  String get locationSettings => 'Lokasi & GPS';
+
+  @override
+  String get appFeatures => 'Peringatan Rohani & Perkongsian';
+
+  @override
+  String get helpAndSupport => 'Bantuan & FAQ';
+
+  @override
+  String get salahGuide => 'Panduan Solat';
+
+  @override
+  String get wuduGuide => 'Panduan Wuduk';
+
+  @override
+  String get playAdhan => 'Mainkan Azan';
+
+  @override
+  String get previewAdhan => 'Pratonton Azan';
+
+  @override
+  String get selectAdhanSound => 'Pilih Bunyi Azan';
+
+  @override
+  String get prePrayerReminder => 'Peringatan Sebelum Solat';
+
+  @override
+  String get customMinutes => 'minit';
+
+  @override
+  String minutesCount(Object count) {
+    return '$count minit';
+  }
+
+  @override
+  String minBefore(Object minutes) {
+    return '$minutes min sebelum';
+  }
+
+  @override
+  String minAfterAzan(Object minutes) {
+    return '$minutes min selepas Azan';
+  }
+
+  @override
+  String get prePrayerAndIqamahReminders => 'PERINGATAN SEBELUM SOLAT & IQAMAH';
+
+  @override
+  String get individualPrayerAlerts => 'NOTIFIKASI SOLAT INDIVIDU';
+
+  @override
+  String get adhanOn => 'Azan Hidup';
+
+  @override
+  String get adhanOff => 'Azan Mati';
+
+  @override
+  String get fajrAdhan => 'Azan Subuh';
+
+  @override
+  String get dhuhrAdhan => 'Azan Zohor';
+
+  @override
+  String get asrAdhan => 'Azan Asar';
+
+  @override
+  String get maghribAdhan => 'Azan Maghrib';
+
+  @override
+  String get ishaAdhan => 'Azan Isyak';
+
+  @override
+  String get vibrateOnScheduledAdhan => 'Getar apabila azan bermula';
+
+  @override
+  String get silentModeDndOverride => 'Abaikan Mod Senyap / Jangan Ganggu';
+
+  @override
+  String get respectSystemSilentMode => 'Patuhi tetapan mod senyap sistem';
+
+  @override
+  String get languageAndRegionalSettings => 'TETAPAN BAHASA & WILAYAH';
+
+  @override
+  String get showSecondsInCountdown => 'Papar Saat dalam Kiraan Detik';
+
+  @override
+  String get displayLiveSecondTicking =>
+      'Papar saat langsung pada kad solat seterusnya';
+
+  @override
+  String get numeralFormat => 'Format Nombor';
+
+  @override
+  String get westernArabicNumerals => 'Angka Arab Barat (1, 2, 3...)';
+
+  @override
+  String get smokedGraphiteThemeDesc =>
+      'Kaca grafit berasap dengan sentuhan perak ais';
+
+  @override
+  String get emeraldNightThemeDesc =>
+      'Baldu zamrud mewah dengan geometri Islamik keemasan';
+
+  @override
+  String get royalOudThemeDesc =>
+      'Kristal obsidian gelap dengan kilauan ambar champagne';
+
+  @override
+  String get bismillahQuote =>
+      'Dengan nama Allah Yang Maha Pemurah, Maha Mengasihani.';
+
+  @override
+  String get dailySpiritualReminders => 'PERINGATAN ROHANI HARIAN';
+
+  @override
+  String get masterDailyReminders => 'Semua Peringatan Harian';
+
+  @override
+  String get masterDailyRemindersDesc =>
+      'Aktifkan atau matikan semua notifikasi aplikasi dan amaran rohani';
+
+  @override
+  String get dailyAyahInspiration => 'Ayat Hari Ini';
+
+  @override
+  String get dailyAyahInspirationDesc =>
+      'Terima ayat Al-Quran dan tadabbur setiap pagi';
+
+  @override
+  String get dailyHadithGemDesc => 'Terima mutiara hadis sahih setiap hari';
+
+  @override
+  String get morningEveningAzkar => 'Zikir Pagi & Petang';
+
+  @override
+  String get morningEveningAzkarDesc =>
+      'Peringatan untuk zikir pagi dan petang Hisnul Muslim';
+
+  @override
+  String get spreadTheMessage => 'SEBARKAN DAKWAH — SEDEKAH JARIYAH';
+
+  @override
+  String get shareProudMuslimTitle =>
+      'Kongsi Proud Muslim bersama Keluarga & Rakan';
+
+  @override
+  String get shareHadithQuote =>
+      'Sesiapa yang menunjukkan kebaikan, baginya ganjaran seperti orang yang melakukannya (Hadis)';
+
+  @override
+  String get shareAppText =>
+      'Proud Muslim: Al-Quran, Waktu Solat, Arah Kiblat & Zikir - Hayati Deen anda setiap hari. Muat turun: https://proudmuslim.app';
+
+  @override
+  String get istanbulTurkeyGps => 'Istanbul, Turki (GPS)';
+
+  @override
+  String get prayerTimeDiagnostics => 'Diagnostik Waktu & Jadual';
+
+  @override
+  String get inspectUtcIanaSolar =>
+      'Semak log UTC, zon masa IANA & waktu suria';
+
+  @override
+  String get emailSupport => 'Sokongan E-mel';
+
+  @override
+  String get submitFeedback => 'Hantar Maklum Balas';
+
+  @override
+  String get faqQ1 =>
+      'Bagaimanakah memastikan waktu solat 100% tepat bagi lokasi saya?';
+
+  @override
+  String get faqA1 =>
+      'Benarkan kebenaran lokasi GPS atau pilih pihak berkuasa pengiraan rasmi kawasan anda (contohnya JAKIM bagi Malaysia, Diyanet, MWL atau Ummul Qura).';
+
+  @override
+  String get faqQ2 =>
+      'Bagaimanakah kompas kiblat berfungsi dan cara penentukurannya?';
+
+  @override
+  String get faqA2 =>
+      'Kompas menggunakan sensor magnetometer dan GPS untuk mencari arah terdekat ke Kaabah di Mekah. Gerakkan telefon membentuk angka 8 jika ketepatan rendah.';
+
+  @override
+  String get faqQ3 => 'Bagaimanakah Percubaan Percuma 3 Hari berfungsi?';
+
+  @override
+  String get faqA3 =>
+      'Apabila memulakan percubaan Proud Muslim Pro, anda menerima akses percuma 3 hari ke semua bunyi azan, tema, dan ciri premium. Boleh dibatalkan bila-bila masa di Google Play.';
+
+  @override
+  String get faqQ4 => 'Adakah terjemahan Al-Quran dan Hadis sahih?';
+
+  @override
+  String get faqA4 =>
+      'Ya, semua ayat, terjemahan (seperti JAKIM), Hadis 40 Imam Nawawi, dan doa Hisnul Muslim disahkan daripada sumber Islam berwibawa.';
+
+  @override
+  String get faqQ5 => 'Bagaimanakah bacaan dan audio luar talian berfungsi?';
+
+  @override
+  String get faqA5 =>
+      'Teks Arab Al-Quran, 99 Asmaul Husna, dan zikir terbina dalam aplikasi secara luar talian. Terjemahan lengkap boleh dimuat turun dalam tetapan pembaca.';
+
+  @override
+  String get aboutTheApp => 'TENTANG APLIKASI';
+
+  @override
+  String get aboutAppDesc =>
+      'Proud Muslim adalah teman Islamik premium untuk ibadah harian, tilawah Al-Quran, ketepatan waktu solat, dan pembangunan rohani.';
+
+  @override
+  String get developerInfo => 'Pembangun';
+
+  @override
+  String get companyInfo => 'ANM Digital Labs';
+
+  @override
+  String get versionLabel => 'Versi';
+
+  @override
+  String get featurePrayerTimesDesc =>
+      'Waktu solat dengan ketepatan astronomi dan kaedah pengiraan diiktiraf di seluruh dunia.';
+
+  @override
+  String get featureQuranDesc =>
+      '114 Surah lengkap dengan khat Uthmani, pelbagai bahasa terjemahan, dan bacaan luar talian.';
+
+  @override
+  String get featureQiblaDesc =>
+      'Kompas kiblat 3D masa nyata dengan getaran haptik apabila tepat ke arah Kaabah.';
+
+  @override
+  String get featureAzkarDesc =>
+      'Zikir dan doa sahih Hisnul Muslim untuk pagi, petang, dan harian.';
+
+  @override
+  String get feature99NamesDesc =>
+      '99 Nama Indah Allah berserta maksud, dalil Al-Quran, dan sebutan audio.';
+
+  @override
+  String get featureZakatDesc =>
+      'Kalkulator zakat harta komprehensif dengan nilai nisab dan pecahan aset yang terperinci.';
+
+  @override
+  String get copyrightNotice =>
+      '© 2026 ANM Digital Labs. Hak cipta terpelihara.';
+
+  @override
+  String get termsOfUse => 'Syarat Penggunaan';
+
+  @override
+  String get legalInformation => 'Maklumat Perundangan';
+
+  @override
+  String get licenses => 'Lesen';
+
+  @override
+  String get openInBrowser => 'Buka dalam Pelayar';
+
+  @override
+  String get unableToOpenPage => 'Tidak dapat membuka halaman';
+
+  @override
+  String get tryAgain => 'Cuba Lagi';
+
+  @override
+  String get dataDeletionInfo =>
+      'Untuk permohonan pemadaman akaun dan data, hubungi support@proudmuslim.app.';
+
+  @override
+  String get ghuslGuide => 'Panduan Mandi Wajib (Ghusl)';
+
+  @override
+  String get ghuslOverviewTitle => 'Mandi Wajib (Panduan Bersuci Hadis Besar)';
+
+  @override
+  String get ghuslOverviewDesc =>
+      'Mandi wajib (ghusl) ialah bersuci daripada hadas besar (janabah, haid, nifas) dan merupakan sunat yang dituntut sebelum solat Jumaat.';
+
+  @override
+  String get whenGhuslRequired => 'Bila Mandi Wajib Diperlukan';
+
+  @override
+  String get ghuslObligatoryFarz =>
+      'Rukun Mandi (Wajib): Niat, berkumur, memasukkan air ke hidung, dan meratakan air ke seluruh badan tanpa meninggalkan walau sedikit pun bahagian kering.';
+
+  @override
+  String get ghuslRecommendedSunnah =>
+      'Amalan Sunnah Lengkap: Niat, membasuh tangan, membersihkan kemaluan, berwuduk sempurna, menuang air ke atas kepala 3 kali hingga ke pangkal rambut, dan membasuh bahagian kanan kemudian kiri badan.';
+
+  @override
+  String get translationLanguage => 'Bahasa Terjemahan';
+
+  @override
+  String get translatorEdition => 'Edisi Penterjemah';
+
+  @override
+  String get narrationVoice => 'Suara Bacaan';
+
+  @override
+  String get voiceMale => 'Lelaki';
+
+  @override
+  String get voiceFemale => 'Wanita';
+
+  @override
+  String get downloadForOfflineUse => 'Muat Turun untuk Luar Talian';
+
+  @override
+  String downloadingProgress(Object percent) {
+    return 'Sedang memuat turun ($percent%)...';
+  }
+
+  @override
+  String downloadSuccessMessage(Object language) {
+    return 'Terjemahan $language berjaya dimuat turun untuk luar talian.';
+  }
+
+  @override
+  String get downloadErrorMessage =>
+      'Gagal memuat turun terjemahan. Sila semak sambungan internet.';
+
+  @override
+  String get offlineAvailable => 'Tersedia Luar Talian';
+
+  @override
+  String get playFullSurah => 'Mainkan Surah Penuh';
+
+  @override
+  String listenInLang(Object lang) {
+    return 'Dengar dalam $lang';
+  }
 }

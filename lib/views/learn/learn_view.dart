@@ -1275,11 +1275,258 @@ class _LearnViewState extends State<LearnView>
         9, (i) => {'title': t[i], 'arabic': ar[i], 'desc': d[i]});
   }
 
+  List<Map<String, String>> _localizedGhuslSteps(String lang) {
+    const ar = [
+      'النية والتسمية',
+      'غسل الكفين (٣×)',
+      'الاستنجاء وتطهير الفرج',
+      'الوضوء كوضوء الصلاة',
+      'إفاضة الماء على الرأس (٣×)',
+      'غسل الشق الأيمن',
+      'غسل الشق الأيسر',
+      'تعميم سائر الجسد بالماء'
+    ];
+    const enTitles = [
+      '1. Intention & Bismillah',
+      '2. Washing the Hands',
+      '3. Cleansing Private Parts',
+      '4. Performing Complete Wudu',
+      '5. Pouring Water Over Head',
+      '6. Washing the Right Side',
+      '7. Washing the Left Side',
+      '8. Complete Water Coverage'
+    ];
+    const enDesc = [
+      'Form the sincere intention in the heart for full ritual purification and say "Bismillah".',
+      'Wash both hands up to the wrists three times thoroughly.',
+      'Wash the private parts thoroughly with the left hand and remove any physical impurities.',
+      'Perform a complete ablution (Wudu) exactly as performed for Salah.',
+      'Pour water over the head three times, rubbing thoroughly to ensure water reaches the roots of the hair.',
+      'Pour water over the right side of the entire body from shoulder to feet, rubbing carefully.',
+      'Pour water over the left side of the entire body from shoulder to feet, rubbing carefully.',
+      'Ensure water has completely covered every part of the skin, hair, and body without leaving any dry spot.'
+    ];
+
+    const titles = <String, List<String>>{
+      'ar': [
+        '١. النية والتسمية',
+        '٢. غسل اليدين',
+        '٣. غسل الفرج وإزالة الأذى',
+        '٤. الوضوء الكامل',
+        '٥. إفاضة الماء على الرأس',
+        '٦. غسل الشق الأيمن',
+        '٧. غسل الشق الأيسر',
+        '٨. تعميم الجسد بالماء'
+      ],
+      'tr': [
+        '1. Niyet ve Besmele',
+        '2. Elleri Yıkamak',
+        '3. Avret Yerlerini Temizlemek',
+        '4. Tam Namaz Abdesti Almak',
+        '5. Başı Üç Kez Yıkamak',
+        '6. Sağ Tarafı Yıkamak',
+        '7. Sol Tarafı Yıkamak',
+        '8. Tüm Bedeni İyice Islatmak'
+      ],
+      'de': [
+        '1. Absicht & Bismillah',
+        '2. Hände waschen',
+        '3. Intimbereich reinigen',
+        '4. Vollständiges Wudu verrichten',
+        '5. Wasser über den Kopf gießen',
+        '6. Rechte Körperseite waschen',
+        '7. Linke Körperseite waschen',
+        '8. Gesamten Körper benetzen'
+      ],
+      'fr': [
+        '1. Intention et Bismillah',
+        '2. Laver les mains',
+        '3. Nettoyer les parties intimes',
+        '4. Faire le Wudu complet',
+        '5. Verser l’eau sur la tête',
+        '6. Laver le côté droit',
+        '7. Laver le côté gauche',
+        '8. Couverture complète du corps'
+      ],
+      'es': [
+        '1. Intención y Bismillah',
+        '2. Lavarse las manos',
+        '3. Limpiar las partes íntimas',
+        '4. Realizar Wudu completo',
+        '5. Verter agua sobre la cabeza',
+        '6. Lavar el lado derecho',
+        '7. Lavar el lado izquierdo',
+        '8. Cobertura completa del cuerpo'
+      ],
+      'pt': [
+        '1. Intenção e Bismillah',
+        '2. Lavar as mãos',
+        '3. Higienizar partes íntimas',
+        '4. Realizar Wudu completo',
+        '5. Despejar água sobre a cabeça',
+        '6. Lavar o lado direito',
+        '7. Lavar o lado esquerdo',
+        '8. Cobertura completa do corpo'
+      ],
+      'ru': [
+        '1. Намерение и Бисмиллях',
+        '2. Мытье кистей рук',
+        '3. Очищение интимных мест',
+        '4. Полное малое омовение (вуду)',
+        '5. Обливание головы (3 раза)',
+        '6. Мытье правой стороны тела',
+        '7. Мытье левой стороны тела',
+        '8. Полное омовение всего тела'
+      ],
+      'id': [
+        '1. Niat & Bismillah',
+        '2. Membasuh Kedua Tangan',
+        '3. Membersihkan Kemaluan',
+        '4. Berwudhu Sempurna',
+        '5. Menyiram Air ke Kepala',
+        '6. Membasuh Tubuh Bagian Kanan',
+        '7. Membasuh Tubuh Bagian Kiri',
+        '8. Meratakan Air ke Seluruh Tubuh'
+      ],
+      'ur': [
+        '1. نیت اور بسم اللہ',
+        '2. دونوں ہاتھ دھونا',
+        '3. استنجاء اور صفائی',
+        '4. نماز جیسا مکمل وضو',
+        '5. سر پر تین بار پانی ڈالنا',
+        '6. دائیں طرف پانی بہانا',
+        '7. بائیں طرف پانی بہانا',
+        '8. پورے جسم پر پانی بہانا'
+      ],
+      'ms': [
+        '1. Niat & Bismillah',
+        '2. Membasuh Tangan',
+        '3. Membersihkan Kemaluan',
+        '4. Mengambil Wuduk Sempurna',
+        '5. Menuang Air ke Kepala',
+        '6. Membasuh Bahagian Kanan',
+        '7. Membasuh Bahagian Kiri',
+        '8. Meratakan Air ke Seluruh Badan'
+      ],
+    };
+
+    const desc = <String, List<String>>{
+      'ar': [
+        'انوِ الطهارة الكبرى في قلبك وتلفظ بالتسمية (بسم الله).',
+        'اغسل كفيك إلى الرسغين ثلاث مرات جيدًا.',
+        'اغسل الفرج بيدك اليسرى وأزل ما أصاب البدن من نجاسة وأذى.',
+        'توضأ وضوءك للصلاة كاملًا، ويجوز تأخير غسل القدمين إلى آخر الغسل.',
+        'أفض الماء على رأسك ثلاث مرات مع تخليل أصول الشعر حتى يروى جلد الرأس.',
+        'اغسل شقك الأيمن من المنكب إلى القدمين مع دلك الجسد باليد.',
+        'اغسل شقك الأيسر من المنكب إلى القدمين مع دلك الجسد باليد.',
+        'أفض الماء على سائر الجسد وتأكد من وصوله إلى جميع الثنايا ومنابت الشعر.'
+      ],
+      'tr': [
+        'Gusül (boy abdesti) için kalben niyet edin ve "Bismillah" deyin.',
+        'Her iki elinizi bileklere kadar 3 defa güzelce yıkayın.',
+        'Sol elinizle avret yerlerinizi yıkayıp varsa bedeninizdeki kirlilikleri giderin.',
+        'Namaz abdesti gibi tam bir abdest alın (ağza ve burna bolca su verin).',
+        'Başa üç defa su döküp parmaklarla saç diplerine suyun ulaşmasını sağlayın.',
+        'Sağ omuzdan başlayarak vücudun sağ tarafını yukarıdan aşağıya yıkayıp ovalayın.',
+        'Sol omuzdan başlayarak vücudun sol tarafını yukarıdan aşağıya yıkayıp ovalayın.',
+        'Bütün bedene su dökerek iğne ucu kadar dahi kuru yer kalmadığından emin olun.'
+      ],
+      'de': [
+        'Fassen Sie die Absicht zur rituellen Ganzkörperwaschung im Herzen und sagen Sie „Bismillah“.',
+        'Waschen Sie beide Hände bis zu den Handgelenken dreimal gründlich.',
+        'Waschen Sie den Schambereich mit der linken Hand und entfernen Sie Unreinheiten.',
+        'Vollziehen Sie ein komplettes Wudu genau wie für das Gebet.',
+        'Gießen Sie dreimal Wasser über den Kopf und massieren Sie den Haaransatz gründlich.',
+        'Gießen Sie Wasser über die gesamte rechte Körperseite von der Schulter bis zu den Füßen.',
+        'Gießen Sie Wasser über die gesamte linke Körperseite von der Schulter bis zu den Füßen.',
+        'Stellen Sie sicher, dass das Wasser den gesamten Körper ohne jede trockene Stelle benetzt hat.'
+      ],
+      'fr': [
+        'Formez l’intention de la grande ablution dans votre cœur et dites « Bismillah ».',
+        'Lavez soigneusement les deux mains jusqu’aux poignets 3 fois.',
+        'Lavez les parties intimes avec la main gauche et éliminez toute impureté.',
+        'Faites les ablutions complètes (Wudu) exactement comme pour la prière.',
+        'Versez 3 fois de l’eau sur la tête en frottant bien jusqu’aux racines des cheveux.',
+        'Versez l’eau sur tout le côté droit du corps de l’épaule jusqu’aux pieds en frottant.',
+        'Versez l’eau sur tout le côté gauche du corps de l’épaule jusqu’aux pieds en frottant.',
+        'Veillez à ce que l’eau recouvre entièrement la peau et le corps sans laisser de zone sèche.'
+      ],
+      'es': [
+        'Haga la intención sincera en el corazón para la purificación mayor y diga «Bismillah».',
+        'Lave ambas manos hasta las muñecas 3 veces cuidadosamente.',
+        'Lave las partes íntimas con la mano izquierda y elimine cualquier impureza.',
+        'Realice una ablución completa (Wudu) tal como se realiza para la oración.',
+        'Vierta agua 3 veces sobre la cabeza frotando bien hasta las raíces del cabello.',
+        'Vierta agua sobre todo el lado derecho del cuerpo desde el hombro hasta los pies.',
+        'Vierta agua sobre todo el lado izquierdo del cuerpo desde el hombro hasta los pies.',
+        'Asegúrese de que el agua haya cubierto todo el cuerpo sin dejar ningún punto seco.'
+      ],
+      'pt': [
+        'Faça a intenção no coração para a purificação maior e diga «Bismillah».',
+        'Lave bem as duas mãos até os pulsos 3 vezes.',
+        'Higienize as partes íntimas com a mão esquerda e remova as impurezas.',
+        'Realize o Wudu completo exatamente como se faz para a oração.',
+        'Despeje água 3 vezes sobre a cabeça massageando a raiz dos cabelos.',
+        'Despeje água sobre todo o lado direito do corpo, do ombro aos pés, esfregando bem.',
+        'Despeje água sobre todo o lado esquerdo do corpo, do ombro aos pés, esfregando bem.',
+        'Certifique-se de que a água cobriu todo o corpo e a pele sem deixar partes secas.'
+      ],
+      'ru': [
+        'Сделайте намерение в сердце для совершения полного омовения и скажите «Бисмиллях».',
+        'Тщательно вымойте обе кисти рук до запястий 3 раза.',
+        'Вымойте левой рукой интимные места и удалите все нечистоты с тела.',
+        'Совершите полное малое омовение (вуду) так же, как для молитвы.',
+        'Облийте голову водой 3 раза, тщательно массируя корни волос.',
+        'Облийте и вымойте правую сторону тела от плеча до стоп.',
+        'Облийте и вымойте левую сторону тела от плеча до стоп.',
+        'Убедитесь, что вода смочила все тело без остатка сухих мест.'
+      ],
+      'id': [
+        'Berniat di dalam hati untuk mandi wajib (mensucikan hadas besar) dan ucapkan "Bismillah".',
+        'Basuh kedua tangan hingga pergelangan sebanyak 3 kali.',
+        'Bersihkan kemaluan dengan tangan kiri dan hilangkan kotoran pada tubuh.',
+        'Lakukan wudhu sempurna sebagaimana wudhu untuk sholat.',
+        'Siramkan air ke atas kepala 3 kali dan sela-sela pangkal rambut hingga basah merata.',
+        'Siram dan basuh tubuh bagian kanan dari pundak hingga kaki sambil menggosoknya.',
+        'Siram dan basuh tubuh bagian kiri dari pundak hingga kaki sambil menggosoknya.',
+        'Ratakan air ke seluruh tubuh dan pastikan tidak ada bagian kulit yang tertinggal kering.'
+      ],
+      'ur': [
+        'دل میں طہارت کبریٰ (غسل) کی نیت کریں اور "بسم اللہ" پڑھیں۔',
+        'دونوں ہاتھوں کو کلائیوں تک تین بار اچھی طرح دھوئیں۔',
+        'بائیں ہاتھ سے استنجاء کریں اور جسم سے نجاست و ناپاکی کو دور کریں۔',
+        'نماز جیسا مکمل وضو کریں (کلی اور ناک میں اچھی طرح پانی پہنچائیں)۔',
+        'سر پر تین بار پانی ڈالیں اور بالوں کی جڑوں تک پانی پہنچائیں۔',
+        'پہلے دائیں کندھے سے پاؤں تک پورے دائیں حصے پر پانی بہا کر ملیں۔',
+        'پھر بائیں کندھے سے پاؤں تک پورے بائیں حصے پر پانی بہا کر ملیں۔',
+        'پورے جسم پر اس طرح پانی بہائیں کہ جسم کا ایک بال برابر حصہ بھی سوکھا نہ رہے۔'
+      ],
+      'ms': [
+        'Berniat di dalam hati untuk mandi wajib dan membaca "Bismillah".',
+        'Basuh kedua-dua belah tangan hingga pergelangan sebanyak 3 kali.',
+        'Bersihkan kemaluan dengan tangan kiri dan buang kotoran pada tubuh.',
+        'Ambil wuduk sempurna sebagaimana wuduk untuk solat.',
+        'Tuangkan air ke atas kepala 3 kali sambil meratakan ke pangkal rambut.',
+        'Jirus dan basuh seluruh bahagian kanan badan dari bahu hingga ke kaki.',
+        'Jirus dan basuh seluruh bahagian kiri badan dari bahu hingga ke kaki.',
+        'Ratakan air ke seluruh anggota badan tanpa meninggalkan walau sedikit pun bahagian kering.'
+      ],
+    };
+
+    final t = titles[lang] ?? enTitles;
+    final d = desc[lang] ?? enDesc;
+    return List.generate(
+        8, (i) => {'title': t[i], 'arabic': ar[i], 'desc': d[i]});
+  }
+
   Widget _buildSalahGuideTab(double bottomInset, DeenThemeTokens deen) {
     final langCode = Localizations.localeOf(context).languageCode;
+    final l10n = AppLocalizations.of(context)!;
     final steps = _guideMode == 'salah'
         ? _localizedSalahSteps(langCode)
-        : _localizedWuduSteps(langCode);
+        : _guideMode == 'wudu'
+            ? _localizedWuduSteps(langCode)
+            : _localizedGhuslSteps(langCode);
 
     return ListView(
       padding: EdgeInsets.only(
@@ -1308,6 +1555,13 @@ class _LearnViewState extends State<LearnView>
                   child: Text(UiTranslationService.text('wuduGuide', langCode)),
                 ),
               ),
+              ButtonSegment(
+                value: 'ghusl',
+                label: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(UiTranslationService.text('ghuslGuide', langCode)),
+                ),
+              ),
             ],
             selected: {_guideMode},
             onSelectionChanged: (value) =>
@@ -1315,6 +1569,59 @@ class _LearnViewState extends State<LearnView>
             showSelectedIcon: false,
           ),
         ),
+        if (_guideMode == 'ghusl')
+          Container(
+            margin: const EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: deen.badgeBackground,
+              borderRadius: BorderRadius.circular(AppRadius.l),
+              border: Border.all(color: deen.accentGold.withOpacity(0.4)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.water_drop_rounded,
+                      size: 18,
+                      color: deen.accentGold,
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        l10n.ghuslOverviewTitle,
+                        style: GoogleFonts.outfit(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: deen.accentGold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  l10n.ghuslOverviewDesc,
+                  style: GoogleFonts.plusJakartaSans(
+                    fontSize: 12,
+                    color: deen.textPrimary,
+                    height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  l10n.ghuslObligatoryFarz,
+                  style: GoogleFonts.plusJakartaSans(
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w600,
+                    color: deen.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+          ),
         for (final step in steps)
           DeenCard(
             margin: const EdgeInsets.only(bottom: 10),

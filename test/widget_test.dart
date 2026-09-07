@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:deen_path/core/services/storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:deen_path/main.dart';
+import 'package:deen_path/views/profile/profile_view.dart';
 
 void main() {
   testWidgets('Deen Path app launches and renders root screen', (WidgetTester tester) async {
@@ -18,14 +20,12 @@ void main() {
     expect(find.text('Qibla'), findsWidgets);
     expect(find.text('Azkar'), findsWidgets);
 
-    // Tap Profile & Settings button in top AppBar
-    await tester.tap(find.byTooltip('Profile & Settings'));
+    // Tap Profile avatar in top AppBar
+    await tester.tap(find.byIcon(Icons.person));
     await tester.pumpAndSettle();
 
-    expect(find.text('Profile & Settings'), findsOneWidget);
-    expect(find.text('Prayer & Azan Settings'), findsOneWidget);
-    expect(find.text('Calculation & Juristic Method'), findsOneWidget);
-    expect(find.text('Location & Privacy'), findsOneWidget);
+    expect(find.byType(ProfileView), findsOneWidget);
   });
 }
+
 
