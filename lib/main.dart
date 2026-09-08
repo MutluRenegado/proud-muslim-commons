@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'core/services/storage_service.dart';
 import 'core/services/quran_cache_service.dart';
 import 'core/services/notification_service.dart';
+import 'core/services/analytics_service.dart';
 import 'providers/theme_provider.dart';
 import 'providers/prayer_provider.dart';
 import 'providers/quran_provider.dart';
@@ -22,6 +25,15 @@ import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    AnalyticsService.init();
+  } catch (e) {
+    debugPrint('Firebase initialization note: $e');
+  }
+
   await StorageService.init();
   await QuranCacheService.init();
   await NotificationService.init();
@@ -54,6 +66,9 @@ class DeenPathApp extends StatelessWidget {
             locale: themeProv.activeLocale,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
+            navigatorObservers: [
+              if (AnalyticsService.observer != null) AnalyticsService.observer!,
+            ],
             home: const MainNavigationScreen(),
           );
         },
@@ -79,6 +94,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     QiblaView(),
     AzkarView(),
   ];
+
+  void _onNavTap(int index) {
+    setState(() => _currentIndex = index);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +135,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       body: IndexedStack(index: _currentIndex, children: _screens),
       bottomNavigationBar: ModernBottomNav(
         currentIndex: _currentIndex,
-        onTap: (index) => setState(() => _currentIndex = index),
+        onTap: _onNavTap,
         items: navItems,
       ),
     );

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "709206903658",
+    "project_id": "finalapp-e9ffc",
+    "storage_bucket": "finalapp-e9ffc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709206903658:android:c989b5dcaaa7f5e3313",
+        "android_client_info": {
+          "package_name": "online.anmdigital.proudmuslim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuBD3a-f5ltCS5lro9Ah_YJTFn9Xkg40U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

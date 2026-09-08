@@ -141,28 +141,26 @@ void main() {
     });
   });
 
-  group('Subscription & 3-Day Trial Tests', () {
-    test('Trial status calculation reflects 3-day window', () async {
-      final now = DateTime.now();
-      await StorageService.setTrialDates(now, now.add(const Duration(days: 3)));
-      await StorageService.setIsSubscribed(false);
-      await StorageService.setSubscriptionStatus('inTrial');
+  group('Subscription & Ad-Free Entitlement Tests', () {
+    test('Ad-Free status calculation reflects active status', () async {
+      await StorageService.setIsSubscribed(true);
+      await StorageService.setSubscriptionStatus('activeAdFree');
 
       final details = SubscriptionService.getTrialStatusDetails();
-      expect(details['status'], SubscriptionPlanStatus.inTrial);
-      expect(details['daysLeft'], inInclusiveRange(1, 3));
-      expect(details['isTrial'], isTrue);
-      expect(details['isSubscribed'], isFalse);
+      expect(details['status'], SubscriptionPlanStatus.activeAdFree);
+      expect(details['isSubscribed'], isTrue);
+      expect(details['hasAdFreeAccess'], isTrue);
     });
 
-    test('Active premium subscription status overrides trial', () async {
-      await StorageService.setIsSubscribed(true);
-      await StorageService.setSubscriptionStatus('activePremium');
+    test('Free status calculation reflects standard free state', () async {
+      await StorageService.setIsSubscribed(false);
+      await StorageService.setSubscriptionStatus('free');
+      await StorageService.setUserEmail('user@example.com');
 
       final details = SubscriptionService.getTrialStatusDetails();
-      expect(details['status'], SubscriptionPlanStatus.activePremium);
-      expect(details['isSubscribed'], isTrue);
-      expect(details['isTrial'], isFalse);
+      expect(details['status'], SubscriptionPlanStatus.free);
+      expect(details['isSubscribed'], isFalse);
+      expect(details['hasAdFreeAccess'], isFalse);
     });
   });
 }

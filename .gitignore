@@ -47,6 +47,7 @@ app.*.map.json
 .dart_tool/
 build/
 android/.gradle/
+android/.kotlin/
 android/app/build/
 android/key.properties
 *.jks

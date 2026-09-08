@@ -600,10 +600,12 @@ class HomeView extends StatelessWidget {
           radius: AppRadius.l,
           child: DeenCard(
             padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => page),
-            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => page),
+              );
+            },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/constants/deen_theme_tokens.dart';
 import '../../core/constants/app_design_tokens.dart';
+import '../../core/services/storage_service.dart';
 import '../../providers/subscription_provider.dart';
 import '../../widgets/deen_card.dart';
 import '../../widgets/deen_section_header.dart';
@@ -21,24 +21,23 @@ class SubscriptionView extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final bottomInset = MediaQuery.of(context).padding.bottom;
 
-    final trial = subProv.trialDetails;
-    final isSubscribed = subProv.isSubscribed;
-    final isInTrial = subProv.isInTrial;
-    final daysLeft = subProv.daysLeftInTrial;
-    final product = subProv.monthlyProduct;
+    final isSubscribed = subProv.hasAdFreeAccess;
+    final product = subProv.annualProduct;
     final billingProvider = subProv.billingProvider;
+    final isSpecialAccount = StorageService.isPermanentAdFreeAccount;
 
     return Scaffold(
       backgroundColor: deen.bgPrimary,
       appBar: AppBar(
         title: Text(
-          l10n.subscriptionAndBilling,
+          'Proud Muslim Ad-Free',
           style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         actions: [
           LocalizedHelpIcon(
-            title: l10n.helpSubscriptionTitle,
-            description: l10n.helpSubscriptionDesc,
+            title: 'Ad-Free Subscription',
+            description:
+                'Proud Muslim is completely free to use. Reading Quran and 99 Names of Allah are permanently ad-free for all users. The Ad-Free subscription removes advertisements from the remaining features.',
           ),
           const SizedBox(width: 8),
         ],
@@ -51,9 +50,9 @@ class SubscriptionView extends StatelessWidget {
           bottom: bottomInset + 32,
         ),
         children: [
-          // Forever Free Promise Box
+          // 1. Core Islamic Promise Box (Quran & 99 Names Free Forever & Ad-Free)
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             decoration: BoxDecoration(
               color: deen.badgeBackground,
               borderRadius: BorderRadius.circular(16),
@@ -61,16 +60,30 @@ class SubscriptionView extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(Icons.verified_rounded, color: deen.accentGold, size: 22),
+                Icon(Icons.verified_rounded, color: deen.accentGold, size: 24),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: Text(
-                    l10n.quranForeverFree,
-                    style: GoogleFonts.plusJakartaSans(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                      color: deen.textPrimary,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '100% Free Forever & Ad-Free',
+                        style: GoogleFonts.plusJakartaSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13.5,
+                          color: deen.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        'Reading Quran and 99 Names of Allah (Esmaul Husna) will never require payment and will never show advertisements.',
+                        style: GoogleFonts.plusJakartaSans(
+                          fontSize: 12,
+                          color: deen.textSecondary,
+                          height: 1.35,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -78,7 +91,7 @@ class SubscriptionView extends StatelessWidget {
           ),
           const SizedBox(height: 14),
 
-          // Header Status Banner
+          // 2. Header Status Banner
           Container(
             padding: const EdgeInsets.all(22),
             decoration: BoxDecoration(
@@ -118,9 +131,7 @@ class SubscriptionView extends StatelessWidget {
                         border: Border.all(color: Colors.white24),
                       ),
                       child: Text(
-                        isSubscribed
-                            ? 'PREMIUM ACTIVE'
-                            : (isInTrial ? '3-DAY TRIAL ACTIVE' : 'FREE PLAN'),
+                        isSubscribed ? 'AD-FREE ACTIVE' : 'FREE (AD-SUPPORTED)',
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
@@ -129,20 +140,20 @@ class SubscriptionView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Icon(
-                      Icons.workspace_premium_rounded,
+                    Icon(
+                      isSubscribed
+                          ? Icons.verified_rounded
+                          : Icons.block_rounded,
                       color: Colors.white,
-                      size: 28,
+                      size: 26,
                     ),
                   ],
                 ),
                 const SizedBox(height: 16),
                 Text(
                   isSubscribed
-                      ? l10n.monthlyPremiumPlan
-                      : (isInTrial
-                          ? '${l10n.freeTrial} ($daysLeft days left)'
-                          : l10n.unlockPremiumAccess),
+                      ? 'Ad-Free Experience Active'
+                      : 'Go Ad-Free for the Whole App',
                   style: GoogleFonts.outfit(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -152,13 +163,13 @@ class SubscriptionView extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   isSubscribed
-                      ? 'You have unlimited access to all Proud Muslim Pro features.'
-                      : (isInTrial
-                          ? 'Enjoy complete full access to all dynamic themes and customization.'
-                          : 'Subscribe monthly to unlock all dynamic themes and advanced customization.'),
+                      ? (isSpecialAccount
+                          ? 'You are signed in with an authorized permanent Ad-Free account. No ads will be shown anywhere in the app.'
+                          : 'You have an active Ad-Free subscription. All advertisements are disabled across the app.')
+                      : 'All Proud Muslim features are 100% free to use. Subscribe to enjoy a pure, ad-free spiritual environment across all screens.',
                   style: GoogleFonts.plusJakartaSans(
                     fontSize: 13,
-                    color: Colors.white.withOpacity(0.85),
+                    color: Colors.white.withOpacity(0.9),
                     height: 1.4,
                   ),
                 ),
@@ -167,9 +178,9 @@ class SubscriptionView extends StatelessWidget {
           ),
           const SizedBox(height: 20),
 
-          // Plan Details Card
+          // 3. Plan & Pricing Details Card
           DeenSectionHeader(
-            title: l10n.subscriptionAndBilling.toUpperCase(),
+            title: 'SUBSCRIPTION & BILLING',
             icon: Icons.receipt_long_rounded,
           ),
           const SizedBox(height: 8),
@@ -179,7 +190,7 @@ class SubscriptionView extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(
-                    l10n.currentPlan,
+                    'Annual Ad-Free Subscription',
                     style: GoogleFonts.plusJakartaSans(
                       fontWeight: FontWeight.w600,
                       color: deen.textPrimary,
@@ -187,19 +198,45 @@ class SubscriptionView extends StatelessWidget {
                   ),
                   subtitle: Text(
                     isSubscribed
-                        ? 'Monthly Auto-Renewing'
-                        : (isInTrial ? l10n.freeTrial : l10n.freePlan),
+                        ? (isSpecialAccount
+                            ? 'Permanent Free Account'
+                            : 'Yearly Auto-Renewing')
+                        : '${product.introPrice} for the 1st year',
                     style: GoogleFonts.plusJakartaSans(
                       color: deen.accentPrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   trailing: Text(
-                    product.price,
+                    isSubscribed ? 'Active' : product.introPrice,
                     style: GoogleFonts.outfit(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: deen.textPrimary,
+                    ),
+                  ),
+                ),
+                Divider(height: 1, color: deen.cardBorder),
+                ListTile(
+                  title: Text(
+                    'Regular Yearly Renewal',
+                    style: GoogleFonts.plusJakartaSans(
+                      fontWeight: FontWeight.w600,
+                      color: deen.textPrimary,
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Renews annually after the first year',
+                    style: GoogleFonts.plusJakartaSans(
+                      color: deen.textSecondary,
+                    ),
+                  ),
+                  trailing: Text(
+                    product.regularPrice,
+                    style: GoogleFonts.outfit(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: deen.textSecondary,
                     ),
                   ),
                 ),
@@ -223,41 +260,20 @@ class SubscriptionView extends StatelessWidget {
                     color: deen.textSecondary,
                   ),
                 ),
-                if (trial['endDate'] != null && isInTrial) ...[
-                  Divider(height: 1, color: deen.cardBorder),
-                  ListTile(
-                    title: Text(
-                      l10n.trialExpirationDate,
-                      style: GoogleFonts.plusJakartaSans(
-                        fontWeight: FontWeight.w600,
-                        color: deen.textPrimary,
-                      ),
-                    ),
-                    subtitle: Text(
-                      DateFormat('EEEE, MMMM d, yyyy')
-                          .format(trial['endDate'] as DateTime),
-                      style: GoogleFonts.plusJakartaSans(
-                        color: deen.accentGold,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    trailing: Icon(Icons.event_rounded, color: deen.accentGold),
-                  ),
-                ],
               ],
             ),
           ),
           const SizedBox(height: 20),
 
-          // Action Buttons
+          // 4. Action Buttons
           if (!isSubscribed) ...[
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                onPressed: () => subProv.subscribeMonthly(),
-                icon: const Icon(Icons.lock_open_rounded, size: 20),
+                onPressed: () => subProv.subscribeAdFree(),
+                icon: const Icon(Icons.block_rounded, size: 20),
                 label: Text(
-                  '${l10n.subscribeNow} (${product.price} / Month)',
+                  'Subscribe Ad-Free (${product.introPrice} / 1st Year)',
                   style: GoogleFonts.plusJakartaSans(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
@@ -284,8 +300,8 @@ class SubscriptionView extends StatelessWidget {
                   SnackBar(
                     content: Text(
                       success
-                          ? 'Purchases restored successfully.'
-                          : 'No active subscriptions found.',
+                          ? 'Ad-Free purchases restored successfully.'
+                          : 'No active Ad-Free subscriptions found.',
                     ),
                     behavior: SnackBarBehavior.floating,
                   ),
@@ -311,16 +327,16 @@ class SubscriptionView extends StatelessWidget {
           ),
           const SizedBox(height: 20),
 
-          // Google Play Terms and Disclosures
+          // 5. Transparent Google Play Terms & Disclosures
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
-              'Subscriptions auto-renew monthly unless canceled at least 24 hours prior to the end of the current billing cycle through Google Play Store > Subscriptions. Quran reading and prayer times remain permanently free.',
+              'Subscriptions auto-renew yearly (every 12 months) at ${product.regularPrice} unless canceled at least 24 hours prior to renewal through Google Play Store > Subscriptions. All application features (Prayer times, Qibla compass, Azkar, Hadith, Calendar, Themes) are 100% free to use. Reading Quran and 99 Names of Allah are free forever and will never show ads.',
               textAlign: TextAlign.center,
               style: GoogleFonts.plusJakartaSans(
                 fontSize: 11,
                 color: deen.textMuted,
-                height: 1.4,
+                height: 1.45,
               ),
             ),
           ),

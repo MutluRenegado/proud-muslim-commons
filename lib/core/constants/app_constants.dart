@@ -1,8 +1,8 @@
 class AppConstants {
   static const String appName = 'Proud Muslim';
   static const String appTagline = 'Your daily spiritual companion';
-  static const String appVersion = '1.0.1';
-  static const String appBuildNumber = '2';
+  static const String appVersion = '1.0.4';
+  static const String appBuildNumber = '5';
   static const String communityName = 'Proud Muslim Global Ummah';
   static const String supportEmail = 'support@proudmuslim.app';
   static const String privacyPolicyUrl =
@@ -12,12 +12,43 @@ class AppConstants {
   static const String licensesUrl =
       'https://anm-digital.github.io/proud-muslim-legal/licenses.html';
 
-  // Subscriptions
-  static const String subscriptionProductId = 'proud_muslim_premium';
-  static const String basePlanIdQuarterly = 'quarterly-auto-renewing';
-  static const String offerIdIntroductory = 'intro-first-3-months';
-  static const String productIdMonthlyPremium = 'proudmuslim_monthly_sub';
-  static const String productIdAnnualPremium = 'proudmuslim_annual_sub';
+  // Permanent Free Ad-Free Accounts
+  static const Set<String> permanentProEmails = {
+    'akgnmutlu@gmail.com',
+    'testingisamust32@gmail.com',
+  };
+  static const Set<String> permanentAdFreeEmails = permanentProEmails;
+
+  // Subscriptions & Plans (Ad-Free Annual Subscription)
+  static const String subscriptionProductId = 'proud_muslim_ad_free_annual';
+  static const String basePlanIdAnnual = 'yearly-auto-renewing';
+  static const String offerIdIntroUsaEurope = 'intro-first-year-tier1';
+  static const String offerIdIntroRow = 'intro-first-year-tier2';
+  static const String productIdAnnualAdFree = 'proud_muslim_ad_free_annual';
+  static const String legacyProductIdPremium = 'proud_muslim_premium';
+
+  // Regular Annual Pricing (12-Month Billing Period: US$12.59/year)
+  static const double priceAnnualRegularUsd = 12.59;
+  static const double priceAnnualRegularEur = 12.59;
+  static const double priceAnnualRegularTry = 399.99;
+  static const String formattedPriceAnnualRegularUsd = '\$12.59/year';
+  static const String formattedPriceAnnualRegularEur = '€12.59/year';
+  static const String formattedPriceAnnualRegularTry = '₺399.99/year';
+
+  // First-Year Introductory Pricing Tiers (First 12 Months)
+  // USA & Europe: US$4.59 target equivalent
+  static const double priceIntroUsaEuropeUsd = 4.59;
+  static const double priceIntroEuropeEur = 4.59;
+  static const String formattedPriceIntroUsa = '\$4.59';
+  static const String formattedPriceIntroEurope = '€4.59';
+
+  // Rest of World: US$2.59 target equivalent
+  static const double priceIntroRowUsd = 2.59;
+  static const String formattedPriceIntroRow = '\$2.59';
+
+  // Turkey Introductory (Local currency equivalent)
+  static const double priceIntroTurkeyTry = 149.99;
+  static const String formattedPriceIntroTurkey = '₺149.99';
 
   // Defaults
   static const double defaultLat = 41.0082; // Istanbul default

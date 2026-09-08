@@ -22,7 +22,6 @@ import 'app_features_settings_view.dart';
 import 'subscription_view.dart';
 import 'support_view.dart';
 import 'legal_about_view.dart';
-import 'premium_trial_view.dart';
 import '../debug/prayer_diagnostic_view.dart';
 
 import '../../l10n/app_localizations.dart';
@@ -180,10 +179,7 @@ class _ProfileViewState extends State<ProfileView> {
     final l10n = AppLocalizations.of(context)!;
     final langCode = Localizations.localeOf(context).languageCode;
     final bottomInset = MediaQuery.of(context).padding.bottom;
-    final trial = subProv.trialDetails;
     final isSubscribed = subProv.isSubscribed;
-    final isInTrial = subProv.isInTrial;
-    final daysLeft = subProv.daysLeftInTrial;
 
     return Scaffold(
       backgroundColor: deen.bgPrimary,
@@ -213,17 +209,14 @@ class _ProfileViewState extends State<ProfileView> {
         ),
         children: [
           // 1. Profile Identity Card
-          _buildProfileIdentityCard(isSubscribed, isInTrial, l10n, deen),
+          _buildProfileIdentityCard(isSubscribed, l10n, deen),
           const SizedBox(height: 14),
 
-          // 2. Subscription / Trial Banner Card
+          // 2. Subscription / Ad-Free Banner Card
           _buildSubscriptionCard(
             context,
             subProv,
             isSubscribed,
-            isInTrial,
-            daysLeft,
-            trial,
             deen,
           ),
           const SizedBox(height: 18),
@@ -331,8 +324,8 @@ class _ProfileViewState extends State<ProfileView> {
                   color: deen.accentGold,
                   title: l10n.subscriptionAndBilling,
                   subtitle: isSubscribed
-                      ? l10n.proPlan
-                      : (isInTrial ? l10n.trialPlan : l10n.freePlan),
+                      ? 'Ad-Free Active'
+                      : 'Free (Ad-Supported)',
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => const SubscriptionView()),
@@ -459,11 +452,9 @@ class _ProfileViewState extends State<ProfileView> {
 
   Widget _buildProfileIdentityCard(
     bool isSubscribed,
-    bool isInTrial,
     AppLocalizations l10n,
     DeenThemeTokens deen,
   ) {
-    final langCode = Localizations.localeOf(context).languageCode;
     final hasCustomPhoto =
         _profilePhotoPath != null && File(_profilePhotoPath!).existsSync();
 
@@ -550,27 +541,17 @@ class _ProfileViewState extends State<ProfileView> {
                       decoration: BoxDecoration(
                         color: isSubscribed
                             ? deen.accentGold.withOpacity(0.2)
-                            : (isInTrial
-                                ? deen.accentPrimary.withOpacity(0.15)
-                                : Colors.grey.withOpacity(0.15)),
+                            : Colors.grey.withOpacity(0.15),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        isSubscribed
-                            ? UiTranslationService.text('planPro', langCode)
-                            : (isInTrial
-                                ? UiTranslationService.text(
-                                    'planTrial', langCode)
-                                : UiTranslationService.text(
-                                    'planFree', langCode)),
+                        isSubscribed ? 'AD-FREE' : 'FREE',
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           color: isSubscribed
                               ? deen.accentGold
-                              : (isInTrial
-                                  ? deen.accentPrimary
-                                  : Colors.grey[700]),
+                              : Colors.grey[700],
                         ),
                       ),
                     ),
@@ -602,9 +583,6 @@ class _ProfileViewState extends State<ProfileView> {
     BuildContext context,
     SubscriptionProvider subProv,
     bool isSubscribed,
-    bool isInTrial,
-    int daysLeft,
-    dynamic trial,
     DeenThemeTokens deen,
   ) {
     if (isSubscribed) {
@@ -619,7 +597,7 @@ class _ProfileViewState extends State<ProfileView> {
                 shape: BoxShape.circle,
               ),
               child: Icon(
-                Icons.workspace_premium_rounded,
+                Icons.verified_rounded,
                 color: deen.accentGold,
                 size: 24,
               ),
@@ -630,8 +608,7 @@ class _ProfileViewState extends State<ProfileView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    UiTranslationService.text('proActive',
-                        Localizations.localeOf(context).languageCode),
+                    'Proud Muslim Ad-Free Active',
                     style: GoogleFonts.outfit(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -639,8 +616,9 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                   Text(
-                    UiTranslationService.text('proUnlocked',
-                        Localizations.localeOf(context).languageCode),
+                    StorageService.isPermanentAdFreeAccount
+                        ? 'Permanent Ad-Free account active. Enjoy an ad-free spiritual journey.'
+                        : 'All advertisements are removed across the application.',
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 12,
                       color: deen.textSecondary,
@@ -679,7 +657,7 @@ class _ProfileViewState extends State<ProfileView> {
           borderRadius: BorderRadius.circular(16),
           onTap: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => const PremiumTrialView()),
+            MaterialPageRoute(builder: (_) => const SubscriptionView()),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -692,7 +670,7 @@ class _ProfileViewState extends State<ProfileView> {
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(
-                    Icons.auto_awesome_rounded,
+                    Icons.block_rounded,
                     color: Colors.white,
                     size: 24,
                   ),
@@ -703,12 +681,7 @@ class _ProfileViewState extends State<ProfileView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        isInTrial
-                            ? UiTranslationService.text('trialDaysLeft',
-                                Localizations.localeOf(context).languageCode,
-                                params: {'days': '$daysLeft'})
-                            : UiTranslationService.text('tryProFree',
-                                Localizations.localeOf(context).languageCode),
+                        'Go Ad-Free',
                         style: GoogleFonts.outfit(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
@@ -717,11 +690,7 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        isInTrial
-                            ? UiTranslationService.text('exploreTrial',
-                                Localizations.localeOf(context).languageCode)
-                            : UiTranslationService.text('unlockPremium',
-                                Localizations.localeOf(context).languageCode),
+                        'Proud Muslim is free. Subscribe to remove ads across all features.',
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: 11.5,
                           color: Colors.white.withOpacity(0.9),
@@ -760,25 +729,21 @@ class _ProfileViewState extends State<ProfileView> {
         title,
         style: GoogleFonts.plusJakartaSans(
           fontWeight: FontWeight.w600,
-          fontSize: 13.5,
+          fontSize: 14,
           color: deen.textPrimary,
         ),
-        maxLines: 2,
-        overflow: TextOverflow.visible,
       ),
       subtitle: Text(
         subtitle,
         style: GoogleFonts.plusJakartaSans(
-          fontSize: 11.5,
+          fontSize: 12,
           color: deen.textSecondary,
         ),
-        maxLines: 3,
-        overflow: TextOverflow.visible,
       ),
       trailing: Icon(
         Icons.chevron_right_rounded,
+        size: 18,
         color: deen.textSecondary,
-        size: 20,
       ),
       onTap: onTap,
     );
@@ -791,6 +756,8 @@ class _ProfileViewState extends State<ProfileView> {
   ) {
     final nameCtrl = TextEditingController(text: _userName);
     final emailCtrl = TextEditingController(text: _userEmail);
+
+    final subProv = Provider.of<SubscriptionProvider>(context, listen: false);
 
     showDialog(
       context: context,
@@ -836,6 +803,23 @@ class _ProfileViewState extends State<ProfileView> {
         ),
         actions: [
           TextButton(
+            onPressed: () async {
+              Navigator.pop(ctx);
+              await StorageService.logout();
+              if (mounted) {
+                setState(() {
+                  _userName = StorageService.userName;
+                  _userEmail = StorageService.userEmail;
+                });
+                subProv.refreshStatus();
+              }
+            },
+            child: Text(
+              'Reset / Sign Out',
+              style: GoogleFonts.plusJakartaSans(color: Colors.redAccent),
+            ),
+          ),
+          TextButton(
             onPressed: () => Navigator.pop(ctx),
             child: Text(
               l10n.cancel,
@@ -853,7 +837,10 @@ class _ProfileViewState extends State<ProfileView> {
               }
               if (newEmail.isNotEmpty) {
                 await StorageService.setUserEmail(newEmail);
-                if (mounted) setState(() => _userEmail = newEmail);
+                if (mounted) {
+                  setState(() => _userEmail = newEmail);
+                  subProv.refreshStatus();
+                }
               }
             },
             style: ElevatedButton.styleFrom(

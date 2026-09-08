@@ -438,15 +438,45 @@ class StorageService {
   static Future<void> setTtsVoiceGender(String gender) =>
       prefs.setString(AppConstants.keyTtsVoiceGender, gender);
 
-  // Subscriptions & Trial
-  static bool get isSubscribed => prefs.getBool('is_subscribed') ?? false;
+  // Subscriptions & Entitlements (Proud Muslim Ad-Free)
+  static bool isPermanentAdFreeEmail(String? email) {
+    if (email == null) return false;
+    final normalized = email.trim().toLowerCase();
+    return AppConstants.permanentProEmails.contains(normalized);
+  }
+
+  static bool isPermanentProEmail(String? email) => isPermanentAdFreeEmail(email);
+
+  static bool get isPermanentAdFreeAccount =>
+      isPermanentAdFreeEmail(userEmail);
+
+  static bool get isPermanentProAccount => isPermanentAdFreeAccount;
+
+  static bool get isPaidSubscribed =>
+      prefs.getBool('is_subscribed') ?? false;
+
   static Future<void> setIsSubscribed(bool val) =>
       prefs.setBool('is_subscribed', val);
 
+  static bool get hasAdFreeAccess =>
+      isPermanentAdFreeAccount || isPaidSubscribed;
+
+  static bool get isSubscribed => hasAdFreeAccess;
+
   static String get subscriptionStatus =>
-      prefs.getString('subscription_status') ?? 'free';
+      hasAdFreeAccess
+          ? 'activeAdFree'
+          : (prefs.getString('subscription_status') ?? 'free');
+
   static Future<void> setSubscriptionStatus(String status) =>
       prefs.setString('subscription_status', status);
+
+  static Future<void> logout() async {
+    await prefs.remove(AppConstants.keyUserName);
+    await prefs.remove(AppConstants.keyUserEmail);
+    await prefs.remove(AppConstants.keyUserAvatar);
+    await prefs.remove(AppConstants.keyUserProfilePhotoPath);
+  }
 
   static Future<void> setTrialDates(DateTime start, DateTime end) async {
     await prefs.setString('trial_start_date', start.toIso8601String());

@@ -1,7 +1,7 @@
 name: deen_path
 description: "Proud Muslim: Quran & Prayer - Live your Deen. Every day."
 publish_to: 'none'
-version: 1.0.3+4
+version: 1.0.4+5
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -31,6 +31,8 @@ dependencies:
   image_picker: ^1.1.2
   flutter_tts: ^4.2.2
   path_provider: ^2.1.5
+  firebase_core: ^4.14.0
+  firebase_analytics: ^12.5.0
 
 dev_dependencies:
   flutter_test:
