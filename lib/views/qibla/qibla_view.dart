@@ -19,6 +19,8 @@ import '../../widgets/localized_help_icon.dart';
 import '../../l10n/app_localizations.dart';
 import '../../core/services/ui_translation_service.dart';
 
+import '../../core/services/compass_sensor_service.dart';
+
 class QiblaView extends StatefulWidget {
   const QiblaView({super.key});
 
@@ -27,54 +29,66 @@ class QiblaView extends StatefulWidget {
 }
 
 class _QiblaViewState extends State<QiblaView> {
-  StreamSubscription<CompassEvent>? _compassSubscription;
+  StreamSubscription<double>? _headingSubscription;
   double _smoothedHeading = 0.0;
   double? _accuracy;
   bool _hasCompassSensor = true;
   bool _isLoading = true;
   bool _wasAligned = false;
   bool _isRefreshingLocation = false;
+  bool _firstHeadingReceived = false;
 
   @override
   void initState() {
     super.initState();
     _initCompass();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final prayerProv = Provider.of<PrayerProvider>(context, listen: false);
+      if (prayerProv.locationMode == 'auto') {
+        _autoSyncLocation(prayerProv);
+      }
+    });
+  }
+
+  Future<void> _autoSyncLocation(PrayerProvider prayerProv) async {
+    try {
+      final pos = await LocationService.requestDeviceLocation(context);
+      if (pos != null && mounted) {
+        final cityPreset = LocationService.findNearestCity(
+          pos.latitude,
+          pos.longitude,
+        );
+        prayerProv.updateLocation(
+          pos.latitude,
+          pos.longitude,
+          cityPreset.city,
+          cityPreset.country,
+          mode: 'auto',
+        );
+      }
+    } catch (_) {}
   }
 
   void _initCompass() {
-    final stream = FlutterCompass.events;
-    if (stream == null) {
-      setState(() {
-        _hasCompassSensor = false;
-        _isLoading = false;
-      });
-      return;
-    }
-
-    _compassSubscription = stream.listen(
-      (event) {
+    CompassSensorService.startListening();
+    _headingSubscription = CompassSensorService.headingStream.listen(
+      (rawHeading) {
         if (!mounted) return;
 
-        if (event.heading == null) {
-          setState(() {
-            _hasCompassSensor = false;
-            _isLoading = false;
-          });
-          return;
-        }
-
-        final raw = (event.heading! + 360.0) % 360.0;
-        final smoothed = QiblaService.smoothHeading(
-          _smoothedHeading,
-          raw,
-          alpha: 0.35,
-        );
+        final raw = (rawHeading + 360.0) % 360.0;
+        final smoothed = _firstHeadingReceived
+            ? QiblaService.smoothHeading(
+                _smoothedHeading,
+                raw,
+                alpha: 0.35,
+              )
+            : raw;
+        _firstHeadingReceived = true;
 
         setState(() {
           _hasCompassSensor = true;
           _isLoading = false;
           _smoothedHeading = smoothed;
-          _accuracy = event.accuracy;
         });
       },
       onError: (err) {
@@ -89,7 +103,8 @@ class _QiblaViewState extends State<QiblaView> {
 
   @override
   void dispose() {
-    _compassSubscription?.cancel();
+    _headingSubscription?.cancel();
+    CompassSensorService.stopListening();
     super.dispose();
   }
 
@@ -269,6 +284,10 @@ class _QiblaViewState extends State<QiblaView> {
                     accentColor: deen.accentPrimary,
                     icon: Icons.navigation_rounded,
                     deen: deen,
+                    badgeText: _accuracy != null && _accuracy! > 20
+                        ? 'Calibrate'
+                        : null,
+                    onTap: () => _showCalibrationDialog(context, deen),
                   ),
                 ),
               ],
@@ -506,41 +525,161 @@ class _QiblaViewState extends State<QiblaView> {
     required Color accentColor,
     required IconData icon,
     required DeenThemeTokens deen,
+    String? badgeText,
+    VoidCallback? onTap,
   }) {
-    return DeenCard(
-      padding: const EdgeInsets.all(14),
-      child: Column(
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: DeenCard(
+        padding: const EdgeInsets.all(14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    title,
+                    style: GoogleFonts.plusJakartaSans(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: deen.textSecondary,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                if (badgeText != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    margin: const EdgeInsets.only(right: 4),
+                    decoration: BoxDecoration(
+                      color: deen.warning.withOpacity(0.18),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: deen.warning.withOpacity(0.4)),
+                    ),
+                    child: Text(
+                      badgeText,
+                      style: GoogleFonts.plusJakartaSans(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: deen.warning,
+                      ),
+                    ),
+                  ),
+                Icon(icon, size: 18, color: accentColor),
+              ],
+            ),
+            const SizedBox(height: 6),
+            Text(
+              value,
+              style: GoogleFonts.outfit(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: accentColor,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              subtitle,
+              style: GoogleFonts.plusJakartaSans(
+                fontSize: 11,
+                color: deen.textMuted,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showCalibrationDialog(BuildContext context, DeenThemeTokens deen) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: deen.cardBackground,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Row(
+          children: [
+            Icon(Icons.explore_rounded, color: deen.accentPrimary),
+            const SizedBox(width: 8),
+            Text(
+              'Compass Calibration',
+              style: GoogleFonts.outfit(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: deen.textPrimary,
+              ),
+            ),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'If the compass needle is erratic or points in the wrong direction:',
+              style: GoogleFonts.plusJakartaSans(
+                fontSize: 13.5,
+                color: deen.textPrimary,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: 12),
+            _buildCalibStep('1', 'Hold your phone flat in front of you.', deen),
+            _buildCalibStep('2', 'Move your phone in a figure-8 motion (∞) in the air 3 to 4 times.', deen),
+            _buildCalibStep('3', 'Ensure your device is away from magnets, laptop speakers, or metal objects.', deen),
+            _buildCalibStep('4', 'Ensure GPS Location is active so true Qibla bearing is computed.', deen),
+          ],
+        ),
+        actions: [
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx),
+            style: FilledButton.styleFrom(
+              backgroundColor: deen.accentPrimary,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            child: const Text('Got it'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCalibStep(String num, String text, DeenThemeTokens deen) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title,
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: deen.textSecondary,
+          Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              color: deen.accentPrimary.withOpacity(0.15),
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: Text(
+                num,
+                style: GoogleFonts.outfit(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                  color: deen.accentPrimary,
                 ),
               ),
-              Icon(icon, size: 18, color: accentColor),
-            ],
-          ),
-          const SizedBox(height: 6),
-          Text(
-            value,
-            style: GoogleFonts.outfit(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: accentColor,
             ),
           ),
-          const SizedBox(height: 2),
-          Text(
-            subtitle,
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 11,
-              color: deen.textMuted,
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              text,
+              style: GoogleFonts.plusJakartaSans(
+                fontSize: 12.5,
+                color: deen.textSecondary,
+                height: 1.35,
+              ),
             ),
           ),
         ],
