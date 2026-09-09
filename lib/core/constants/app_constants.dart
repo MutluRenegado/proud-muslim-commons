@@ -1,8 +1,8 @@
 class AppConstants {
   static const String appName = 'Proud Muslim';
   static const String appTagline = 'Your daily spiritual companion';
-  static const String appVersion = '4.0.0';
-  static const String appBuildNumber = '4';
+  static const String appVersion = '7.0.0';
+  static const String appBuildNumber = '7';
   static const String communityName = 'Proud Muslim Global Ummah';
   static const String supportEmail = 'support@proudmuslim.app';
   static const String privacyPolicyUrl =
