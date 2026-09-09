@@ -1,8 +1,8 @@
 class AppConstants {
   static const String appName = 'Proud Muslim';
   static const String appTagline = 'Your daily spiritual companion';
-  static const String appVersion = '1.0.4';
-  static const String appBuildNumber = '5';
+  static const String appVersion = '4.0.0';
+  static const String appBuildNumber = '4';
   static const String communityName = 'Proud Muslim Global Ummah';
   static const String supportEmail = 'support@proudmuslim.app';
   static const String privacyPolicyUrl =
@@ -18,6 +18,11 @@ class AppConstants {
     'testingisamust32@gmail.com',
   };
   static const Set<String> permanentAdFreeEmails = permanentProEmails;
+
+  // Dedicated Test Viewer Accounts (Full unrestricted access / inspection mode)
+  static const Set<String> testViewerEmails = {
+    'testingisamust32@gmail.com',
+  };
 
   // Subscriptions & Plans (Ad-Free Annual Subscription)
   static const String subscriptionProductId = 'proud_muslim_ad_free_annual';

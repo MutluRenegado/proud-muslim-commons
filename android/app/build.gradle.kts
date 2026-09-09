@@ -51,6 +51,12 @@ android {
 
     buildTypes {
         release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             val releaseSigning = signingConfigs.getByName("release")
             if (releaseSigning.storeFile != null) {
                 signingConfig = releaseSigning
@@ -68,3 +74,10 @@ dependencies {
 flutter {
     source = "../.."
 }
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
+}
+

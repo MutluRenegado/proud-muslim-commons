@@ -131,7 +131,11 @@ class SubscriptionView extends StatelessWidget {
                         border: Border.all(color: Colors.white24),
                       ),
                       child: Text(
-                        isSubscribed ? 'AD-FREE ACTIVE' : 'FREE (AD-SUPPORTED)',
+                        StorageService.isViewerAccount
+                            ? 'TESTER (VIEWER)'
+                            : (isSubscribed
+                                ? 'AD-FREE ACTIVE'
+                                : 'FREE (AD-SUPPORTED)'),
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
@@ -152,7 +156,9 @@ class SubscriptionView extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   isSubscribed
-                      ? 'Ad-Free Experience Active'
+                      ? (StorageService.isViewerAccount
+                          ? 'Tester (Viewer Mode) Active'
+                          : 'Ad-Free Experience Active')
                       : 'Go Ad-Free for the Whole App',
                   style: GoogleFonts.outfit(
                     fontSize: 22,
@@ -163,9 +169,11 @@ class SubscriptionView extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   isSubscribed
-                      ? (isSpecialAccount
-                          ? 'You are signed in with an authorized permanent Ad-Free account. No ads will be shown anywhere in the app.'
-                          : 'You have an active Ad-Free subscription. All advertisements are disabled across the app.')
+                      ? (StorageService.isViewerAccount
+                          ? 'Signed in as Test Account (Viewer Mode). Full unrestricted access across all features and screens with zero advertisements.'
+                          : (isSpecialAccount
+                              ? 'You are signed in with an authorized permanent Ad-Free account. No ads will be shown anywhere in the app.'
+                              : 'You have an active Ad-Free subscription. All advertisements are disabled across the app.'))
                       : 'All Proud Muslim features are 100% free to use. Subscribe to enjoy a pure, ad-free spiritual environment across all screens.',
                   style: GoogleFonts.plusJakartaSans(
                     fontSize: 13,
@@ -198,9 +206,11 @@ class SubscriptionView extends StatelessWidget {
                   ),
                   subtitle: Text(
                     isSubscribed
-                        ? (isSpecialAccount
-                            ? 'Permanent Free Account'
-                            : 'Yearly Auto-Renewing')
+                        ? (StorageService.isViewerAccount
+                            ? 'Test Account (Viewer Mode)'
+                            : (isSpecialAccount
+                                ? 'Permanent Free Account'
+                                : 'Yearly Auto-Renewing'))
                         : '${product.introPrice} for the 1st year',
                     style: GoogleFonts.plusJakartaSans(
                       color: deen.accentPrimary,

@@ -445,6 +445,14 @@ class StorageService {
     return AppConstants.permanentProEmails.contains(normalized);
   }
 
+  static bool isViewerAccountEmail(String? email) {
+    if (email == null) return false;
+    final normalized = email.trim().toLowerCase();
+    return AppConstants.testViewerEmails.contains(normalized);
+  }
+
+  static bool get isViewerAccount => isViewerAccountEmail(userEmail);
+
   static bool isPermanentProEmail(String? email) => isPermanentAdFreeEmail(email);
 
   static bool get isPermanentAdFreeAccount =>

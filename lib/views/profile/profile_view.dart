@@ -545,7 +545,9 @@ class _ProfileViewState extends State<ProfileView> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        isSubscribed ? 'AD-FREE' : 'FREE',
+                        StorageService.isViewerAccount
+                            ? 'TESTER (VIEWER)'
+                            : (isSubscribed ? 'AD-FREE' : 'FREE'),
                         style: GoogleFonts.plusJakartaSans(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
@@ -608,7 +610,9 @@ class _ProfileViewState extends State<ProfileView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Proud Muslim Ad-Free Active',
+                    StorageService.isViewerAccount
+                        ? 'Proud Muslim Tester (Viewer Mode)'
+                        : 'Proud Muslim Ad-Free Active',
                     style: GoogleFonts.outfit(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -616,9 +620,11 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                   Text(
-                    StorageService.isPermanentAdFreeAccount
-                        ? 'Permanent Ad-Free account active. Enjoy an ad-free spiritual journey.'
-                        : 'All advertisements are removed across the application.',
+                    StorageService.isViewerAccount
+                        ? 'Test Account (Viewer Mode) active. Full unrestricted access across all screens without advertisements.'
+                        : (StorageService.isPermanentAdFreeAccount
+                            ? 'Permanent Ad-Free account active. Enjoy an ad-free spiritual journey.'
+                            : 'All advertisements are removed across the application.'),
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 12,
                       color: deen.textSecondary,

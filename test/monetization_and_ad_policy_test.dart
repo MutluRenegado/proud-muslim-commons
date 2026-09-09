@@ -92,11 +92,12 @@ void main() {
       expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionHadith), isFalse);
     });
 
-    // TEST F: testingisamust32@gmail.com -> ALL FEATURES + NO ADS + NO PAYMENT
-    test('TEST F: testingisamust32@gmail.com receives permanent Ad-Free entitlement without payment', () async {
+    // TEST F: testingisamust32@gmail.com -> ALL FEATURES + NO ADS + VIEWER STATUS
+    test('TEST F: testingisamust32@gmail.com receives Viewer test account entitlement without payment', () async {
       await StorageService.setUserEmail('testingisamust32@gmail.com');
       await StorageService.setIsSubscribed(false); // No payment required
 
+      expect(StorageService.isViewerAccount, isTrue);
       expect(StorageService.isPermanentAdFreeAccount, isTrue);
       expect(StorageService.hasAdFreeAccess, isTrue);
 
