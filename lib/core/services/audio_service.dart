@@ -63,7 +63,24 @@ class AudioService {
     _isTtsInitialized = true;
 
     try {
-      await _tts.setSpeechRate(0.46);
+      if (defaultTargetPlatform == TargetPlatform.android) {
+        final engines = await _tts.getEngines;
+        if (engines is List && engines.contains('com.google.android.tts')) {
+          await _tts.setEngine('com.google.android.tts');
+        }
+      } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+        await _tts.setIosAudioCategory(
+          IosTextToSpeechAudioCategory.playback,
+          [
+            IosTextToSpeechAudioCategoryOptions.defaultToSpeaker,
+            IosTextToSpeechAudioCategoryOptions.allowBluetooth,
+            IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP,
+          ],
+          IosTextToSpeechAudioMode.spokenAudio,
+        );
+      }
+
+      await _tts.setSpeechRate(0.50);
       await _tts.setPitch(1.0);
       await _tts.setVolume(1.0);
 
@@ -141,6 +158,40 @@ class AudioService {
     }
   }
 
+  /// Clean Quranic and translation text for natural, dignified audio synthesis
+  static String cleanTextForSpeech(String rawText, String langCode) {
+    var text = rawText;
+
+    // 1. Remove bracketed and parenthesized footnote numbers like [1], [2], (1)
+    text = text.replaceAll(RegExp(r'\[\d+\]'), '');
+    text = text.replaceAll(RegExp(r'\(\d+\)'), '');
+
+    // 2. Expand or clean honorific abbreviations according to language
+    if (langCode == 'en') {
+      text = text.replaceAll(RegExp(r'\b\(pbuh\)\b', caseSensitive: false), ', peace be upon him, ');
+      text = text.replaceAll(RegExp(r'\b\(saw\)\b', caseSensitive: false), ', peace be upon him, ');
+      text = text.replaceAll(RegExp(r'\b\(p\.b\.u\.h\)\b', caseSensitive: false), ', peace be upon him, ');
+      text = text.replaceAll(RegExp(r'\b\(swt\)\b', caseSensitive: false), ' Subhanahu wa Ta\'ala ');
+      text = text.replaceAll(RegExp(r'\b\(as\)\b', caseSensitive: false), ', peace be upon him, ');
+      text = text.replaceAll(RegExp(r'\b\(ra\)\b', caseSensitive: false), ', may Allah be pleased with him, ');
+    } else if (langCode == 'tr') {
+      text = text.replaceAll(RegExp(r'\b\(s\.a\.v\.\)\b', caseSensitive: false), ' sallallahu aleyhi ve sellem ');
+      text = text.replaceAll(RegExp(r'\b\(sav\)\b', caseSensitive: false), ' sallallahu aleyhi ve sellem ');
+      text = text.replaceAll(RegExp(r'\b\(a\.s\.\)\b', caseSensitive: false), ' aleyhisselam ');
+      text = text.replaceAll(RegExp(r'\b\(as\)\b', caseSensitive: false), ' aleyhisselam ');
+      text = text.replaceAll(RegExp(r'\b\(r\.a\.\)\b', caseSensitive: false), ' radiyallahu anh ');
+      text = text.replaceAll(RegExp(r'\b\(c\.c\.\)\b', caseSensitive: false), ' celle celaluhu ');
+    }
+
+    // 3. Remove citation brackets, asterisks, editorial symbols
+    text = text.replaceAll(RegExp(r'[\[\]{}<>]'), ' ');
+    text = text.replaceAll(RegExp(r'[\*\#\_]'), '');
+    text = text.replaceAll(RegExp(r'(\.{2,})'), '... ');
+    text = text.replaceAll(RegExp(r'\s+'), ' ').trim();
+
+    return text;
+  }
+
   /// Stop all playback (AudioPlayer & TTS)
   static Future<void> stop() async {
     _playbackSession++;
@@ -189,7 +240,7 @@ class AudioService {
     if (session == _playbackSession) await stop();
   }
 
-  /// Configure TTS voice (Male / Female) for the active locale
+  /// Configure high-quality neural / natural TTS voice (Male / Female) for the active locale
   static Future<void> applyTtsVoice(String languageCode,
       {String? gender}) async {
     await _initTts();
@@ -197,97 +248,131 @@ class AudioService {
         (gender ?? StorageService.ttsVoiceGender).toLowerCase();
     final locale = getTtsLocale(languageCode);
     await _tts.setLanguage(locale);
+    await _tts.setSpeechRate(0.50);
+    await _tts.setPitch(1.0);
 
     try {
       final voices = await _tts.getVoices;
       if (voices is List && voices.isNotEmpty) {
         final localePrefix = locale.toLowerCase().split('-').first;
-        final matchingVoices = voices.where((v) {
-          if (v is! Map) return false;
-          final vLocale = (v['locale'] ?? '').toString().toLowerCase();
-          return vLocale.startsWith(localePrefix) ||
-              vLocale.contains(localePrefix);
-        }).toList();
 
-        Map? chosenVoice;
-        for (final v in matchingVoices) {
-          if (v is! Map) continue;
+        int scoreVoice(Map v) {
+          int score = 0;
           final name = (v['name'] ?? '').toString().toLowerCase();
+          final vLocale = (v['locale'] ?? '').toString().toLowerCase();
           final vGender = (v['gender'] ?? '').toString().toLowerCase();
 
+          // Locale Match
+          if (vLocale == locale.toLowerCase()) {
+            score += 100;
+          } else if (vLocale.startsWith(localePrefix)) {
+            score += 50;
+          } else {
+            return -100; // Incompatible language
+          }
+
+          // Premium / Neural / High Quality identifiers
+          if (name.contains('neural') ||
+              name.contains('wavenet') ||
+              name.contains('studio') ||
+              name.contains('natural') ||
+              name.contains('network') ||
+              name.contains('enhanced') ||
+              name.contains('high') ||
+              name.contains('hq')) {
+            score += 60;
+          }
+
+          // Gender match preference
           if (targetGender == 'male') {
             if (vGender == 'male' ||
                 name.contains('male') ||
                 name.contains('#male') ||
                 name.contains('-male') ||
+                name.contains('male-') ||
                 name.contains('man') ||
                 name.contains('guy')) {
-              chosenVoice = v;
-              break;
+              score += 30;
+            } else if (vGender == 'female' || name.contains('female') || name.contains('woman')) {
+              score -= 10;
             }
           } else {
             if (vGender == 'female' ||
                 name.contains('female') ||
                 name.contains('#female') ||
                 name.contains('-female') ||
+                name.contains('female-') ||
                 name.contains('woman')) {
-              chosenVoice = v;
-              break;
+              score += 30;
+            } else if (vGender == 'male' || name.contains('male') || name.contains('man')) {
+              score -= 10;
             }
+          }
+
+          // Deprioritize robotic/compact voices
+          if (name.contains('compact') ||
+              name.contains('low') ||
+              name.contains('synthetic') ||
+              name.contains('fallback')) {
+            score -= 40;
+          }
+
+          return score;
+        }
+
+        Map? bestVoice;
+        int highestScore = -999;
+
+        for (final item in voices) {
+          if (item is! Map) continue;
+          final s = scoreVoice(item);
+          if (s > highestScore && s > 0) {
+            highestScore = s;
+            bestVoice = item;
           }
         }
 
-        if (chosenVoice != null) {
+        if (bestVoice != null) {
           await _tts.setVoice({
-            'name': chosenVoice['name'].toString(),
-            'locale': chosenVoice['locale'].toString(),
+            'name': bestVoice['name'].toString(),
+            'locale': bestVoice['locale'].toString(),
           });
-          await _tts.setPitch(targetGender == 'male' ? 0.92 : 1.05);
           return;
-        }
-
-        if (matchingVoices.isNotEmpty && matchingVoices.first is Map) {
-          final first = matchingVoices.first as Map;
-          await _tts.setVoice({
-            'name': first['name'].toString(),
-            'locale': first['locale'].toString(),
-          });
         }
       }
     } catch (_) {}
-
-    await _tts.setPitch(targetGender == 'male' ? 0.88 : 1.08);
   }
 
-  /// Read a full translated Surah in manageable TTS chunks.
+  /// Read a full translated Surah with natural sentence pauses and crystal-clear pronunciation.
   static Future<void> speakLongText(
     String text, {
     required String languageCode,
     required String speechId,
   }) async {
-    if (text.trim().isEmpty) return;
+    final cleaned = cleanTextForSpeech(text, languageCode);
+    if (cleaned.trim().isEmpty) return;
+
     _initListener();
     await _initTts();
     await applyTtsVoice(languageCode);
     await stop();
+
     final session = ++_playbackSession;
     _currentAudioId = speechId;
     currentPlayingIdNotifier.value = speechId;
     await _tts.awaitSpeakCompletion(true);
-    final words = text.replaceAll(RegExp(r'\s+'), ' ').trim().split(' ');
-    final chunks = <String>[];
-    var chunk = StringBuffer();
-    for (final word in words) {
-      if (chunk.length + word.length > 2800) {
-        chunks.add(chunk.toString());
-        chunk = StringBuffer();
-      }
-      chunk.write('$word ');
-    }
-    if (chunk.isNotEmpty) chunks.add(chunk.toString());
-    for (final part in chunks) {
+
+    // Split text into coherent sentences/clauses for natural breathing and pacing
+    final sentences = cleaned
+        .split(RegExp(r'(?<=[.!?\n])\s+'))
+        .where((s) => s.trim().isNotEmpty)
+        .toList();
+
+    for (final sentence in sentences) {
       if (session != _playbackSession) return;
-      await _tts.speak(part);
+      await _tts.speak(sentence.trim());
+      // A small dignified pause between verses
+      await Future.delayed(const Duration(milliseconds: 220));
     }
     if (session == _playbackSession) await stop();
   }
@@ -441,7 +526,8 @@ class AudioService {
     // TTS Narration for the current language
     try {
       await applyTtsVoice(langCode);
-      await _tts.speak(explanationText);
+      final cleanText = cleanTextForSpeech(explanationText, langCode);
+      await _tts.speak(cleanText);
     } catch (e) {
       await stop();
       errorMessageNotifier.value = e.toString();
