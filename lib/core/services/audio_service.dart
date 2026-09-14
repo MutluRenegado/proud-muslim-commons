@@ -158,35 +158,80 @@ class AudioService {
     }
   }
 
-  /// Clean Quranic and translation text for natural, dignified audio synthesis
+  /// Clean Quranic and translation text for natural, dignified audio synthesis across all 14 languages
   static String cleanTextForSpeech(String rawText, String langCode) {
     var text = rawText;
 
-    // 1. Remove bracketed and parenthesized footnote numbers like [1], [2], (1)
+    // 1. Remove footnote numbers and bracket citations like [1], [2], (1), [i.e., ...]
     text = text.replaceAll(RegExp(r'\[\d+\]'), '');
     text = text.replaceAll(RegExp(r'\(\d+\)'), '');
+    text = text.replaceAll(RegExp(r'\[.*?\]'), '');
 
-    // 2. Expand or clean honorific abbreviations according to language
-    if (langCode == 'en') {
-      text = text.replaceAll(RegExp(r'\b\(pbuh\)\b', caseSensitive: false), ', peace be upon him, ');
-      text = text.replaceAll(RegExp(r'\b\(saw\)\b', caseSensitive: false), ', peace be upon him, ');
-      text = text.replaceAll(RegExp(r'\b\(p\.b\.u\.h\)\b', caseSensitive: false), ', peace be upon him, ');
-      text = text.replaceAll(RegExp(r'\b\(swt\)\b', caseSensitive: false), ' Subhanahu wa Ta\'ala ');
-      text = text.replaceAll(RegExp(r'\b\(as\)\b', caseSensitive: false), ', peace be upon him, ');
-      text = text.replaceAll(RegExp(r'\b\(ra\)\b', caseSensitive: false), ', may Allah be pleased with him, ');
-    } else if (langCode == 'tr') {
-      text = text.replaceAll(RegExp(r'\b\(s\.a\.v\.\)\b', caseSensitive: false), ' sallallahu aleyhi ve sellem ');
-      text = text.replaceAll(RegExp(r'\b\(sav\)\b', caseSensitive: false), ' sallallahu aleyhi ve sellem ');
-      text = text.replaceAll(RegExp(r'\b\(a\.s\.\)\b', caseSensitive: false), ' aleyhisselam ');
-      text = text.replaceAll(RegExp(r'\b\(as\)\b', caseSensitive: false), ' aleyhisselam ');
-      text = text.replaceAll(RegExp(r'\b\(r\.a\.\)\b', caseSensitive: false), ' radiyallahu anh ');
-      text = text.replaceAll(RegExp(r'\b\(c\.c\.\)\b', caseSensitive: false), ' celle celaluhu ');
+    // 2. Expand honorific abbreviations according to language
+    final code = langCode.toLowerCase();
+    switch (code) {
+      case 'tr':
+        text = text.replaceAll(RegExp(r'\b\(s\.a\.v\.\)\b', caseSensitive: false), ' sallallahu aleyhi ve sellem ');
+        text = text.replaceAll(RegExp(r'\b\(sav\)\b', caseSensitive: false), ' sallallahu aleyhi ve sellem ');
+        text = text.replaceAll(RegExp(r'\b\(a\.s\.\)\b', caseSensitive: false), ' aleyhisselam ');
+        text = text.replaceAll(RegExp(r'\b\(as\)\b', caseSensitive: false), ' aleyhisselam ');
+        text = text.replaceAll(RegExp(r'\b\(r\.a\.\)\b', caseSensitive: false), ' radiyallahu anh ');
+        text = text.replaceAll(RegExp(r'\b\(c\.c\.\)\b', caseSensitive: false), ' celle celaluhu ');
+        break;
+      case 'ar':
+        text = text.replaceAll('ﷺ', ' صلى الله عليه وسلم ');
+        text = text.replaceAll('(ص)', ' صلى الله عليه وسلم ');
+        text = text.replaceAll('(ع)', ' عليه السلام ');
+        text = text.replaceAll('(رض)', ' رضي الله عنه ');
+        text = text.replaceAll('(ج)', ' جل جلاله ');
+        break;
+      case 'fr':
+        text = text.replaceAll(RegExp(r'\b\(pbsl\)\b', caseSensitive: false), ' paix et bénédictions sur lui ');
+        text = text.replaceAll(RegExp(r'\b\(saw\)\b', caseSensitive: false), ' paix et bénédictions sur lui ');
+        text = text.replaceAll(RegExp(r'\b\(swt\)\b', caseSensitive: false), ' Subhanahu wa Ta\'ala ');
+        break;
+      case 'de':
+        text = text.replaceAll(RegExp(r'\b\(saw\)\b', caseSensitive: false), ' Friede sei auf ihm ');
+        text = text.replaceAll(RegExp(r'\b\(a\.s\.\)\b', caseSensitive: false), ' Friede sei auf ihm ');
+        text = text.replaceAll(RegExp(r'\b\(swt\)\b', caseSensitive: false), ' Subhanahu wa Ta\'ala ');
+        break;
+      case 'es':
+        text = text.replaceAll(RegExp(r'\b\(pbd\)\b', caseSensitive: false), ' la paz sea con él ');
+        text = text.replaceAll(RegExp(r'\b\(saw\)\b', caseSensitive: false), ' la paz sea con él ');
+        text = text.replaceAll(RegExp(r'\b\(swt\)\b', caseSensitive: false), ' Subhanahu wa Ta\'ala ');
+        break;
+      case 'id':
+      case 'ms':
+        text = text.replaceAll(RegExp(r'\b\(saw\)\b', caseSensitive: false), ' shallallahu \'alaihi wa sallam ');
+        text = text.replaceAll(RegExp(r'\b\(swt\)\b', caseSensitive: false), ' Subhanahu wa Ta\'ala ');
+        text = text.replaceAll(RegExp(r'\b\(as\)\b', caseSensitive: false), ' \'alaihissalam ');
+        text = text.replaceAll(RegExp(r'\b\(ra\)\b', caseSensitive: false), ' radhiyallahu \'anhu ');
+        break;
+      case 'ru':
+        text = text.replaceAll(RegExp(r'\b\(с\.а\.с\.\)\b', caseSensitive: false), ' да благословит его Аллах и приветствует ');
+        text = text.replaceAll(RegExp(r'\b\(мир ему\)\b', caseSensitive: false), ' мир ему ');
+        text = text.replaceAll(RegExp(r'\b\(свт\)\b', caseSensitive: false), ' Субханаху ва Та\'аля ');
+        break;
+      case 'ur':
+        text = text.replaceAll('ﷺ', ' صلی اللہ علیہ وسلم ');
+        text = text.replaceAll('(ص)', ' صلی اللہ علیہ وسلم ');
+        text = text.replaceAll('(ع)', ' علیہ السلام ');
+        text = text.replaceAll('(رض)', ' رضی اللہ عنہ ');
+        break;
+      case 'en':
+      default:
+        text = text.replaceAll(RegExp(r'\b\(pbuh\)\b', caseSensitive: false), ', peace be upon him, ');
+        text = text.replaceAll(RegExp(r'\b\(saw\)\b', caseSensitive: false), ', peace be upon him, ');
+        text = text.replaceAll(RegExp(r'\b\(p\.b\.u\.h\)\b', caseSensitive: false), ', peace be upon him, ');
+        text = text.replaceAll(RegExp(r'\b\(swt\)\b', caseSensitive: false), ' Subhanahu wa Ta\'ala ');
+        text = text.replaceAll(RegExp(r'\b\(as\)\b', caseSensitive: false), ', peace be upon him, ');
+        text = text.replaceAll(RegExp(r'\b\(ra\)\b', caseSensitive: false), ', may Allah be pleased with him, ');
+        break;
     }
 
-    // 3. Remove citation brackets, asterisks, editorial symbols
-    text = text.replaceAll(RegExp(r'[\[\]{}<>]'), ' ');
-    text = text.replaceAll(RegExp(r'[\*\#\_]'), '');
-    text = text.replaceAll(RegExp(r'(\.{2,})'), '... ');
+    // 3. Clean editorial symbols, asterisks, brackets, repeated punctuation
+    text = text.replaceAll(RegExp(r'[\*\#\_\~]'), '');
+    text = text.replaceAll(RegExp(r'(\.{2,})'), '. ');
     text = text.replaceAll(RegExp(r'\s+'), ' ').trim();
 
     return text;
@@ -248,8 +293,16 @@ class AudioService {
         (gender ?? StorageService.ttsVoiceGender).toLowerCase();
     final locale = getTtsLocale(languageCode);
     await _tts.setLanguage(locale);
-    await _tts.setSpeechRate(0.50);
-    await _tts.setPitch(1.0);
+
+    // Male voice uses deep, masculine pitch (0.76) and reverent rate (0.44)
+    // Female voice uses natural bright pitch (1.08) and smooth rate (0.48)
+    if (targetGender == 'male') {
+      await _tts.setSpeechRate(0.44);
+      await _tts.setPitch(0.76);
+    } else {
+      await _tts.setSpeechRate(0.48);
+      await _tts.setPitch(1.08);
+    }
 
     try {
       final voices = await _tts.getVoices;
@@ -259,8 +312,78 @@ class AudioService {
         int scoreVoice(Map v) {
           int score = 0;
           final name = (v['name'] ?? '').toString().toLowerCase();
-          final vLocale = (v['locale'] ?? '').toString().toLowerCase();
-          final vGender = (v['gender'] ?? '').toString().toLowerCase();
+          final vLocale =
+              (v['locale'] ?? '').toString().toLowerCase().replaceAll('_', '-');
+          final rawGender = (v['gender'] ?? '').toString().toLowerCase();
+          final isExplicitMale = rawGender == 'male' ||
+              rawGender == '1' ||
+              v['gender'] == 1 ||
+              name.contains('male') ||
+              name.contains('#male') ||
+              name.contains('-male') ||
+              name.contains('male-') ||
+              name.contains('man') ||
+              name.contains('guy') ||
+              name.contains('david') ||
+              name.contains('george') ||
+              name.contains('alex') ||
+              name.contains('mark') ||
+              name.contains('james') ||
+              name.contains('daniel') ||
+              name.contains('oliver') ||
+              name.contains('arthur') ||
+              name.contains('tom') ||
+              name.contains('-m0') ||
+              name.contains('-m1') ||
+              name.contains('-iom') ||
+              name.contains('-sfg') ||
+              name.contains('-iob') ||
+              name.contains('-tpc') ||
+              name.contains('-tpf') ||
+              name.contains('-iol') ||
+              name.contains('-ama') ||
+              name.contains('-dfz') ||
+              name.contains('-ard') ||
+              name.contains('-arc') ||
+              name.contains('-vda') ||
+              name.contains('-frd') ||
+              name.contains('-deb') ||
+              name.contains('-deg') ||
+              name.contains('-eed') ||
+              name.contains('-esd') ||
+              name.contains('-idc') ||
+              name.contains('-rud') ||
+              name.contains('-urb') ||
+              name.contains('-bnb') ||
+              name.contains('-hid') ||
+              name.contains('-fab') ||
+              name.contains('-rjs') ||
+              name.contains('-gbg') ||
+              name.contains('-gbb') ||
+              name.contains('-aud') ||
+              name.contains('-enc') ||
+              name.contains('-end');
+
+          final isExplicitFemale = rawGender == 'female' ||
+              rawGender == '2' ||
+              v['gender'] == 2 ||
+              name.contains('female') ||
+              name.contains('#female') ||
+              name.contains('-female') ||
+              name.contains('female-') ||
+              name.contains('woman') ||
+              name.contains('girl') ||
+              name.contains('eva') ||
+              name.contains('zira') ||
+              name.contains('samantha') ||
+              name.contains('victoria') ||
+              name.contains('karen') ||
+              name.contains('tpa') ||
+              name.contains('tpd') ||
+              name.contains('gbf') ||
+              name.contains('aub') ||
+              name.contains('cxx') ||
+              name.contains('ena');
 
           // Locale Match
           if (vLocale == locale.toLowerCase()) {
@@ -268,7 +391,7 @@ class AudioService {
           } else if (vLocale.startsWith(localePrefix)) {
             score += 50;
           } else {
-            return -100; // Incompatible language
+            return -200; // Incompatible language
           }
 
           // Premium / Neural / High Quality identifiers
@@ -285,27 +408,18 @@ class AudioService {
 
           // Gender match preference
           if (targetGender == 'male') {
-            if (vGender == 'male' ||
-                name.contains('male') ||
-                name.contains('#male') ||
-                name.contains('-male') ||
-                name.contains('male-') ||
-                name.contains('man') ||
-                name.contains('guy')) {
-              score += 30;
-            } else if (vGender == 'female' || name.contains('female') || name.contains('woman')) {
-              score -= 10;
+            if (isExplicitMale) {
+              score += 150;
+            }
+            if (isExplicitFemale) {
+              score -= 200;
             }
           } else {
-            if (vGender == 'female' ||
-                name.contains('female') ||
-                name.contains('#female') ||
-                name.contains('-female') ||
-                name.contains('female-') ||
-                name.contains('woman')) {
-              score += 30;
-            } else if (vGender == 'male' || name.contains('male') || name.contains('man')) {
-              score -= 10;
+            if (isExplicitFemale) {
+              score += 150;
+            }
+            if (isExplicitMale) {
+              score -= 200;
             }
           }
 
@@ -343,38 +457,135 @@ class AudioService {
     } catch (_) {}
   }
 
-  /// Read a full translated Surah with natural sentence pauses and crystal-clear pronunciation.
+  /// High-Definition Cloud Neural Voice URL generator with native language accents
+  static String getCloudTtsUrl(String phrase, String langCode) {
+    final cleanCode = langCode.toLowerCase().trim();
+    final tl = cleanCode == 'fa' ? 'fa' : (cleanCode == 'ur' ? 'ur' : cleanCode);
+    final encoded = Uri.encodeComponent(phrase);
+    return 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=$tl&q=$encoded';
+  }
+
+  /// Quick sample preview for testing Male or Female AI Voice across any language
+  static Future<void> previewTtsVoice(String languageCode, String gender) async {
+    await stop();
+    final sample = languageCode.toLowerCase() == 'tr'
+        ? 'Rahman ve Rahim olan Allah\'ın adıyla.'
+        : (languageCode.toLowerCase() == 'ar'
+            ? 'بسم الله الرحمن الرحيم'
+            : (languageCode.toLowerCase() == 'fr'
+                ? 'Au nom d\'Allah, le Tout Miséricordieux, le Très Miséricordieux.'
+                : (languageCode.toLowerCase() == 'de'
+                    ? 'Im Namen Allahs, des Allerbarmers, des Barmherzigen.'
+                    : (languageCode.toLowerCase() == 'es'
+                        ? 'En el nombre de Alá, el Compasivo, el Misericordioso.'
+                        : (languageCode.toLowerCase() == 'id'
+                            ? 'Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.'
+                            : (languageCode.toLowerCase() == 'ru'
+                                ? 'Во имя Аллаха, Милостивого, Милосердного.'
+                                : 'In the name of Allah, the Entirely Merciful, the Especially Merciful.'))))));
+    await speakLongText(
+      sample,
+      languageCode: languageCode,
+      speechId: 'preview_${gender}_${DateTime.now().millisecondsSinceEpoch}',
+      forcedGender: gender,
+    );
+  }
+
+  /// Reads translated Quranic text with studio-grade Neural Speech & instant offline fallback.
   static Future<void> speakLongText(
     String text, {
     required String languageCode,
     required String speechId,
+    String? forcedGender,
   }) async {
     final cleaned = cleanTextForSpeech(text, languageCode);
     if (cleaned.trim().isEmpty) return;
 
     _initListener();
-    await _initTts();
-    await applyTtsVoice(languageCode);
     await stop();
 
     final session = ++_playbackSession;
     _currentAudioId = speechId;
     currentPlayingIdNotifier.value = speechId;
-    await _tts.awaitSpeakCompletion(true);
 
-    // Split text into coherent sentences/clauses for natural breathing and pacing
-    final sentences = cleaned
-        .split(RegExp(r'(?<=[.!?\n])\s+'))
+    final targetGender = (forcedGender ?? StorageService.ttsVoiceGender).toLowerCase();
+    final isMale = targetGender == 'male';
+
+    // Initialize TTS once cleanly prior to reading
+    if (isMale) {
+      await _initTts();
+      await applyTtsVoice(languageCode, gender: 'male');
+    }
+
+    // Split text into coherent clauses/sentences (<180 chars per phrase)
+    final rawSentences = cleaned
+        .split(RegExp(r'(?<=[.!?;\n])\s+'))
         .where((s) => s.trim().isNotEmpty)
         .toList();
 
-    for (final sentence in sentences) {
-      if (session != _playbackSession) return;
-      await _tts.speak(sentence.trim());
-      // A small dignified pause between verses
-      await Future.delayed(const Duration(milliseconds: 220));
+    final phrases = <String>[];
+    for (final sent in rawSentences) {
+      if (sent.length <= 180) {
+        phrases.add(sent);
+      } else {
+        // Break long compound sentences cleanly by comma/semicolon/words
+        final subParts = sent.split(RegExp(r'(?<=[,;:])\s+'));
+        var currentChunk = StringBuffer();
+        for (final part in subParts) {
+          if (currentChunk.length + part.length > 170) {
+            if (currentChunk.isNotEmpty) phrases.add(currentChunk.toString());
+            currentChunk = StringBuffer();
+          }
+          currentChunk.write('$part ');
+        }
+        if (currentChunk.isNotEmpty) phrases.add(currentChunk.toString().trim());
+      }
     }
-    if (session == _playbackSession) await stop();
+
+    _isPlaying = true;
+    isPlayingNotifier.value = true;
+
+    for (final phrase in phrases) {
+      if (session != _playbackSession) return;
+      final trimmed = phrase.trim();
+      if (trimmed.isEmpty) continue;
+
+      bool playedAudio = false;
+
+      // 1. If Female is selected, use high-definition Cloud Stream
+      if (!isMale) {
+        try {
+          final cloudUrl = getCloudTtsUrl(trimmed, languageCode);
+          _isLoading = true;
+          isLoadingNotifier.value = true;
+          await _player.play(UrlSource(cloudUrl));
+          _isLoading = false;
+          isLoadingNotifier.value = false;
+          await _player.onPlayerComplete.first;
+          playedAudio = true;
+        } catch (_) {
+          playedAudio = false;
+        }
+      }
+
+      // 2. Dedicated Male Voice / High-Quality Neural TTS
+      if (!playedAudio && session == _playbackSession) {
+        try {
+          await _tts.awaitSpeakCompletion(true);
+          await _tts.speak(trimmed);
+          playedAudio = true;
+        } catch (_) {}
+      }
+
+      // Peaceful, serene pause between sentences
+      if (session == _playbackSession) {
+        await Future.delayed(const Duration(milliseconds: 280));
+      }
+    }
+
+    if (session == _playbackSession) {
+      await stop();
+    }
   }
 
   /// Play Ayah audio stream
@@ -525,7 +736,7 @@ class AudioService {
 
     // TTS Narration for the current language
     try {
-      await applyTtsVoice(langCode);
+      await _tts.setLanguage(getTtsLocale(langCode));
       final cleanText = cleanTextForSpeech(explanationText, langCode);
       await _tts.speak(cleanText);
     } catch (e) {

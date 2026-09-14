@@ -438,12 +438,19 @@ class StorageService {
   static Future<void> setTtsVoiceGender(String gender) =>
       prefs.setString(AppConstants.keyTtsVoiceGender, gender);
 
-  // Subscriptions & Entitlements (Proud Muslim Ad-Free)
+  // ==========================================
+  // Subscriptions & Entitlements Engine
+  // ==========================================
+  
+  /// Checks if an email is an authorized permanent internal testing account
   static bool isPermanentAdFreeEmail(String? email) {
     if (email == null) return false;
     final normalized = email.trim().toLowerCase();
     return AppConstants.permanentProEmails.contains(normalized);
   }
+
+  static bool isPermanentTestingEmail(String? email) =>
+      isPermanentAdFreeEmail(email);
 
   static bool isViewerAccountEmail(String? email) {
     if (email == null) return false;
@@ -453,28 +460,79 @@ class StorageService {
 
   static bool get isViewerAccount => isViewerAccountEmail(userEmail);
 
-  static bool isPermanentProEmail(String? email) => isPermanentAdFreeEmail(email);
+  static bool isPermanentProEmail(String? email) =>
+      isPermanentAdFreeEmail(email);
 
+  /// True if current logged in account is an authorized internal testing account
   static bool get isPermanentAdFreeAccount =>
       isPermanentAdFreeEmail(userEmail);
 
   static bool get isPermanentProAccount => isPermanentAdFreeAccount;
 
+  static bool get isPermanentTestingAccount => isPermanentAdFreeAccount;
+
+  /// Authoritative store purchase state
   static bool get isPaidSubscribed =>
       prefs.getBool('is_subscribed') ?? false;
 
   static Future<void> setIsSubscribed(bool val) =>
       prefs.setBool('is_subscribed', val);
 
-  static bool get hasAdFreeAccess =>
-      isPermanentAdFreeAccount || isPaidSubscribed;
+  /// 3-Day Free Trial State
+  static bool get hasActiveTrial {
+    final end = trialEndDate;
+    if (end == null) return false;
+    return DateTime.now().isBefore(end);
+  }
 
-  static bool get isSubscribed => hasAdFreeAccess;
+  static bool get isTrialClaimed =>
+      prefs.getBool('trial_already_claimed') ?? false;
 
-  static String get subscriptionStatus =>
-      hasAdFreeAccess
-          ? 'activeAdFree'
-          : (prefs.getString('subscription_status') ?? 'free');
+  static int get trialDaysRemaining {
+    final end = trialEndDate;
+    if (end == null || !hasActiveTrial) return 0;
+    final remainingHours = end.difference(DateTime.now()).inHours;
+    final days = (remainingHours / 24).ceil();
+    return days > 0 ? days : 1;
+  }
+
+  static Future<bool> startFreeTrial() async {
+    // Permanent testing accounts already have unlimited access
+    if (isPermanentTestingAccount) return true;
+
+    // Prevent repeated trial regeneration after expiration
+    if (isTrialClaimed && !hasActiveTrial) {
+      return false;
+    }
+
+    final now = DateTime.now();
+    final end = now.add(const Duration(days: AppConstants.trialDurationDays));
+    await setTrialDates(now, end);
+    await prefs.setBool('trial_already_claimed', true);
+    await setSubscriptionStatus('activeTrial');
+    return true;
+  }
+
+  /// Master Premium Access Gate:
+  /// True if user is an approved test account, has active paid subscription, or valid 3-day trial
+  static bool get hasPremiumAccess {
+    if (isPermanentTestingAccount) return true;
+    if (isPaidSubscribed) return true;
+    if (hasActiveTrial) return true;
+    return false;
+  }
+
+  /// 100% Ad-Free across the entire app for all users
+  static bool get hasAdFreeAccess => true;
+
+  static bool get isSubscribed => hasPremiumAccess;
+
+  static String get subscriptionStatus {
+    if (isPermanentTestingAccount) return 'testingAccount';
+    if (isPaidSubscribed) return 'activePremium';
+    if (hasActiveTrial) return 'activeTrial';
+    return prefs.getString('subscription_status') ?? 'free';
+  }
 
   static Future<void> setSubscriptionStatus(String status) =>
       prefs.setString('subscription_status', status);

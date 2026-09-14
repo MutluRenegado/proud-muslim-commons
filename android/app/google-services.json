@@ -7,20 +7,46 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:709206903658:android:c989b5dcaaa7f5e3313",
+        "mobilesdk_app_id": "1:709206903658:android:879cc173ffb2f1e05e3313",
         "android_client_info": {
           "package_name": "online.anmdigital.proudmuslim"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "709206903658-28108ksglr9qko4f8tuuo6m6sqga4q2m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "online.anmdigital.proudmuslim",
+            "certificate_hash": "73a4ebe812453d751bb7aca2b0f565ef2594eed3"
+          }
+        },
+        {
+          "client_id": "709206903658-h2vnl816nt96u2kbb72ohlenav0ffq4l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "online.anmdigital.proudmuslim",
+            "certificate_hash": "e2a4def9727d09c3b120d076eb18db167d392bca"
+          }
+        },
+        {
+          "client_id": "709206903658-ec9q5fngqnf95n737otias7jvvf6dodg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCuBD3a-f5ltCS5lro9Ah_YJTFn9Xkg40U"
+          "current_key": "AIzaSyCmGTfJ5abpMIP2gqaB61gaRozlrjbxQ0A"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709206903658-ec9q5fngqnf95n737otias7jvvf6dodg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

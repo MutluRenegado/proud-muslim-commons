@@ -141,15 +141,15 @@ void main() {
     });
   });
 
-  group('Subscription & Ad-Free Entitlement Tests', () {
-    test('Ad-Free status calculation reflects active status', () async {
+  group('Subscription & Premium Entitlement Tests', () {
+    test('Premium status calculation reflects active status', () async {
       await StorageService.setIsSubscribed(true);
-      await StorageService.setSubscriptionStatus('activeAdFree');
+      await StorageService.setSubscriptionStatus('activePremium');
 
       final details = SubscriptionService.getTrialStatusDetails();
-      expect(details['status'], SubscriptionPlanStatus.activeAdFree);
+      expect(details['status'], SubscriptionPlanStatus.activePremium);
       expect(details['isSubscribed'], isTrue);
-      expect(details['hasAdFreeAccess'], isTrue);
+      expect(details['hasPremiumAccess'], isTrue);
     });
 
     test('Free status calculation reflects standard free state', () async {
@@ -160,7 +160,7 @@ void main() {
       final details = SubscriptionService.getTrialStatusDetails();
       expect(details['status'], SubscriptionPlanStatus.free);
       expect(details['isSubscribed'], isFalse);
-      expect(details['hasAdFreeAccess'], isFalse);
+      expect(details['hasPremiumAccess'], isFalse);
     });
   });
 }

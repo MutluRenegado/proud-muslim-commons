@@ -17,6 +17,8 @@ import '../../l10n/app_localizations.dart';
 import '../../core/services/surah_localization_service.dart';
 import '../../core/services/ui_translation_service.dart';
 import '../../core/services/storage_service.dart';
+import '../../core/services/audio_service.dart';
+import '../../widgets/premium_paywall_sheet.dart';
 
 class SurahReaderView extends StatefulWidget {
   final SurahModel surah;
@@ -204,7 +206,13 @@ class _SurahReaderViewState extends State<SurahReaderView> {
                               FilledButton.tonalIcon(
                                 onPressed: quranProv.currentAyahs.isEmpty
                                     ? null
-                                    : quranProv.playFullSurahTranslation,
+                                    : () {
+                                        if (!StorageService.hasPremiumAccess) {
+                                          PremiumPaywallSheet.show(context);
+                                          return;
+                                        }
+                                        quranProv.playFullSurahTranslation();
+                                      },
                                 icon: const Icon(
                                   Icons.record_voice_over_rounded,
                                   size: 18,
@@ -684,88 +692,132 @@ class _SurahReaderViewState extends State<SurahReaderView> {
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(color: deen.cardBorder),
                       ),
-                      child: Row(
+                      child: Column(
                         children: [
-                          Expanded(
-                            child: InkWell(
-                              onTap: () async {
-                                await StorageService.setTtsVoiceGender('male');
-                                setModalState(() {});
-                              },
-                              borderRadius: BorderRadius.circular(10),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 10),
-                                decoration: BoxDecoration(
-                                  color: StorageService.ttsVoiceGender == 'male'
-                                      ? deen.accentPrimary
-                                      : Colors.transparent,
+                          Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () async {
+                                    await StorageService.setTtsVoiceGender('male');
+                                    setModalState(() {});
+                                    await AudioService.previewTtsVoice(
+                                      quranProv.selectedLanguageCode,
+                                      'male',
+                                    );
+                                  },
                                   borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.record_voice_over_rounded,
-                                      size: 16,
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(vertical: 10),
+                                    decoration: BoxDecoration(
                                       color: StorageService.ttsVoiceGender == 'male'
-                                          ? Colors.white
-                                          : deen.textSecondary,
+                                          ? deen.accentPrimary
+                                          : Colors.transparent,
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
-                                    const SizedBox(width: 6),
-                                    Text(
-                                      'Male Voice',
-                                      style: GoogleFonts.plusJakartaSans(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600,
-                                        color: StorageService.ttsVoiceGender == 'male'
-                                            ? Colors.white
-                                            : deen.textSecondary,
-                                      ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.record_voice_over_rounded,
+                                          size: 16,
+                                          color: StorageService.ttsVoiceGender == 'male'
+                                              ? Colors.white
+                                              : deen.textSecondary,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Text(
+                                          'Male Voice',
+                                          style: GoogleFonts.plusJakartaSans(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600,
+                                            color: StorageService.ttsVoiceGender == 'male'
+                                                ? Colors.white
+                                                : deen.textSecondary,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: InkWell(
-                              onTap: () async {
-                                await StorageService.setTtsVoiceGender('female');
-                                setModalState(() {});
-                              },
-                              borderRadius: BorderRadius.circular(10),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 10),
-                                decoration: BoxDecoration(
-                                  color: StorageService.ttsVoiceGender == 'female'
-                                      ? deen.accentPrimary
-                                      : Colors.transparent,
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () async {
+                                    await StorageService.setTtsVoiceGender('female');
+                                    setModalState(() {});
+                                    await AudioService.previewTtsVoice(
+                                      quranProv.selectedLanguageCode,
+                                      'female',
+                                    );
+                                  },
                                   borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.record_voice_over_rounded,
-                                      size: 16,
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(vertical: 10),
+                                    decoration: BoxDecoration(
                                       color: StorageService.ttsVoiceGender == 'female'
-                                          ? Colors.white
-                                          : deen.textSecondary,
+                                          ? deen.accentPrimary
+                                          : Colors.transparent,
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
-                                    const SizedBox(width: 6),
-                                    Text(
-                                      'Female Voice',
-                                      style: GoogleFonts.plusJakartaSans(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600,
-                                        color: StorageService.ttsVoiceGender == 'female'
-                                            ? Colors.white
-                                            : deen.textSecondary,
-                                      ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.record_voice_over_rounded,
+                                          size: 16,
+                                          color: StorageService.ttsVoiceGender == 'female'
+                                              ? Colors.white
+                                              : deen.textSecondary,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Text(
+                                          'Female Voice',
+                                          style: GoogleFonts.plusJakartaSans(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600,
+                                            color: StorageService.ttsVoiceGender == 'female'
+                                                ? Colors.white
+                                                : deen.textSecondary,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          InkWell(
+                            onTap: () async {
+                              await AudioService.previewTtsVoice(
+                                quranProv.selectedLanguageCode,
+                                StorageService.ttsVoiceGender,
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(8),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.volume_up_rounded,
+                                    size: 15,
+                                    color: deen.accentPrimary,
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Text(
+                                    'Listen Voice Preview',
+                                    style: GoogleFonts.plusJakartaSans(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: deen.accentPrimary,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

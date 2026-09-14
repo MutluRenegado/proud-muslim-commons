@@ -20,172 +20,97 @@ void main() {
     await StorageService.init();
   });
 
-  group('PROUD MUSLIM FINAL MONETIZATION & AD POLICY TESTS', () {
-    // TEST A: Normal User / Quran Reading -> FREE + NO ADS
-    test('TEST A: Normal Free User in Quran Reading section sees NO ADS', () {
-      expect(StorageService.hasAdFreeAccess, isFalse);
-      final showAds = AdPolicyService.shouldShowAds(
-        section: AdPolicyService.sectionQuran,
-      );
-      expect(showAds, isFalse,
-          reason: 'Quran Reading must remain 100% ad-free forever for everyone');
-    });
-
-    // TEST B: Normal User / Esmaul Husna -> FREE + NO ADS
-    test('TEST B: Normal Free User in Esmaul Husna section sees NO ADS', () {
-      expect(StorageService.hasAdFreeAccess, isFalse);
-      final showAds = AdPolicyService.shouldShowAds(
-        section: AdPolicyService.sectionNamesOfAllah,
-      );
-      expect(showAds, isFalse,
-          reason: 'Esmaul Husna must remain 100% ad-free forever for everyone');
-    });
-
-    // TEST C: Normal User / Other Features -> FREE + ADS (No paywalls)
-    test('TEST C: Normal Free User on other features sees ADS (without paywalls)', () {
-      expect(StorageService.hasAdFreeAccess, isFalse);
-      final showPrayerAds = AdPolicyService.shouldShowAds(
-        section: AdPolicyService.sectionPrayer,
-      );
-      final showQiblaAds = AdPolicyService.shouldShowAds(
-        section: AdPolicyService.sectionQibla,
-      );
-      final showAzkarAds = AdPolicyService.shouldShowAds(
-        section: AdPolicyService.sectionAzkar,
-      );
-      final showHadithAds = AdPolicyService.shouldShowAds(
-        section: AdPolicyService.sectionHadith,
-      );
-
-      expect(showPrayerAds, isTrue);
-      expect(showQiblaAds, isTrue);
-      expect(showAzkarAds, isTrue);
-      expect(showHadithAds, isTrue);
-    });
-
-    // TEST D: Paid Ad-Free User -> ALL FEATURES + NO ADS
-    test('TEST D: Paid Ad-Free Subscriber has NO ADS across the entire app', () async {
-      await StorageService.setIsSubscribed(true);
-      await StorageService.setSubscriptionStatus('activeAdFree');
-
-      expect(StorageService.hasAdFreeAccess, isTrue);
-      expect(StorageService.isPaidSubscribed, isTrue);
-
+  group('PROUD MUSLIM FREE + PREMIUM & AD POLICY TESTS', () {
+    // TEST 1: Zero Ads Everywhere
+    test('TEST 1: App is 100% Ad-Free across all sections for all users', () {
       expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionQuran), isFalse);
       expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionNamesOfAllah), isFalse);
       expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionPrayer), isFalse);
       expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionQibla), isFalse);
       expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionAzkar), isFalse);
+      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionHadith), isFalse);
       expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionHome), isFalse);
     });
 
-    // TEST E: akgnmutlu@gmail.com -> ALL FEATURES + NO ADS + NO PAYMENT
-    test('TEST E: akgnmutlu@gmail.com receives permanent Ad-Free entitlement without payment', () async {
+    // TEST 2: Free Tier User
+    test('TEST 2: Normal Free User has Free status and no Premium access by default', () {
+      expect(StorageService.hasPremiumAccess, isFalse);
+      expect(StorageService.isPaidSubscribed, isFalse);
+      expect(StorageService.hasActiveTrial, isFalse);
+
+      final details = SubscriptionService.getTrialStatusDetails();
+      expect(details['status'], SubscriptionPlanStatus.free);
+      expect(details['hasPremiumAccess'], isFalse);
+    });
+
+    // TEST 3: Paid Premium Subscriber ($3.99/mo or $29.99/yr)
+    test('TEST 3: Paid Premium Subscriber unlocks full Premium access and counts in paid analytics', () async {
+      await StorageService.setIsSubscribed(true);
+      await StorageService.setSubscriptionStatus('activePremium');
+
+      expect(StorageService.hasPremiumAccess, isTrue);
+      expect(StorageService.isPaidSubscribed, isTrue);
+
+      final details = SubscriptionService.getTrialStatusDetails();
+      expect(details['status'], SubscriptionPlanStatus.activePremium);
+      expect(details['hasPremiumAccess'], isTrue);
+      expect(details['isRealPaidSubscriber'], isTrue);
+    });
+
+    // TEST 4: 3-Day Free Trial
+    test('TEST 4: 3-Day Free Trial unlocks Premium access during trial and does not count as paid subscriber', () async {
+      await StorageService.startFreeTrial();
+
+      expect(StorageService.hasActiveTrial, isTrue);
+      expect(StorageService.hasPremiumAccess, isTrue);
+      expect(StorageService.trialDaysRemaining, inInclusiveRange(1, 3));
+
+      final details = SubscriptionService.getTrialStatusDetails();
+      expect(details['status'], SubscriptionPlanStatus.activeTrial);
+      expect(details['hasPremiumAccess'], isTrue);
+      expect(details['isRealPaidSubscriber'], isFalse);
+    });
+
+    // TEST 5: akgnmutlu@gmail.com Permanent Test Account
+    test('TEST 5: akgnmutlu@gmail.com has unrestricted access without payment', () async {
       await StorageService.setUserEmail('akgnmutlu@gmail.com');
       await StorageService.setIsSubscribed(false); // No payment required
 
-      expect(StorageService.isPermanentAdFreeAccount, isTrue);
-      expect(StorageService.hasAdFreeAccess, isTrue);
+      expect(StorageService.isPermanentTestingAccount, isTrue);
+      expect(StorageService.hasPremiumAccess, isTrue);
 
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionHome), isFalse);
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionPrayer), isFalse);
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionHadith), isFalse);
+      final details = SubscriptionService.getTrialStatusDetails();
+      expect(details['status'], SubscriptionPlanStatus.testingAccount);
+      expect(details['hasPremiumAccess'], isTrue);
+      expect(details['isRealPaidSubscriber'], isFalse);
     });
 
-    // TEST F: testingisamust32@gmail.com -> ALL FEATURES + NO ADS + VIEWER STATUS
-    test('TEST F: testingisamust32@gmail.com receives Viewer test account entitlement without payment', () async {
+    // TEST 6: testingisamust32@gmail.com Permanent Test Account
+    test('TEST 6: testingisamust32@gmail.com has unrestricted access without payment', () async {
       await StorageService.setUserEmail('testingisamust32@gmail.com');
       await StorageService.setIsSubscribed(false); // No payment required
 
-      expect(StorageService.isViewerAccount, isTrue);
-      expect(StorageService.isPermanentAdFreeAccount, isTrue);
-      expect(StorageService.hasAdFreeAccess, isTrue);
+      expect(StorageService.isPermanentTestingAccount, isTrue);
+      expect(StorageService.hasPremiumAccess, isTrue);
 
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionHome), isFalse);
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionPrayer), isFalse);
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionAzkar), isFalse);
+      final details = SubscriptionService.getTrialStatusDetails();
+      expect(details['status'], SubscriptionPlanStatus.testingAccount);
+      expect(details['hasPremiumAccess'], isTrue);
+      expect(details['isRealPaidSubscriber'], isFalse);
+
+      // Reset / login as normal user
+      await StorageService.setUserEmail('normal.user@example.com');
+      expect(StorageService.isPermanentTestingAccount, isFalse);
+      expect(StorageService.hasPremiumAccess, isFalse);
     });
 
-    // TEST G: Logout / Account Switch Isolation
-    test('TEST G: Logout Isolation - Switching from permanent account to normal account resets entitlement', () async {
-      // Step 1: Login with permanent account
-      await StorageService.setUserEmail('akgnmutlu@gmail.com');
-      expect(StorageService.hasAdFreeAccess, isTrue);
-
-      // Step 2: Logout / reset
-      await StorageService.logout();
-      await StorageService.setUserEmail('unprivileged.user@gmail.com');
-
-      // Step 3: Verify normal account returns to Free + Ads (except Quran & Esmaul Husna)
-      expect(StorageService.isPermanentAdFreeAccount, isFalse);
-      expect(StorageService.hasAdFreeAccess, isFalse);
-
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionQuran), isFalse);
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionNamesOfAllah), isFalse);
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionPrayer), isTrue);
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionHome), isTrue);
-    });
-
-    // TEST H: Subscription Expiry -> Features remain available, ads return
-    test('TEST H: Subscription Expiry preserves feature access and returns ads on general features', () async {
-      // User subscription expires
-      await StorageService.setIsSubscribed(false);
-      await StorageService.setSubscriptionStatus('expired');
-      await StorageService.setUserEmail('expired.subscriber@example.com');
-
-      expect(StorageService.hasAdFreeAccess, isFalse);
-      // Quran & 99 Names still remain ad-free
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionQuran), isFalse);
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionNamesOfAllah), isFalse);
-      // Other features show ads
-      expect(AdPolicyService.shouldShowAds(section: AdPolicyService.sectionPrayer), isTrue);
-    });
-
-    // TEST I: Restore Purchases -> Valid subscriber regains Ad-Free status
-    test('TEST I: Restore Purchases restores Ad-Free entitlement', () async {
-      await StorageService.setIsSubscribed(true);
-      final restored = await SubscriptionService.restorePurchases();
-      expect(restored, isTrue);
-      expect(StorageService.hasAdFreeAccess, isTrue);
-      expect(StorageService.subscriptionStatus, 'activeAdFree');
-    });
-
-    // TEST J: USA Pricing Matrix ($4.59 first year, then $12.59/year)
-    test('TEST J: USA Pricing Matrix targets \$4.59 first year then \$12.59/year', () async {
-      await StorageService.saveLocation(38.8951, -77.0364, 'Washington', 'United States');
-      await StorageService.setLanguageCode('en');
-
-      final product = SubscriptionService.fallbackAnnualAdFreeProduct;
-      expect(product.introPrice, AppConstants.formattedPriceIntroUsa);
-      expect(product.regularPrice, AppConstants.formattedPriceAnnualRegularUsd);
-      expect(product.billingPeriod, '12 months');
-      expect(product.rawPrice, 4.59);
-    });
-
-    // TEST K: Europe Pricing Matrix (€4.59 equivalent first year, then €12.59/year)
-    test('TEST K: Europe Pricing Matrix targets €4.59 first year then €12.59/year', () async {
-      await StorageService.saveLocation(52.5200, 13.4050, 'Berlin', 'Germany');
-      await StorageService.setLanguageCode('de');
-
-      final product = SubscriptionService.fallbackAnnualAdFreeProduct;
-      expect(product.introPrice, AppConstants.formattedPriceIntroEurope);
-      expect(product.regularPrice, AppConstants.formattedPriceAnnualRegularEur);
-      expect(product.billingPeriod, '12 months');
-      expect(product.currencyCode, 'EUR');
-      expect(product.rawPrice, 4.59);
-    });
-
-    // TEST L: Rest of World Pricing Matrix ($2.59 equivalent first year, then $12.59/year)
-    test('TEST L: Rest of World Pricing Matrix targets \$2.59 first year then \$12.59/year', () async {
-      await StorageService.saveLocation(-6.2088, 106.8456, 'Jakarta', 'Indonesia');
-      await StorageService.setLanguageCode('id');
-
-      final product = SubscriptionService.fallbackAnnualAdFreeProduct;
-      expect(product.introPrice, AppConstants.formattedPriceIntroRow);
-      expect(product.regularPrice, AppConstants.formattedPriceAnnualRegularUsd);
-      expect(product.billingPeriod, '12 months');
-      expect(product.currencyCode, 'USD');
-      expect(product.rawPrice, 2.59);
+    // TEST 7: Pricing and Product Configurations
+    test('TEST 7: Pricing and 3-Day Trial configuration matches specification', () {
+      expect(AppConstants.priceMonthlyUsd, 3.99);
+      expect(AppConstants.priceAnnualUsd, 29.99);
+      expect(AppConstants.trialDurationDays, 3);
+      expect(AppConstants.productIdPremiumMonthly, 'proud_muslim_premium_monthly');
+      expect(AppConstants.productIdPremiumAnnual, 'proud_muslim_premium_annual');
     });
   });
 }
