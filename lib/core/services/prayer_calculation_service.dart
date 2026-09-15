@@ -63,7 +63,7 @@ class PrayerCalculationService {
       'ishaAngle': 14.0,
     },
     CalculationMethod.shiaIthnaAshari: {
-      'name': 'Shia Ithna-Ashari (Leva Institute, Qum)',
+      'name': 'Ja‘fari — Leva Research Institute, Qum',
       'fajrAngle': 16.0,
       'maghribAngle': 4.0,
       'ishaAngle': 14.0,

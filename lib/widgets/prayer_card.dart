@@ -11,6 +11,7 @@ class PrayerCard extends StatelessWidget {
   final DateTime time;
   final bool isNext;
   final bool isCurrent;
+  final bool isKerahatTime;
   final IconData icon;
 
   const PrayerCard({
@@ -19,12 +20,14 @@ class PrayerCard extends StatelessWidget {
     required this.time,
     this.isNext = false,
     this.isCurrent = false,
+    this.isKerahatTime = false,
     required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     final deen = context.deen;
+    final l10n = AppLocalizations.of(context)!;
     final timeStr = DateFormat('hh:mm a').format(time);
 
     final cardBg = isNext
@@ -83,13 +86,28 @@ class PrayerCard extends StatelessWidget {
                   ),
                 ),
                 if (isNext)
-                  Text(
-                    'Upcoming Prayer',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: deen.accentGold,
-                    ),
+                  Wrap(
+                    spacing: 8,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Text(
+                        l10n.nextPrayer,
+                        style: GoogleFonts.plusJakartaSans(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: deen.accentGold,
+                        ),
+                      ),
+                      if (isKerahatTime)
+                        Text(
+                          _kerahatLabel(Localizations.localeOf(context).languageCode),
+                          style: GoogleFonts.plusJakartaSans(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                          ),
+                        ),
+                    ],
                   ),
               ],
             ),
@@ -105,6 +123,17 @@ class PrayerCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _kerahatLabel(String language) {
+    const labels = <String, String>{
+      'en': 'Kerahat Time', 'tr': 'Kerahat Vakti', 'ar': 'وقت الكراهة',
+      'de': 'Makruh-Zeit', 'fr': 'Période déconseillée',
+      'es': 'Periodo desaconsejado', 'pt': 'Período desaconselhado',
+      'ru': 'Нежелательное время', 'id': 'Waktu Makruh',
+      'ur': 'وقتِ کراہت', 'ms': 'Waktu Makruh',
+    };
+    return labels[language] ?? labels['en']!;
   }
 }
 
