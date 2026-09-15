@@ -8,7 +8,7 @@ class AdvancedPrayerTimesService {
   /// Returns the 18 canonical timetable markers in display order.
   /// The primary six times come from the active app calculation settings;
   /// supplementary markers are derived astronomically for the same date/location.
-  static List<DateTime> calculate({
+  static List<DateTime?> calculate({
     required PrayerTimesModel today,
     required DateTime nextFajrUtc,
     required double latitude,
@@ -49,8 +49,8 @@ class AdvancedPrayerTimesService {
       dahwa,
       today.dhuhrUtc.subtract(const Duration(minutes: 20)),
       today.dhuhrUtc,
-      firstAsr,
-      secondAsr,
+      firstAsr ?? today.asrUtc,
+      secondAsr ?? today.asrUtc,
       isfirar,
       today.maghribUtc,
       ishtibak,
@@ -63,19 +63,24 @@ class AdvancedPrayerTimesService {
     ];
   }
 
-  static bool isKerahatActive(List<DateTime> values, DateTime nowUtc) {
+  static bool isKerahatActive(List<DateTime?> values, DateTime nowUtc) {
     final sunrise = values[2];
     final ishraq = values[3];
     final middayStart = values[5];
     final dhuhr = values[6];
     final isfirar = values[9];
     final maghrib = values[10];
-    return _between(nowUtc, sunrise, ishraq) ||
-        _between(nowUtc, middayStart, dhuhr) ||
-        _between(nowUtc, isfirar, maghrib);
+    return _betweenNullable(nowUtc, sunrise, ishraq) ||
+        _betweenNullable(nowUtc, middayStart, dhuhr) ||
+        _betweenNullable(nowUtc, isfirar, maghrib);
   }
 
-  static bool _between(DateTime value, DateTime start, DateTime end) =>
+  static bool _betweenNullable(
+    DateTime value,
+    DateTime? start,
+    DateTime? end,
+  ) =>
+      start != null && end != null &&
       !value.isBefore(start) && value.isBefore(end);
 
   static _SolarData _solarData(DateTime date, double longitude) {
@@ -92,7 +97,7 @@ class AdvancedPrayerTimesService {
     return _SolarData(declination, equation, noonUtcHour);
   }
 
-  static DateTime _altitudeCrossing(
+  static DateTime? _altitudeCrossing(
     DateTime date,
     _SolarData solar,
     double latitude,
@@ -100,11 +105,12 @@ class AdvancedPrayerTimesService {
     required bool morning,
   }) {
     final angle = _hourAngle(latitude, solar.declination, altitude);
+    if (angle == null) return null;
     final hour = solar.noonUtcHour + (morning ? -angle : angle) / 15;
     return _dateAtUtcHour(date, hour);
   }
 
-  static DateTime _asr(
+  static DateTime? _asr(
     DateTime date,
     _SolarData solar,
     double latitude,
@@ -112,10 +118,11 @@ class AdvancedPrayerTimesService {
   ) {
     final altitude = _atan(1 / (shadowFactor + _tan((latitude - solar.declination).abs())));
     final angle = _hourAngle(latitude, solar.declination, altitude);
+    if (angle == null) return null;
     return _dateAtUtcHour(date, solar.noonUtcHour + angle / 15);
   }
 
-  static DateTime _qiblaAlignment(
+  static DateTime? _qiblaAlignment(
     DateTime date,
     _SolarData solar,
     double latitude,
@@ -153,6 +160,9 @@ class AdvancedPrayerTimesService {
         bestMinute = minute;
       }
     }
+    // A closest approach is not an alignment. Suppress the marker unless
+    // the direct solar bearing is within a conservative 1.5-degree tolerance.
+    if (bestDifference > 1.5) return null;
     return DateTime.utc(date.year, date.month, date.day)
         .add(Duration(minutes: bestMinute));
   }
@@ -174,10 +184,11 @@ class AdvancedPrayerTimesService {
         (30.6001 * (month + 1)).floor() + day + b - 1524.5;
   }
 
-  static double _hourAngle(double lat, double decl, double altitude) {
+  static double? _hourAngle(double lat, double decl, double altitude) {
     final value = (_sin(altitude) - _sin(lat) * _sin(decl)) /
         (_cos(lat) * _cos(decl));
-    return _deg(math.acos(value.clamp(-1.0, 1.0)));
+    if (value < -1 || value > 1) return null;
+    return _deg(math.acos(value));
   }
 
   static double _rad(double value) => value * math.pi / 180;
