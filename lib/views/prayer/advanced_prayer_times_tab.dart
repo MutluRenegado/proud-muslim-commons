@@ -18,7 +18,7 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
   final PrayerProvider provider;
 
   static const _ui = <String, Map<String, String>>{
-    'en': {'warning': 'Kerahat Time', 'more': 'More Information', 'close': 'Close', 'authority': 'Calculation authority', 'school': 'Asr juristic method', 'offline': 'Available offline'},
+    'en': {'warning': 'Kerahat Time', 'more': 'More Information', 'close': 'Close', 'authority': 'Calculation authority', 'school': 'Asr juristic method', 'offline': 'Available offline', 'unavailable': 'Unavailable'},
     'tr': {'warning': 'Kerahat Vakti', 'more': 'Daha Fazla Bilgi', 'close': 'Kapat', 'authority': 'Hesaplama kurumu', 'school': 'İkindi fıkıh yöntemi', 'offline': 'Çevrimdışı kullanılabilir'},
     'ar': {'warning': 'وقت الكراهة', 'more': 'معلومات إضافية', 'close': 'إغلاق', 'authority': 'جهة الحساب', 'school': 'المذهب في وقت العصر', 'offline': 'متاح دون اتصال'},
     'de': {'warning': 'Makruh-Zeit', 'more': 'Weitere Informationen', 'close': 'Schließen', 'authority': 'Berechnungsstelle', 'school': 'Asr-Rechtsmethode', 'offline': 'Offline verfügbar'},
@@ -160,23 +160,33 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
     DeenThemeTokens deen,
     PrayerExplanationContent content,
     Map<String, String> labels,
-    List<DateTime> values,
+    List<DateTime?> values,
     int index,
   ) {
     final warningEntry = index == 2 || index == 5 || index == 9;
     final now = TimeService.nowUtc();
     final start = values[index];
-    var end = index + 1 < values.length ? values[index + 1] : start.add(const Duration(hours: 1));
-    if (!end.isAfter(start)) end = end.add(const Duration(days: 1));
+    DateTime? end = index == 16
+        ? provider.tomorrowPrayerTimes?.fajrUtc
+        : (index + 1 < values.length ? values[index + 1] : null);
+    if (start != null && end != null && !end.isAfter(start)) {
+      end = end.add(const Duration(days: 1));
+    }
     var adjustedNow = now;
-    if (adjustedNow.isBefore(start) && end.day != start.day) adjustedNow = adjustedNow.add(const Duration(days: 1));
-    final total = end.difference(start).inSeconds;
-    final elapsed = adjustedNow.difference(start).inSeconds;
+    if (start != null && end != null &&
+        adjustedNow.isBefore(start) && end.day != start.day) {
+      adjustedNow = adjustedNow.add(const Duration(days: 1));
+    }
+    final total = start == null || end == null ? 0 : end.difference(start).inSeconds;
+    final elapsed = start == null ? 0 : adjustedNow.difference(start).inSeconds;
     final progress = total <= 0
         ? 0.0
         : (elapsed / total).clamp(0.0, 1.0).toDouble();
-    final activeWarning = warningEntry && !adjustedNow.isBefore(start) && adjustedNow.isBefore(end);
-    final local = TimezoneService.toLocal(values[index], provider.ianaTimeZone);
+    final activeWarning = warningEntry && start != null && end != null &&
+        !adjustedNow.isBefore(start) && adjustedNow.isBefore(end);
+    final local = start == null
+        ? null
+        : TimezoneService.toLocal(start, provider.ianaTimeZone);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 9),
@@ -196,7 +206,7 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
                       const SizedBox(width: 7),
                     ],
                     Expanded(child: Text(content.names[index], style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: activeWarning ? Colors.red : deen.textPrimary))),
-                    Text(DateFormat('HH:mm').format(local), style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: activeWarning ? Colors.red : deen.accentPrimary)),
+                    Text(local == null ? (labels['unavailable'] ?? 'Unavailable') : DateFormat('HH:mm').format(local), style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: activeWarning ? Colors.red : deen.accentPrimary)),
                   ],
                 ),
                 const SizedBox(height: 10),
