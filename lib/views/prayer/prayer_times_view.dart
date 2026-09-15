@@ -11,7 +11,10 @@ import '../../widgets/prayer_card.dart';
 import '../../widgets/deen_card.dart';
 import '../../widgets/localized_help_icon.dart';
 import '../../core/services/location_service.dart';
+import '../../core/services/advanced_prayer_times_service.dart';
+import '../../core/services/time_service.dart';
 import '../../l10n/app_localizations.dart';
+import 'advanced_prayer_times_tab.dart';
 
 class PrayerTimesView extends StatefulWidget {
   const PrayerTimesView({super.key});
@@ -27,7 +30,7 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -43,6 +46,18 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
     final l10n = AppLocalizations.of(context)!;
     final deen = context.deen;
     final bottomInset = MediaQuery.of(context).padding.bottom;
+    final tomorrow = prayerProv.tomorrowPrayerTimes;
+    final kerahatActive = times != null && tomorrow != null
+        ? AdvancedPrayerTimesService.isKerahatActive(
+            AdvancedPrayerTimesService.calculate(
+              today: times,
+              nextFajrUtc: tomorrow.fajrUtc,
+              latitude: prayerProv.latitude,
+              longitude: prayerProv.longitude,
+            ),
+            TimeService.nowUtc(),
+          )
+        : false;
 
     return Scaffold(
       backgroundColor: deen.bgPrimary,
@@ -69,6 +84,10 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
             Tab(
               text: l10n.todaysSchedule,
               icon: const Icon(Icons.today_rounded, size: 20),
+            ),
+            Tab(
+              text: _advancedLabel(Localizations.localeOf(context).languageCode),
+              icon: const Icon(Icons.schedule_rounded, size: 20),
             ),
             Tab(
               text: l10n.monthlyTimetable,
@@ -192,36 +211,42 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
                     prayerName: '${l10n.fajr} (Dawn)',
                     time: times.fajr,
                     isNext: prayerProv.nextPrayer == 'Fajr',
+                    isKerahatTime: kerahatActive,
                     icon: Icons.nights_stay_outlined,
                   ),
                   PrayerCard(
                     prayerName: '${l10n.sunrise} (Shuruq)',
                     time: times.sunrise,
                     isNext: prayerProv.nextPrayer == 'Sunrise',
+                    isKerahatTime: kerahatActive,
                     icon: Icons.wb_twilight,
                   ),
                   PrayerCard(
                     prayerName: '${l10n.dhuhr} (Noon)',
                     time: times.dhuhr,
                     isNext: prayerProv.nextPrayer == 'Dhuhr',
+                    isKerahatTime: kerahatActive,
                     icon: Icons.wb_sunny_outlined,
                   ),
                   PrayerCard(
                     prayerName: '${l10n.asr} (Afternoon)',
                     time: times.asr,
                     isNext: prayerProv.nextPrayer == 'Asr',
+                    isKerahatTime: kerahatActive,
                     icon: Icons.wb_cloudy_outlined,
                   ),
                   PrayerCard(
                     prayerName: '${l10n.maghrib} (Sunset)',
                     time: times.maghrib,
                     isNext: prayerProv.nextPrayer == 'Maghrib',
+                    isKerahatTime: kerahatActive,
                     icon: Icons.bedtime_outlined,
                   ),
                   PrayerCard(
                     prayerName: '${l10n.isha} (Night)',
                     time: times.isha,
                     isNext: prayerProv.nextPrayer == 'Isha',
+                    isKerahatTime: kerahatActive,
                     icon: Icons.dark_mode_outlined,
                   ),
                   PrayerCard(
@@ -289,7 +314,10 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
             ),
           ),
 
-          // 2. Monthly Timetable Tab
+          // 2. Advanced timetable and offline explanations
+          AdvancedPrayerTimesTab(provider: prayerProv),
+
+          // 3. Monthly Timetable Tab
           _buildMonthlyTable(context, prayerProv, bottomInset, deen),
         ],
       ),
@@ -487,7 +515,6 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
                         JuristicMethod.maliki: 'Maliki (Standard 1:1 shadow)',
                         JuristicMethod.hanbali: 'Hanbali (Standard 1:1 shadow)',
                         JuristicMethod.hanafi: 'Hanafi (2:1 shadow)',
-                        JuristicMethod.jafari: 'Ja‘fari (Twilight standard)',
                       }.entries.map(
                             (entry) => RadioListTile<JuristicMethod>(
                               title: Text(
@@ -563,7 +590,7 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
       case CalculationMethod.instituteOfGeophysicsTehran:
         return 'Tehran (Geophysics)';
       case CalculationMethod.shiaIthnaAshari:
-        return 'Shia Ithna-Ashari';
+        return 'Ja‘fari — Leva Research Institute, Qum';
     }
   }
 
@@ -581,5 +608,15 @@ class _PrayerTimesViewState extends State<PrayerTimesView>
       case JuristicMethod.jafari:
         return 'Ja‘fari';
     }
+  }
+
+  String _advancedLabel(String language) {
+    const labels = <String, String>{
+      'en': 'Advanced', 'tr': 'Gelişmiş', 'ar': 'متقدم',
+      'de': 'Erweitert', 'fr': 'Avancé', 'es': 'Avanzado',
+      'pt': 'Avançado', 'ru': 'Расширенно', 'id': 'Lanjutan',
+      'ur': 'اعلیٰ', 'ms': 'Lanjutan',
+    };
+    return labels[language] ?? labels['en']!;
   }
 }
