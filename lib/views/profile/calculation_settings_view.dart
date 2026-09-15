@@ -39,7 +39,7 @@ class CalculationSettingsView extends StatelessWidget {
       CalculationMethod.instituteOfGeophysicsTehran:
           'Institute of Geophysics, Tehran',
       CalculationMethod.shiaIthnaAshari:
-          'Shia Ithna-Ashari (Leva Institute, Qum)',
+          'Ja‘fari — Leva Research Institute, Qum',
     };
 
     final highLatLabels = {
@@ -154,14 +154,6 @@ class CalculationSettingsView extends StatelessWidget {
                   JuristicMethod.hanafi,
                   'Hanafi School',
                   'Shadow length equals twice the object height (2:1)',
-                ),
-                Divider(height: 1, color: deen.cardBorder),
-                _buildJuristicTile(
-                  prayerProv,
-                  deen,
-                  JuristicMethod.jafari,
-                  'Ja‘fari School',
-                  'Standard Asr shadow; Ja‘fari twilight follows the selected calculation convention',
                 ),
               ],
             ),
