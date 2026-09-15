@@ -163,6 +163,15 @@ class PrayerProvider extends ChangeNotifier with WidgetsBindingObserver {
       orElse: () => JuristicMethod.standard,
     );
 
+    // Ja'fari is a complete calculation convention, not an Asr shadow option.
+    // Migrate preferences written by older versions to the Leva/Qum method.
+    if (_juristic == JuristicMethod.jafari) {
+      _juristic = JuristicMethod.standard;
+      _method = CalculationMethod.shiaIthnaAshari;
+      StorageService.setJuristicMethodName(_juristic.name);
+      StorageService.setCalculationMethodName(_method.name);
+    }
+
     // Load high latitude rule
     final hlName = StorageService.highLatitudeRule;
     _highLatitude = HighLatitudeRule.values.firstWhere(
@@ -320,8 +329,15 @@ class PrayerProvider extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   void setJuristicMethod(JuristicMethod newJuristic) {
-    _juristic = newJuristic;
-    StorageService.setJuristicMethodName(newJuristic.name);
+    if (newJuristic == JuristicMethod.jafari) {
+      _juristic = JuristicMethod.standard;
+      _method = CalculationMethod.shiaIthnaAshari;
+      StorageService.setJuristicMethodName(_juristic.name);
+      StorageService.setCalculationMethodName(_method.name);
+    } else {
+      _juristic = newJuristic;
+      StorageService.setJuristicMethodName(newJuristic.name);
+    }
     _initPrayerTimes();
     notifyListeners();
   }
