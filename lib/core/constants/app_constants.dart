@@ -11,6 +11,9 @@ class AppConstants {
       'https://anm-digital.github.io/proud-muslim-legal/privacy-terms.html';
   static const String licensesUrl =
       'https://anm-digital.github.io/proud-muslim-legal/licenses.html';
+  static const String quranAudioTermsUrl =
+      'https://alquran.cloud/terms-and-conditions';
+  static const String quranAudioProviderUrl = 'https://alquran.cloud';
 
   // Permanent Internal Test Accounts (Full unrestricted access across all screens & features)
   static const Set<String> permanentProEmails = {

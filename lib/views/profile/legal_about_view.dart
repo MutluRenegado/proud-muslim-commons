@@ -10,6 +10,7 @@ import '../../widgets/deen_section_header.dart';
 import '../../widgets/localized_help_icon.dart';
 import '../quran/quran_sources_view.dart';
 import '../../l10n/app_localizations.dart';
+import 'licenses_view.dart';
 
 class LegalAboutView extends StatelessWidget {
   const LegalAboutView({super.key});
@@ -296,11 +297,18 @@ class LegalAboutView extends StatelessWidget {
                     ),
                   ),
                   trailing: Icon(
-                    Icons.open_in_new_rounded,
-                    size: 18,
+                    Icons.chevron_right_rounded,
+                    size: 20,
                     color: deen.textSecondary,
                   ),
-                  onTap: () => _launchWebUrl(AppConstants.licensesUrl),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const LicensesView(),
+                      ),
+                    );
+                  },
                 ),
                 Divider(height: 1, color: deen.cardBorder),
                 ListTile(
