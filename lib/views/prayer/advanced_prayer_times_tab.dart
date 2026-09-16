@@ -18,9 +18,9 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
   final PrayerProvider provider;
 
   static const _ui = <String, Map<String, String>>{
-    'en': {'warning': 'Kerahat Time', 'more': 'More Information', 'close': 'Close', 'authority': 'Calculation authority', 'school': 'Asr juristic method', 'offline': 'Available offline', 'unavailable': 'Unavailable'},
-    'tr': {'warning': 'Kerahat Vakti', 'more': 'Daha Fazla Bilgi', 'close': 'Kapat', 'authority': 'Hesaplama kurumu', 'school': 'İkindi fıkıh yöntemi', 'offline': 'Çevrimdışı kullanılabilir'},
-    'ar': {'warning': 'وقت الكراهة', 'more': 'معلومات إضافية', 'close': 'إغلاق', 'authority': 'جهة الحساب', 'school': 'المذهب في وقت العصر', 'offline': 'متاح دون اتصال'},
+    'en': {'warning': 'Prohibited Prayer Time', 'more': 'More Information', 'close': 'Close', 'authority': 'Calculation authority', 'school': 'Asr juristic method', 'offline': 'Available offline', 'unavailable': 'Unavailable'},
+    'tr': {'warning': 'Kerâhet Vakti', 'more': 'Daha Fazla Bilgi', 'close': 'Kapat', 'authority': 'Hesaplama kurumu', 'school': 'İkindi fıkıh yöntemi', 'offline': 'Çevrimdışı kullanılabilir', 'unavailable': 'Kullanılamıyor'},
+    'ar': {'warning': 'وقت الكراهة', 'more': 'معلومات إضافية', 'close': 'إغلاق', 'authority': 'جهة الحساب', 'school': 'المذهب في وقت العصر', 'offline': 'متاح دون اتصال', 'unavailable': 'غير متاح'},
     'de': {'warning': 'Makruh-Zeit', 'more': 'Weitere Informationen', 'close': 'Schließen', 'authority': 'Berechnungsstelle', 'school': 'Asr-Rechtsmethode', 'offline': 'Offline verfügbar'},
     'fr': {'warning': 'Période déconseillée', 'more': 'Plus d’informations', 'close': 'Fermer', 'authority': 'Autorité de calcul', 'school': 'Méthode juridique de l’Asr', 'offline': 'Disponible hors ligne'},
     'es': {'warning': 'Periodo desaconsejado', 'more': 'Más información', 'close': 'Cerrar', 'authority': 'Autoridad de cálculo', 'school': 'Método jurídico de Asr', 'offline': 'Disponible sin conexión'},
@@ -29,6 +29,33 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
     'id': {'warning': 'Waktu Makruh', 'more': 'Informasi Selengkapnya', 'close': 'Tutup', 'authority': 'Otoritas perhitungan', 'school': 'Metode fikih Asar', 'offline': 'Tersedia offline'},
     'ur': {'warning': 'وقتِ کراہت', 'more': 'مزید معلومات', 'close': 'بند کریں', 'authority': 'ادارۂ حساب', 'school': 'عصر کا فقہی طریقہ', 'offline': 'آف لائن دستیاب'},
     'ms': {'warning': 'Waktu Makruh', 'more': 'Maklumat Lanjut', 'close': 'Tutup', 'authority': 'Pihak pengiraan', 'school': 'Kaedah fiqh Asar', 'offline': 'Tersedia di luar talian'},
+  };
+
+  static const _masterNames = <String, List<String>>{
+    'tr': [
+      'İmsak (Fecr-i Sâdık)', 'Sabah', 'Güneş',
+      'Sabah Kerâhet Vakti (Güneş → İşrak)', 'İşrak', 'Dahve-i Kübrâ',
+      'Kerâhet Vakti (Öğle Kerâhet Vakti)', 'Öğle', 'İkindi',
+      'Asr-ı Sânî', 'İsfirâr-ı Şems (İkindi Kerâhet Vakti)', 'Akşam',
+      'İştibâk-i Nücûm', 'Yatsı', 'İşâ-i Sânî', 'Gece Yarısı Vakti',
+      'Teheccüd', 'Seher', 'Kıble Sâati Vakti',
+    ],
+    'en': [
+      'Imsak (True Dawn)', 'Fajr', 'Sunrise',
+      'Morning Prohibited Prayer Time (Sunrise → Ishraq)', 'Ishraq',
+      'Dahwa al-Kubra', 'Midday Prohibited Prayer Time', 'Dhuhr', 'Asr',
+      'Asr al-Thani (Second Asr)',
+      'Isfirar al-Shams (Late-Asr Prohibited Prayer Time)', 'Maghrib',
+      'Ishtibak al-Nujum', 'Isha', 'Isha al-Thani (Second Isha)',
+      'Islamic Midnight', 'Tahajjud', 'Sahar (Pre-Dawn)', 'Qibla Time',
+    ],
+    'ar': [
+      'الإمساك (الفجر الصادق)', 'الفجر', 'الشروق',
+      'وقت الكراهة الصباحي (الشروق ← الإشراق)', 'الإشراق', 'الضحوة الكبرى',
+      'وقت الكراهة (كراهة الظهر)', 'الظهر', 'العصر', 'العصر الثاني',
+      'اصفرار الشمس (كراهة العصر)', 'المغرب', 'اشتباك النجوم', 'العشاء',
+      'العشاء الثاني', 'وقت منتصف الليل', 'التهجد', 'السحر', 'وقت ساعة القبلة',
+    ],
   };
 
   @override
@@ -70,27 +97,11 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
             DeenCard(
               child: Column(
                 children: [
-                  Text(
-                    provider.city,
-                    style: GoogleFonts.outfit(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: deen.textPrimary,
-                    ),
-                  ),
+                  Text(provider.city, style: GoogleFonts.outfit(fontSize: 18, fontWeight: FontWeight.bold, color: deen.textPrimary)),
                   const SizedBox(height: 4),
-                  Text(
-                    provider.getFormattedLocalDate(),
-                    style: GoogleFonts.plusJakartaSans(color: deen.textSecondary),
-                  ),
+                  Text(provider.getFormattedLocalDate(), style: GoogleFonts.plusJakartaSans(color: deen.textSecondary)),
                   const SizedBox(height: 4),
-                  Text(
-                    labels['offline']!,
-                    style: GoogleFonts.plusJakartaSans(
-                      color: deen.accentPrimary,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  Text(labels['offline']!, style: GoogleFonts.plusJakartaSans(color: deen.accentPrimary, fontWeight: FontWeight.w600)),
                 ],
               ),
             ),
@@ -106,37 +117,27 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: Colors.red),
                   ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.warning_amber_rounded, color: Colors.red),
-                      const SizedBox(width: 8),
-                      Text(labels['warning']!, style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: Colors.red)),
-                    ],
-                  ),
+                  child: Row(children: [
+                    const Icon(Icons.warning_amber_rounded, color: Colors.red),
+                    const SizedBox(width: 8),
+                    Text(labels['warning']!, style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: Colors.red)),
+                  ]),
                 ),
               ),
             ],
             const SizedBox(height: 12),
             Text(content.note, style: GoogleFonts.plusJakartaSans(color: deen.textSecondary)),
             const SizedBox(height: 12),
-            ...List.generate(18, (index) => _timeCard(
-              context,
-              deen,
-              content,
-              labels,
-              values,
-              index,
+            ...List.generate(19, (displayIndex) => _timeCard(
+              context, deen, content, labels, values, language, displayIndex,
             )),
             const SizedBox(height: 12),
             DeenCard(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('${labels['authority']}: ${_methodName(provider.method)}', style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600, color: deen.textPrimary)),
-                  const SizedBox(height: 6),
-                  Text('${labels['school']}: ${_schoolName(provider.juristic)}', style: GoogleFonts.plusJakartaSans(color: deen.textSecondary)),
-                ],
-              ),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('${labels['authority']}: ${_methodName(provider.method)}', style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600, color: deen.textPrimary)),
+                const SizedBox(height: 6),
+                Text('${labels['school']}: ${_schoolName(provider.juristic)}', style: GoogleFonts.plusJakartaSans(color: deen.textSecondary)),
+              ]),
             ),
             const SizedBox(height: 16),
             Text(content.sourcesTitle, style: GoogleFonts.outfit(fontSize: 18, fontWeight: FontWeight.bold, color: deen.textPrimary)),
@@ -155,38 +156,62 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
     );
   }
 
+  int _sourceIndex(int displayIndex) {
+    if (displayIndex <= 2) return displayIndex;
+    if (displayIndex == 3) return 2; // Morning kerâhet uses Sunrise→Ishraq explanation.
+    return displayIndex - 1;
+  }
+
+  String _name(PrayerExplanationContent content, String language, int displayIndex) {
+    final master = _masterNames[language];
+    if (master != null) return master[displayIndex];
+    if (displayIndex == 3) return '${_ui[language]?['warning'] ?? _ui['en']!['warning']} (${content.names[2]} → ${content.names[3]})';
+    return content.names[_sourceIndex(displayIndex)];
+  }
+
   Widget _timeCard(
     BuildContext context,
     DeenThemeTokens deen,
     PrayerExplanationContent content,
     Map<String, String> labels,
     List<DateTime?> values,
-    int index,
+    String language,
+    int displayIndex,
   ) {
-    final warningEntry = index == 2 || index == 5 || index == 9;
+    final sourceIndex = _sourceIndex(displayIndex);
+    final warningEntry = displayIndex == 3 || displayIndex == 6 || displayIndex == 10;
+    final isMorningRange = displayIndex == 3;
     final now = TimeService.nowUtc();
-    final start = values[index];
-    DateTime? end = index == 16
-        ? provider.tomorrowPrayerTimes?.fajrUtc
-        : (index + 1 < values.length ? values[index + 1] : null);
+
+    final DateTime? start = isMorningRange ? values[2] : values[sourceIndex];
+    DateTime? end;
+    if (isMorningRange) {
+      end = values[3];
+    } else if (sourceIndex == 16) {
+      end = provider.tomorrowPrayerTimes?.fajrUtc;
+    } else {
+      end = sourceIndex + 1 < values.length ? values[sourceIndex + 1] : null;
+    }
     if (start != null && end != null && !end.isAfter(start)) {
       end = end.add(const Duration(days: 1));
     }
+
     var adjustedNow = now;
-    if (start != null && end != null &&
-        adjustedNow.isBefore(start) && end.day != start.day) {
+    if (start != null && end != null && adjustedNow.isBefore(start) && end.day != start.day) {
       adjustedNow = adjustedNow.add(const Duration(days: 1));
     }
     final total = start == null || end == null ? 0 : end.difference(start).inSeconds;
     final elapsed = start == null ? 0 : adjustedNow.difference(start).inSeconds;
-    final progress = total <= 0
-        ? 0.0
-        : (elapsed / total).clamp(0.0, 1.0).toDouble();
-    final activeWarning = warningEntry && start != null && end != null &&
-        !adjustedNow.isBefore(start) && adjustedNow.isBefore(end);
-    final local = start == null
-        ? null
-        : TimezoneService.toLocal(start, provider.ianaTimeZone);
+    final progress = total <= 0 ? 0.0 : (elapsed / total).clamp(0.0, 1.0).toDouble();
+    final activeWarning = warningEntry && start != null && end != null && !adjustedNow.isBefore(start) && adjustedNow.isBefore(end);
+    final localStart = start == null ? null : TimezoneService.toLocal(start, provider.ianaTimeZone);
+    final localEnd = end == null ? null : TimezoneService.toLocal(end, provider.ianaTimeZone);
+    final name = _name(content, language, displayIndex);
+    final timeText = localStart == null
+        ? (labels['unavailable'] ?? 'Unavailable')
+        : isMorningRange && localEnd != null
+            ? '${DateFormat('HH:mm').format(localStart)}–${DateFormat('HH:mm').format(localEnd)}'
+            : DateFormat('HH:mm').format(localStart);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 9),
@@ -194,40 +219,39 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
         padding: EdgeInsets.zero,
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
-          onTap: () => _showExplanation(context, deen, content, labels, index),
+          onTap: () => _showExplanation(context, deen, content, labels, language, displayIndex),
           child: Padding(
             padding: const EdgeInsets.all(14),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    if (warningEntry) ...[
-                      Icon(Icons.warning_amber_rounded, size: 18, color: activeWarning ? Colors.red : deen.textSecondary),
-                      const SizedBox(width: 7),
-                    ],
-                    Expanded(child: Text(content.names[index], style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: activeWarning ? Colors.red : deen.textPrimary))),
-                    Text(local == null ? (labels['unavailable'] ?? 'Unavailable') : DateFormat('HH:mm').format(local), style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: activeWarning ? Colors.red : deen.accentPrimary)),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                LinearProgressIndicator(
-                  value: progress,
-                  minHeight: 5,
-                  borderRadius: BorderRadius.circular(4),
-                  color: activeWarning ? Colors.red : deen.accentPrimary,
-                  backgroundColor: (activeWarning ? Colors.red : deen.textSecondary).withValues(alpha: 0.16),
-                  semanticsLabel: content.names[index],
-                  semanticsValue: '${(progress * 100).round()}%',
-                ),
-              ],
-            ),
+            child: Column(children: [
+              Row(children: [
+                if (warningEntry) ...[
+                  Icon(Icons.warning_amber_rounded, size: 18, color: activeWarning ? Colors.red : deen.textSecondary),
+                  const SizedBox(width: 7),
+                ],
+                Expanded(child: Text(name, style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: activeWarning ? Colors.red : deen.textPrimary))),
+                const SizedBox(width: 8),
+                Text(timeText, style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: activeWarning ? Colors.red : deen.accentPrimary)),
+              ]),
+              const SizedBox(height: 10),
+              LinearProgressIndicator(
+                value: progress,
+                minHeight: 5,
+                borderRadius: BorderRadius.circular(4),
+                color: activeWarning ? Colors.red : deen.accentPrimary,
+                backgroundColor: (activeWarning ? Colors.red : deen.textSecondary).withValues(alpha: 0.16),
+                semanticsLabel: name,
+                semanticsValue: '${(progress * 100).round()}%',
+              ),
+            ]),
           ),
         ),
       ),
     );
   }
 
-  void _showExplanation(BuildContext context, DeenThemeTokens deen, PrayerExplanationContent content, Map<String, String> labels, int index) {
+  void _showExplanation(BuildContext context, DeenThemeTokens deen, PrayerExplanationContent content, Map<String, String> labels, String language, int displayIndex) {
+    final index = _sourceIndex(displayIndex);
+    final name = _name(content, language, displayIndex);
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -236,36 +260,29 @@ class AdvancedPrayerTimesTab extends StatelessWidget {
       builder: (ctx) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(22),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(content.names[index], style: GoogleFonts.outfit(fontSize: 20, fontWeight: FontWeight.bold, color: deen.textPrimary)),
-              const SizedBox(height: 12),
-              Text(content.shortTexts[index], style: GoogleFonts.plusJakartaSans(color: deen.textSecondary)),
-              const SizedBox(height: 8),
-              Text('${content.sourcesTitle}: ${content.references[index]}', style: GoogleFonts.plusJakartaSans(fontSize: 12, color: deen.accentPrimary)),
-              const SizedBox(height: 18),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => _showMoreInformation(ctx, deen, content, labels, index),
-                  child: Text(labels['more']!),
-                ),
-              ),
-            ],
-          ),
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(name, style: GoogleFonts.outfit(fontSize: 20, fontWeight: FontWeight.bold, color: deen.textPrimary)),
+            const SizedBox(height: 12),
+            Text(content.shortTexts[index], style: GoogleFonts.plusJakartaSans(color: deen.textSecondary)),
+            const SizedBox(height: 8),
+            Text('${content.sourcesTitle}: ${content.references[index]}', style: GoogleFonts.plusJakartaSans(fontSize: 12, color: deen.accentPrimary)),
+            const SizedBox(height: 18),
+            SizedBox(width: double.infinity, child: ElevatedButton(
+              onPressed: () => _showMoreInformation(ctx, deen, content, labels, name, index),
+              child: Text(labels['more']!),
+            )),
+          ]),
         ),
       ),
     );
   }
 
-  void _showMoreInformation(BuildContext context, DeenThemeTokens deen, PrayerExplanationContent content, Map<String, String> labels, int index) {
+  void _showMoreInformation(BuildContext context, DeenThemeTokens deen, PrayerExplanationContent content, Map<String, String> labels, String name, int index) {
     showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: deen.surfacePrimary,
-        title: Text(content.names[index]),
+        title: Text(name),
         content: SingleChildScrollView(child: Text('${content.longTexts[index]}\n\n${content.sourcesTitle}: ${content.references[index]}')),
         actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: Text(labels['close']!))],
       ),
