@@ -48,29 +48,9 @@ class SubscriptionService {
   static bool _isAvailable = false;
   static final Map<String, ProductDetails> _remoteProducts = {};
 
-  static PremiumProductInfo get fallbackMonthlyProduct => const PremiumProductInfo(
-        id: AppConstants.productIdPremiumMonthly,
-        title: 'Proud Muslim Premium (Monthly)',
-        description: 'Unlimited AI translation narration, explanations & background audio',
-        price: AppConstants.formattedPriceMonthlyUsd,
-        trialText: AppConstants.formattedTrialDuration,
-        rawPrice: AppConstants.priceMonthlyUsd,
-        currencyCode: 'USD',
-        billingPeriod: '1 month',
-        isBestValue: false,
-      );
+  static PremiumProductInfo get fallbackMonthlyProduct => const PremiumProductInfo(id: AppConstants.productIdPremiumMonthly, title: 'Monthly Premium', description: 'Price supplied by Google Play', price: 'Unavailable', trialText: '', rawPrice: 0, currencyCode: '', billingPeriod: '1 month');
 
-  static PremiumProductInfo get fallbackAnnualProduct => const PremiumProductInfo(
-        id: AppConstants.productIdPremiumAnnual,
-        title: 'Proud Muslim Premium (Annual)',
-        description: 'Unlimited AI translation narration, explanations & background audio',
-        price: AppConstants.formattedPriceAnnualUsd,
-        trialText: AppConstants.formattedTrialDuration,
-        rawPrice: AppConstants.priceAnnualUsd,
-        currencyCode: 'USD',
-        billingPeriod: '12 months',
-        isBestValue: true,
-      );
+  static PremiumProductInfo get fallbackAnnualProduct => const PremiumProductInfo(id: AppConstants.productIdPremiumAnnual, title: 'Annual Premium', description: 'Price supplied by Google Play', price: 'Unavailable', trialText: '', rawPrice: 0, currencyCode: '', billingPeriod: '12 months', isBestValue: true);
 
   static Future<void> init(
     Function(SubscriptionPlanStatus) onStatusChanged,
@@ -165,10 +145,7 @@ class SubscriptionService {
 
   static Future<bool> buyMonthlySubscription() async {
     final product = _remoteProducts[AppConstants.productIdPremiumMonthly];
-    if (!_isAvailable || product == null) {
-      // If store is offline, start 3-day trial
-      return await StorageService.startFreeTrial();
-    }
+    if (!_isAvailable || product == null) { return false; }
     final PurchaseParam purchaseParam = PurchaseParam(productDetails: product);
     return await _iap.buyNonConsumable(purchaseParam: purchaseParam);
   }
@@ -176,10 +153,7 @@ class SubscriptionService {
   static Future<bool> buyAnnualSubscription() async {
     final product = _remoteProducts[AppConstants.productIdPremiumAnnual] ??
         _remoteProducts[AppConstants.subscriptionProductId];
-    if (!_isAvailable || product == null) {
-      // If store is offline, start 3-day trial
-      return await StorageService.startFreeTrial();
-    }
+    if (!_isAvailable || product == null) { return false; }
     final PurchaseParam purchaseParam = PurchaseParam(productDetails: product);
     return await _iap.buyNonConsumable(purchaseParam: purchaseParam);
   }
@@ -245,7 +219,7 @@ class SubscriptionService {
     return {
       'status': SubscriptionPlanStatus.free,
       'title': 'Free Tier',
-      'subtitle': 'Core Quran, translations, Arabic audio & all religious tools (100% ad-free).',
+      'subtitle': 'Quran reading, translations and the 99 Names are free. Other features require Google Play Premium.',
       'badge': 'FREE',
       'isSubscribed': false,
       'hasPremiumAccess': false,
