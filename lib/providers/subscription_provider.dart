@@ -18,12 +18,11 @@ class SubscriptionProvider extends ChangeNotifier {
   /// True if user is an authorized test account, paid subscriber, or on 3-day free trial
   bool get hasPremiumAccess =>
       _status == SubscriptionPlanStatus.activePremium ||
-      _status == SubscriptionPlanStatus.activeTrial ||
       _status == SubscriptionPlanStatus.testingAccount ||
-      StorageService.hasPremiumAccess;
+      StorageService.isPaidSubscribed || StorageService.isPermanentTestingAccount;
 
   /// 100% Ad-Free across the entire app
-  bool get hasAdFreeAccess => true;
+  bool get hasAdFreeAccess => hasPremiumAccess;
 
   bool get isSubscribed => hasPremiumAccess;
   bool get isPaidSubscribed => StorageService.isPaidSubscribed;
