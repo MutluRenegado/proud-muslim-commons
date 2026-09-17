@@ -6,6 +6,8 @@ import '../../core/constants/deen_theme_tokens.dart';
 import '../../core/constants/app_design_tokens.dart';
 import '../../models/azkar_model.dart';
 import '../../core/services/azkar_data_service.dart';
+import '../../core/repositories/quran_repository.dart';
+import '../quran/surah_reader_view.dart';
 import '../../widgets/deen_card.dart';
 import '../../widgets/themed_illustration.dart';
 
@@ -28,6 +30,40 @@ class _AzkarViewState extends State<AzkarView> {
   void initState() {
     super.initState();
     _loadData();
+  }
+
+  String _openQuranLabel(String languageCode) {
+    const labels = <String, String>{
+      'en': 'Open in Qur’an',
+      'tr': "Kur’an’da Aç",
+      'ar': 'افتح في القرآن',
+      'de': 'Im Koran öffnen',
+      'fr': 'Ouvrir dans le Coran',
+      'es': 'Abrir en el Corán',
+      'pt': 'Abrir no Alcorão',
+      'ru': 'Открыть в Коране',
+      'id': 'Buka di Al-Qur’an',
+      'ur': 'قرآن میں کھولیں',
+      'ms': 'Buka dalam al-Quran',
+    };
+    return labels[languageCode] ?? labels['en']!;
+  }
+
+  Future<void> _openQuranReference(AzkarItemModel item) async {
+    final surahNumber = item.quranSurah;
+    if (surahNumber == null) return;
+
+    final surahs = await QuranRepository().getSurahs();
+    if (!mounted) return;
+
+    final matching = surahs.where((surah) => surah.number == surahNumber);
+    if (matching.isEmpty) return;
+
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => SurahReaderView(surah: matching.first),
+      ),
+    );
   }
 
   Future<void> _loadData() async {
@@ -285,18 +321,20 @@ class _AzkarViewState extends State<AzkarView> {
                                   ),
                                   const SizedBox(height: 12),
 
-                                  // Arabic Dua
-                                  Text(
-                                    item.arabic,
-                                    textDirection: TextDirection.rtl,
-                                    style: GoogleFonts.amiri(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      height: 1.8,
-                                      color: deen.arabicPrimary,
+                                  // Arabic Dua (for text-based adhkar)
+                                  if (item.arabic.isNotEmpty) ...[
+                                    Text(
+                                      item.arabic,
+                                      textDirection: TextDirection.rtl,
+                                      style: GoogleFonts.amiri(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        height: 1.8,
+                                        color: deen.arabicPrimary,
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 10),
+                                    const SizedBox(height: 10),
+                                  ],
 
                                   // Transliteration
                                   if (item.transliteration.isNotEmpty) ...[
@@ -313,14 +351,15 @@ class _AzkarViewState extends State<AzkarView> {
                                   ],
 
                                   // Translation
-                                  Text(
-                                    'English\n${item.translation}',
-                                    style: GoogleFonts.plusJakartaSans(
-                                      fontSize: 13.5,
-                                      color: deen.textPrimary,
-                                      height: 1.45,
+                                  if (item.translation.isNotEmpty)
+                                    Text(
+                                      'English\n${item.translation}',
+                                      style: GoogleFonts.plusJakartaSans(
+                                        fontSize: 13.5,
+                                        color: deen.textPrimary,
+                                        height: 1.45,
+                                      ),
                                     ),
-                                  ),
                                   if (showTargetTranslation) ...[
                                     const SizedBox(height: 8),
                                     Text(
@@ -376,6 +415,14 @@ class _AzkarViewState extends State<AzkarView> {
                                       ],
                                     ],
                                   ),
+                                  if (item.quranSurah != null) ...[
+                                    const SizedBox(height: 12),
+                                    OutlinedButton.icon(
+                                      onPressed: () => _openQuranReference(item),
+                                      icon: const Icon(Icons.menu_book_rounded),
+                                      label: Text(_openQuranLabel(languageCode)),
+                                    ),
+                                  ],
                                 ],
                               ),
                             );

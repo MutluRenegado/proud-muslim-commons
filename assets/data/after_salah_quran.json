@@ -1,0 +1,34 @@
+[
+  {
+    "id": "fajr_hashr",
+    "title": "Fajr — Al-Hashr 59:22–24 & Esmaül Hüsna",
+    "arabic": "",
+    "transliteration": "",
+    "translation": "",
+    "reference": "Qur’an 59:22–24",
+    "repeat": 1,
+    "benefit": "Open the prescribed Fajr reading in the Qur’an reader.",
+    "translations": {"tr":{"title":"Sabah — Haşr 59:22–24 ve Esmaül Hüsna","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"ar":{"title":"الفجر — الحشر 59:22–24 وأسماء الله الحسنى","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"de":{"title":"Fajr — Al-Haschr 59:22–24 & Asma al-Husna","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"fr":{"title":"Fajr — Al-Hashr 59:22–24 et Asma al-Husna","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"es":{"title":"Fajr — Al-Hashr 59:22–24 y Asma al-Husna","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"pt":{"title":"Fajr — Al-Hashr 59:22–24 e Asma al-Husna","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"ru":{"title":"Фаджр — Аль-Хашр 59:22–24 и Асма аль-Хусна","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"id":{"title":"Subuh — Al-Hashr 59:22–24 & Asmaul Husna","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"ur":{"title":"فجر — الحشر 59:22–24 اور اسماء الحسنیٰ","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."},"ms":{"title":"Subuh — Al-Hashr 59:22–24 & Asmaul Husna","translation":"","benefit":"Open the prescribed Fajr reading in the Qur’an reader."}},
+    "quranSurah": 59, "quranAyahStart": 22, "quranAyahEnd": 24
+  },
+  {
+    "id":"dhuhr_kursi","title":"Dhuhr — Ayat al-Kursi","arabic":"","transliteration":"","translation":"","reference":"Qur’an 2:255","repeat":1,"benefit":"Open the prescribed Dhuhr reading in the Qur’an reader.",
+    "translations":{"tr":{"title":"Öğle — Âyetel Kürsî"},"ar":{"title":"الظهر — آية الكرسي"},"de":{"title":"Dhuhr — Ayat al-Kursi"},"fr":{"title":"Dhuhr — Ayat al-Kursi"},"es":{"title":"Dhuhr — Ayat al-Kursi"},"pt":{"title":"Dhuhr — Ayat al-Kursi"},"ru":{"title":"Зухр — Аят аль-Курси"},"id":{"title":"Zuhur — Ayat Kursi"},"ur":{"title":"ظہر — آیت الکرسی"},"ms":{"title":"Zuhur — Ayat Kursi"}},
+    "quranSurah":2,"quranAyahStart":255,"quranAyahEnd":255
+  },
+  {
+    "id":"asr_kursi","title":"Asr — Ayat al-Kursi","arabic":"","transliteration":"","translation":"","reference":"Qur’an 2:255","repeat":1,"benefit":"Open the prescribed Asr reading in the Qur’an reader.",
+    "translations":{"tr":{"title":"İkindi — Âyetel Kürsî"},"ar":{"title":"العصر — آية الكرسي"},"de":{"title":"Asr — Ayat al-Kursi"},"fr":{"title":"Asr — Ayat al-Kursi"},"es":{"title":"Asr — Ayat al-Kursi"},"pt":{"title":"Asr — Ayat al-Kursi"},"ru":{"title":"Аср — Аят аль-Курси"},"id":{"title":"Asar — Ayat Kursi"},"ur":{"title":"عصر — آیت الکرسی"},"ms":{"title":"Asar — Ayat Kursi"}},
+    "quranSurah":2,"quranAyahStart":255,"quranAyahEnd":255
+  },
+  {
+    "id":"maghrib_hashr","title":"Maghrib — Al-Hashr 59:22–24 & Esmaül Hüsna","arabic":"","transliteration":"","translation":"","reference":"Qur’an 59:22–24","repeat":1,"benefit":"Open the prescribed Maghrib reading in the Qur’an reader.",
+    "translations":{"tr":{"title":"Akşam — Haşr 59:22–24 ve Esmaül Hüsna"},"ar":{"title":"المغرب — الحشر 59:22–24 وأسماء الله الحسنى"},"de":{"title":"Maghrib — Al-Haschr 59:22–24 & Asma al-Husna"},"fr":{"title":"Maghrib — Al-Hashr 59:22–24 et Asma al-Husna"},"es":{"title":"Maghrib — Al-Hashr 59:22–24 y Asma al-Husna"},"pt":{"title":"Maghrib — Al-Hashr 59:22–24 e Asma al-Husna"},"ru":{"title":"Магриб — Аль-Хашр 59:22–24 и Асма аль-Хусна"},"id":{"title":"Magrib — Al-Hashr 59:22–24 & Asmaul Husna"},"ur":{"title":"مغرب — الحشر 59:22–24 اور اسماء الحسنیٰ"},"ms":{"title":"Maghrib — Al-Hashr 59:22–24 & Asmaul Husna"}},
+    "quranSurah":59,"quranAyahStart":22,"quranAyahEnd":24
+  },
+  {
+    "id":"isha_amanar","title":"Isha — Âmener-Rasûlü","arabic":"","transliteration":"","translation":"","reference":"Qur’an 2:285–286","repeat":1,"benefit":"Open the prescribed Isha reading in the Qur’an reader.",
+    "translations":{"tr":{"title":"Yatsı — Âmener-Rasûlü"},"ar":{"title":"العشاء — آمن الرسول"},"de":{"title":"Isha — Âmener-Rasûlü"},"fr":{"title":"Isha — Âmener-Rasûlü"},"es":{"title":"Isha — Âmener-Rasûlü"},"pt":{"title":"Isha — Âmener-Rasûlü"},"ru":{"title":"Иша — Аманар-Расулу"},"id":{"title":"Isya — Âmener-Rasûlü"},"ur":{"title":"عشاء — آمن الرسول"},"ms":{"title":"Isyak — Âmener-Rasûlü"}},
+    "quranSurah":2,"quranAyahStart":285,"quranAyahEnd":286
+  }
+]
