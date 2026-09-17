@@ -44,6 +44,9 @@ class AzkarItemModel {
   final String reference;
   final String benefit;
   final Map<String, dynamic>? translations;
+  final int? quranSurah;
+  final int? quranAyahStart;
+  final int? quranAyahEnd;
 
   AzkarItemModel({
     required this.id,
@@ -55,6 +58,9 @@ class AzkarItemModel {
     required this.reference,
     required this.benefit,
     this.translations,
+    this.quranSurah,
+    this.quranAyahStart,
+    this.quranAyahEnd,
   });
 
   factory AzkarItemModel.fromJson(Map<String, dynamic> json) {
@@ -68,6 +74,9 @@ class AzkarItemModel {
       reference: json['reference'] as String,
       benefit: json['benefit'] as String,
       translations: json['translations'] as Map<String, dynamic>?,
+      quranSurah: json['quranSurah'] as int?,
+      quranAyahStart: json['quranAyahStart'] as int?,
+      quranAyahEnd: json['quranAyahEnd'] as int?,
     );
   }
 
