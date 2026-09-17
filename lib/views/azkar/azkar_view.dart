@@ -131,6 +131,7 @@ class _AzkarViewState extends State<AzkarView> {
           ? const Center(child: CircularProgressIndicator())
           : Column(
               children: [
+                // 1. Horizontal Category Carousel / Chips
                 Container(
                   height: 100,
                   margin: const EdgeInsets.only(top: 8),
@@ -142,25 +143,65 @@ class _AzkarViewState extends State<AzkarView> {
                       final cat = _categories[index];
                       final isSelected = index == _selectedCategoryIndex;
                       final illustration = _getCategoryIllustration(index);
+
                       return GestureDetector(
-                        onTap: () => setState(() => _selectedCategoryIndex = index),
+                        onTap: () =>
+                            setState(() => _selectedCategoryIndex = index),
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
                           width: 110,
-                          margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 4,
+                            vertical: 4,
+                          ),
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: isSelected ? (deen.isDark ? deen.surfaceElevated : deen.badgeBackground) : deen.cardBackground,
+                            color: isSelected
+                                ? (deen.isDark
+                                    ? deen.surfaceElevated
+                                    : deen.badgeBackground)
+                                : deen.cardBackground,
                             borderRadius: BorderRadius.circular(AppRadius.m),
-                            border: Border.all(color: isSelected ? deen.accentGold : deen.cardBorder, width: isSelected ? 1.6 : 1.0),
-                            boxShadow: isSelected ? AppShadows.glow(deen.accentGold, radius: 10) : [BoxShadow(color: deen.cardShadow, blurRadius: 6, offset: const Offset(0, 2))],
+                            border: Border.all(
+                              color: isSelected
+                                  ? deen.accentGold
+                                  : deen.cardBorder,
+                              width: isSelected ? 1.6 : 1.0,
+                            ),
+                            boxShadow: isSelected
+                                ? AppShadows.glow(deen.accentGold, radius: 10)
+                                : [
+                                    BoxShadow(
+                                      color: deen.cardShadow,
+                                      blurRadius: 6,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              ThemedIllustration(illustration: illustration, size: 28),
+                              ThemedIllustration(
+                                illustration: illustration,
+                                size: 28,
+                              ),
                               const SizedBox(height: 6),
-                              Text(cat.getLocalizedTitle(languageCode), textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis, style: GoogleFonts.plusJakartaSans(fontSize: 10.5, fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500, color: isSelected ? deen.accentPrimary : deen.textPrimary, height: 1.15)),
+                              Text(
+                                cat.getLocalizedTitle(languageCode),
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.plusJakartaSans(
+                                  fontSize: 10.5,
+                                  fontWeight: isSelected
+                                      ? FontWeight.w700
+                                      : FontWeight.w500,
+                                  color: isSelected
+                                      ? deen.accentPrimary
+                                      : deen.textPrimary,
+                                  height: 1.15,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -169,71 +210,208 @@ class _AzkarViewState extends State<AzkarView> {
                   ),
                 ),
                 const SizedBox(height: 4),
+
+                // 2. Active Category Duas List
                 Expanded(
                   child: selectedCategory == null
                       ? const SizedBox()
                       : ListView.builder(
-                          padding: EdgeInsets.only(top: 8, bottom: bottomInset + 32),
+                          padding: EdgeInsets.only(
+                            top: 8,
+                            bottom: bottomInset + 32,
+                          ),
                           itemCount: selectedCategory.items.length,
                           itemBuilder: (context, itemIndex) {
                             final item = selectedCategory.items[itemIndex];
-                            final localizedTitle = item.getLocalizedTitle(languageCode);
-                            final localizedTranslation = item.getLocalizedTranslation(languageCode);
-                            final localizedBenefit = item.getLocalizedBenefit(languageCode);
-                            final showTargetTranslation = languageCode != 'en' && languageCode != 'ar' && localizedTranslation != item.translation;
+                            final localizedTitle = item.getLocalizedTitle(
+                              languageCode,
+                            );
+                            final localizedTranslation =
+                                item.getLocalizedTranslation(languageCode);
+                            final localizedBenefit = item.getLocalizedBenefit(
+                              languageCode,
+                            );
+                            final showTargetTranslation =
+                                languageCode != 'en' &&
+                                    languageCode != 'ar' &&
+                                    localizedTranslation != item.translation;
                             final progress = _itemProgress[item.id] ?? 0;
                             final isComplete = progress >= item.repeat;
+
                             return DeenCard(
-                              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 6,
+                              ),
                               padding: const EdgeInsets.all(16),
                               isSelected: isComplete,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
+                                  // Header: Title & Counter Button
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Expanded(child: Text(localizedTitle, style: GoogleFonts.outfit(fontWeight: FontWeight.w700, fontSize: 15, color: deen.textPrimary))),
+                                      Expanded(
+                                        child: Text(
+                                          localizedTitle,
+                                          style: GoogleFonts.outfit(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15,
+                                            color: deen.textPrimary,
+                                          ),
+                                        ),
+                                      ),
                                       const SizedBox(width: 8),
+                                      // Tactile Counter Button
                                       InkWell(
-                                        onTap: () => _incrementDua(item.id, item.repeat),
+                                        onTap: () =>
+                                            _incrementDua(item.id, item.repeat),
                                         borderRadius: BorderRadius.circular(20),
                                         child: AnimatedContainer(
-                                          duration: const Duration(milliseconds: 200),
-                                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-                                          decoration: BoxDecoration(color: isComplete ? deen.success : deen.badgeBackground, borderRadius: BorderRadius.circular(20), border: Border.all(color: isComplete ? deen.success : deen.badgeBorder)),
-                                          child: Row(mainAxisSize: MainAxisSize.min, children: [Icon(isComplete ? Icons.check_circle_rounded : Icons.touch_app_rounded, size: 16, color: isComplete ? Colors.white : deen.accentPrimary), const SizedBox(width: 5), Text('$progress / ${item.repeat}', style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 12.5, color: isComplete ? Colors.white : deen.accentPrimary))]),
+                                          duration: const Duration(
+                                            milliseconds: 200,
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 14,
+                                            vertical: 6,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: isComplete
+                                                ? deen.success
+                                                : deen.badgeBackground,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            border: Border.all(
+                                              color: isComplete
+                                                  ? deen.success
+                                                  : deen.badgeBorder,
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(
+                                                isComplete
+                                                    ? Icons.check_circle_rounded
+                                                    : Icons.touch_app_rounded,
+                                                size: 16,
+                                                color: isComplete
+                                                    ? Colors.white
+                                                    : deen.accentPrimary,
+                                              ),
+                                              const SizedBox(width: 5),
+                                              Text(
+                                                '$progress / ${item.repeat}',
+                                                style: GoogleFonts.outfit(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 12.5,
+                                                  color: isComplete
+                                                      ? Colors.white
+                                                      : deen.accentPrimary,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
                                   const SizedBox(height: 12),
+
+                                  // Arabic Dua (for text-based adhkar)
                                   if (item.arabic.isNotEmpty) ...[
-                                    Text(item.arabic, textDirection: TextDirection.rtl, style: GoogleFonts.amiri(fontSize: 20, fontWeight: FontWeight.bold, height: 1.8, color: deen.arabicPrimary)),
+                                    Text(
+                                      item.arabic,
+                                      textDirection: TextDirection.rtl,
+                                      style: GoogleFonts.amiri(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        height: 1.8,
+                                        color: deen.arabicPrimary,
+                                      ),
+                                    ),
                                     const SizedBox(height: 10),
                                   ],
+
+                                  // Transliteration
                                   if (item.transliteration.isNotEmpty) ...[
-                                    Text(item.transliteration, style: GoogleFonts.plusJakartaSans(fontSize: 13, fontStyle: FontStyle.italic, color: deen.textSecondary, height: 1.4)),
+                                    Text(
+                                      item.transliteration,
+                                      style: GoogleFonts.plusJakartaSans(
+                                        fontSize: 13,
+                                        fontStyle: FontStyle.italic,
+                                        color: deen.textSecondary,
+                                        height: 1.4,
+                                      ),
+                                    ),
                                     const SizedBox(height: 8),
                                   ],
+
+                                  // Translation
                                   if (item.translation.isNotEmpty)
-                                    Text('English\n${item.translation}', style: GoogleFonts.plusJakartaSans(fontSize: 13.5, color: deen.textPrimary, height: 1.45)),
+                                    Text(
+                                      'English\n${item.translation}',
+                                      style: GoogleFonts.plusJakartaSans(
+                                        fontSize: 13.5,
+                                        color: deen.textPrimary,
+                                        height: 1.45,
+                                      ),
+                                    ),
                                   if (showTargetTranslation) ...[
                                     const SizedBox(height: 8),
-                                    Text(localizedTranslation, textDirection: Directionality.of(context), style: GoogleFonts.plusJakartaSans(fontSize: 13.5, fontWeight: FontWeight.w600, color: deen.accentPrimary, height: 1.45)),
+                                    Text(
+                                      localizedTranslation,
+                                      textDirection: Directionality.of(context),
+                                      style: GoogleFonts.plusJakartaSans(
+                                        fontSize: 13.5,
+                                        fontWeight: FontWeight.w600,
+                                        color: deen.accentPrimary,
+                                        height: 1.45,
+                                      ),
+                                    ),
                                   ],
                                   const SizedBox(height: 10),
+
+                                  // Reference & Reward Badges
                                   Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                        decoration: BoxDecoration(color: deen.badgeBackground, borderRadius: BorderRadius.circular(6)),
-                                        child: Text('Ref: ${item.reference}', style: GoogleFonts.plusJakartaSans(fontSize: 11, color: deen.textMuted, fontWeight: FontWeight.w500)),
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 8,
+                                          vertical: 3,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: deen.badgeBackground,
+                                          borderRadius: BorderRadius.circular(
+                                            6,
+                                          ),
+                                        ),
+                                        child: Text(
+                                          'Ref: ${item.reference}',
+                                          style: GoogleFonts.plusJakartaSans(
+                                            fontSize: 11,
+                                            color: deen.textMuted,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
                                       ),
                                       if (localizedBenefit.isNotEmpty) ...[
                                         const SizedBox(width: 8),
-                                        Expanded(child: Text(localizedBenefit, style: GoogleFonts.plusJakartaSans(fontSize: 11, color: deen.accentPrimary, fontWeight: FontWeight.w600))),
+                                        Expanded(
+                                          child: Text(
+                                            localizedBenefit,
+                                            style: GoogleFonts.plusJakartaSans(
+                                              fontSize: 11,
+                                              color: deen.accentPrimary,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ],
                                   ),
